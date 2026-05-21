@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://groupify.dev/sitemap.xml
+Sitemap: https://nestfeed.app/sitemap.xml

@@ -6,7 +6,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, '..');
 
-const HOSTNAME = 'https://groupify.dev';
+const HOSTNAME = 'https://nestfeed.app';
 
 // 1. Get static routes from src/routes
 function getStaticRoutes(dir, base = '') {
@@ -47,7 +47,7 @@ function getStaticRoutes(dir, base = '') {
 // 2. Get blog posts from API
 async function getBlogPosts() {
     try {
-        const response = await fetch('https://directus.groupify.dev/items/posts?limit=-1');
+        const response = await fetch('https://directus.nestfeed.app/items/posts?limit=-1');
         
         if (!response.ok) {
             console.warn('Failed to fetch blog posts from API:', response.status);

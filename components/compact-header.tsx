@@ -19,7 +19,7 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 			<div className="container mx-auto px-4 h-12 flex items-center justify-between">
 				<Link to={homeLink} className="flex items-center gap-2">
 					<Youtube className="h-5 w-5 text-red-500" />
-					<span className="font-semibold">Groupify</span>
+					<span className="font-semibold">Nestfeed</span>
 				</Link>
 
 				<div className="hidden md:flex items-center gap-6">

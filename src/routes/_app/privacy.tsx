@@ -115,11 +115,11 @@ function RouteComponent() {
 						<p>
 							<strong>Website</strong> refers to Groupify, accessible from{" "}
 							<a
-								href="https://groupify.dev"
+								href="https://nestfeed.app"
 								rel="external nofollow noopener"
 								target="_blank"
 							>
-								https://groupify.dev
+								https://nestfeed.app
 							</a>
 						</p>
 					</li>
@@ -519,11 +519,11 @@ function RouteComponent() {
 					<li>
 						By email:{" "}
 						<a
-							href="mailto:admin@groupify.dev"
+							href="mailto:admin@nestfeed.app"
 							className="__cf_email__"
 							data-cfemail="6706030a0e092700150812170e011e49030211"
 						>
-							admin@groupify.dev
+							admin@nestfeed.app
 						</a>
 					</li>
 				</ul>
