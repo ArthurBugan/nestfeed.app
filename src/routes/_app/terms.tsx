@@ -15,8 +15,8 @@ function RouteComponent() {
 				<p>
 					These Terms of Service ("Terms", "Terms of Service") govern your use
 					of our website located at{" "}
-					<a href="https://groupify.dev" target="_blank" rel="noopener">
-						https://groupify.dev
+					<a href="https://nestfeed.app" target="_blank" rel="noopener">
+						https://nestfeed.app
 					</a>{" "}
 					(together or individually "Service") operated by Groupify ("Company",
 					"we", "our", or "us").
@@ -124,7 +124,7 @@ function RouteComponent() {
 				<p>If you have any questions about these Terms, you can contact us:</p>
 				<ul>
 					<li>
-						By email: <a href="mailto:admin@groupify.dev">admin@groupify.dev</a>
+						By email: <a href="mailto:admin@nestfeed.app">admin@nestfeed.app</a>
 					</li>
 				</ul>
 			</article>

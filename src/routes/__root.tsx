@@ -26,7 +26,7 @@ const VITE_CLARITY_PROJECT_ID = import.meta.env.VITE_CLARITY_PROJECT_ID;
 
 if (typeof window !== "undefined") {
 	await rybbit.init({
-	  analyticsHost: "https://rybbit.groupify.dev/api",
+	  analyticsHost: "https://rybbit.nestfeed.app/api",
 	  siteId: "5bd1e2c51d8f",
 	  replayPrivacyConfig: {
 		slimDOMOptions: true

@@ -170,8 +170,8 @@ function SupportPage() {
 								</CardHeader>
 								<CardContent>
 									<Button variant="ghost" className="w-full justify-between hover:bg-primary/10 group/btn" asChild>
-										<a href="mailto:admin@groupify.dev">
-											admin@groupify.dev
+										<a href="mailto:admin@nestfeed.app">
+											admin@nestfeed.app
 											<ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
 										</a>
 									</Button>

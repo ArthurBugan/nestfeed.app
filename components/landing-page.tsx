@@ -578,7 +578,7 @@ export function LandingPage() {
 							{
 								name: "Website",
 								desc: "React website with TanStack",
-								href: "https://github.com/ArthurBugan/groupify.dev_v2",
+								href: "https://github.com/ArthurBugan/nestfeed.app_v2",
 							},
 						].map((repo) => (
 							<motion.div key={repo.name} variants={fadeInUp}>
@@ -852,7 +852,7 @@ export function LandingPage() {
 									</li>
 									<li>
 										<a
-											href="mailto:admin@groupify.dev"
+											href="mailto:admin@nestfeed.app"
 											className="hover:text-foreground"
 										>
 											Contact
