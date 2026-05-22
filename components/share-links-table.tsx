@@ -223,7 +223,7 @@ export function ShareLinksTable() {
 			</div>
 
 			{error && (
-				<div className="text-red-500 text-sm">
+				<div className="text-destructive text-sm">
 					Error loading share links: {error.message}
 				</div>
 			)}

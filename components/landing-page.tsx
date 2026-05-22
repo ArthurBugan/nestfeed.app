@@ -117,7 +117,7 @@ function AnimatedBackground() {
 	return (
 		<div className="absolute inset-0 -z-10 overflow-hidden">
 			<motion.div
-				className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-red-500/5 blur-3xl"
+				className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-3xl"
 				animate={{
 					y: [0, -30, 0],
 					x: [0, 20, 0],
@@ -126,7 +126,7 @@ function AnimatedBackground() {
 				transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
 			/>
 			<motion.div
-				className="absolute top-[40%] -right-[10%] w-[40%] h-[40%] rounded-full bg-pink-500/5 blur-3xl"
+				className="absolute top-[40%] -right-[10%] w-[40%] h-[40%] rounded-full bg-secondary/5 blur-3xl"
 				animate={{
 					y: [0, 25, 0],
 					x: [0, -15, 0],
@@ -140,7 +140,7 @@ function AnimatedBackground() {
 				}}
 			/>
 			<motion.div
-				className="absolute bottom-[10%] left-[20%] w-[30%] h-[30%] rounded-full bg-orange-500/5 blur-3xl"
+				className="absolute bottom-[10%] left-[20%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-3xl"
 				animate={{
 					y: [0, -20, 0],
 					x: [0, 25, 0],
@@ -292,7 +292,7 @@ export function LandingPage() {
 						<AnimatedSection variants={fadeInUp}>
 							<Badge
 								variant="outline"
-								className="gap-1 bg-red-50/50 border-red-200 dark:bg-red-950/20 dark:border-red-800"
+								className="gap-1 bg-primary/10 border-primary/30 text-primary"
 							>
 								<Sparkles className="h-3 w-3" /> {t("landing.hero.badge")}
 							</Badge>
@@ -315,7 +315,7 @@ export function LandingPage() {
 								>
 									<Button
 										size="lg"
-										className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-md"
+										className="bg-primary hover:bg-primary/90 shadow-md"
 										asChild
 									>
 										<Link to="/register">
@@ -370,7 +370,7 @@ export function LandingPage() {
 							<CompactCard className="border-muted/50">
 								<div className="flex items-center gap-2 px-4 py-3 border-b bg-muted/30 rounded-t-xl">
 									<div className="flex gap-1.5">
-										<div className="w-2.5 h-2.5 rounded-full bg-red-500" />
+										<div className="w-2.5 h-2.5 rounded-full bg-primary" />
 										<div className="w-2.5 h-2.5 rounded-full bg-yellow-500" />
 										<div className="w-2.5 h-2.5 rounded-full bg-green-500" />
 									</div>
@@ -391,7 +391,7 @@ export function LandingPage() {
 											transition={{ delay: 0.4 + idx * 0.12, duration: 0.5 }}
 											className="flex items-center gap-3 p-2.5 rounded-lg bg-muted/40 hover:bg-muted/60 transition-colors"
 										>
-											<div className="w-8 h-8 rounded-md bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center">
+											<div className="w-8 h-8 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
 												<Youtube className="h-4 w-4 text-white" />
 											</div>
 											<div className="flex-1">
@@ -429,7 +429,7 @@ export function LandingPage() {
 					<AnimatedGrid className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
 						{features.map((f, i) => (
 							<motion.div key={i} variants={fadeInUp}>
-								<CompactCard className="p-4 hover:border-red-500/30 transition-colors">
+								<CompactCard className="p-4 hover:border-primary/30 transition-colors">
 									<div className="flex items-start justify-between mb-3">
 										<motion.span
 											className="text-2xl"
@@ -466,7 +466,7 @@ export function LandingPage() {
 							<div className="space-y-4">
 								<Badge
 									variant="secondary"
-									className="gap-1 bg-red-500/10 text-red-700 dark:text-red-300"
+									className="gap-1 bg-primary/10 text-primary-foreground dark:text-primary-foreground"
 								>
 									<Sparkles className="h-3 w-3" />{" "}
 									{t("landing.extension.badge")}
@@ -490,9 +490,14 @@ export function LandingPage() {
 											title: "Available on Firefox Add-ons",
 										},
 										{
-											href: "https://apps.apple.com/us/app/groupify-yt-subscriptions/id6714452813?l=pt-BR",
-											icon: "logos:safari",
-											title: "Available on Safari Extensions",
+											href: "https://play.google.com/store/apps/details?id=com.groupifyapp",
+											icon: "logos:google-play-icon",
+											title: "Get it on Google Play",
+										},
+										{
+											href: "https://apps.apple.com/br/app/groupify-yt-subscriptions/id6714452813",
+											icon: "logos:apple-app-store",
+											title: "Available on the App Store",
 										},
 									].map((browser, idx) => (
 										<motion.div
@@ -515,12 +520,28 @@ export function LandingPage() {
 										</motion.div>
 									))}
 								</div>
+								<div className="mt-6 pt-4 border-t border-border/50">
+									<p className="text-sm text-muted-foreground mb-3">
+										Help us grow by starring our repositories!
+									</p>
+									<Button
+										variant="outline"
+										size="sm"
+										asChild
+										className="rounded-xl border-muted-foreground/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+									>
+										<a href="https://github.com/ArthurBugan/nestfeed.application" target="_blank" rel="noopener noreferrer">
+											<IconViewer icon="mdi:github" className="h-4 w-4 mr-1" />
+											Star on GitHub
+										</a>
+									</Button>
+								</div>
 							</div>
 						</AnimatedSection>
 						<AnimatedSection variants={slideInRight}>
 							<CompactCard className="p-4">
 								<div className="flex items-center gap-3 mb-4">
-									<div className="w-10 h-10 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center">
+									<div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
 										<Youtube className="h-5 w-5 text-white" />
 									</div>
 									<div>
@@ -534,7 +555,7 @@ export function LandingPage() {
 									initial={{ opacity: 0, scale: 0.9 }}
 									animate={{ opacity: 1, scale: 1 }}
 									transition={{ delay: 0.5, type: "spring", stiffness: 300 }}
-									className="flex items-center gap-2 p-2 rounded-lg bg-red-500/10 border border-red-500/20"
+									className="flex items-center gap-2 p-2 rounded-lg bg-primary/10 border border-primary/20"
 								>
 									<Check className="h-4 w-4 text-green-600 flex-shrink-0" />
 									<span className="text-sm font-medium">
@@ -563,32 +584,37 @@ export function LandingPage() {
 							</p>
 						</div>
 					</AnimatedSection>
-					<AnimatedGrid className="grid md:grid-cols-3 gap-4 max-w-4xl mx-auto">
+					<AnimatedGrid className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
 						{[
 							{
 								name: "Browser Extension",
 								desc: "Chrome, Firefox & Safari extension",
-								href: "https://github.com/ArthurBugan/groupify.extension",
+								href: "https://github.com/ArthurBugan/nestfeed.extension",
 							},
 							{
 								name: "API Server",
 								desc: "Backend API built with Axum",
-								href: "https://github.com/ArthurBugan/api.groupify",
+								href: "https://github.com/ArthurBugan/api.nestfeed",
 							},
 							{
 								name: "Website",
 								desc: "React website with TanStack",
-								href: "https://github.com/ArthurBugan/nestfeed.app_v2",
+								href: "https://github.com/ArthurBugan/nestfeed.app",
+							},
+							{
+								name: "App",
+								desc: "React Native Android / iOS app",
+								href: "https://github.com/ArthurBugan/nestfeed.application",
 							},
 						].map((repo) => (
 							<motion.div key={repo.name} variants={fadeInUp}>
-								<CompactCard className="p-4 hover:border-red-500/30 transition-colors">
+								<CompactCard className="p-4 hover:border-primary/30 transition-colors">
 									<div className="flex items-center gap-3 mb-3">
 										<motion.div
 											whileHover={{ rotate: 12, scale: 1.1 }}
-											className="w-10 h-10 rounded-lg bg-red-500/10 flex items-center justify-center"
+											className="w-10 h-10 rounded-lg bg-red-primary/10 flex items-center justify-center"
 										>
-											<Github className="h-5 w-5 text-red-500" />
+											<Github className="h-5 w-5 text-primary" />
 										</motion.div>
 										<div className="font-medium">{repo.name}</div>
 									</div>
@@ -646,8 +672,26 @@ export function LandingPage() {
 											>
 												<Star className="h-3.5 w-3.5 fill-current" />
 											</motion.div>
-										))}
+									))}
+								</div>
+								<div className="mt-6 pt-4 border-t border-border/50">
+									<p className="text-sm text-muted-foreground mb-3">
+										Help us grow by starring our repositories!
+									</p>
+									<div className="flex items-center gap-3">
+										<Button
+											variant="outline"
+											size="sm"
+											asChild
+											className="rounded-xl border-muted-foreground/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
+										>
+											<a href="https://github.com/ArthurBugan/nestfeed.application" target="_blank" rel="noopener noreferrer">
+												<IconViewer icon="mdi:github" className="h-4 w-4 mr-1" />
+												Star on GitHub
+											</a>
+										</Button>
 									</div>
+								</div>
 									<p className="text-sm leading-relaxed">"{tm.content}"</p>
 									<div className="flex items-center gap-2 pt-2 border-t">
 										<Avatar className="h-6 w-6">
@@ -692,20 +736,16 @@ export function LandingPage() {
 								<CompactCard
 									className={cn(
 										"p-4 flex flex-col",
-										p.popular && "border-red-500/50 shadow-md",
+										p.popular && "border-primary/50 shadow-md",
 									)}
 								>
 									{p.popular && (
-										<motion.div
-											className="absolute -top-3 left-1/2 -translate-x-1/2"
-											animate={{ scale: [1, 1.1, 1] }}
-											transition={{ duration: 2, repeat: Infinity }}
-										>
-											<Badge className="bg-gradient-to-r from-red-500 to-pink-500 text-white border-0">
+										<div>
+											<Badge className="bg-gradient-to-r from-primary to-secondary text-white border-0">
 												<Sparkles className="h-3 w-3 mr-1" />
 												Most Popular
 											</Badge>
-										</motion.div>
+										</div>
 									)}
 									<div className="text-center mb-4">
 										<h3 className="font-semibold">{p.name}</h3>
@@ -734,7 +774,7 @@ export function LandingPage() {
 										<Button
 											size="sm"
 											variant={p.popular ? "default" : "outline"}
-											className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
+											className="w-full bg-primary hover:bg-primary/90"
 											asChild
 										>
 											<Link to="/register">{p.cta}</Link>
@@ -751,7 +791,7 @@ export function LandingPage() {
 			<section className="py-16">
 				<div className="container mx-auto px-4">
 					<AnimatedSection variants={scaleIn}>
-						<CompactCard className="p-8 lg:p-12 bg-gradient-to-r from-red-500 via-pink-500 to-orange-500 text-white border-0">
+						<CompactCard className="p-8 lg:p-12 bg-gradient-to-r from-primary via-secondary to-primary text-white border-0">
 							<div className="text-center max-w-2xl mx-auto space-y-4">
 								<h2 className="text-2xl lg:text-3xl font-bold tracking-tight">
 									{t("landing.cta.title")}
@@ -808,9 +848,9 @@ export function LandingPage() {
 							<div>
 								<div className="flex items-center gap-2 mb-3">
 									<motion.div whileHover={{ rotate: 12 }}>
-										<Youtube className="h-4 w-4 text-red-500" />
+										<Youtube className="h-4 w-4 text-primary" />
 									</motion.div>
-									<span className="font-semibold">Groupify</span>
+									<span className="font-semibold">NestFeed</span>
 								</div>
 								<p className="text-sm text-muted-foreground leading-relaxed">
 									The best way to organize, manage, and share your YouTube
@@ -882,7 +922,7 @@ export function LandingPage() {
 							</div>
 						</div>
 						<div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto text-sm text-muted-foreground">
-							<p>© 2025 Groupify. All rights reserved.</p>
+							<p>© 2026 Groupify. All rights reserved.</p>
 							<a
 								href="https://acidtools.com"
 								target="_blank"

@@ -54,7 +54,7 @@ const features = [
 		description:
 			"Use our browser extension to quickly add channels while browsing YouTube directly.",
 		icon: Zap,
-		color: "from-red-500 to-pink-600",
+		color: "from-primary to-secondary",
 		badge: "New",
 	},
 ];
@@ -110,10 +110,10 @@ export function RecentActivity() {
 			))}
 
 			{/* Pro Tip */}
-			<div className="mt-4 p-4 rounded-xl bg-gradient-to-br from-red-500/5 to-pink-500/5 border border-red-500/10">
+			<div className="mt-4 p-4 rounded-xl bg-gradient-to-br from-primary/5 to-secondary/5 border border-primary/10">
 				<div className="flex items-start gap-3">
 					<div className="flex-shrink-0">
-						<Sparkles className="h-5 w-5 text-red-500" />
+						<Sparkles className="h-5 w-5 text-primary" />
 					</div>
 					<div>
 						<h4 className="font-semibold text-sm mb-1">Pro Tip</h4>

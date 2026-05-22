@@ -40,13 +40,13 @@ function RouteComponent() {
 				<Card className="w-full max-w-md bg-card border-border">
 					<div className="p-8 md:p-12">
 						<div className="relative flex justify-center mb-6">
-							<div className="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center">
-								<Mail className="w-10 h-10 text-red-500" />
+							<div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
+								<Mail className="w-10 h-10 text-primary" />
 							</div>
 						</div>
 						<div className="relative flex justify-center mb-6">
-							<div className="rounded-full bg-red-500/10 flex items-center justify-center">
-								<Loader2 className="w-8 h-8 text-red-500 animate-spin" />
+							<div className="rounded-full bg-primary/10 flex items-center justify-center">
+								<Loader2 className="w-8 h-8 text-primary animate-spin" />
 							</div>
 						</div>
 
@@ -60,9 +60,9 @@ function RouteComponent() {
 						</div>
 
 						<div className="flex gap-1 justify-center pt-4">
-							<div className="w-2 h-2 rounded-full bg-red-500 animate-bounce [animation-delay:-0.3s]" />
-							<div className="w-2 h-2 rounded-full bg-red-500 animate-bounce [animation-delay:-0.15s]" />
-							<div className="w-2 h-2 rounded-full bg-red-500 animate-bounce" />
+							<div className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:-0.3s]" />
+							<div className="w-2 h-2 rounded-full bg-primary animate-bounce [animation-delay:-0.15s]" />
+							<div className="w-2 h-2 rounded-full bg-primary animate-bounce" />
 						</div>
 					</div>
 				</Card>
@@ -76,8 +76,8 @@ function RouteComponent() {
 				<Card className="w-full max-w-md bg-card border-border">
 					<div className="p-8 md:p-12">
 						<div className="flex justify-center mb-6">
-							<div className="w-20 h-20 rounded-full bg-red-500/10 flex items-center justify-center">
-								<XCircle className="w-12 h-12 text-red-500" />
+							<div className="w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
+								<XCircle className="w-12 h-12 text-destructive" />
 							</div>
 						</div>
 
@@ -119,7 +119,7 @@ function RouteComponent() {
 					<div className="mt-6">
 						<Link to="/dashboard">
 							<Button
-								className="w-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white"
+								className="w-full bg-primary hover:bg-primary/90 text-white"
 								size="lg"
 							>
 								Continue to Dashboard

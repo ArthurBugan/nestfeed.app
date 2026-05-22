@@ -18,7 +18,7 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 		<header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 			<div className="container mx-auto px-4 h-12 flex items-center justify-between">
 				<Link to={homeLink} className="flex items-center gap-2">
-					<Youtube className="h-5 w-5 text-red-500" />
+					<Youtube className="h-5 w-5 text-primary" />
 					<span className="font-semibold">Nestfeed</span>
 				</Link>
 
@@ -62,7 +62,7 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 						<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">Reviews</a>
 						<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">Blog</Link>
 						{showGetStarted && (
-							<Button size="sm" asChild className="bg-gradient-to-r from-red-500 to-pink-500 mt-2">
+							<Button size="sm" asChild className="bg-primary hover:bg-primary/90 mt-2">
 								<Link to="/register">Get Started</Link>
 							</Button>
 						)}

@@ -251,7 +251,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								className={cn(
 									"h-7 w-7 text-xs",
 									currentPage === page &&
-										"bg-gradient-to-r from-red-500 to-pink-500",
+										"bg-primary",
 								)}
 								onClick={() => handlePageChange(page as number)}
 								disabled={isLoading}
@@ -307,7 +307,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								<Play className="h-6 w-6 text-white fill-white" />
 							</div>
 						</div>
-						<h3 className="text-xs font-medium line-clamp-2 group-hover:text-red-600 transition-colors leading-snug">
+						<h3 className="text-xs font-medium line-clamp-2 group-hover:text-primary transition-colors leading-snug">
 							{video.title}
 						</h3>
 						<div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
@@ -350,7 +350,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 						</div>
 					</div>
 					<div className="flex-1 min-w-0">
-						<h3 className="text-sm font-medium line-clamp-2 group-hover:text-red-600 transition-colors">
+						<h3 className="text-sm font-medium line-clamp-2 group-hover:text-primary transition-colors">
 							{video.title}
 						</h3>
 						<div className="flex items-center gap-2 text-xs text-muted-foreground mt-1">
@@ -391,7 +391,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 						</div>
 					</div>
 					<div className="flex-1 min-w-0">
-						<h3 className="text-xs font-medium line-clamp-1 group-hover:text-red-600 transition-colors">
+						<h3 className="text-xs font-medium line-clamp-1 group-hover:text-primary transition-colors">
 							{video.title}
 						</h3>
 						<div className="flex items-center gap-1.5 text-[10px] text-muted-foreground">
@@ -410,7 +410,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 			<Card>
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base flex items-center gap-2">
-						<Play className="h-4 w-4 text-red-500" />
+						<Play className="h-4 w-4 text-primary" />
 						Latest Videos
 					</CardTitle>
 				</CardHeader>
@@ -433,7 +433,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 			<Card>
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base flex items-center gap-2">
-						<Play className="h-4 w-4 text-red-500" />
+						<Play className="h-4 w-4 text-primary" />
 						Latest Videos
 					</CardTitle>
 				</CardHeader>
@@ -451,7 +451,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 			<Card>
 				<CardHeader className="pb-2">
 					<CardTitle className="text-base flex items-center gap-2">
-						<Play className="h-4 w-4 text-red-500" />
+						<Play className="h-4 w-4 text-primary" />
 						Latest Videos
 					</CardTitle>
 				</CardHeader>
@@ -469,7 +469,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 			<CardHeader className="pb-3">
 				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
 					<CardTitle className="text-base flex items-center gap-2">
-						<Play className="h-4 w-4 text-red-500" />
+						<Play className="h-4 w-4 text-primary" />
 						Latest Videos
 						<Badge variant="secondary" className="text-xs px-1.5 py-0 h-5">
 							{hasFilters

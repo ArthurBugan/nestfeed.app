@@ -110,22 +110,6 @@ export function AppearanceProvider({
 		if (!mounted) return;
 
 		const root = document.documentElement;
-
-		// Apply accent color based on resolved theme
-		// Skip accent color override for "groupify" theme to preserve its brand colors
-		const isDark = resolvedTheme !== "light";
-		if (theme !== "groupify") {
-			const accentColorValue = isDark
-				? accentColors[settings.accentColor].dark
-				: accentColors[settings.accentColor].light;
-
-			root.style.setProperty("--primary", `hsl(${accentColorValue})`);
-			root.style.setProperty(
-				"--primary-foreground",
-				isDark ? "hsl(210 40% 98%)" : "hsl(210 40% 2%)",
-			);
-		}
-
 		// Apply font size
 		const fontSizeMap = {
 			small: "14px",

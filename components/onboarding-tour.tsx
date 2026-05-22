@@ -143,7 +143,7 @@ export function OnboardingTour() {
         {/* Spotlight border effect - only when target is found */}
         {hasSpotlight && spotlightRect && (
           <div
-            className="absolute border-2 border-red-500/30 rounded-xl pointer-events-none"
+            className="absolute border-2 border-primary/30 rounded-xl pointer-events-none"
             style={{
               left: spotlightRect.left - spotPadding - 2,
               top: spotlightRect.top - spotPadding - 2,
@@ -165,7 +165,7 @@ export function OnboardingTour() {
             <div className="px-6 pt-3">
               <div className="h-1 w-full overflow-hidden rounded bg-muted/30">
                 <div
-                  className="h-full bg-gradient-to-r from-red-500 to-pink-500 transition-all duration-300"
+                  className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-300"
                   style={{ width: `${progress}%` }}
                 />
               </div>
@@ -182,8 +182,8 @@ export function OnboardingTour() {
 
               {/* Step icon */}
               <div className="mb-4">
-                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-red-500/10 to-pink-500/10 border border-red-500/20">
-                  <StepIcon className="h-6 w-6 text-red-500" />
+                <div className="inline-flex items-center justify-center w-12 h-12 rounded-xl bg-gradient-to-br from-primary/10 to-secondary/10 border border-primary/20">
+                  <StepIcon className="h-6 w-6 text-primary" />
                 </div>
               </div>
 
@@ -229,7 +229,7 @@ export function OnboardingTour() {
                   <Button
                     size="sm"
                     onClick={handleNext}
-                    className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white shadow-lg shadow-red-500/25"
+                    className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary"
                   >
                     {currentStep.action?.label || (currentStep.id === "done" ? "Finish" : "Next")}
                     <ChevronRight className="h-4 w-4 ml-1" />
@@ -249,7 +249,7 @@ export function OnboardingTour() {
                     key={i}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       i <= currentStepIndex
-                        ? "w-4 bg-gradient-to-r from-red-500 to-pink-500"
+                        ? "w-4 bg-gradient-to-r from-primary to-secondary"
                         : "w-1.5 bg-muted-foreground/20"
                     }`}
                   />

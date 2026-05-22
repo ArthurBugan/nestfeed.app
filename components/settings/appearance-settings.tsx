@@ -36,9 +36,9 @@ export function AppearanceSettings() {
 						</label>
 						<label className="flex items-center gap-3 p-3 rounded-lg border cursor-pointer hover:bg-accent/50 transition-colors">
 							<RadioGroupItem value="groupify" />
-							<Flame className="h-5 w-5 text-red-500" />
+							<Flame className="h-5 w-5 text-primary" />
 							<div>
-								<p className="text-sm font-medium">Groupify</p>
+								<p className="text-sm font-medium">Nestfeed</p>
 							</div>
 						</label>
 					</div>

@@ -93,7 +93,7 @@ function SupportPage() {
 									<div className="space-y-3">
 										<h2 className="text-3xl font-bold tracking-tight">Join the Community</h2>
 										<p className="text-muted-foreground leading-relaxed">
-											Get instant help from our team and fellow Groupify users. Share your setup, suggest new features, and stay updated.
+											Get instant help from our team and fellow Nestfeed users. Share your setup, suggest new features, and stay updated.
 										</p>
 									</div>
 									<div className="flex flex-wrap gap-3">
@@ -137,7 +137,7 @@ function SupportPage() {
 											</div>
 										</div>
 										<div className="flex items-start gap-4">
-											<div className="mt-1 w-8 h-8 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-500 shrink-0">
+											<div className="mt-1 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary shrink-0">
 												<Sparkles className="h-4 w-4" />
 											</div>
 											<div>
@@ -196,7 +196,7 @@ function SupportPage() {
 								</CardHeader>
 								<CardContent>
 									<Button variant="ghost" className="w-full justify-between hover:bg-primary/10 group/btn" asChild>
-										<a href="https://github.com/ArthurBugan/groupify.extension" target="_blank" rel="noreferrer">
+										<a href="https://github.com/ArthurBugan/nestfeed.extension" target="_blank" rel="noreferrer">
 											View on GitHub
 											<ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
 										</a>
@@ -215,16 +215,16 @@ function SupportPage() {
 							<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-bold group-hover:rotate-12 transition-transform">
 								G
 							</div>
-							<span className="text-xl font-bold font-mono tracking-tight">Groupify</span>
+							<span className="text-xl font-bold font-mono tracking-tight">Nestfeed</span>
 						</Link>
 						<p className="text-sm text-muted-foreground">
-							&copy; 2025 Groupify. All rights reserved.
+							&copy; 2025 Nestfeed. All rights reserved.
 						</p>
 						<div className="flex gap-4">
 							<a href="https://discord.gg/Hp4MvPanwr" className="text-muted-foreground hover:text-primary transition-colors">
 								<MessageSquare className="h-5 w-5" />
 							</a>
-							<a href="https://github.com/groupify-app" className="text-muted-foreground hover:text-primary transition-colors">
+							<a href="https://github.com/Nestfeed-app" className="text-muted-foreground hover:text-primary transition-colors">
 								<Github className="h-5 w-5" />
 							</a>
 						</div>

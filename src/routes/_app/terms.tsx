@@ -11,14 +11,14 @@ function RouteComponent() {
 				<h1>Terms of Service</h1>
 				<p>Last updated: September 27, 2025</p>
 
-				<p>Welcome to Groupify!</p>
+				<p>Welcome to Nestfeed!</p>
 				<p>
 					These Terms of Service ("Terms", "Terms of Service") govern your use
 					of our website located at{" "}
 					<a href="https://nestfeed.app" target="_blank" rel="noopener">
 						https://nestfeed.app
 					</a>{" "}
-					(together or individually "Service") operated by Groupify ("Company",
+					(together or individually "Service") operated by Nestfeed ("Company",
 					"we", "our", or "us").
 				</p>
 				<p>
@@ -30,7 +30,7 @@ function RouteComponent() {
 				<h2>1. Acceptance of Terms</h2>
 				<p>
 					By accessing or using the Service, you confirm that you can form a
-					binding contract with Groupify, and that you agree to comply with
+					binding contract with Nestfeed, and that you agree to comply with
 					these Terms. If you are using the Service on behalf of an
 					organization, you agree to these Terms for that organization and
 					represent that you have the authority to bind it.
@@ -67,14 +67,14 @@ function RouteComponent() {
 				<h2>4. Intellectual Property</h2>
 				<p>
 					The Service and its original content, features, and functionality are
-					and will remain the exclusive property of Groupify and its licensors.
+					and will remain the exclusive property of Nestfeed and its licensors.
 					The Service is protected by copyright, trademark, and other laws.
 				</p>
 
 				<h2>5. User Content</h2>
 				<p>
 					You retain ownership of any content you submit, post, or display on or
-					through the Service. By submitting content, you grant Groupify a
+					through the Service. By submitting content, you grant Nestfeed a
 					non-exclusive, worldwide, royalty-free license to use, reproduce,
 					modify, and display such content in connection with the Service.
 				</p>
@@ -92,7 +92,7 @@ function RouteComponent() {
 
 				<h2>7. Limitation of Liability</h2>
 				<p>
-					To the fullest extent permitted by law, Groupify shall not be liable
+					To the fullest extent permitted by law, Nestfeed shall not be liable
 					for any indirect, incidental, special, consequential or punitive
 					damages, including without limitation, loss of profits, data, or
 					goodwill.

@@ -149,8 +149,8 @@ export function AppSidebar() {
 							className="flex items-center gap-3 group transition-all duration-300 hover:scale-[1.02]"
 						>
 							<div className="relative">
-								<div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
-								<div className="relative bg-gradient-to-br from-red-500 to-pink-500 rounded-lg p-2 shadow-lg">
+								<div className="absolute inset-0 bg-primary rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
+								<div className="relative bg-primary rounded-lg p-2 shadow-lg">
 									<Youtube className="h-5 w-5 text-white" />
 								</div>
 							</div>
@@ -161,7 +161,7 @@ export function AppSidebar() {
 								)}
 							>
 								<span className="text-lg font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent whitespace-nowrap">
-									Groupify
+									Nestfeed
 								</span>
 							</div>
 						</Link>
@@ -172,8 +172,8 @@ export function AppSidebar() {
 							className="flex items-center justify-center transition-all duration-300 hover:scale-110"
 						>
 							<div className="relative">
-								<div className="absolute inset-0 bg-gradient-to-r from-red-500 to-pink-500 rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
-								<div className="relative bg-gradient-to-br from-red-500 to-pink-500 rounded-lg p-2 shadow-lg">
+								<div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
+								<div className="relative bg-gradient-to-br from-primary to-secondary rounded-lg p-2 shadow-lg">
 									<Youtube className="h-4 w-4 text-white" />
 								</div>
 							</div>
@@ -206,7 +206,7 @@ export function AppSidebar() {
 													className={cn(
 														"group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
 														active
-															? "bg-gradient-to-r from-red-500/10 to-pink-500/10 text-red-600 dark:text-red-400 shadow-sm"
+															? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary dark:text-primary-foreground shadow-sm"
 															: "text-muted-foreground hover:bg-accent hover:text-foreground",
 													)}
 												>
@@ -214,13 +214,13 @@ export function AppSidebar() {
 														className={cn(
 															"h-4 w-4 transition-all duration-200",
 															active
-																? "text-red-500"
+																? "text-primary"
 																: "text-muted-foreground group-hover:text-foreground",
 														)}
 													/>
 													<span>{item.title}</span>
 													{active && (
-														<div className="absolute left-0 w-1 h-6 bg-gradient-to-b from-red-500 to-pink-500 rounded-r-full" />
+														<div className="absolute left-0 w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-r-full" />
 													)}
 												</Link>
 											</SidebarMenuButton>
@@ -253,7 +253,7 @@ export function AppSidebar() {
 													className={cn(
 														"group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
 														active
-															? "bg-gradient-to-r from-red-500/10 to-pink-500/10 text-red-600 dark:text-red-400 shadow-sm"
+															? "bg-gradient-to-r from-primary/10 to-secondary/10 text-primary dark:text-primary-foreground shadow-sm"
 															: "text-muted-foreground hover:bg-accent hover:text-foreground",
 													)}
 												>
@@ -261,13 +261,13 @@ export function AppSidebar() {
 														className={cn(
 															"h-4 w-4 transition-all duration-200",
 															active
-																? "text-red-500"
+																? "text-primary"
 																: "text-muted-foreground group-hover:text-foreground",
 														)}
 													/>
 													<span>{item.title}</span>
 													{active && (
-														<div className="absolute left-0 w-1 h-6 bg-gradient-to-b from-red-500 to-pink-500 rounded-r-full" />
+														<div className="absolute left-0 w-1 h-6 bg-gradient-to-b from-primary to-secondary rounded-r-full" />
 													)}
 												</Link>
 											</SidebarMenuButton>
@@ -303,7 +303,7 @@ export function AppSidebar() {
 									<SidebarMenuButton className="w-full justify-start gap-3 px-3 py-2.5 h-auto hover:bg-accent rounded-lg transition-all">
 										<Avatar className="h-8 w-8 border-2 border-background shadow-sm">
 											<AvatarImage src={undefined} />
-											<AvatarFallback className="bg-gradient-to-br from-red-500 to-pink-500 text-white text-xs font-semibold">
+											<AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white text-xs font-semibold">
 												{user?.username?.charAt(0).toUpperCase() ||
 													user?.email?.charAt(0).toUpperCase() ||
 													"U"}
@@ -327,7 +327,7 @@ export function AppSidebar() {
 									<div className="flex items-center gap-2 p-2">
 										<Avatar className="h-8 w-8">
 											<AvatarImage src={undefined} />
-											<AvatarFallback className="bg-gradient-to-br from-red-500 to-pink-500 text-white text-xs font-semibold">
+											<AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white text-xs font-semibold">
 												{user?.username?.charAt(0).toUpperCase() ||
 													user?.email?.charAt(0).toUpperCase() ||
 													"U"}

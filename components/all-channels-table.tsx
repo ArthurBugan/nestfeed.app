@@ -231,7 +231,7 @@ export function AllChannelsTable() {
 			</div>
 
 			{error && (
-				<div className="text-red-500 text-sm">
+				<div className="text-destructive text-sm">
 					Error loading channels: {error.message}
 				</div>
 			)}

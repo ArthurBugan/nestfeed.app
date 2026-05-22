@@ -164,7 +164,7 @@ export function BillingSettings() {
 					{plans.map((plan) => (
 						<div
 							key={plan.name}
-							className={`rounded-xl border p-4 ${plan.current ? "border-red-500/30 bg-red-500/5" : ""}`}
+							className={`rounded-xl border p-4 ${plan.current ? "border-primary/30 bg-primary/5" : ""}`}
 						>
 							<div className="flex items-center justify-between mb-2">
 								<h3 className="font-semibold text-sm">{plan.name}</h3>

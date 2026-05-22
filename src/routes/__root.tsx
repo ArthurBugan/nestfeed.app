@@ -48,7 +48,7 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "Groupify - Group youtube subscriptions",
+				title: "Nestfeed - Group anything",
 			},
 		],
 		links: [{ rel: "stylesheet", href: appCss }],

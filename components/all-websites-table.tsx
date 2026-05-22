@@ -123,7 +123,7 @@ export function AllWebsitesTable() {
 
 	if (error) {
 		return (
-			<div className="text-center py-4 text-red-500">
+			<div className="text-center py-4 text-destructive">
 				Error loading websites.
 			</div>
 		);

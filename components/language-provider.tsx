@@ -169,13 +169,13 @@ const translations = {
 		"landing.hero.badge": "Now with Browser Extension",
 		"landing.hero.title": "Organize Your YouTube Like Never Before",
 		"landing.hero.subtitle":
-			"Groupify helps you organize, manage, and share your YouTube subscriptions. Create custom groups, collaborate with teams, and never lose track of your favorite channels again.",
+			"Nestfeed helps you organize, manage, and share your YouTube subscriptions. Create custom groups, collaborate with teams, and never lose track of your favorite channels again.",
 		"landing.hero.cta.primary": "Start Free Trial",
 		"landing.hero.cta.secondary": "Watch Demo",
 		"landing.hero.trust1": "No credit card required",
 		"landing.hero.trust2": "14-day free trial",
 		"landing.hero.trust3": "Cancel anytime",
-		"landing.hero.preview": "Groupify Dashboard",
+		"landing.hero.preview": "Nestfeed Dashboard",
 
 		// Landing Page - Features Section
 		"landing.features.title": "Everything You Need to Organize YouTube",
@@ -204,20 +204,20 @@ const translations = {
 		"landing.extension.badge": "Browser Extension",
 		"landing.extension.title": "Add Channels While You Browse",
 		"landing.extension.subtitle":
-			"Our browser extension seamlessly integrates with YouTube. When you find a channel you want to save, just click the Groupify icon and add it to any group instantly.",
+			"Our browser extension seamlessly integrates with YouTube. When you find a channel you want to save, just click the Nestfeed icon and add it to any group instantly.",
 		"landing.extension.success": "Channel added to group",
 		"landing.extension.subscribers": "subscribers",
 
 		// Landing Page - Testimonials Section
 		"landing.testimonials.title": "Loved by Content Creators",
 		"landing.testimonials.subtitle":
-			"See what our users are saying about Groupify",
+			"See what our users are saying about Nestfeed",
 		"landing.testimonials.alex.content":
-			"Groupify has completely transformed how I manage my YouTube subscriptions. I can finally keep my educational content separate from entertainment!",
+			"Nestfeed has completely transformed how I manage my YouTube subscriptions. I can finally keep my educational content separate from entertainment!",
 		"landing.testimonials.sarah.content":
 			"The ability to share curated groups with my team has been a game-changer. We can quickly share industry insights and competitor analysis.",
 		"landing.testimonials.mike.content":
-			"I have tried many tools, but Groupify is the only one that actually understands how content creators work. The nested groups feature is brilliant!",
+			"I have tried many tools, but Nestfeed is the only one that actually understands how content creators work. The nested groups feature is brilliant!",
 
 		// Landing Page - Pricing Section
 		"landing.pricing.title": "Simple, Transparent Pricing",
@@ -237,7 +237,7 @@ const translations = {
 		// Landing Page - CTA Section
 		"landing.cta.title": "Ready to Organize Your YouTube?",
 		"landing.cta.subtitle":
-			"Join thousands of content creators and teams who trust Groupify to manage their YouTube subscriptions.",
+			"Join thousands of content creators and teams who trust Nestfeed to manage their YouTube subscriptions.",
 		"landing.cta.primary": "Get Started Free",
 		"landing.cta.secondary": "Join Community",
 
@@ -245,7 +245,7 @@ const translations = {
 		"testimonials.badge": "Testimonials",
 		"testimonials.title": "Loved by Creators",
 		"testimonials.subtitle":
-			"See what content creators and agencies are saying about Groupify.",
+			"See what content creators and agencies are saying about Nestfeed.",
 		"testimonials.alex.content":
 			"This tool has revolutionized how I manage my 50+ YouTube channels. The grouping feature is a game-changer!",
 		"testimonials.sarah.content":
@@ -273,7 +273,7 @@ const translations = {
 		"cta.badge": "Ready to Launch",
 		"cta.title": "Ready to Get Started?",
 		"cta.subtitle":
-			"Join thousands of content creators who are already using Groupify to organize and grow their YouTube presence.",
+			"Join thousands of content creators who are already using Nestfeed to organize and grow their YouTube presence.",
 
 		share_link_generated_success_description:
 			"Share link generated successfully",
@@ -536,13 +536,13 @@ const translations = {
 		"landing.hero.badge": "Agora com Extensão de Navegador",
 		"landing.hero.title": "Organize Seu YouTube Como Nunca Antes",
 		"landing.hero.subtitle":
-			"O Groupify ajuda você a organizar, gerenciar e compartilhar suas inscrições do YouTube. Crie grupos personalizados, colabore com equipes e nunca perca o controle de seus canais favoritos novamente.",
+			"O Nestfeed ajuda você a organizar, gerenciar e compartilhar suas inscrições do YouTube. Crie grupos personalizados, colabore com equipes e nunca perca o controle de seus canais favoritos novamente.",
 		"landing.hero.cta.primary": "Iniciar Teste Grátis",
 		"landing.hero.cta.secondary": "Ver Demo",
 		"landing.hero.trust1": "Não requer cartão de crédito",
 		"landing.hero.trust2": "Teste grátis de 14 dias",
 		"landing.hero.trust3": "Cancele a qualquer momento",
-		"landing.hero.preview": "Painel do Groupify",
+		"landing.hero.preview": "Painel do Nestfeed",
 
 		// Landing Page - Features Section
 		"landing.features.title": "Tudo Que Você Precisa para Organizar o YouTube",
@@ -571,20 +571,20 @@ const translations = {
 		"landing.extension.badge": "Extensão de Navegador",
 		"landing.extension.title": "Adicione Canais Enquanto Navega",
 		"landing.extension.subtitle":
-			"Nossa extensão de navegador se integra perfeitamente com o YouTube. Quando encontrar um canal que deseja salvar, basta clicar no ícone do Groupify e adicioná-lo a qualquer grupo instantaneamente.",
+			"Nossa extensão de navegador se integra perfeitamente com o YouTube. Quando encontrar um canal que deseja salvar, basta clicar no ícone do Nestfeed e adicioná-lo a qualquer grupo instantaneamente.",
 		"landing.extension.success": "Canal adicionado ao grupo",
 		"landing.extension.subscribers": "inscritos",
 
 		// Landing Page - Testimonials Section
 		"landing.testimonials.title": "Adorado por Criadores de Conteúdo",
 		"landing.testimonials.subtitle":
-			"Veja o que nossos usuários estão dizendo sobre o Groupify",
+			"Veja o que nossos usuários estão dizendo sobre o Nestfeed",
 		"landing.testimonials.alex.content":
-			"O Groupify transformou completamente como eu gerencio minhas inscrições do YouTube. Finalmente posso manter meu conteúdo educacional separado do entretenimento!",
+			"O Nestfeed transformou completamente como eu gerencio minhas inscrições do YouTube. Finalmente posso manter meu conteúdo educacional separado do entretenimento!",
 		"landing.testimonials.sarah.content":
 			"A capacidade de compartilhar grupos curados com minha equipe foi uma revolução. Podemos compartilhar rapidamente insights do setor e análises de concorrentes.",
 		"landing.testimonials.mike.content":
-			"Já experimentei muitas ferramentas, mas o Groupify é a única que realmente entende como os criadores de conteúdo trabalham. O recurso de grupos aninhados é brilhante!",
+			"Já experimentei muitas ferramentas, mas o Nestfeed é a única que realmente entende como os criadores de conteúdo trabalham. O recurso de grupos aninhados é brilhante!",
 
 		// Landing Page - Pricing Section
 		"landing.pricing.title": "Preços Simples e Transparentes",
@@ -604,7 +604,7 @@ const translations = {
 		// Landing Page - CTA Section
 		"landing.cta.title": "Pronto para Organizar Seu YouTube?",
 		"landing.cta.subtitle":
-			"Junte-se a milhares de criadores de conteúdo e equipes que confiam no Groupify para gerenciar suas inscrições do YouTube.",
+			"Junte-se a milhares de criadores de conteúdo e equipes que confiam no Nestfeed para gerenciar suas inscrições do YouTube.",
 		"landing.cta.primary": "Começar Grátis",
 		"landing.cta.secondary": "Juntar-se à Comunidade",
 
@@ -612,7 +612,7 @@ const translations = {
 		"testimonials.badge": "Depoimentos",
 		"testimonials.title": "Amado por Criadores",
 		"testimonials.subtitle":
-			"Veja o que criadores de conteúdo e agências estão dizendo sobre o Groupify.",
+			"Veja o que criadores de conteúdo e agências estão dizendo sobre o Nestfeed.",
 		"testimonials.alex.content":
 			"Esta ferramenta revolucionou como gestiono mis más de 50 canales de YouTube. ¡La función de agrupación es revolucionária!",
 		"testimonials.sarah.content":
@@ -640,7 +640,7 @@ const translations = {
 		"cta.badge": "Pronto para Lanzar",
 		"cta.title": "¿Listo para Comenzar?",
 		"cta.subtitle":
-			"Únete a miles de creadores de contenido que já estão usando o Groupify para organizar e expandir sua presença no YouTube.",
+			"Únete a miles de creadores de contenido que já estão usando o Nestfeed para organizar e expandir sua presença no YouTube.",
 
 		// Footer
 		"footer.description":
@@ -860,13 +860,13 @@ const translations = {
 		"landing.hero.badge": "Ahora con Extensión de Navegador",
 		"landing.hero.title": "Organiza Tu YouTube Como Nunca Antes",
 		"landing.hero.subtitle":
-			"Groupify te ayuda a organizar, gestionar y compartir tus suscripciones de YouTube. Crea grupos personalizados, colabora con equipos y nunca pierdas el control de tus canales favoritos.",
+			"Nestfeed te ayuda a organizar, gestionar y compartir tus suscripciones de YouTube. Crea grupos personalizados, colabora con equipos y nunca pierdas el control de tus canales favoritos.",
 		"landing.hero.cta.primary": "Iniciar Prueba Gratuita",
 		"landing.hero.cta.secondary": "Ver Demo",
 		"landing.hero.trust1": "No se requiere tarjeta de crédito",
 		"landing.hero.trust2": "Prueba gratuita de 14 días",
 		"landing.hero.trust3": "Cancela en cualquier momento",
-		"landing.hero.preview": "Panel de Groupify",
+		"landing.hero.preview": "Panel de Nestfeed",
 
 		// Landing Page - Features Section
 		"landing.features.title": "Todo Lo Que Necesitas para Organizar YouTube",
@@ -895,20 +895,20 @@ const translations = {
 		"landing.extension.badge": "Extensión de Navegador",
 		"landing.extension.title": "Agrega Canales Mientras Navegas",
 		"landing.extension.subtitle":
-			"Nuestra extensión de navegador se integra perfectamente con YouTube. Cuando encuentres un canal que quieras guardar, solo haz clic en el icono de Groupify y agrégalo a cualquier grupo instantáneamente.",
+			"Nuestra extensión de navegador se integra perfectamente con YouTube. Cuando encuentres un canal que quieras guardar, solo haz clic en el icono de Nestfeed y agrégalo a cualquier grupo instantáneamente.",
 		"landing.extension.success": "Canal agregado al grupo",
 		"landing.extension.subscribers": "suscriptores",
 
 		// Landing Page - Testimonials Section
 		"landing.testimonials.title": "Amado por Creadores de Contenido",
 		"landing.testimonials.subtitle":
-			"Mira lo que nuestros usuarios están diciendo sobre Groupify",
+			"Mira lo que nuestros usuarios están diciendo sobre Nestfeed",
 		"landing.testimonials.alex.content":
-			"Groupify ha transformado completamente cómo gestiono mis suscripciones de YouTube. ¡Finalmente puedo mantener mi contenido educativo separado del entretenimiento!",
+			"Nestfeed ha transformado completamente cómo gestiono mis suscripciones de YouTube. ¡Finalmente puedo mantener mi contenido educativo separado del entretenimiento!",
 		"landing.testimonials.sarah.content":
 			"La capacidad de compartir grupos curados con mi equipo ha sido un cambio radical. Podemos compartir rápidamente insights de la industria y análisis de competidores.",
 		"landing.testimonials.mike.content":
-			"He probado muchas herramientas, pero Groupify es la única que realmente entiende cómo trabajan los creadores de contenido. ¡La función de grupos anidados es brillante!",
+			"He probado muchas herramientas, pero Nestfeed es la única que realmente entiende cómo trabajan los creadores de contenido. ¡La función de grupos anidados es brillante!",
 
 		// Landing Page - Pricing Section
 		"landing.pricing.title": "Precios Simples y Transparentes",
@@ -928,7 +928,7 @@ const translations = {
 		// Landing Page - CTA Section
 		"landing.cta.title": "¿Listo para Organizar Tu YouTube?",
 		"landing.cta.subtitle":
-			"Únete a miles de creadores de contenido y equipos que confían en Groupify para gestionar sus suscripciones de YouTube.",
+			"Únete a miles de creadores de contenido y equipos que confían en Nestfeed para gestionar sus suscripciones de YouTube.",
 		"landing.cta.primary": "Comenzar Gratis",
 		"landing.cta.secondary": "Unirse a la Comunidad",
 
@@ -936,7 +936,7 @@ const translations = {
 		"testimonials.badge": "Testimonios",
 		"testimonials.title": "Amado por Creadores",
 		"testimonials.subtitle":
-			"Ve lo que creadores de contenido y agencias están diciendo sobre Groupify.",
+			"Ve lo que creadores de contenido y agencias están diciendo sobre Nestfeed.",
 		"testimonials.alex.content":
 			"Esta herramienta ha revolucionado cómo gestiono mis más de 50 canales de YouTube. ¡La función de agrupación es revolucionária!",
 		"testimonials.sarah.content":
@@ -964,7 +964,7 @@ const translations = {
 		"cta.badge": "Listo para Lanzar",
 		"cta.title": "¿Listo para Comenzar?",
 		"cta.subtitle":
-			"Únete a miles de creadores de contenido que já estão usando o Groupify para organizar y hacer crecer su presencia en YouTube.",
+			"Únete a miles de creadores de contenido que já estão usando o Nestfeed para organizar y hacer crecer su presencia en YouTube.",
 
 		// Footer
 		"footer.description":

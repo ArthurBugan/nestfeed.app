@@ -116,7 +116,7 @@ export function TopChannelsTable() {
 			);
 		} else if (change < 0) {
 			return (
-				<span className="flex items-center text-red-500">
+				<span className="flex items-center text-destructive">
 					<TrendingDown className="mr-1 h-3 w-3" />-
 					{Math.abs(change).toLocaleString()}
 				</span>
