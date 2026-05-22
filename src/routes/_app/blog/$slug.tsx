@@ -16,7 +16,7 @@ export const Route = createFileRoute("/_app/blog/$slug")({
 	},
 	head: ({ loaderData }) => ({
 		meta: [
-			{ title: loaderData?.post?.title || "Groupify Blog" },
+			{ title: loaderData?.post?.title || "Nestfeed Blog" },
 			{ name: "description", content: loaderData?.post?.description || "" },
 			{ property: "og:title", content: loaderData?.post?.title || "" },
 			{ property: "og:description", content: loaderData?.post?.description || "" },
@@ -38,7 +38,7 @@ function BlogPostComponent() {
 
 			<article className="container mx-auto px-4 py-8 max-w-3xl">
 				{/* Back */}
-				<Link to="/blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-red-500 mb-6 transition-colors">
+				<Link to="/blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors">
 					<ArrowLeft className="h-3.5 w-3.5" /> Back to Blog
 				</Link>
 
@@ -53,7 +53,7 @@ function BlogPostComponent() {
 
 					<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
 						<div className="flex items-center gap-3">
-							<div className="w-10 h-10 rounded-full bg-gradient-to-tr from-red-500 to-pink-500 flex items-center justify-center text-white font-bold uppercase">{post.author?.[0] || "A"}</div>
+							<div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold uppercase">{post.author?.[0] || "A"}</div>
 							<div>
 								<p className="font-medium text-sm">{post.author}</p>
 								<p className="text-xs text-muted-foreground">{new Date(post.date_created).toLocaleDateString()}</p>
@@ -83,7 +83,7 @@ function BlogPostComponent() {
 				{/* Author Bio */}
 				<div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border space-y-4">
 					<h3 className="font-semibold text-sm mb-2">Written by {post.author}</h3>
-					<p className="text-sm text-muted-foreground">Author of Groupify articles. Passionate about YouTube productivity and organization.</p>
+					<p className="text-sm text-muted-foreground">Author of Nestfeed articles. Passionate about YouTube productivity and organization.</p>
 				</div>
 			</article>
 		</div>

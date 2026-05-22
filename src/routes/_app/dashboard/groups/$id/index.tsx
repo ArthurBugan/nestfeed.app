@@ -108,7 +108,7 @@ function GroupDetailPage() {
 				<div className="flex items-center gap-1 text-sm">
 					<Link
 						to="/dashboard/groups"
-						className="hover:text-red-500 transition-colors"
+						className="hover:text-destructive transition-colors"
 					>
 						Home
 					</Link>
@@ -121,7 +121,7 @@ function GroupDetailPage() {
 								<Link
 									to="/dashboard/groups/$id"
 									params={{ id: crumb.id }}
-									className="hover:text-red-500 transition-colors"
+									className="hover:text-destructive transition-colors"
 								>
 									{crumb.name}
 								</Link>
@@ -166,7 +166,7 @@ function GroupDetailPage() {
 				<TabsList className="grid grid-cols-2 w-auto bg-muted/30">
 					<TabsTrigger
 						value="channels"
-						className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-600 data-[state=active]:to-pink-600 flex items-center gap-2"
+						className="flex items-center gap-2"
 					>
 						<Users className="h-3.5 w-3.5" /> Channels
 						<Badge variant="secondary" className="ml-1">
@@ -175,7 +175,7 @@ function GroupDetailPage() {
 					</TabsTrigger>
 					<TabsTrigger
 						value="videos"
-						className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-600 data-[state=active]:to-pink-600 flex items-center gap-2"
+						className="flex items-center gap-2"
 					>
 						<Play className="h-3.5 w-3.5" /> Videos
 						<Badge variant="secondary" className="ml-1">

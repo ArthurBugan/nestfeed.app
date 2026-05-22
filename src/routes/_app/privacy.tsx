@@ -60,7 +60,7 @@ function RouteComponent() {
 						<p>
 							<strong>Company</strong> (referred to as either &quot;the
 							Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot;
-							in this Agreement) refers to Groupify.
+							in this Agreement) refers to Nestfeed.
 						</p>
 					</li>
 					<li>
@@ -113,7 +113,7 @@ function RouteComponent() {
 					</li>
 					<li>
 						<p>
-							<strong>Website</strong> refers to Groupify, accessible from{" "}
+							<strong>Website</strong> refers to Nestfeed, accessible from{" "}
 							<a
 								href="https://nestfeed.app"
 								rel="external nofollow noopener"

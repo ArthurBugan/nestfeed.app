@@ -155,7 +155,7 @@ function ForgotPasswordConfirmPage() {
 
 									<Button
 										type="submit"
-										className="w-full h-10 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-sm shadow-md"
+										className="w-full h-10 bg-primary hover:bg-primary/90 text-sm shadow-md"
 										disabled={isPending}
 									>
 										{isPending ? (

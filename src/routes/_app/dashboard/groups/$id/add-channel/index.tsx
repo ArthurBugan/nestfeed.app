@@ -387,7 +387,7 @@ function AddChannelPage() {
 										</Button>
 									</form>
 									{fetchError && (
-										<p className="text-sm text-red-500">{fetchError}</p>
+										<p className="text-sm text-destructive">{fetchError}</p>
 									)}
 									<p className="text-sm text-muted-foreground">
 										Paste a YouTube channel URL to fetch and add it directly.

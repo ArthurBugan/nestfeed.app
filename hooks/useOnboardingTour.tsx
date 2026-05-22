@@ -8,7 +8,7 @@ import { useLocation, useNavigate } from "@tanstack/react-router";
 import { useCheckGoogleSession } from "./useQuery/useSocialLogin";
 import { useGroups } from "./useQuery/useGroups";
 
-const TOUR_STORAGE_KEY = "groupify_onboarding_complete";
+const TOUR_STORAGE_KEY = "Nestfeed_onboarding_complete";
 
 type TourPage =
   | "dashboard"
@@ -187,7 +187,7 @@ function StepsBuilder({ children }: { children: React.ReactNode }) {
     // Welcome
     s.push({
       id: "welcome",
-      title: "Welcome to Groupify! 👋",
+      title: "Welcome to Nestfeed! 👋",
       description:
         "Let's get you set up in a few quick steps. We'll help you connect your YouTube account, create your first group, and add channels.",
       target: "[data-tour='welcome-section']",
@@ -199,7 +199,7 @@ function StepsBuilder({ children }: { children: React.ReactNode }) {
         id: "connect-youtube",
         title: "Step 1: Connect Your YouTube Account",
         description:
-          "First, let's connect your Google account so Groupify can access your YouTube subscriptions.",
+          "First, let's connect your Google account so Nestfeed can access your YouTube subscriptions.",
         target: "[data-tour='settings-nav-link']",
         action: {
           label: "Go to Account Settings",

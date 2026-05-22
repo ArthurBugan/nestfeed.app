@@ -77,11 +77,11 @@ export function GroupList() {
 					onClick={() => navigate({ to: `/dashboard/groups/${group.id}` })}
 				>
 					<div className="flex items-center gap-3">
-						<div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-red-500/10 to-pink-500/10">
-							<FolderKanban className="h-5 w-5 text-red-500" />
+						<div className="flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-primary/10 to-secondary/10">
+							<FolderKanban className="h-5 w-5 text-primary" />
 						</div>
 						<div className="space-y-0.5">
-							<span className="font-medium hover:text-red-600 transition-colors line-clamp-1 block">
+							<span className="font-medium hover:text-primary transition-colors line-clamp-1 block">
 								{group.name}
 							</span>
 							<div className="flex items-center gap-2">

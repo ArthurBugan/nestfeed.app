@@ -154,7 +154,7 @@ export function GroupForm({
 							control={control}
 							name="enableGroupshelf"
 							render={({ field }) => (
-								<div className="rounded-xl border bg-gradient-to-r from-red-500/5 to-pink-500/5 p-4 md:p-6">
+								<div className="rounded-xl border bg-gradient-to-r from-primary/5 to-secondary/5 p-4 md:p-6">
 									<div className="flex flex-row items-center justify-between gap-4">
 										<div className="space-y-1">
 											<FormLabel className="text-base font-semibold">
@@ -313,7 +313,7 @@ export function GroupForm({
 								size="sm"
 								disabled={isLoading}
 								data-tour="group-create-btn"
-								className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600"
+								className="bg-primary hover:bg-primary/90"
 							>
 								{isLoading ? (
 									<>

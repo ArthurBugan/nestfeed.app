@@ -19,10 +19,10 @@ export function MainNavbar() {
 						<Link to="/" className="flex items-center gap-2">
 							<div className="relative">
 								<Youtube className="h-8 w-8 text-red-500" />
-								<div className="absolute -top-1 -right-1 h-3 w-3 bg-gradient-to-r from-red-500 to-pink-500 rounded-full animate-pulse"></div>
+								<div className="absolute -top-1 -right-1 h-3 w-3 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse"></div>
 							</div>
 							<span className="text-xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-								Groupify
+								Nestfeed
 							</span>
 						</Link>
 					</div>
@@ -80,7 +80,7 @@ export function MainNavbar() {
 						</Button>
 						<Button
 							asChild
-							className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 shadow-lg shadow-red-500/25"
+							className="bg-primary hover:bg-primary/90 shadow-lg shadow-primary"
 						>
 							<Link to="/register">{t("nav.getstarted")}</Link>
 						</Button>
@@ -136,7 +136,7 @@ export function MainNavbar() {
 								</Button>
 								<Button
 									asChild
-									className="bg-gradient-to-r from-red-500 to-pink-500"
+									className="bg-gradient-to-r from-primary to-secondary"
 								>
 									<Link to="/register">{t("nav.getstarted")}</Link>
 								</Button>

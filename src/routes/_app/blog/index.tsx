@@ -81,8 +81,8 @@ function BlogIndex() {
 					<Badge variant="secondary" className="gap-1 mb-6">
 						<Sparkles className="h-3 w-3" /> Latest Updates
 					</Badge>
-					<h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-red-600 to-pink-600 bg-clip-text text-transparent">
-						Groupify Blog
+					<h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+						Nestfeed Blog
 					</h1>
 					<p className="text-lg text-muted-foreground max-w-xl mx-auto">
 						{t("landing.hero.subtitle")}
@@ -101,7 +101,7 @@ function BlogIndex() {
 									setActiveCategory(cat);
 									setCurrentPage(1);
 								}}
-								className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${activeCategory === cat ? "bg-gradient-to-r from-red-500 to-pink-500 text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
+								className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${activeCategory === cat ? "bg-gradient-to-r from-primary to-secondary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
 							>
 								<span className="text-white text-sm font-semibold">{cat}</span>
 							</Button>
@@ -127,7 +127,7 @@ function BlogIndex() {
 			<main className="container mx-auto px-4 py-8">
 				{isLoading ? (
 					<div className="flex justify-center py-20">
-						<Clock className="h-6 w-6 animate-spin text-red-500" />
+						<Clock className="h-6 w-6 animate-spin text-primary" />
 					</div>
 				) : (
 					<>
@@ -135,11 +135,11 @@ function BlogIndex() {
 						{featuredPost && activeCategory === "All" && !debouncedSearch && (
 							<div className="mb-12">
 								<div className="flex items-center gap-2 mb-6">
-									<TrendingUp className="h-4 w-4 text-red-500" />
+									<TrendingUp className="h-4 w-4 text-primary" />
 									<h2 className="text-lg font-semibold">Featured</h2>
 								</div>
 								<Link to={`/blog/$slug`} params={{ slug: featuredPost.slug }}>
-									<div className="rounded-xl border bg-gradient-to-br from-red-50/50 to-pink-50/50 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
+									<div className="rounded-xl border bg-gradient-to-br from-primary/5 to-secondary/5 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
 										<div className="grid md:grid-cols-2 gap-0">
 											<div className="aspect-video relative">
 												<img
@@ -147,7 +147,7 @@ function BlogIndex() {
 													alt={featuredPost.title}
 													className="w-full h-full object-cover"
 												/>
-												<Badge className="absolute top-3 left-3 bg-gradient-to-r from-red-500 to-pink-500 text-white border-0 gap-1">
+												<Badge className="absolute top-3 left-3 bg-gradient-to-r from-primary to-secondary text-white border-0 gap-1">
 													Featured
 												</Badge>
 											</div>
@@ -171,16 +171,16 @@ function BlogIndex() {
 												</p>
 												<div className="flex items-center justify-between">
 													<div className="flex items-center gap-2">
-														<div className="w-8 h-8 rounded-full bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center text-white text-xs font-bold">
+														<div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-xs font-bold">
 															{featuredPost.author?.[0] || "G"}
 														</div>
 														<span className="text-sm font-medium">
-															{featuredPost.author || "Groupify Team"}
+															{featuredPost.author || "Nestfeed Team"}
 														</span>
 													</div>
 													<Button
 														size="sm"
-														className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white"
+														className="bg-primary hover:bg-primary/90 text-white"
 													>
 														Read Article
 													</Button>
@@ -241,7 +241,7 @@ function BlogIndex() {
 						<div className="mb-8">
 							<div className="flex items-center justify-between mb-6">
 								<div className="flex items-center gap-2">
-									<Clock className="h-4 w-4 text-red-500" />
+									<Clock className="h-4 w-4 text-primary" />
 									<h2 className="text-lg font-semibold">
 										{debouncedSearch
 											? "Results"
@@ -313,7 +313,7 @@ function BlogIndex() {
 												key={page}
 												variant={currentPage === page ? "default" : "outline"}
 												size="sm"
-												className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${currentPage === page ? "bg-gradient-to-r from-red-500 to-pink-500 text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
+												className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${currentPage === page ? "bg-gradient-to-r from-primary to-secondary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
 												onClick={() => setCurrentPage(page)}
 											>
 												{page}

@@ -104,7 +104,7 @@ function LoginPage() {
 										<Link to="/forgot-password" className="text-sm text-red-600 hover:text-red-700 dark:text-red-400 font-medium">{t("login.forgot")}</Link>
 									</div>
 
-									<Button type="submit" className="w-full h-10 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-sm shadow-md" disabled={isPending}>
+									<Button type="submit" className="w-full h-10 bg-primary hover:bg-primary/90 text-sm shadow-md" disabled={isPending}>
 										{isPending ? <Icons.spinner className="mr-2 h-4 w-4 animate-spin" /> : <div className="flex items-center">
 											{t("login.signin")}
 											<ArrowRight className="ml-2 h-4 w-4" />

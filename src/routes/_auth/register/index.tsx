@@ -67,14 +67,14 @@ function RegisterPage() {
 			<CompactHeader showGetStarted={false} />
 			<div className="absolute inset-0 -z-10">
 				<div className="absolute top-[20%] right-[10%] w-[30%] h-[30%] rounded-full bg-red-500/5 blur-3xl" />
-				<div className="absolute bottom-[10%] left-[10%] w-[30%] h-[30%] rounded-full bg-pink-500/5 blur-3xl" />
+				<div className="absolute bottom-[10%] left-[10%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-3xl" />
 			</div>
 
 			<div className="flex min-h-[calc(100vh-120px)] items-center justify-center px-4 py-12">
 				<div className="w-full max-w-sm">
 					<div className="text-center mb-6 space-y-2">
 						<div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-red-50/50 border border-red-200 text-xs font-medium text-red-700 dark:bg-red-950/20 dark:border-red-800 dark:text-red-300">
-							<Sparkles className="h-3 w-3" /> Join Groupify
+							<Sparkles className="h-3 w-3" /> Join Nestfeed
 						</div>
 						<h1 className="text-2xl font-bold tracking-tight">{t("register.title")}</h1>
 						<p className="text-sm text-muted-foreground">{t("register.description")}</p>
@@ -142,14 +142,14 @@ function RegisterPage() {
 
 									<FormField control={form.control} name="agreeToTerms" render={({ field }) => (
 										<div className="flex items-start gap-2 pt-1">
-											<Checkbox checked={field.value} onCheckedChange={field.onChange} className="mt-0.5 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-red-500 data-[state=checked]:to-pink-500" />
+											<Checkbox checked={field.value} onCheckedChange={field.onChange} className="mt-0.5 data-[state=checked]:bg-gradient-to-r data-[state=checked]:from-primary data-[state=checked]:to-secondary" />
 											<label className="text-sm leading-relaxed cursor-pointer">
 												{t("register.terms")} <Link to="/terms" className="text-red-600 hover:text-red-700 dark:text-red-400 font-semibold">{t("register.terms.link")}</Link> {t("register.privacy")} <Link to="/privacy" className="text-red-600 hover:text-red-700 dark:text-red-400 font-semibold">{t("register.privacy.link")}</Link>
 											</label>
 										</div>
 									)} />
 
-									<Button type="submit" className="w-full h-10 bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-sm shadow-md" disabled={isPending}>
+									<Button type="submit" className="w-full h-10 bg-primary hover:bg-primary/90 text-sm shadow-md" disabled={isPending}>
 										{isPending ? <Icons.spinner className="mr-2 h-4 w-4 animate-spin" /> : t("register.signup")}<ArrowRight className="ml-2 h-4 w-4" />
 									</Button>
 								</form>

@@ -50,12 +50,12 @@ function WelcomeSection({
 				: "Good evening";
 
 	return (
-		<div className="rounded-xl border bg-gradient-to-r from-red-500/5 to-pink-500/5 p-4 md:p-6" data-tour="welcome-section">
+		<div className="rounded-xl border bg-gradient-to-r from-primary/5 to-secondary/5 p-4 md:p-6" data-tour="welcome-section">
 			<div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
 				<div className="flex items-center gap-3">
 					<Avatar className="h-10 w-10 border">
 						<AvatarImage src={undefined} />
-						<AvatarFallback className="bg-gradient-to-br from-red-500 to-pink-500 text-white text-sm font-semibold">
+						<AvatarFallback className="bg-gradient-to-br from-primary to-secondary text-white text-sm font-semibold">
 							{user?.username?.charAt(0).toUpperCase() ||
 								user?.email?.charAt(0).toUpperCase() ||
 								"U"}
@@ -72,10 +72,10 @@ function WelcomeSection({
 					</div>
 				</div>
 				<div className="flex gap-2">
-					<Button size="sm" variant="secondary" onClick={onNewGroup} data-tour="new-group-btn">
+					<Button size="sm" onClick={onNewGroup} data-tour="new-group-btn">
 						<Plus className="h-3.5 w-3.5 mr-1.5" /> New Group
 					</Button>
-					<Button size="sm" variant="secondary" asChild>
+					<Button size="sm" asChild>
 						<Link to="/dashboard/share-links">
 							<Share2 className="h-3.5 w-3.5 mr-1.5" /> Share Links
 						</Link>
@@ -122,10 +122,10 @@ function QuickActions() {
 				<button
 					key={a.title}
 					onClick={() => navigate({ to: a.href })}
-					className="group rounded-xl border bg-card p-3 hover:border-red-500/30 transition-colors text-left"
+					className="group rounded-xl border bg-card p-3 hover:border-primary/30 transition-colors text-left"
 				>
 					<div className="flex items-center gap-2 mb-2">
-						<div className="w-8 h-8 rounded-lg bg-gradient-to-br from-red-500 to-pink-500 flex items-center justify-center group-hover:scale-105 transition-transform">
+						<div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center group-hover:scale-105 transition-transform">
 							<a.icon className="h-4 w-4 text-white" />
 						</div>
 					</div>
@@ -201,7 +201,7 @@ function DashboardPage() {
 
 			<section className="space-y-2">
 				<div className="flex items-center gap-2 text-sm font-semibold">
-					<TrendingUp className="h-4 w-4 text-red-500" /> Overview
+					<TrendingUp className="h-4 w-4 text-primary" /> Overview
 				</div>
 				<DashboardStats />
 			</section>
@@ -209,18 +209,18 @@ function DashboardPage() {
 			<Tabs defaultValue="groups" className="space-y-4">
 				<div className="flex items-center justify-between mb-2">
 					<div className="flex items-center gap-2 text-sm font-semibold">
-						<Users className="h-4 w-4 text-red-500" /> Your Groups
+						<Users className="h-4 w-4 text-primary" /> Your Groups
 					</div>
 					<TabsList className="grid grid-cols-2 w-auto bg-muted/30">
 						<TabsTrigger
 							value="groups"
-							className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500 data-[state=active]:to-pink-500"
+							className=""
 						>
 							Groups
 						</TabsTrigger>
 						<TabsTrigger
 							value="shared"
-							className="data-[state=active]:bg-gradient-to-r data-[state=active]:from-red-500 data-[state=active]:to-pink-500"
+							className=""
 						>
 							Shared
 						</TabsTrigger>

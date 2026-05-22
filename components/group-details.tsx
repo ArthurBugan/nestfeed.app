@@ -65,7 +65,7 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 							</Link>
 						</Button>
 						<Button
-							className="bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white"
+							className="bg-primary hover:bg-primary/90 text-white"
 							type="button"
 								data-tour="add-channel-btn"
 							asChild
