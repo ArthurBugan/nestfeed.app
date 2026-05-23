@@ -3,6 +3,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useLanguage } from "@/components/language-provider";
 import { GroupForm, type GroupFormData } from "@/components/group-form";
 import {
 	useGroup,
@@ -15,6 +16,7 @@ export const Route = createFileRoute("/_app/dashboard/groups/$id/edit/")({
 });
 
 function GroupEditPage() {
+	const { t } = useLanguage();
 	const router = useNavigate();
 	const { id } = Route.useParams();
 	const { data: groupData } = useGroup(id);
@@ -39,9 +41,8 @@ function GroupEditPage() {
 
 			router({ to: "/dashboard/groups/$id", params: { id } });
 		} catch (error: any) {
-			toast.error("Error", {
-				description:
-					error?.message || "Failed to update group. Please try again.",
+			toast.error(t("group.edit.error"), {
+				description: error?.message || t("group.edit.error.desc"),
 			});
 		}
 	};
@@ -59,9 +60,9 @@ function GroupEditPage() {
 			groups={availableParentGroups}
 			isLoading={isUpdating}
 			onSubmit={handleSubmit}
-			title="Edit Group"
-			description="Update your channel group details"
-			submitLabel="Save Changes"
+			title={t("group.edit.title")}
+			description={t("group.edit.desc")}
+			submitLabel={t("group.edit.submit")}
 			cancelPath=".."
 		/>
 	) : (

@@ -9,6 +9,7 @@ import {
 	Sparkles,
 } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -31,6 +32,7 @@ export function RecommendationCards() {
 }
 
 function CrunchyrollIntegrationCard() {
+	const { t } = useLanguage();
 	return (
 		<Card className="overflow-hidden border-orange-200 dark:border-orange-900/50">
 			<div className="absolute top-0 right-0 w-24 h-24 -mt-8 -mr-8 bg-orange-500/10 rounded-full blur-2xl"></div>
@@ -43,20 +45,20 @@ function CrunchyrollIntegrationCard() {
 						className="bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 border-orange-200 dark:border-orange-800"
 					>
 						<Sparkles className="h-3 w-3 mr-1 text-orange-500" />
-						New Integration
+						{t("rec.crunchyroll.badge")}
 					</Badge>
 					<Badge
 						variant="secondary"
 						className="bg-orange-50 text-orange-700 dark:bg-orange-900/20 dark:text-orange-300"
 					>
-						Anime
+						{t("rec.crunchyroll.anime")}
 					</Badge>
 				</div>
 				<CardTitle className="text-xl flex items-center gap-2 text-orange-700 dark:text-orange-400">
-					Crunchyroll Integration
+					{t("rec.crunchyroll.title")}
 				</CardTitle>
 				<CardDescription>
-					Seamlessly combine YouTube and Crunchyroll anime content
+					{t("rec.crunchyroll.desc")}
 				</CardDescription>
 			</CardHeader>
 
@@ -69,7 +71,7 @@ function CrunchyrollIntegrationCard() {
 					/>
 					<div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent flex items-end p-4">
 						<div className="text-white text-sm font-medium">
-							The ultimate anime tracking experience
+							{t("rec.crunchyroll.overlay")}
 						</div>
 					</div>
 				</div>
@@ -77,31 +79,30 @@ function CrunchyrollIntegrationCard() {
 				<div className="space-y-3">
 					<div className="flex items-center gap-2 text-sm font-medium text-orange-700 dark:text-orange-400">
 						<Sparkles className="h-4 w-4" />
-						Unlock the full anime experience
+						{t("rec.crunchyroll.unlock")}
 					</div>
 
 					<div className="grid grid-cols-2 gap-2 text-sm">
 						<div className="flex items-start gap-2 bg-orange-50 dark:bg-orange-900/20 p-2 rounded-md">
 							<CheckCircle2 className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
-							<div>Track anime across both platforms</div>
+							<div>{t("rec.crunchyroll.feature1")}</div>
 						</div>
 						<div className="flex items-start gap-2 bg-orange-50 dark:bg-orange-900/20 p-2 rounded-md">
 							<CheckCircle2 className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
-							<div>Control all your collections</div>
+							<div>{t("rec.crunchyroll.feature2")}</div>
 						</div>
 						<div className="flex items-start gap-2 bg-orange-50 dark:bg-orange-900/20 p-2 rounded-md">
 							<CheckCircle2 className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
-							<div>Discovery new animes</div>
+							<div>{t("rec.crunchyroll.feature3")}</div>
 						</div>
 						<div className="flex items-start gap-2 bg-orange-50 dark:bg-orange-900/20 p-2 rounded-md">
 							<CheckCircle2 className="h-4 w-4 text-orange-500 mt-0.5 flex-shrink-0" />
-							<div>Share curated collections</div>
+							<div>{t("rec.crunchyroll.feature4")}</div>
 						</div>
 					</div>
 
 					<div className="text-sm text-muted-foreground">
-						Connect your Crunchyroll account to organize all your favorite anime
-						content in one place.
+						{t("rec.crunchyroll.connect")}
 					</div>
 				</div>
 			</CardContent>
@@ -112,7 +113,7 @@ function CrunchyrollIntegrationCard() {
 					asChild
 				>
 					<Link to="/dashboard/animes">
-						Checkout Crunchyroll <ArrowRight className="ml-2 h-4 w-4" />
+						{t("rec.crunchyroll.button")} <ArrowRight className="ml-2 h-4 w-4" />
 					</Link>
 				</Button>
 			</CardFooter>
@@ -121,6 +122,7 @@ function CrunchyrollIntegrationCard() {
 }
 
 function DonationSupportCard() {
+	const { t } = useLanguage();
 	const [donationType, setDonationType] = useState<"one-time" | "monthly">(
 		"one-time",
 	);
@@ -141,21 +143,21 @@ function DonationSupportCard() {
 			<CardHeader>
 				<CardTitle className="text-xl flex items-center gap-2">
 					<Heart className="h-5 w-5 text-primary" />
-					Support This Project
+					{t("rec.support.title")}
 				</CardTitle>
 				<CardDescription>
-					Help us keep the YouTube Group Manager alive and growing
+					{t("rec.support.desc")}
 				</CardDescription>
 			</CardHeader>
 
 			<CardContent className="space-y-4">
 				<div className="rounded-lg bg-muted p-4 text-sm">
-					<p className="mb-2 font-medium">Your support helps us:</p>
+					<p className="mb-2 font-medium">{t("rec.support.text")}</p>
 					<ul className="space-y-1 list-disc pl-5">
-						<li>Maintain server infrastructure</li>
-						<li>Develop new features like the Crunchyroll integration</li>
-						<li>Improve existing functionality</li>
-						<li>Keep the service free for everyone</li>
+						<li>{t("rec.support.feature1")}</li>
+						<li>{t("rec.support.feature2")}</li>
+						<li>{t("rec.support.feature3")}</li>
+						<li>{t("rec.support.feature4")}</li>
 					</ul>
 				</div>
 
@@ -171,7 +173,7 @@ function DonationSupportCard() {
 							type="button"
 							onClick={() => handleSelectType("one-time")}
 						>
-							One-time
+							{t("rec.support.onetime")}
 						</button>
 						<button
 							className={cn(
@@ -183,7 +185,7 @@ function DonationSupportCard() {
 							type="button"
 							onClick={() => handleSelectType("monthly")}
 						>
-							Monthly
+							{t("rec.support.monthly")}
 						</button>
 					</div>
 
@@ -203,7 +205,7 @@ function DonationSupportCard() {
 								>
 									<span className="text-lg font-bold">${amount}</span>
 									<span className="text-xs text-muted-foreground">
-										One-time
+										{t("rec.support.onetime.label")}
 									</span>
 								</button>
 							))}
@@ -223,7 +225,7 @@ function DonationSupportCard() {
 									)}
 								>
 									<span className="text-lg font-bold">${amount}</span>
-									<span className="text-xs text-muted-foreground">Monthly</span>
+									<span className="text-xs text-muted-foreground">{t("rec.support.monthly.label")}</span>
 								</button>
 							))}
 						</div>
@@ -231,8 +233,8 @@ function DonationSupportCard() {
 
 					<div className="text-center text-sm text-muted-foreground">
 						{donationType === "monthly"
-							? "Cancel anytime"
-							: "Secure one-time payment"}
+							? t("rec.support.cancel")
+							: t("rec.support.secure")}
 					</div>
 				</div>
 			</CardContent>
@@ -242,10 +244,10 @@ function DonationSupportCard() {
 					window.open(`https://ko-fi.com/scriptingarthur?amount=${selectedAmount}`)
 				}} className="w-full" type="button">
 					<Coffee className="mr-2 h-4 w-4" />
-					Donate ${selectedAmount} {donationType === "monthly" ? "monthly" : ""}
+					{t("rec.support.donate", { amount: selectedAmount, type: donationType === "monthly" ? t("rec.support.monthly").toLowerCase() : "" })}
 				</Button>
 				<p className="text-xs text-center text-muted-foreground">
-					100% of donations go toward development and server costs
+					{t("rec.support.footer")}
 				</p>
 			</CardFooter>
 		</Card>

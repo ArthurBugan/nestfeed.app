@@ -12,6 +12,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { UpgradePlanModal } from "@/components/upgrade-plan-modal";
+import { useLanguage } from "@/components/language-provider";
 import { useGroups } from "@/hooks/useQuery/useGroups";
 import { useUser } from "@/hooks/useQuery/useUser";
 
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/_app/dashboard/groups/")({
 });
 
 function GroupsPage() {
+	const { t } = useLanguage();
 	const navigate = useNavigate();
 	const { isLoading, error } = useGroups({
 		page: 1,
@@ -41,8 +43,8 @@ function GroupsPage() {
 			<div className="space-y-6">
 				<div className="flex items-center justify-between">
 					<DashboardHeader
-						title="Groups"
-						description="Manage your YouTube channel groups"
+						title={t("groups.title")}
+						description={t("groups.description")}
 					/>
 					<Button
 						className="bg-primary hover:bg-primary/90 text-white"
@@ -51,7 +53,7 @@ function GroupsPage() {
 						data-tour="new-group-btn"
 					>
 						<Plus className="mr-2 h-4 w-4" />
-						New Group
+						{t("groups.new")}
 					</Button>
 				</div>
 				<Card>
@@ -59,7 +61,7 @@ function GroupsPage() {
 						<div className="flex items-center space-x-2">
 							<Loader2 className="h-6 w-6 animate-spin" />
 							<span className="text-sm text-muted-foreground">
-								Loading groups...
+								{t("groups.loading")}
 							</span>
 						</div>
 					</CardContent>
@@ -73,8 +75,8 @@ function GroupsPage() {
 			<div className="space-y-6">
 				<div className="flex items-center justify-between">
 					<DashboardHeader
-						title="Groups"
-						description="Manage your YouTube channel groups"
+						title={t("groups.title")}
+						description={t("groups.description")}
 					/>
 					<Button
 						className="bg-primary hover:bg-primary/90 text-white"
@@ -83,14 +85,14 @@ function GroupsPage() {
 						data-tour="new-group-btn"
 					>
 						<Plus className="mr-2 h-4 w-4" />
-						New Group
+						{t("groups.new")}
 					</Button>
 				</div>
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-red-600">Error Loading Groups</CardTitle>
+						<CardTitle className="text-red-600">{t("groups.error.title")}</CardTitle>
 						<CardDescription>
-							{error.message || "Failed to load groups. Please try again."}
+							{error.message || t("groups.error.description")}
 						</CardDescription>
 					</CardHeader>
 				</Card>
@@ -102,8 +104,8 @@ function GroupsPage() {
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<DashboardHeader
-					title="Groups"
-					description="Manage your YouTube channel groups"
+					title={t("groups.title")}
+					description={t("groups.description")}
 				/>
 				<Button
 					className="bg-primary hover:bg-primary/90 text-white"
@@ -112,7 +114,7 @@ function GroupsPage() {
 				data-tour="new-group-btn"
 				>
 					<Plus className="mr-2 h-4 w-4" />
-					New Group
+					{t("groups.new")}
 				</Button>
 			</div>
 			<Card>

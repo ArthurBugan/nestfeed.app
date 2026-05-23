@@ -1,6 +1,7 @@
 import { createFileRoute, Link, useParams } from "@tanstack/react-router";
 import { CheckCircle2, Loader2, Mail, XCircle } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { useConfirmSubscriptionMutation } from "@/hooks/mutations/useAuthMutations";
@@ -10,6 +11,7 @@ export const Route = createFileRoute("/_auth/subscriptions/confirm/$code")({
 });
 
 function RouteComponent() {
+	const { t } = useLanguage();
 	const { code } = useParams({ from: "/_auth/subscriptions/confirm/$code" });
 	const confirmMutation = useConfirmSubscriptionMutation();
 	const [isLoading, setIsLoading] = useState(true);
@@ -24,7 +26,7 @@ function RouteComponent() {
 				await confirmMutation.mutateAsync({ token: code });
 				setIsConfirmed(true);
 			} catch (err) {
-				setError(err ? err.message : "Failed to confirm subscription");
+				setError(err ? err.message : t("subscription.error.default"));
 			} finally {
 				setIsLoading(false);
 			}
@@ -52,10 +54,10 @@ function RouteComponent() {
 
 						<div className="space-y-2 text-center">
 							<h1 className="text-2xl font-semibold text-foreground">
-								Confirming your email
+								{t("subscription.confirming")}
 							</h1>
 							<p className="text-muted-foreground text-pretty">
-								Please wait while we validate your confirmation link...
+								{t("subscription.confirming.desc")}
 							</p>
 						</div>
 
@@ -83,11 +85,10 @@ function RouteComponent() {
 
 						<div className="space-y-2 text-center">
 							<h1 className="text-2xl font-semibold text-foreground">
-								Confirmation failed
+								{t("subscription.failed")}
 							</h1>
 							<p className="text-muted-foreground text-pretty">
-								{error ||
-									"We couldn't verify your email address. The link may have expired or is invalid."}
+								{error || t("subscription.failed.desc")}
 							</p>
 						</div>
 					</div>
@@ -108,11 +109,10 @@ function RouteComponent() {
 
 					<div className="space-y-2 text-center">
 						<h1 className="text-2xl font-semibold text-foreground">
-							Email confirmed!
+							{t("subscription.success")}
 						</h1>
 						<p className="text-muted-foreground text-pretty">
-							Your email has been successfully verified. You can now access all
-							features of your account.
+							{t("subscription.success.desc")}
 						</p>
 					</div>
 
@@ -122,7 +122,7 @@ function RouteComponent() {
 								className="w-full bg-primary hover:bg-primary/90 text-white"
 								size="lg"
 							>
-								Continue to Dashboard
+								{t("subscription.dashboard")}
 							</Button>
 						</Link>
 					</div>

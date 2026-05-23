@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
 import { Link } from "@tanstack/react-router";
 import {
 	ExternalLink,
@@ -83,6 +84,7 @@ const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
 };
 
 export function AllChannelsTable() {
+	const { t } = useLanguage();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(25);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -111,16 +113,16 @@ export function AllChannelsTable() {
 			googleSession &&
 			!googleSession.connected
 		) {
-			toast.info("No channels found", {
+			toast.info(t("all.channels.noChannels"), {
 				description: (
 					<span>
-						Sync your Google account to import your YouTube channels.{" "}
+						{t("all.channels.syncDescription")}{" "}
 						<Link
 							to="/dashboard/settings/account"
 							className="underline font-medium"
 							onClick={(e) => e.stopPropagation()}
 						>
-							Go to settings
+							{t("all.channels.goToSettings")}
 						</Link>
 					</span>
 				),
@@ -223,7 +225,7 @@ export function AllChannelsTable() {
 		<div className="space-y-4">
 			<div className="flex items-center gap-2">
 				<Input
-					placeholder="Search channels or groups..."
+					placeholder={t("all.channels.search")}
 					value={searchTerm}
 					onChange={(e) => handleSearchChange(e.target.value)}
 					className="max-w-sm"
@@ -232,7 +234,7 @@ export function AllChannelsTable() {
 
 			{error && (
 				<div className="text-destructive text-sm">
-					Error loading channels: {error.message}
+					{t("all.channels.error", { message: error.message })}
 				</div>
 			)}
 
@@ -240,22 +242,22 @@ export function AllChannelsTable() {
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead>Channel</TableHead>
-							<TableHead>Group</TableHead>
-							<TableHead className="text-right">Actions</TableHead>
+							<TableHead>{t("all.channels.channel")}</TableHead>
+							<TableHead>{t("all.channels.group")}</TableHead>
+							<TableHead className="text-right">{t("all.channels.actions")}</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{isLoading ? (
 							<TableRow>
 								<TableCell colSpan={5} className="h-24 text-center">
-									Loading channels...
+									{t("all.channels.loading")}
 								</TableCell>
 							</TableRow>
 						) : !data?.data || data.data.length === 0 ? (
 							<TableRow>
 								<TableCell colSpan={5} className="h-24 text-center">
-									No channels found.
+									{t("all.channels.empty")}
 								</TableCell>
 							</TableRow>
 						) : (
@@ -322,7 +324,7 @@ export function AllChannelsTable() {
 															channel.url,
 														)
 													}
-													placeholder="Assign Group"
+													placeholder={t("all.channels.assignGroup")}
 													renderItem={(item) => (
 														<div className="flex items-center gap-8">
 															{item.icon && (
@@ -342,7 +344,7 @@ export function AllChannelsTable() {
 												<DropdownMenuTrigger asChild>
 													<Button variant="ghost" size="icon">
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">Open menu</span>
+														<span className="sr-only">{t("all.channels.openMenu")}</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -353,7 +355,7 @@ export function AllChannelsTable() {
 															rel="noopener noreferrer"
 														>
 															<ExternalLink className="mr-2 h-4 w-4" />
-															Visit channel
+															{t("all.channels.visit")}
 														</a>
 													</DropdownMenuItem>
 													{/* <DropdownMenuItem asChild>
@@ -371,7 +373,7 @@ export function AllChannelsTable() {
 															params={{ id: channel.id }}
 														>
 															<FolderKanban className="mr-2 h-4 w-4" />
-															Change group
+															{t("all.channels.changeGroup")}
 														</Link>
 													</DropdownMenuItem>
 													<DropdownMenuItem
@@ -384,7 +386,7 @@ export function AllChannelsTable() {
 														) : (
 															<Trash2 className="mr-2 h-4 w-4" />
 														)}
-														Delete channel
+														{t("all.channels.delete")}
 													</DropdownMenuItem>
 												</DropdownMenuContent>
 											</DropdownMenu>
@@ -400,7 +402,7 @@ export function AllChannelsTable() {
 			{data?.data && data.data.length > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">Items per page:</span>
+						<span className="whitespace-nowrap">{t("all.channels.itemsPerPage")}</span>
 						<GenericCombobox
 							data={[
 								{ value: "10", label: "10" },
@@ -413,7 +415,7 @@ export function AllChannelsTable() {
 								setItemsPerPage(Number(value));
 								setCurrentPage(1); // Reset to first page when changing items per page
 							}}
-							placeholder="Items per page"
+							placeholder={t("all.channels.itemsPerPagePlaceholder")}
 						/>
 					</div>
 					<Pagination>

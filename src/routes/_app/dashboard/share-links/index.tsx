@@ -13,6 +13,7 @@ import {
 	DialogTrigger,
 } from "@/components/ui/dialog";
 import { ShareLinksTable } from "@/components/share-links-table";
+import { useLanguage } from "@/components/language-provider";
 import { useGroups } from "@/hooks/useQuery/useGroups";
 import { useState } from "react";
 
@@ -21,6 +22,7 @@ export const Route = createFileRoute("/_app/dashboard/share-links/")({
 });
 
 function ShareLinksPage() {
+	const { t } = useLanguage();
 	const navigate = useNavigate();
 	const { data: groupsData } = useGroups({ limit: 100 });
 	const [open, setOpen] = useState(false);
@@ -36,27 +38,27 @@ function ShareLinksPage() {
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<DashboardHeader
-					title="Share Links"
-					description="Manage and monitor all your share links"
+					title={t("sharelinks.page.title")}
+					description={t("sharelinks.page.desc")}
 				/>
 				<Dialog open={open} onOpenChange={setOpen}>
 					<DialogTrigger asChild>
 						<Button variant="secondary">
 							<Plus className="mr-2 h-4 w-4" />
-							Create New Link
+							{t("sharelinks.create")}
 						</Button>
 					</DialogTrigger>
 					<DialogContent className="max-w-md max-h-[80vh] overflow-y-auto">
 						<DialogHeader>
-							<DialogTitle>Select a Group</DialogTitle>
+							<DialogTitle>{t("sharelinks.select.title")}</DialogTitle>
 							<DialogDescription>
-								Choose a group to create a share link for.
+								{t("sharelinks.select.desc")}
 							</DialogDescription>
 						</DialogHeader>
 						<div className="space-y-2 py-4">
 							{groups.length === 0 ? (
 								<p className="text-center text-muted-foreground py-4">
-									No groups found. Create a group first.
+									{t("sharelinks.nogroups")}
 								</p>
 							) : (
 								groups.map((group) => (
@@ -75,7 +77,7 @@ function ShareLinksPage() {
 										<div className="flex-1 min-w-0">
 											<p className="font-medium truncate">{group.name}</p>
 											<p className="text-xs text-muted-foreground">
-												{group.channelCount} channels
+												{t("sharelinks.channels", { count: String(group.channelCount) })}
 											</p>
 										</div>
 									</button>
@@ -101,7 +103,7 @@ function ShareLinksPage() {
 					</div>
 				<div className="flex items-center gap-2 mb-4">
 					<Share2 className="h-5 w-5 text-muted-foreground" />
-					<h3 className="text-lg font-semibold">All Share Links</h3>
+					<h3 className="text-lg font-semibold">{t("sharelinks.all")}</h3>
 				</div>
 				<ShareLinksTable />
 			</div>

@@ -6,6 +6,7 @@ import {
 	useSearch,
 } from "@tanstack/react-router";
 import { toast } from "sonner";
+import { useLanguage } from "@/components/language-provider";
 import { GroupForm, type GroupFormData } from "@/components/group-form";
 import { useCreateGroup, useGroups } from "@/hooks/useQuery/useGroups";
 
@@ -17,6 +18,7 @@ export const Route = createFileRoute("/_app/dashboard/groups/new/")({
 });
 
 function NewGroupPage() {
+	const { t } = useLanguage();
 	const navigate = useNavigate();
 	const search = useSearch({ from: "/_app/dashboard/groups/new/" });
 	const { data: groupsData, isLoading } = useGroups({ limit: 100 });
@@ -34,9 +36,8 @@ function NewGroupPage() {
 			});
 			navigate({ to: "/dashboard/groups" });
 		} catch (error: any) {
-			toast.error("Error", {
-				description:
-					error?.message || "Failed to create group. Please try again.",
+			toast.error(t("group.create.error"), {
+				description: error?.message || t("group.create.error.desc"),
 			});
 		}
 	};
@@ -46,9 +47,9 @@ function NewGroupPage() {
 			onSubmit={handleSubmit}
 			groups={groupsData?.data || []}
 			isLoading={isLoading || createMutation.isPending}
-			title="Create Group"
-			description="Organize your YouTube channels into groups"
-			submitLabel="Create"
+			title={t("group.create.title")}
+			description={t("group.create.desc")}
+			submitLabel={t("group.create.submit")}
 			parentId={search.parentId}
 		/>
 	);

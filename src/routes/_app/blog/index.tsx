@@ -79,10 +79,10 @@ function BlogIndex() {
 				<div className="absolute inset-0" />
 				<div className="container mx-auto px-4 relative text-center">
 					<Badge variant="secondary" className="gap-1 mb-6">
-						<Sparkles className="h-3 w-3" /> Latest Updates
+						<Sparkles className="h-3 w-3" /> {t("blog.title")}
 					</Badge>
 					<h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-						Nestfeed Blog
+						{t("blog.brand")}
 					</h1>
 					<p className="text-lg text-muted-foreground max-w-xl mx-auto">
 						{t("landing.hero.subtitle")}
@@ -103,14 +103,14 @@ function BlogIndex() {
 								}}
 								className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${activeCategory === cat ? "bg-gradient-to-r from-primary to-secondary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
 							>
-								<span className="text-white text-sm font-semibold">{cat}</span>
+										<span className="text-white text-sm font-semibold">{t("blog.category." + cat.toLowerCase())}</span>
 							</Button>
 						))}
 					</div>
 					<div className="relative w-full sm:w-64">
 						<Search className="absolute left-3 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
 						<Input
-							placeholder="Search..."
+							placeholder={t("blog.search")}
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
 							className="pl-9 pr-8 h-9"
@@ -136,7 +136,7 @@ function BlogIndex() {
 							<div className="mb-12">
 								<div className="flex items-center gap-2 mb-6">
 									<TrendingUp className="h-4 w-4 text-primary" />
-									<h2 className="text-lg font-semibold">Featured</h2>
+									<h2 className="text-lg font-semibold">{t("blog.featured")}</h2>
 								</div>
 								<Link to={`/blog/$slug`} params={{ slug: featuredPost.slug }}>
 									<div className="rounded-xl border bg-gradient-to-br from-primary/5 to-secondary/5 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
@@ -148,7 +148,7 @@ function BlogIndex() {
 													className="w-full h-full object-cover"
 												/>
 												<Badge className="absolute top-3 left-3 bg-gradient-to-r from-primary to-secondary text-white border-0 gap-1">
-													Featured
+													{t("blog.featured")}
 												</Badge>
 											</div>
 											<div className="p-6 flex flex-col justify-center">
@@ -175,14 +175,14 @@ function BlogIndex() {
 															{featuredPost.author?.[0] || "G"}
 														</div>
 														<span className="text-sm font-medium">
-															{featuredPost.author || "Nestfeed Team"}
+															{featuredPost.author || t("blog.author.team")}
 														</span>
 													</div>
 													<Button
 														size="sm"
 														className="bg-primary hover:bg-primary/90 text-white"
 													>
-														Read Article
+														{t("blog.read")}
 													</Button>
 												</div>
 											</div>
@@ -200,7 +200,7 @@ function BlogIndex() {
 								<div className="mb-12">
 									<div className="flex items-center gap-2 mb-6">
 										<TrendingUp className="h-4 w-4 text-orange-500" />
-										<h2 className="text-lg font-semibold">Trending</h2>
+										<h2 className="text-lg font-semibold">{t("blog.trending")}</h2>
 									</div>
 									<div className="grid md:grid-cols-3 gap-4">
 										{trendingPosts.slice(0, 3).map((post, i) => (
@@ -243,11 +243,11 @@ function BlogIndex() {
 								<div className="flex items-center gap-2">
 									<Clock className="h-4 w-4 text-primary" />
 									<h2 className="text-lg font-semibold">
-										{debouncedSearch
-											? "Results"
-											: activeCategory !== "All"
-												? `${activeCategory} Posts`
-												: "All Posts"}
+								{debouncedSearch
+									? t("blog.results")
+									: activeCategory !== "All"
+										? `${activeCategory} Posts`
+										: t("blog.allposts")}
 									</h2>
 								</div>
 								<span className="text-xs text-muted-foreground">
@@ -300,7 +300,7 @@ function BlogIndex() {
 									disabled={currentPage === 1}
 									onClick={() => setCurrentPage(currentPage - 1)}
 								>
-									Previous
+									{t("blog.prev")}
 								</Button>
 								<div className="flex gap-1">
 									{Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -327,7 +327,7 @@ function BlogIndex() {
 									disabled={currentPage === totalPages}
 									onClick={() => setCurrentPage(currentPage + 1)}
 								>
-									Next
+									{t("blog.next")}
 								</Button>
 							</div>
 						)}
@@ -336,11 +336,11 @@ function BlogIndex() {
 						{allPosts.length === 0 && (
 							<div className="text-center py-20">
 								<Search className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
-								<h3 className="font-semibold mb-2">No posts found</h3>
+								<h3 className="font-semibold mb-2">{t("blog.none.title")}</h3>
 								<p className="text-sm text-muted-foreground mb-4">
 									{debouncedSearch
 										? `No results for "${debouncedSearch}"`
-										: "No posts in this category."}
+										: t("blog.none.description")}
 								</p>
 							</div>
 						)}

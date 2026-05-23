@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
 import { Link } from "@tanstack/react-router";
 import {
 	ExternalLink,
@@ -78,6 +79,7 @@ const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
 };
 
 export function AllWebsitesTable() {
+	const { t } = useLanguage();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(25);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -124,7 +126,7 @@ export function AllWebsitesTable() {
 	if (error) {
 		return (
 			<div className="text-center py-4 text-destructive">
-				Error loading websites.
+				{t("all.websites.error")}
 			</div>
 		);
 	}
@@ -136,7 +138,7 @@ export function AllWebsitesTable() {
 		<div className="space-y-4">
 			<div className="flex items-center gap-2">
 				<Input
-					placeholder="Search websites..."
+					placeholder={t("all.websites.search")}
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 					className="max-w-sm"
@@ -147,10 +149,10 @@ export function AllWebsitesTable() {
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead>Website</TableHead>
-							<TableHead>URL</TableHead>
-							<TableHead>Group</TableHead>
-							<TableHead className="text-right">Actions</TableHead>
+							<TableHead>{t("all.websites.website")}</TableHead>
+							<TableHead>{t("all.websites.url")}</TableHead>
+							<TableHead>{t("all.websites.group")}</TableHead>
+							<TableHead className="text-right">{t("all.websites.actions")}</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -163,7 +165,7 @@ export function AllWebsitesTable() {
 						) : websites.length === 0 ? (
 							<TableRow>
 								<TableCell colSpan={4} className="h-24 text-center">
-									No websites found.
+									{t("all.websites.empty")}
 								</TableCell>
 							</TableRow>
 						) : (
@@ -206,7 +208,7 @@ export function AllWebsitesTable() {
 														className="h-8 w-8"
 													>
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">Open menu</span>
+														<span className="sr-only">{t("all.websites.openMenu")}</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -217,7 +219,7 @@ export function AllWebsitesTable() {
 															rel="noopener noreferrer"
 														>
 															<ExternalLink className="mr-2 h-4 w-4" />
-															Visit website
+															{t("all.websites.visit")}
 														</a>
 													</DropdownMenuItem>
 													<DropdownMenuItem
@@ -226,7 +228,7 @@ export function AllWebsitesTable() {
 														disabled={isDeletingWebsite}
 													>
 														<Trash2 className="mr-2 h-4 w-4" />
-														Delete
+														{t("all.websites.delete")}
 													</DropdownMenuItem>
 												</DropdownMenuContent>
 											</DropdownMenu>

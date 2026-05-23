@@ -9,8 +9,10 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
+import { useLanguage } from "@/components/language-provider";
 
 export function SharedGroupsOverview() {
+	const { t } = useLanguage();
 	// Mock data - in a real app, this would come from your database
 	const sharedGroups = [
 		{
@@ -69,9 +71,9 @@ export function SharedGroupsOverview() {
 				<Card>
 					<CardContent className="flex flex-col items-center justify-center py-10">
 						<Share2 className="h-12 w-12 text-muted-foreground mb-3" />
-						<p className="text-lg font-medium">No shared groups yet</p>
+						<p className="text-lg font-medium">{t("shared.overview.empty.title")}</p>
 						<p className="text-muted-foreground">
-							Groups shared with you will appear here
+							{t("shared.overview.empty.desc")}
 						</p>
 					</CardContent>
 				</Card>
@@ -97,14 +99,14 @@ export function SharedGroupsOverview() {
 								</CardTitle>
 								<CardDescription className="flex items-center gap-2">
 									<UserCircle className="h-3 w-3" />
-									Owned by {group.owner.name}
+									{t("shared.overview.owned", { name: group.owner.name })}
 								</CardDescription>
 							</CardHeader>
 							<CardContent className="space-y-4">
 								<div className="space-y-2">
 									<div className="flex justify-between text-sm">
 										<span className="text-muted-foreground">
-											Channels Progress
+											{t("shared.overview.progress")}
 										</span>
 										<span>
 											{group.channelCount} / {group.totalChannels}
@@ -118,25 +120,25 @@ export function SharedGroupsOverview() {
 								<div className="grid grid-cols-2 gap-2 text-sm">
 									<div className="flex flex-col">
 										<span className="text-muted-foreground flex items-center gap-1">
-											<Clock className="h-3 w-3" /> Shared
+											<Clock className="h-3 w-3" /> {t("shared.overview.shared")}
 										</span>
 										<span>{group.sharedDate}</span>
 									</div>
 									<div className="flex flex-col">
 										<span className="text-muted-foreground flex items-center gap-1">
-											<Clock className="h-3 w-3" /> Activity
+											<Clock className="h-3 w-3" /> {t("shared.overview.activity")}
 										</span>
 										<span>{group.lastActivity}</span>
 									</div>
 									<div className="flex flex-col">
 										<span className="text-muted-foreground flex items-center gap-1">
-											<UserCircle className="h-3 w-3" /> Collaborators
+											<UserCircle className="h-3 w-3" /> {t("shared.overview.collaborators")}
 										</span>
 										<span>{group.collaborators}</span>
 									</div>
 									<div className="flex flex-col">
 										<span className="text-muted-foreground flex items-center gap-1">
-											<Eye className="h-3 w-3" /> Views
+											<Eye className="h-3 w-3" /> {t("shared.overview.views")}
 										</span>
 										<span>{group.views.toLocaleString()}</span>
 									</div>

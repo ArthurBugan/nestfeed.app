@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
 import {
 	AlignJustify,
 	ExternalLink,
@@ -46,6 +47,7 @@ interface ChannelsTableProps {
 }
 
 export function ChannelsTable({ groupId }: ChannelsTableProps) {
+	const { t } = useLanguage();
 	const { data: groupData } = useGroup(groupId);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [channels, setChannels] = useState<Channel[]>(
@@ -110,15 +112,15 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 			<Table>
 				<TableHeader>
 					<TableRow>
-						<TableHead>Channel</TableHead>
-						<TableHead className="text-right">Actions</TableHead>
+						<TableHead>{t("channels.table.channel")}</TableHead>
+						<TableHead className="text-right">{t("channels.table.actions")}</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
 					{filteredAndSortedChannels.length === 0 ? (
 						<TableRow>
 							<TableCell colSpan={4} className="h-24 text-center">
-								No channels found.
+								{t("channels.table.empty")}
 							</TableCell>
 						</TableRow>
 					) : (
@@ -148,7 +150,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 										<DropdownMenuTrigger asChild>
 											<Button variant="ghost" size="icon">
 												<MoreHorizontal className="h-4 w-4" />
-												<span className="sr-only">Open menu</span>
+												<span className="sr-only">{t("channels.table.openMenu")}</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="end">
@@ -159,7 +161,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 													rel="noopener noreferrer"
 												>
 													<ExternalLink className="mr-2 h-4 w-4" />
-													Visit channel
+													{t("channels.table.visit")}
 												</a>
 											</DropdownMenuItem>
 											<DropdownMenuItem
@@ -172,7 +174,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 												) : (
 													<Trash2 className="mr-2 h-4 w-4" />
 												)}
-												Remove from group
+												{t("channels.table.remove")}
 											</DropdownMenuItem>
 										</DropdownMenuContent>
 									</DropdownMenu>
@@ -189,7 +191,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 		<div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
 			{filteredAndSortedChannels.length === 0 ? (
 				<div className="col-span-full h-24 flex items-center justify-center text-center border rounded-md">
-					No channels found.
+					{t("channels.table.empty")}
 				</div>
 			) : (
 				filteredAndSortedChannels.map((channel) => (
@@ -220,7 +222,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 											rel="noopener noreferrer"
 										>
 											<ExternalLink className="mr-2 h-4 w-4" />
-											Visit
+											{t("channels.table.visit.short")}
 										</a>
 									</Button>
 									<Button
@@ -235,7 +237,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 										) : (
 											<Trash2 className="mr-2 h-4 w-4" />
 										)}
-										Remove
+										{t("channels.table.remove.short")}
 									</Button>
 								</div>
 							</div>
@@ -250,7 +252,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 		<div className="space-y-2">
 			{filteredAndSortedChannels.length === 0 ? (
 				<div className="h-24 flex items-center justify-center text-center border rounded-md">
-					No channels found.
+					{t("channels.table.empty")}
 				</div>
 			) : (
 				filteredAndSortedChannels.map((channel) => (
@@ -306,7 +308,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 		<div className="space-y-4">
 			<div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:justify-between">
 				<Input
-					placeholder="Search channels..."
+					placeholder={t("channels.table.search")}
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 					className="max-w-sm"
@@ -317,9 +319,9 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							<SelectValue />
 						</SelectTrigger>
 						<SelectContent>
-							<SelectItem value="recent">Recently Added</SelectItem>
-							<SelectItem value="name-asc">Name (A to Z)</SelectItem>
-							<SelectItem value="name-desc">Name (Z to A)</SelectItem>
+							<SelectItem value="recent">{t("channels.table.sort.recent")}</SelectItem>
+							<SelectItem value="name-asc">{t("channels.table.sort.nameaz")}</SelectItem>
+							<SelectItem value="name-desc">{t("channels.table.sort.nameza")}</SelectItem>
 						</SelectContent>
 					</Select>
 					<div className="flex border rounded-md overflow-hidden">
@@ -330,7 +332,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("grid")}
 						>
 							<LayoutGrid className="h-4 w-4" />
-							<span className="sr-only">Grid view</span>
+							<span className="sr-only">{t("channels.table.gridView")}</span>
 						</Button>
 						<Button
 							variant={viewMode === "list" ? "secondary" : "ghost"}
@@ -339,7 +341,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("list")}
 						>
 							<List className="h-4 w-4" />
-							<span className="sr-only">List view</span>
+							<span className="sr-only">{t("channels.table.listView")}</span>
 						</Button>
 						<Button
 							variant={viewMode === "compact" ? "secondary" : "ghost"}
@@ -348,7 +350,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("compact")}
 						>
 							<AlignJustify className="h-4 w-4" />
-							<span className="sr-only">Compact view</span>
+							<span className="sr-only">{t("channels.table.compactView")}</span>
 						</Button>
 					</div>
 				</div>

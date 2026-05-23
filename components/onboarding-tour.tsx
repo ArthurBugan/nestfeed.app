@@ -1,6 +1,7 @@
 "use client";
 
 import { X, ChevronRight, ChevronLeft, Sparkles, Youtube, FolderKanban, Plus, Search, CheckCircle2 } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 import { useOnboardingTour } from "@/hooks/useOnboardingTour";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState, useCallback, useRef } from "react";
@@ -27,6 +28,7 @@ function getStepIcon(stepId: string | undefined): React.ElementType {
 }
 
 export function OnboardingTour() {
+  const { t } = useLanguage();
   const {
     isComplete,
     isRunning,
@@ -211,7 +213,7 @@ export function OnboardingTour() {
                       className="text-muted-foreground hover:text-foreground"
                     >
                       <ChevronLeft className="h-4 w-4 mr-1" />
-                      Back
+                      {t("onboarding.back")}
                     </Button>
                   )}
                 </div>
@@ -223,7 +225,7 @@ export function OnboardingTour() {
                     onClick={handleClose}
                     className="text-muted-foreground"
                   >
-                    Skip tour
+                    {t("onboarding.skip")}
                   </Button>
 
                   <Button
@@ -231,7 +233,7 @@ export function OnboardingTour() {
                     onClick={handleNext}
                     className="bg-primary hover:bg-primary/90 text-white shadow-lg shadow-primary"
                   >
-                    {currentStep.action?.label || (currentStep.id === "done" ? "Finish" : "Next")}
+                    {currentStep.action?.label || (currentStep.id === "done" ? t("onboarding.finish") : t("onboarding.next"))}
                     <ChevronRight className="h-4 w-4 ml-1" />
                   </Button>
                 </div>
@@ -241,7 +243,7 @@ export function OnboardingTour() {
             {/* Step counter */}
             <div className="px-6 py-3 border-t bg-muted/20 flex items-center justify-between">
               <span className="text-xs text-muted-foreground">
-                Step {currentStepIndex + 1} of {totalSteps}
+                {t("onboarding.step", { current: String(currentStepIndex + 1), total: String(totalSteps) })}
               </span>
               <div className="flex items-center gap-1">
                 {Array.from({ length: Math.min(totalSteps, 10) }).map((_, i) => (

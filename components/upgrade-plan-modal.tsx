@@ -2,6 +2,7 @@
 
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AlertTriangle } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -24,6 +25,7 @@ export function UpgradePlanModal({
 	type,
 }: UpgradePlanModalProps) {
 	const navigate = useNavigate();
+	const { t } = useLanguage();
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -31,23 +33,22 @@ export function UpgradePlanModal({
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
 						<AlertTriangle className="h-5 w-5 text-amber-500" />
-						Upgrade Your Plan
+						{t("upgrade.title")}
 					</DialogTitle>
 					<DialogDescription>
 						{type === "channel"
-							? "You've reached the maximum number of channels allowed on your current plan."
-							: "You've reached the maximum number of groups allowed on your current plan."}
+							? t("upgrade.desc.channels")
+							: t("upgrade.desc.groups")}
 					</DialogDescription>
 				</DialogHeader>
 				<div className="py-4">
 					<p className="text-sm text-muted-foreground">
-						To {type === "channel" ? "add more channels" : "create more groups"}
-						, please upgrade your plan to unlock more features.
+						{type === "channel" ? t("upgrade.body.channels") : t("upgrade.body.groups")}
 					</p>
 				</div>
 				<DialogFooter>
 					<Button variant="outline" onClick={() => onOpenChange(false)}>
-						Cancel
+						{t("upgrade.cancel")}
 					</Button>
 					<Button
 						variant="secondary"
@@ -56,7 +57,7 @@ export function UpgradePlanModal({
 							navigate({ to: "/dashboard/settings/billing" });
 						}}
 					>
-						Upgrade Plan
+						{t("upgrade.button")}
 					</Button>
 				</DialogFooter>
 			</DialogContent>

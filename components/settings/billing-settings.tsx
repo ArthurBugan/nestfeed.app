@@ -18,10 +18,12 @@ import {
 	useCancelSubscription,
 	useCreateCheckoutSession,
 } from "@/hooks/mutations/usePaymentMutations";
+import { useLanguage } from "@/components/language-provider";
 import { useDashboardTotal } from "@/hooks/useQuery/useDashboard";
 import { useUser } from "@/hooks/useQuery/useUser";
 
 export function BillingSettings() {
+	const { t } = useLanguage();
 	const { data: user, refetch } = useUser();
 	const { data: dashboardTotal, isLoading } = useDashboardTotal();
 	const createCheckoutSessionMutation = useCreateCheckoutSession();
@@ -103,7 +105,7 @@ export function BillingSettings() {
 		<div className="space-y-4">
 			{/* Current Plan */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4 space-y-3">
-				<h2 className="font-semibold text-sm">Current Plan</h2>
+				<h2 className="font-semibold text-sm">{t("billing.current")}</h2>
 				<div className="flex items-center justify-between">
 					<div>
 						<p className="text-lg font-bold">
@@ -111,8 +113,8 @@ export function BillingSettings() {
 						</p>
 						<p className="text-xs text-muted-foreground">
 							{subscriptionEndDate
-								? `Ends on: ${subscriptionEndDate}`
-								: `Billed monthly • Next: ${nextBillingDate}`}
+								? t("billing.ends", { date: subscriptionEndDate })
+								: t("billing.billed", { date: nextBillingDate })}
 						</p>
 					</div>
 					<Badge variant="outline">{currentPlan}</Badge>
@@ -121,7 +123,7 @@ export function BillingSettings() {
 
 			{/* Usage */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4 space-y-3">
-				<h2 className="font-semibold text-sm mb-1">Usage</h2>
+				<h2 className="font-semibold text-sm mb-1">{t("billing.usage")}</h2>
 
 				{isLoading ? (
 					<div className="space-y-2">
@@ -132,7 +134,7 @@ export function BillingSettings() {
 					<>
 						<div className="space-y-1.5">
 							<div className="flex justify-between text-xs">
-								<span>Groups</span>
+								<span>{t("billing.groups.label")}</span>
 								<span>
 									{usage.groups.used} / {usage.groups.limit}
 								</span>
@@ -144,7 +146,7 @@ export function BillingSettings() {
 
 						<div className="space-y-1.5">
 							<div className="flex justify-between text-xs">
-								<span>Channels</span>
+								<span>{t("billing.channels.label")}</span>
 								<span>
 									{usage.channels.used} / {usage.channels.limit}
 								</span>
@@ -159,7 +161,7 @@ export function BillingSettings() {
 
 			{/* Plans */}
 			<div className="space-y-3">
-				<h2 className="font-semibold text-sm">Available Plans</h2>
+				<h2 className="font-semibold text-sm">{t("billing.plans")}</h2>
 				<div className="grid md:grid-cols-3 gap-3">
 					{plans.map((plan) => (
 						<div
@@ -167,12 +169,12 @@ export function BillingSettings() {
 							className={`rounded-xl border p-4 ${plan.current ? "border-primary/30 bg-primary/5" : ""}`}
 						>
 							<div className="flex items-center justify-between mb-2">
-								<h3 className="font-semibold text-sm">{plan.name}</h3>
-								{plan.current && <Badge variant="secondary">Current</Badge>}
+								<h3 className="font-semibold text-sm">{plan.name === "Free" ? t("billing.free.name") : plan.name === "Basic" ? t("billing.basic.name") : t("billing.pro.name")}</h3>
+								{plan.current && <Badge variant="secondary">{t("billing.current.badge")}</Badge>}
 							</div>
 							<p className="text-lg font-bold mb-3">
 								{plan.price}
-								<span className="text-xs text-muted-foreground">/mo</span>
+								<span className="text-xs text-muted-foreground">{t("billing.month")}</span>
 							</p>
 							<ul className="space-y-1.5 mb-4">
 								<li>
@@ -194,8 +196,8 @@ export function BillingSettings() {
 									disabled={cancelSubscriptionMutation.isPending}
 								>
 									{cancelSubscriptionMutation.isPending
-										? "Canceling..."
-										: "Cancel Subscription"}
+										? t("billing.canceling")
+										: t("billing.cancel")}
 								</Button>
 							) : (
 								<Button
@@ -220,7 +222,7 @@ export function BillingSettings() {
 										}
 									}}
 								>
-									{plan.current ? "Current Plan" : "Change Plan"}
+									{plan.current ? t("billing.current.badge") : t("billing.change")}
 								</Button>
 							)}
 						</div>
@@ -230,14 +232,14 @@ export function BillingSettings() {
 
 			{/* History */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4">
-				<h2 className="font-semibold text-sm mb-1">Billing History</h2>
+				<h2 className="font-semibold text-sm mb-1">{t("billing.history")}</h2>
 				<Button
 					size="sm"
 					variant="secondary"
 					onClick={() => window.open("https://gumroad.com/dashboard", "_blank")}
 					className="w-full"
 				>
-					<Download className="h-3.5 w-3.5 mr-1" /> View on Gumroad
+					<Download className="h-3.5 w-3.5 mr-1" /> {t("billing.view")}
 				</Button>
 			</div>
 
@@ -247,11 +249,10 @@ export function BillingSettings() {
 					<DialogHeader>
 						<DialogTitle className="flex items-center gap-2">
 							<AlertTriangle className="h-5 w-5 text-amber-500" />
-							Cancel Subscription
+							{t("billing.cancel.title")}
 						</DialogTitle>
 						<DialogDescription>
-							Are you sure you want to cancel your subscription? You will lose
-							access to premium features at the end of your billing period.
+							{t("billing.cancel.desc")}
 						</DialogDescription>
 					</DialogHeader>
 					<DialogFooter>
@@ -259,7 +260,7 @@ export function BillingSettings() {
 							variant="outline"
 							onClick={() => setShowCancelDialog(false)}
 						>
-							Keep Subscription
+							{t("billing.keep")}
 						</Button>
 						<Button
 							variant="destructive"
@@ -267,8 +268,8 @@ export function BillingSettings() {
 							disabled={cancelSubscriptionMutation.isPending}
 						>
 							{cancelSubscriptionMutation.isPending
-								? "Canceling..."
-								: "Cancel Subscription"}
+								? t("billing.canceling")
+								: t("billing.cancel.confirm")}
 						</Button>
 					</DialogFooter>
 				</DialogContent>

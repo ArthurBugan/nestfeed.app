@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useLanguage } from "@/components/language-provider";
 import { AllChannelsTable } from "@/components/all-channels-table";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,12 +9,13 @@ export const Route = createFileRoute("/_app/dashboard/channels/")({
 });
 
 function ChannelsPage() {
+	const { t } = useLanguage();
 	return (
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<DashboardHeader
-					title="All Channels"
-					description="View and manage all YouTube channels"
+					title={t("dashboard.channels.title")}
+					description={t("dashboard.channels.desc")}
 				/>
 			</div>
 			<Card>

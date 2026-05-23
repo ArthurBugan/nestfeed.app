@@ -48,6 +48,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { useLanguage } from "@/components/language-provider";
 
 interface NavItem {
 	title: string;
@@ -56,53 +57,7 @@ interface NavItem {
 	dataTour?: string;
 }
 
-const mainItems: NavItem[] = [
-	{
-		title: "Dashboard",
-		url: "/dashboard",
-		icon: LayoutDashboard,
-	},
-	{
-		title: "Groups",
-		url: "/dashboard/groups",
-		icon: FolderKanban,
-		dataTour: "groups-nav-link",
-	},
-	{
-		title: "Channels",
-		url: "/dashboard/channels",
-		icon: Youtube,
-	},
-	{
-		title: "Share Links",
-		url: "/dashboard/share-links",
-		icon: Share2,
-	},
-];
 
-const secondaryItems: NavItem[] = [
-	{
-		title: "Group Shelf",
-		url: "/dashboard/groupshelf",
-		icon: Library,
-	},
-	{
-		title: "Animes",
-		url: "/dashboard/animes",
-		icon: Video,
-	},
-	{
-		title: "Websites",
-		url: "/dashboard/websites",
-		icon: Globe,
-	},
-	{
-		title: "Settings",
-		url: "/dashboard/settings/billing",
-		icon: Settings,
-		dataTour: "settings-nav-link",
-	},
-];
 
 export function AppSidebar() {
 	const logoutMutation = useLogoutMutation();
@@ -110,7 +65,56 @@ export function AppSidebar() {
 	const location = useLocation();
 	const { data: user } = useUser();
 	const { state } = useSidebar();
+	const { t } = useLanguage();
 	const isCollapsed = state === "collapsed";
+
+	const mainItems: NavItem[] = [
+		{
+			title: t("sidebar.dashboard"),
+			url: "/dashboard",
+			icon: LayoutDashboard,
+		},
+		{
+			title: t("sidebar.groups"),
+			url: "/dashboard/groups",
+			icon: FolderKanban,
+			dataTour: "groups-nav-link",
+		},
+		{
+			title: t("sidebar.channels"),
+			url: "/dashboard/channels",
+			icon: Youtube,
+		},
+		{
+			title: "Share Links",
+			url: "/dashboard/share-links",
+			icon: Share2,
+		},
+	];
+
+	const secondaryItems: NavItem[] = [
+		{
+			title: "Group Shelf",
+			url: "/dashboard/groupshelf",
+			icon: Library,
+		},
+		{
+			title: t("sidebar.animes"),
+			url: "/dashboard/animes",
+			icon: Video,
+		},
+		{
+			title: t("sidebar.websites"),
+			url: "/dashboard/websites",
+			icon: Globe,
+		},
+		{
+			title: t("sidebar.settings"),
+			url: "/dashboard/settings/billing",
+			icon: Settings,
+			dataTour: "settings-nav-link",
+		},
+	];
 
 	const signOut = () => {
 		logoutMutation.mutateAsync();
@@ -202,7 +206,7 @@ export function AppSidebar() {
 											>
 												<Link
 													to={item.url}
-																dataTour={item.dataTour}
+													dataTour={item.dataTour}
 													className={cn(
 														"group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
 														active
@@ -249,7 +253,7 @@ export function AppSidebar() {
 											>
 												<Link
 													to={item.url}
-																dataTour={item.dataTour}
+													dataTour={item.dataTour}
 													className={cn(
 														"group flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-all duration-200",
 														active

@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useLanguage } from "@/components/language-provider";
 import { CompactHeader } from "@/components/compact-header";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -43,6 +44,7 @@ function TechBackground() {
 }
 
 function SupportPage() {
+	const { t } = useLanguage();
 	return (
 		<div className="min-h-screen bg-background flex flex-col relative overflow-hidden">
 			<TechBackground />
@@ -59,17 +61,17 @@ function SupportPage() {
 						>
 							<Badge variant="outline" className="mb-4 py-1 px-4 border-blue-500/30 bg-blue-500/5 text-blue-500 font-mono">
 								<LifeBuoy className="mr-2 h-3.5 w-3.5" />
-								Help Center & Community
+								{t("support.badge")}
 							</Badge>
 							<h1 className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
-								How can we{" "}
+								{t("support.title1")}{" "}
 								<span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-									help you
+									{t("support.title2")}
 								</span>{" "}
-								today?
+								{t("support.title3")}
 							</h1>
 							<p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-								Whether you're troubleshooting an issue or want to help us shape the future of YouTube organization, we're just a click away.
+								{t("support.subtitle")}
 							</p>
 						</motion.div>
 					</div>
@@ -91,17 +93,17 @@ function SupportPage() {
 										<MessageSquare className="text-white h-7 w-7" />
 									</div>
 									<div className="space-y-3">
-										<h2 className="text-3xl font-bold tracking-tight">Join the Community</h2>
+										<h2 className="text-3xl font-bold tracking-tight">{t("support.community.title")}</h2>
 										<p className="text-muted-foreground leading-relaxed">
-											Get instant help from our team and fellow Nestfeed users. Share your setup, suggest new features, and stay updated.
+											{t("support.community.desc")}
 										</p>
 									</div>
 									<div className="flex flex-wrap gap-3">
 										<Badge variant="secondary" className="bg-background/50 backdrop-blur-sm border-white/5 font-mono text-xs">
-											<Users className="mr-1.5 h-3 w-3" /> 1k+ Members
+											<Users className="mr-1.5 h-3 w-3" /> {t("support.community.members")}
 										</Badge>
 										<Badge variant="secondary" className="bg-background/50 backdrop-blur-sm border-white/5 font-mono text-xs">
-											<Sparkles className="mr-1.5 h-3 w-3" /> Beta Access
+											<Sparkles className="mr-1.5 h-3 w-3" /> {t("support.community.beta")}
 										</Badge>
 									</div>
 									<Button 
@@ -110,7 +112,7 @@ function SupportPage() {
 										asChild
 									>
 										<a href="https://discord.gg/Hp4MvPanwr" target="_blank" rel="noreferrer">
-											Open Discord
+											{t("support.community.button")}
 											<ExternalLink className="ml-2 h-4 w-4" />
 										</a>
 									</Button>
@@ -123,8 +125,8 @@ function SupportPage() {
 												<HelpCircle className="h-4 w-4" />
 											</div>
 											<div>
-												<p className="font-semibold text-sm">Real-time Troubleshooting</p>
-												<p className="text-xs text-muted-foreground">Direct access to our developers for quick fixes.</p>
+												<p className="font-semibold text-sm">{t("support.feature1.title")}</p>
+												<p className="text-xs text-muted-foreground">{t("support.feature1.desc")}</p>
 											</div>
 										</div>
 										<div className="flex items-start gap-4">
@@ -132,8 +134,8 @@ function SupportPage() {
 												<ShieldCheck className="h-4 w-4" />
 											</div>
 											<div>
-												<p className="font-semibold text-sm">Priority Support</p>
-												<p className="text-xs text-muted-foreground">Discord members get faster response times.</p>
+												<p className="font-semibold text-sm">{t("support.feature2.title")}</p>
+												<p className="text-xs text-muted-foreground">{t("support.feature2.desc")}</p>
 											</div>
 										</div>
 										<div className="flex items-start gap-4">
@@ -141,8 +143,8 @@ function SupportPage() {
 												<Sparkles className="h-4 w-4" />
 											</div>
 											<div>
-												<p className="font-semibold text-sm">Feature Requests</p>
-												<p className="text-xs text-muted-foreground">Vote on the next features we build.</p>
+												<p className="font-semibold text-sm">{t("support.feature3.title")}</p>
+												<p className="text-xs text-muted-foreground">{t("support.feature3.desc")}</p>
 											</div>
 										</div>
 									</div>
@@ -163,15 +165,15 @@ function SupportPage() {
 									<div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
 										<Mail className="h-5 w-5" />
 									</div>
-									<CardTitle>Email Support</CardTitle>
+									<CardTitle>{t("support.email.title")}</CardTitle>
 									<CardDescription className="text-sm leading-relaxed">
-										Need a formal response? Send us an email and our support team will get back to you within 24 hours.
+										{t("support.email.desc")}
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<Button variant="ghost" className="w-full justify-between hover:bg-primary/10 group/btn" asChild>
 										<a href="mailto:admin@nestfeed.app">
-											admin@nestfeed.app
+{t("support.email.address")}
 											<ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
 										</a>
 									</Button>
@@ -189,15 +191,15 @@ function SupportPage() {
 									<div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2 group-hover:scale-110 transition-transform">
 										<Github className="h-5 w-5" />
 									</div>
-									<CardTitle>Open Source</CardTitle>
+									<CardTitle>{t("support.oss.title")}</CardTitle>
 									<CardDescription className="text-sm leading-relaxed">
-										Our core extension is open source. Browse the code, report technical bugs, or contribute on GitHub.
+										{t("support.oss.desc")}
 									</CardDescription>
 								</CardHeader>
 								<CardContent>
 									<Button variant="ghost" className="w-full justify-between hover:bg-primary/10 group/btn" asChild>
 										<a href="https://github.com/ArthurBugan/nestfeed.extension" target="_blank" rel="noreferrer">
-											View on GitHub
+											{t("support.oss.button")}
 											<ArrowRight className="h-4 w-4 opacity-0 -translate-x-2 group-hover/btn:opacity-100 group-hover/btn:translate-x-0 transition-all" />
 										</a>
 									</Button>
@@ -218,7 +220,7 @@ function SupportPage() {
 							<span className="text-xl font-bold font-mono tracking-tight">Nestfeed</span>
 						</Link>
 						<p className="text-sm text-muted-foreground">
-							&copy; 2025 Nestfeed. All rights reserved.
+							{t("support.footer")}
 						</p>
 						<div className="flex gap-4">
 							<a href="https://discord.gg/Hp4MvPanwr" className="text-muted-foreground hover:text-primary transition-colors">

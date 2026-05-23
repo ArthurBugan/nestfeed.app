@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+import { useLanguage } from "@/components/language-provider";
 import { CompactHeader } from "@/components/compact-header";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
@@ -35,6 +36,7 @@ const resetPasswordSchema = z.object({
 type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 
 function ForgotPasswordConfirmPage() {
+	const { t } = useLanguage();
 	const { id } = Route.useParams();
 	const [isPending, setIsPending] = useState(false);
 	const [error, setError] = useState<string | null>(null);
@@ -51,7 +53,7 @@ function ForgotPasswordConfirmPage() {
 		if (data.password !== data.password_confirmation) {
 			form.setError("password_confirmation", {
 				type: "manual",
-				message: "Passwords do not match",
+				message: t("forgot.confirm.error.match"),
 			});
 			return;
 		}
@@ -65,10 +67,10 @@ function ForgotPasswordConfirmPage() {
 				password_confirmation: data.password_confirmation,
 			});
 
-			toast.success("Password reset successfully");
+			toast.success(t("forgot.confirm.success"));
 			window.location.href = "/forgot-password/success/new-password";
 		} catch (err: any) {
-			setError(err.message || "Failed to reset password. Please try again.");
+			setError(err.message || t("forgot.confirm.error.default"));
 		} finally {
 			setIsPending(false);
 		}
@@ -82,10 +84,10 @@ function ForgotPasswordConfirmPage() {
 				<div className="w-full max-w-md">
 					<div className="text-center mb-6 space-y-2">
 						<h1 className="text-2xl font-bold tracking-tight">
-							Reset your password
+							{t("forgot.confirm.title")}
 						</h1>
 						<p className="text-sm text-muted-foreground">
-							Enter your new password to reset it.
+							{t("forgot.confirm.desc")}
 						</p>
 					</div>
 
@@ -111,7 +113,7 @@ function ForgotPasswordConfirmPage() {
 										render={({ field }) => (
 											<FormItem className="space-y-1.5">
 												<FormLabel className="text-sm font-medium">
-													New Password
+													{t("forgot.confirm.newpassword")}
 												</FormLabel>
 												<div className="relative">
 													<Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
@@ -135,7 +137,7 @@ function ForgotPasswordConfirmPage() {
 										render={({ field }) => (
 											<FormItem className="space-y-1.5">
 												<FormLabel className="text-sm font-medium">
-													Confirm Password
+													{t("forgot.confirm.confirmpassword")}
 												</FormLabel>
 												<div className="relative">
 													<Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
@@ -161,7 +163,7 @@ function ForgotPasswordConfirmPage() {
 										{isPending ? (
 											<Loader2 className="mr-2 h-4 w-4 animate-spin" />
 										) : null}
-										Reset password
+										{t("forgot.confirm.reset")}
 									</Button>
 								</form>
 							</Form>
@@ -171,7 +173,7 @@ function ForgotPasswordConfirmPage() {
 									to="/login"
 									className="text-sm text-red-600 hover:text-red-700 dark:text-red-400 font-medium"
 								>
-									Back to sign in
+									{t("forgot.confirm.back")}
 								</Link>
 							</div>
 						</div>

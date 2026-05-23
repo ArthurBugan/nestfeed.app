@@ -9,6 +9,7 @@ import { UpgradePlanModal } from "@/components/upgrade-plan-modal";
 import { useGroups } from "@/hooks/useQuery/useGroups";
 import { useUser } from "@/hooks/useQuery/useUser";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/components/language-provider";
 
 export function GroupList() {
 	const navigate = useNavigate();
@@ -17,6 +18,7 @@ export function GroupList() {
 	});
 	const { data: user } = useUser();
 	const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
+	const { t } = useLanguage();
 
 	const groups = groupsData?.data || [];
 
@@ -44,14 +46,14 @@ export function GroupList() {
 			<div className="text-center py-8">
 				<div className="bg-muted/50 rounded-lg p-6 mb-4">
 					<FolderKanban className="h-12 w-12 text-muted-foreground mx-auto mb-3" />
-					<h3 className="font-semibold mb-1">No groups yet</h3>
+					<h3 className="font-semibold mb-1">{t("group.list.empty.title")}</h3>
 					<p className="text-sm text-muted-foreground mb-4">
-						Start organizing your YouTube channels into groups
+						{t("group.list.empty.desc")}
 					</p>
 				</div>
 				<Button size="sm" variant="outline" onClick={handleCreateGroup}>
 					<Plus className="h-4 w-4 mr-1" />
-					Create Your First Group
+					{t("group.list.create")}
 				</Button>
 				{user?.canAddGroup === false && (
 					<UpgradePlanModal
@@ -91,7 +93,7 @@ export function GroupList() {
 									</Badge>
 								)}
 								<span className="text-xs text-muted-foreground">
-									{group.channelCount || 0} channels
+									{t("group.list.channels", { count: String(group.channelCount || 0) })}
 								</span>
 							</div>
 						</div>

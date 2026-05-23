@@ -31,25 +31,28 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
+import { useLanguage } from "@/components/language-provider";
 import type { Group } from "@/hooks/useQuery/useGroups";
 
-export const groupFormSchema = z.object({
-	name: z
-		.string()
-		.min(1, "Required")
-		.max(50, "Max 50 chars")
-		.regex(
-			/^[a-zA-Z0-9\s\-_]+$/,
-			"Only letters, numbers, spaces, hyphens, underscores",
-		),
-	description: z.string().max(200).optional(),
-	category: z.string().min(1, "Select a category"),
-	icon: z.string().min(1, "Select an icon"),
-	parentId: z.string().optional(),
-	enableGroupshelf: z.boolean().optional(),
-});
+function createGroupFormSchema(t: (key: string) => string) {
+	return z.object({
+		name: z
+			.string()
+			.min(1, t("group.form.validation.required"))
+			.max(50, t("group.form.validation.max50"))
+			.regex(
+				/^[a-zA-Z0-9\s\-_]+$/,
+				"Only letters, numbers, spaces, hyphens, underscores",
+			),
+		description: z.string().max(200).optional(),
+		category: z.string().min(1, t("group.form.category.placeholder")),
+		icon: z.string().min(1, t("group.form.icon.placeholder")),
+		parentId: z.string().optional(),
+		enableGroupshelf: z.boolean().optional(),
+	});
+}
 
-export type GroupFormData = z.infer<typeof groupFormSchema>;
+export type GroupFormData = z.infer<ReturnType<typeof createGroupFormSchema>>;
 
 interface GroupFormProps {
 	initialData?: Partial<GroupFormData>;
@@ -83,13 +86,16 @@ export function GroupForm({
 	groups = [],
 	isLoading = false,
 	onSubmit,
-	submitLabel = "Submit",
+	submitLabel,
 	cancelPath = "/dashboard/groups",
 	title = "Create Group",
 	description = "",
 	parentId,
 }: GroupFormProps) {
 	const navigate = useNavigate();
+	const { t } = useLanguage();
+	const formSchema = createGroupFormSchema(t);
+	const resolvedSubmitLabel = submitLabel ?? t("group.form.submit");
 	const [categories, setCategories] = useState<string[]>(DEFAULT_CATEGORIES);
 
 	useEffect(() => {
@@ -111,7 +117,7 @@ export function GroupForm({
 	}, []);
 
 	const form = useForm<GroupFormData>({
-		resolver: zodResolver(groupFormSchema),
+		resolver: zodResolver(formSchema),
 		defaultValues: {
 			name: initialData?.name || "",
 			description: initialData?.description || "",
@@ -158,7 +164,7 @@ export function GroupForm({
 									<div className="flex flex-row items-center justify-between gap-4">
 										<div className="space-y-1">
 											<FormLabel className="text-base font-semibold">
-												Enable Group Shelf
+												{t("group.form.shelf")}
 											</FormLabel>
 											<FormDescription>
 												Allow this group to be added to groupshelf, so other
@@ -179,9 +185,9 @@ export function GroupForm({
 							name="name"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel className="text-sm font-medium">Name</FormLabel>
+									<FormLabel className="text-sm font-medium">{t("group.form.name")}</FormLabel>
 									<FormControl>
-										<Input placeholder="My Group" className="h-10" data-tour="group-name-input" {...field} />
+										<Input placeholder={t("group.form.name.placeholder")} className="h-10" data-tour="group-name-input" {...field} />
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -194,11 +200,11 @@ export function GroupForm({
 							render={({ field }) => (
 								<FormItem>
 									<FormLabel className="text-sm font-medium">
-										Description
+										{t("group.form.description")}
 									</FormLabel>
 									<FormControl>
 										<Input
-											placeholder="What's this group about?"
+											placeholder={t("group.form.description.placeholder")}
 											className="h-10"
 											{...field}
 										/>
@@ -215,7 +221,7 @@ export function GroupForm({
 								render={({ field }) => (
 									<FormItem>
 										<FormLabel className="text-sm font-medium">
-											Category
+											{t("group.form.category")}
 										</FormLabel>
 										<Select
 											onValueChange={field.onChange}
@@ -223,7 +229,7 @@ export function GroupForm({
 										>
 											<FormControl>
 												<SelectTrigger className="h-10" data-tour="group-category">
-													<SelectValue placeholder="Select category" />
+													<SelectValue placeholder={t("group.form.category.placeholder")} />
 												</SelectTrigger>
 											</FormControl>
 											<SelectContent>
@@ -244,7 +250,7 @@ export function GroupForm({
 								name="icon"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="text-sm font-medium">Icon</FormLabel>
+										<FormLabel className="text-sm font-medium">{t("group.form.icon")}</FormLabel>
 										<FormControl>
 											<IconPicker
 												value={field.value}
@@ -265,7 +271,7 @@ export function GroupForm({
 								render={({ field }) => (
 									<FormItem className="md:col-span-2">
 										<FormLabel className="text-sm font-medium">
-											Parent Group (Optional)
+											{t("group.form.parent")}
 										</FormLabel>
 										<Select
 											onValueChange={field.onChange}
@@ -273,11 +279,11 @@ export function GroupForm({
 										>
 											<FormControl>
 												<SelectTrigger className="h-10">
-													<SelectValue placeholder="None (top-level)" />
+													<SelectValue placeholder={t("group.form.parent.none")} />
 												</SelectTrigger>
 											</FormControl>
 											<SelectContent>
-												<SelectItem value="none">None (Top-level)</SelectItem>
+												<SelectItem value="none">{t("group.form.parent.none")}</SelectItem>
 												{groups.map((g) => (
 													<SelectItem key={g.id} value={g.id}>
 														<div className="flex items-center gap-2">
@@ -307,7 +313,7 @@ export function GroupForm({
 								type="button"
 								onClick={() => navigate({ to: cancelPath })}
 							>
-								Cancel
+								{t("group.form.cancel")}
 							</Button>
 							<Button
 								size="sm"
@@ -318,10 +324,10 @@ export function GroupForm({
 								{isLoading ? (
 									<>
 										<Loader2 className="mr-2 h-3.5 w-3.5 animate-spin" />{" "}
-										Creating...
+										{t("group.form.creating")}
 									</>
 								) : (
-									submitLabel
+									resolvedSubmitLabel
 								)}
 							</Button>
 						</div>

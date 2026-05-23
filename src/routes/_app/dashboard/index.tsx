@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { z } from "zod";
+import { useLanguage } from "@/components/language-provider";
 import { DashboardStats } from "@/components/dashboard-stats";
 import { GroupList } from "@/components/group-list";
 import { RecentActivity } from "@/components/recent-activity";
@@ -41,13 +42,14 @@ function WelcomeSection({
 	user: any;
 	onNewGroup: () => void;
 }) {
+	const { t } = useLanguage();
 	const currentHour = new Date().getHours();
 	const greeting =
 		currentHour < 12
-			? "Good morning"
+			? t("dashboard.greeting.morning")
 			: currentHour < 18
-				? "Good afternoon"
-				: "Good evening";
+				? t("dashboard.greeting.afternoon")
+				: t("dashboard.greeting.evening");
 
 	return (
 		<div className="rounded-xl border bg-gradient-to-r from-primary/5 to-secondary/5 p-4 md:p-6" data-tour="welcome-section">
@@ -67,17 +69,17 @@ function WelcomeSection({
 							{user?.username || user?.email?.split("@")[0] || "User"}!
 						</h1>
 						<p className="text-sm text-muted-foreground hidden md:block">
-							Here's what's happening with your groups today
+							{t("dashboard.greeting.subtitle")}
 						</p>
 					</div>
 				</div>
 				<div className="flex gap-2">
 					<Button size="sm" onClick={onNewGroup} data-tour="new-group-btn">
-						<Plus className="h-3.5 w-3.5 mr-1.5" /> New Group
+						<Plus className="h-3.5 w-3.5 mr-1.5" /> {t("groups.new")}
 					</Button>
 					<Button size="sm" asChild>
 						<Link to="/dashboard/share-links">
-							<Share2 className="h-3.5 w-3.5 mr-1.5" /> Share Links
+							<Share2 className="h-3.5 w-3.5 mr-1.5" /> {t("dashboard.share.links")}
 						</Link>
 					</Button>
 				</div>
@@ -87,30 +89,31 @@ function WelcomeSection({
 }
 
 function QuickActions() {
+	const { t } = useLanguage();
 	const navigate = useNavigate();
 
 	const actions = [
 		{
-			title: "Create Group",
-			desc: "Organize channels",
+			title: t("dashboard.create.group"),
+			desc: t("dashboard.create.group.desc"),
 			icon: Plus,
 			href: "/dashboard/groups/new",
 		},
 		{
-			title: "View Channels",
-			desc: "Manage all",
+			title: t("dashboard.view.channels"),
+			desc: t("dashboard.view.channels.desc"),
 			icon: Users,
 			href: "/dashboard/channels",
 		},
 		{
-			title: "Share Links",
-			desc: "Manage access",
+			title: t("dashboard.share.links"),
+			desc: t("dashboard.share.links.desc"),
 			icon: Share2,
 			href: "/dashboard/share-links",
 		},
 		{
-			title: "Upgrade Plan",
-			desc: "Get more features",
+			title: t("dashboard.upgrade.plan"),
+			desc: t("dashboard.upgrade.plan.desc"),
 			icon: Sparkles,
 			href: "/dashboard/settings/billing",
 		},
@@ -138,6 +141,7 @@ function QuickActions() {
 }
 
 function DashboardPage() {
+	const { t } = useLanguage();
 	const { origin } = Route.useSearch();
 	const { data: user } = useUser();
 	const { data: dashboardData } = useDashboardTotal();
@@ -195,13 +199,13 @@ function DashboardPage() {
 			)}
 
 			<section className="space-y-2">
-				<h2 className="text-sm font-semibold">Quick Actions</h2>
+				<h2 className="text-sm font-semibold">{t("dashboard.quickactions")}</h2>
 				<QuickActions />
 			</section>
 
 			<section className="space-y-2">
 				<div className="flex items-center gap-2 text-sm font-semibold">
-					<TrendingUp className="h-4 w-4 text-primary" /> Overview
+					<TrendingUp className="h-4 w-4 text-primary" /> {t("dashboard.overview")}
 				</div>
 				<DashboardStats />
 			</section>
@@ -209,20 +213,20 @@ function DashboardPage() {
 			<Tabs defaultValue="groups" className="space-y-4">
 				<div className="flex items-center justify-between mb-2">
 					<div className="flex items-center gap-2 text-sm font-semibold">
-						<Users className="h-4 w-4 text-primary" /> Your Groups
+						<Users className="h-4 w-4 text-primary" /> {t("dashboard.yourgroups")}
 					</div>
 					<TabsList className="grid grid-cols-2 w-auto bg-muted/30">
 						<TabsTrigger
 							value="groups"
 							className=""
 						>
-							Groups
+							{t("dashboard.tab.groups")}
 						</TabsTrigger>
 						<TabsTrigger
 							value="shared"
 							className=""
 						>
-							Shared
+							{t("dashboard.tab.shared")}
 						</TabsTrigger>
 					</TabsList>
 				</div>
@@ -231,17 +235,17 @@ function DashboardPage() {
 					<div className="grid lg:grid-cols-3 gap-4">
 						<div className="lg:col-span-2 rounded-xl border bg-card/50 backdrop-blur-sm p-4">
 							<div className="flex items-center justify-between mb-4">
-								<h3 className="font-semibold text-sm">Recent Groups</h3>
+								<h3 className="font-semibold text-sm">{t("dashboard.recent.title")}</h3>
 								<Button size="sm" variant="ghost" asChild>
 									<Link to="/dashboard/groups">
-										<ArrowRight className="h-3.5 w-3.5 mr-1" /> All
+										<ArrowRight className="h-3.5 w-3.5 mr-1" /> {t("dashboard.recent.all")}
 									</Link>
 								</Button>
 							</div>
 							<GroupList />
 						</div>
 						<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4">
-							<h3 className="font-semibold text-sm mb-3">Recent Features</h3>
+							<h3 className="font-semibold text-sm mb-3">{t("dashboard.recent.features")}</h3>
 							<RecentActivity />
 						</div>
 					</div>
@@ -250,13 +254,13 @@ function DashboardPage() {
 				<TabsContent value="shared" className="mt-0">
 					<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4">
 						<div className="flex items-center justify-between mb-3">
-							<h3 className="font-semibold text-sm">Shared Groups</h3>
+							<h3 className="font-semibold text-sm">{t("dashboard.shared.title")}</h3>
 							<Badge variant="secondary" className="gap-1">
-								<Share2 className="h-3 w-3" /> Shared Access
+								<Share2 className="h-3 w-3" /> {t("dashboard.shared.access")}
 							</Badge>
 						</div>
 						<p className="text-xs text-muted-foreground mb-4">
-							Groups shared with you
+							{t("dashboard.shared.subtitle")}
 						</p>
 					</div>
 				</TabsContent>

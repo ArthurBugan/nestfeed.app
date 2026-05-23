@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useLanguage } from "@/components/language-provider";
 import { AllAnimesTable } from "@/components/all-animes-table";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { Card, CardContent } from "@/components/ui/card";
@@ -8,12 +9,13 @@ export const Route = createFileRoute("/_app/dashboard/animes/")({
 });
 
 function AnimeChannelsPage() {
+	const { t } = useLanguage();
 	return (
 		<div className="space-y-6">
 			<div className="flex items-center justify-between">
 				<DashboardHeader
-					title="All Animes"
-					description="View and manage all animes"
+					title={t("dashboard.animes.title")}
+					description={t("dashboard.animes.desc")}
 				/>
 			</div>
 			<Card>

@@ -15,6 +15,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
+import { useLanguage } from "@/components/language-provider";
 import { useConsumeShareLink, useShareLink } from "@/hooks/useQuery/useShare";
 
 export const Route = createFileRoute("/_app/share/$type/$id/")({
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/_app/share/$type/$id/")({
 });
 
 function ShareLinkPage() {
+	const { t } = useLanguage();
 	const { id, type } = Route.useParams();
 	const router = useNavigate();
 	const { data: shareLink, isLoading, error } = useShareLink(id);
@@ -34,9 +36,9 @@ function ShareLinkPage() {
 			<div className="flex min-h-screen items-center justify-center">
 				<Card className="w-full max-w-md">
 					<CardHeader>
-						<CardTitle className="text-center">Loading...</CardTitle>
+						<CardTitle className="text-center">{t("share.loading.title")}</CardTitle>
 						<CardDescription className="text-center">
-							Fetching group information...
+							{t("share.loading.desc")}
 						</CardDescription>
 					</CardHeader>
 				</Card>
@@ -51,12 +53,12 @@ function ShareLinkPage() {
 					<CardHeader>
 						<CardTitle className="text-center text-destructive flex items-center justify-center gap-2">
 							{isExpired && <Clock className="h-5 w-5" />}
-							{isExpired ? "Link Expired" : "Error"}
+							{isExpired ? t("share.error.expired") : t("share.error.title")}
 						</CardTitle>
 						<CardDescription className="text-center">
 							{isExpired
-								? "This share link has expired and is no longer valid."
-								: "Failed to load group data"}
+								? t("share.error.expired.desc")
+								: t("share.error.loading.desc")}
 						</CardDescription>
 					</CardHeader>
 					<CardContent className="space-y-4">
@@ -64,8 +66,7 @@ function ShareLinkPage() {
 							<Alert>
 								<AlertTriangle className="h-4 w-4" />
 								<AlertDescription>
-									Share links have a limited validity period. Please contact the
-									person who shared this link to get a new one.
+									{t("share.alert.expired")}
 								</AlertDescription>
 							</Alert>
 						)}
@@ -75,7 +76,7 @@ function ShareLinkPage() {
 							className="w-full"
 							onClick={() => router({ to: "/dashboard" })}
 						>
-							Go to Dashboard
+							{t("share.button.dashboard")}
 						</Button>
 					</CardFooter>
 				</Card>
@@ -102,24 +103,24 @@ function ShareLinkPage() {
 			<Card className="w-full max-w-md">
 				<CardHeader>
 					<CardTitle>
-						{type !== "copy" ? "Join Collaboration" : "Copy Group"}
+						{type !== "copy" ? t("share.card.collab") : t("share.card.copy")}
 					</CardTitle>
 					<CardDescription>
 						{type !== "copy"
-							? `You've been invited to collaborate on "${shareLink?.groupName || "a group"}"`
-							: `Copy all channels from "${shareLink?.groupName || "a group"}" to your account`}
+							? t("share.card.collab.desc", { name: shareLink?.groupName || "a group" })
+							: t("share.card.copy.desc", { name: shareLink?.groupName || "a group" })}
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-4">
 					<div className="space-y-2">
 						<div className="flex items-center justify-between">
 							<h3 className="font-medium">
-								{shareLink?.groupName || "Unknown Group"}
+								{shareLink?.groupName || t("share.group.unknown")}
 							</h3>
-							<Badge>{shareLink?.groupDescription || "Unknown"}</Badge>
+							<Badge>{shareLink?.groupDescription || t("share.label.unknown")}</Badge>
 						</div>
 						<p className="text-sm text-muted-foreground">
-							{shareLink?.groupDescription || "No description available"}
+							{shareLink?.groupDescription || t("share.desc.none")}
 						</p>
 					</div>
 
@@ -127,7 +128,7 @@ function ShareLinkPage() {
 
 					<div className="space-y-2">
 						<div className="flex justify-between">
-							<span className="text-sm text-muted-foreground">Channels</span>
+							<span className="text-sm text-muted-foreground">{t("share.channels")}</span>
 							<span className="font-medium">
 								{shareLink?.channelCount || "0"}
 							</span>
@@ -151,13 +152,10 @@ function ShareLinkPage() {
 						<Alert>
 							<Users className="h-4 w-4" />
 							<AlertDescription>
-								You will join as a {shareLink?.permission} permission .
-								{shareLink?.permission === "view" &&
-									" You will only be able to view channels and groups"}
-								{shareLink?.permission === "edit" &&
-									" You will be able to add, remove, and edit groups and channels."}
-								{shareLink?.permission === "admin" &&
-									" You will have full control over group and can invite others."}
+								{t("share.permission.alert", { permission: shareLink?.permission || "" })}
+								{shareLink?.permission === "view" && t("share.permission.view")}
+								{shareLink?.permission === "edit" && t("share.permission.edit")}
+								{shareLink?.permission === "admin" && t("share.permission.admin")}
 							</AlertDescription>
 						</Alert>
 					) : (
@@ -165,8 +163,7 @@ function ShareLinkPage() {
 							<Alert>
 								<Copy className="h-4 w-4" />
 								<AlertDescription>
-									This will copy all {shareLink?.channelCount || "0"} channels
-									to your account.
+									{t("share.copy.alert", { count: String(shareLink?.channelCount || "0") })}
 								</AlertDescription>
 							</Alert>
 						</div>
@@ -177,7 +174,7 @@ function ShareLinkPage() {
 						variant="outline"
 						onClick={() => router({ to: "/dashboard" })}
 					>
-						Cancel
+						{t("share.cancel")}
 					</Button>
 					<Button
 						variant="secondary"
@@ -188,11 +185,11 @@ function ShareLinkPage() {
 					>
 						{isLoading || isConsuming
 							? type !== "copy"
-								? "Joining..."
-								: "Copying..."
+								? t("share.joining")
+								: t("share.copying")
 							: type !== "copy"
-								? "Join Group"
-								: "Copy Channels"}
+								? t("share.join")
+								: t("share.copy.btn")}
 					</Button>
 				</CardFooter>
 			</Card>

@@ -520,22 +520,6 @@ export function LandingPage() {
 										</motion.div>
 									))}
 								</div>
-								<div className="mt-6 pt-4 border-t border-border/50">
-									<p className="text-sm text-muted-foreground mb-3">
-										Help us grow by starring our repositories!
-									</p>
-									<Button
-										variant="outline"
-										size="sm"
-										asChild
-										className="rounded-xl border-muted-foreground/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
-									>
-										<a href="https://github.com/ArthurBugan/nestfeed.application" target="_blank" rel="noopener noreferrer">
-											<IconViewer icon="mdi:github" className="h-4 w-4 mr-1" />
-											Star on GitHub
-										</a>
-									</Button>
-								</div>
 							</div>
 						</AnimatedSection>
 						<AnimatedSection variants={slideInRight}>

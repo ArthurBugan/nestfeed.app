@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
 import {
 	ExternalLink,
 	Minus,
@@ -28,6 +29,7 @@ import {
 } from "@/components/ui/table";
 
 export function TopChannelsTable() {
+	const { t } = useLanguage();
 	const [searchTerm, setSearchTerm] = useState("");
 
 	// Mock data - in a real app, this would come from your database
@@ -134,13 +136,13 @@ export function TopChannelsTable() {
 		<Card>
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div>
-					<CardTitle>Top Performing Channels</CardTitle>
+					<CardTitle>{t("top.channels.title")}</CardTitle>
 					<CardDescription>
-						Your channels with the most subscribers and engagement
+						{t("top.channels.description")}
 					</CardDescription>
 				</div>
 				<Input
-					placeholder="Search channels..."
+					placeholder={t("top.channels.search")}
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 					className="max-w-sm"
@@ -151,19 +153,19 @@ export function TopChannelsTable() {
 					<Table>
 						<TableHeader>
 							<TableRow>
-								<TableHead>Channel</TableHead>
-								<TableHead>Group</TableHead>
-								<TableHead>Subscribers</TableHead>
-								<TableHead>30-Day Growth</TableHead>
-								<TableHead>Total Views</TableHead>
-								<TableHead>30-Day Views</TableHead>
+								<TableHead>{t("top.channels.channel")}</TableHead>
+								<TableHead>{t("top.channels.group")}</TableHead>
+								<TableHead>{t("top.channels.subscribers")}</TableHead>
+								<TableHead>{t("top.channels.growth")}</TableHead>
+								<TableHead>{t("top.channels.totalViews")}</TableHead>
+								<TableHead>{t("top.channels.monthViews")}</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>
 							{filteredChannels.length === 0 ? (
 								<TableRow>
 									<TableCell colSpan={6} className="h-24 text-center">
-										No channels found.
+										{t("top.channels.empty")}
 									</TableCell>
 								</TableRow>
 							) : (
@@ -193,7 +195,7 @@ export function TopChannelsTable() {
 														</a>
 													</div>
 													<span className="text-xs text-muted-foreground">
-														{channel.videos} videos
+														{t("top.channels.videos", { count: String(channel.videos) })}
 													</span>
 												</div>
 											</div>
