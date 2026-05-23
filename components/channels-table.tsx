@@ -150,7 +150,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 										<DropdownMenuTrigger asChild>
 											<Button variant="ghost" size="icon">
 												<MoreHorizontal className="h-4 w-4" />
-												<span className="sr-only">{t("channels.table.openMenu")}</span>
+												<span className="sr-only">{t("channels.table.openmenu")}</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="end">
@@ -332,7 +332,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("grid")}
 						>
 							<LayoutGrid className="h-4 w-4" />
-							<span className="sr-only">{t("channels.table.gridView")}</span>
+							<span className="sr-only">{t("channels.table.view.grid")}</span>
 						</Button>
 						<Button
 							variant={viewMode === "list" ? "secondary" : "ghost"}
@@ -341,7 +341,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("list")}
 						>
 							<List className="h-4 w-4" />
-							<span className="sr-only">{t("channels.table.listView")}</span>
+							<span className="sr-only">{t("channels.table.view.list")}</span>
 						</Button>
 						<Button
 							variant={viewMode === "compact" ? "secondary" : "ghost"}
@@ -350,7 +350,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("compact")}
 						>
 							<AlignJustify className="h-4 w-4" />
-							<span className="sr-only">{t("channels.table.compactView")}</span>
+							<span className="sr-only">{t("channels.table.view.compact")}</span>
 						</Button>
 					</div>
 				</div>

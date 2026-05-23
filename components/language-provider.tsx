@@ -513,10 +513,12 @@ const translations = {
 		"all.channels.changegroup": "Change group",
 		"all.channels.delete": "Delete channel",
 		"all.channels.itemsperpage": "Items per page",
+		"all.channels.itemsPerPagePlaceholder": "Items per page",
 		"all.channels.openmenu": "Open menu",
 		"all.channels.notfound": "No channels found",
 		"all.channels.sync": "Sync your Google account to import your YouTube channels.",
 		"all.channels.sync.link": "Go to settings",
+		"all.channels.syncDescription": "Sync your Google account to",
 
 		// All Animes
 		"all.animes.search": "Search animes...",
@@ -531,6 +533,7 @@ const translations = {
 		"all.animes.changegroup": "Change group",
 		"all.animes.delete": "Delete channel",
 		"all.animes.itemsperpage": "Items per page",
+		"all.animes.itemsPerPagePlaceholder": "Items per page",
 		"all.animes.openmenu": "Open menu",
 
 		// All Websites
@@ -776,6 +779,9 @@ const translations = {
 		"billing.channels.label": "Channels",
 		"billing.plans": "Available Plans",
 		"billing.current.badge": "Current",
+		"billing.free.name": "Free",
+		"billing.basic.name": "Basic",
+		"billing.pro.name": "Pro",
 		"billing.month": "/mo",
 		"billing.canceling": "Canceling...",
 		"billing.cancel": "Cancel Subscription",
@@ -1345,10 +1351,12 @@ const translations = {
 		"all.channels.changegroup": "Alterar grupo",
 		"all.channels.delete": "Excluir canal",
 		"all.channels.itemsperpage": "Itens por página",
+		"all.channels.itemsPerPagePlaceholder": "Itens por página",
 		"all.channels.openmenu": "Abrir menu",
 		"all.channels.notfound": "Nenhum canal encontrado",
 		"all.channels.sync": "Sincronize sua conta do Google para importar seus canais do YouTube.",
 		"all.channels.sync.link": "Ir para configurações",
+		"all.channels.syncDescription": "Sincronize sua conta do Google para",
 
 		// All Animes
 		"all.animes.search": "Pesquisar animes...",
@@ -1363,6 +1371,7 @@ const translations = {
 		"all.animes.changegroup": "Alterar grupo",
 		"all.animes.delete": "Excluir canal",
 		"all.animes.itemsperpage": "Itens por página",
+		"all.animes.itemsPerPagePlaceholder": "Itens por página",
 		"all.animes.openmenu": "Abrir menu",
 
 		// All Websites
@@ -1608,6 +1617,9 @@ const translations = {
 		"billing.channels.label": "Canais",
 		"billing.plans": "Planos Disponíveis",
 		"billing.current.badge": "Atual",
+		"billing.free.name": "Free",
+		"billing.basic.name": "Basic",
+		"billing.pro.name": "Pro",
 		"billing.month": "/mês",
 		"billing.canceling": "Cancelando...",
 		"billing.cancel": "Cancelar Assinatura",
@@ -2184,10 +2196,12 @@ const translations = {
 		"all.channels.changegroup": "Cambiar grupo",
 		"all.channels.delete": "Eliminar canal",
 		"all.channels.itemsperpage": "Elementos por página",
+		"all.channels.itemsPerPagePlaceholder": "Elementos por página",
 		"all.channels.openmenu": "Abrir menú",
 		"all.channels.notfound": "No se encontraron canales",
 		"all.channels.sync": "Sincroniza tu cuenta de Google para importar tus canales de YouTube.",
 		"all.channels.sync.link": "Ir a configuración",
+		"all.channels.syncDescription": "Sincroniza tu cuenta de Google para",
 
 		// All Animes
 		"all.animes.search": "Buscar animes...",
@@ -2202,6 +2216,7 @@ const translations = {
 		"all.animes.changegroup": "Cambiar grupo",
 		"all.animes.delete": "Eliminar canal",
 		"all.animes.itemsperpage": "Elementos por página",
+		"all.animes.itemsPerPagePlaceholder": "Elementos por página",
 		"all.animes.openmenu": "Abrir menú",
 
 		// All Websites
@@ -2447,6 +2462,9 @@ const translations = {
 		"billing.channels.label": "Canales",
 		"billing.plans": "Planes Disponibles",
 		"billing.current.badge": "Actual",
+		"billing.free.name": "Free",
+		"billing.basic.name": "Basic",
+		"billing.pro.name": "Pro",
 		"billing.month": "/mes",
 		"billing.canceling": "Cancelando...",
 		"billing.cancel": "Cancelar Suscripción",

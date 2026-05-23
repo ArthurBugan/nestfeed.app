@@ -302,11 +302,18 @@ export function AppSidebar() {
 				<SidebarFooter className="border-t border-sidebar-border/50 p-3">
 					{/* Language Switcher */}
 					{!isCollapsed && (
-						<div className="px-3 py-2 border-t border-sidebar-border/50">
+						<div className="mx-auto my-1.5 px-3 py-2 rounded-lg border border-primary/20 bg-primary/5 w-full transition-all duration-200">
 							<div className="flex items-center justify-between">
-								<span className="text-xs text-muted-foreground/70 font-medium">
-									Language
-								</span>
+								<div className="flex items-center gap-2">
+									<div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center">
+										<svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+											<path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+										</svg>
+									</div>
+									<span className="text-xs text-muted-foreground/70 font-medium">
+										Language
+									</span>
+								</div>
 								<div className="flex gap-1">
 									{(["en", "pt", "es"] as const).map((lang) => (
 										<button
@@ -317,7 +324,7 @@ export function AppSidebar() {
 												"px-2 py-0.5 rounded text-xs font-medium transition-all",
 												language === lang
 													? "bg-primary text-primary-foreground shadow-sm"
-													: "text-muted-foreground hover:text-foreground hover:bg-accent",
+													: "text-muted-foreground hover:text-foreground hover:bg-accent/50",
 											)}
 										>
 											{lang === "en" ? "EN" : lang === "pt" ? "PT" : "ES"}
@@ -326,6 +333,28 @@ export function AppSidebar() {
 								</div>
 							</div>
 						</div>
+					)}
+					{!isCollapsed && user?.planName && (
+						<button
+							type="button"
+							onClick={() => navigate({ to: "/dashboard/settings/billing" })}
+							className="flex items-center justify-between w-full mx-auto my-1.5 px-3 py-2 rounded-lg border border-primary/20 bg-primary/5 hover:bg-primary/10 hover:border-primary/40 text-xs transition-all duration-200 group"
+						>
+							<div className="flex items-center gap-2">
+								<div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+									<svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+										<path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+									</svg>
+								</div>
+								<span className="text-muted-foreground/70 font-medium">Plan</span>
+							</div>
+							<span className="inline-flex items-center gap-1.5 font-semibold text-primary uppercase tracking-wider">
+								{user.planName}
+								<svg className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+									<path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+								</svg>
+							</span>
+						</button>
 					)}
 					<SidebarMenu>
 						<SidebarMenuItem>

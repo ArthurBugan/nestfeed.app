@@ -113,7 +113,7 @@ export function AllChannelsTable() {
 			googleSession &&
 			!googleSession.connected
 		) {
-			toast.info(t("all.channels.noChannels"), {
+			toast.info(t("all.channels.notfound"), {
 				description: (
 					<span>
 						{t("all.channels.syncDescription")}{" "}
@@ -122,7 +122,7 @@ export function AllChannelsTable() {
 							className="underline font-medium"
 							onClick={(e) => e.stopPropagation()}
 						>
-							{t("all.channels.goToSettings")}
+							{t("all.channels.sync.link")}
 						</Link>
 					</span>
 				),
@@ -324,7 +324,7 @@ export function AllChannelsTable() {
 															channel.url,
 														)
 													}
-													placeholder={t("all.channels.assignGroup")}
+													placeholder={t("all.channels.assign")}
 													renderItem={(item) => (
 														<div className="flex items-center gap-8">
 															{item.icon && (
@@ -344,7 +344,7 @@ export function AllChannelsTable() {
 												<DropdownMenuTrigger asChild>
 													<Button variant="ghost" size="icon">
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">{t("all.channels.openMenu")}</span>
+														<span className="sr-only">{t("all.channels.openmenu")}</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -373,7 +373,7 @@ export function AllChannelsTable() {
 															params={{ id: channel.id }}
 														>
 															<FolderKanban className="mr-2 h-4 w-4" />
-															{t("all.channels.changeGroup")}
+															{t("all.channels.changegroup")}
 														</Link>
 													</DropdownMenuItem>
 													<DropdownMenuItem
@@ -402,7 +402,7 @@ export function AllChannelsTable() {
 			{data?.data && data.data.length > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">{t("all.channels.itemsPerPage")}</span>
+						<span className="whitespace-nowrap">{t("all.channels.itemsperpage")}</span>
 						<GenericCombobox
 							data={[
 								{ value: "10", label: "10" },

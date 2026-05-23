@@ -299,7 +299,7 @@ export function AllAnimesTable() {
 															anime.id,
 														)
 													}
-													placeholder={t("all.animes.assignGroup")}
+													placeholder={t("all.animes.assign")}
 													renderItem={(item) => (
 														<div className="flex items-center gap-8">
 															{item.icon && (
@@ -319,7 +319,7 @@ export function AllAnimesTable() {
 												<DropdownMenuTrigger asChild>
 													<Button variant="ghost" size="icon">
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">{t("all.animes.openMenu")}</span>
+														<span className="sr-only">{t("all.animes.openmenu")}</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -339,7 +339,7 @@ export function AllAnimesTable() {
 															params={{ id: anime.id }}
 														>
 															<FolderKanban className="mr-2 h-4 w-4" />
-															{t("all.animes.changeGroup")}
+															{t("all.animes.changegroup")}
 														</Link>
 													</DropdownMenuItem>
 													<DropdownMenuItem
@@ -368,7 +368,7 @@ export function AllAnimesTable() {
 			{data && data.length > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">{t("all.animes.itemsPerPage")}</span>
+						<span className="whitespace-nowrap">{t("all.animes.itemsperpage")}</span>
 						<GenericCombobox
 							data={[
 								{ value: "10", label: "10" },

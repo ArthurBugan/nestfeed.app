@@ -205,7 +205,7 @@ function DonationSupportCard() {
 								>
 									<span className="text-lg font-bold">${amount}</span>
 									<span className="text-xs text-muted-foreground">
-										{t("rec.support.onetime.label")}
+										{t("rec.support.onetime")}
 									</span>
 								</button>
 							))}
@@ -225,7 +225,7 @@ function DonationSupportCard() {
 									)}
 								>
 									<span className="text-lg font-bold">${amount}</span>
-									<span className="text-xs text-muted-foreground">{t("rec.support.monthly.label")}</span>
+									<span className="text-xs text-muted-foreground">{t("rec.support.monthly")}</span>
 								</button>
 							))}
 						</div>

@@ -138,7 +138,7 @@ export function TopChannelsTable() {
 				<div>
 					<CardTitle>{t("top.channels.title")}</CardTitle>
 					<CardDescription>
-						{t("top.channels.description")}
+						{t("top.channels.desc")}
 					</CardDescription>
 				</div>
 				<Input
@@ -157,8 +157,8 @@ export function TopChannelsTable() {
 								<TableHead>{t("top.channels.group")}</TableHead>
 								<TableHead>{t("top.channels.subscribers")}</TableHead>
 								<TableHead>{t("top.channels.growth")}</TableHead>
-								<TableHead>{t("top.channels.totalViews")}</TableHead>
-								<TableHead>{t("top.channels.monthViews")}</TableHead>
+								<TableHead>{t("top.channels.views")}</TableHead>
+								<TableHead>{t("top.channels.views30")}</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>

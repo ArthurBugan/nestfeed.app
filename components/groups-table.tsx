@@ -401,13 +401,13 @@ export function GroupsTable() {
 			// Bulk update all groups' display order via API
 			updateGroupsDisplayOrder.mutate(sortedOrders, {
 				onSuccess: () => {
-					toast.success(t("groups.table.orderUpdated"), {
-						description: t("groups.table.orderUpdated.desc"),
+					toast.success(t("groups.table.updated"), {
+						description: t("groups.table.updated.desc"),
 					});
 				},
 				onError: (error) => {
-					toast.error(t("groups.table.orderFailed"), {
-						description: t("groups.table.tryLater"),
+					toast.error(t("groups.table.update.error"), {
+						description: t("groups.table.update.error.desc"),
 					});
 					console.error("Error updating group display order:", error);
 				},
@@ -428,8 +428,8 @@ export function GroupsTable() {
 					});
 				},
 				onError: (error) => {
-					toast.error(t("groups.table.deleteFailed"), {
-						description: t("groups.table.tryLater"),
+					toast.error(t("groups.table.delete.error"), {
+						description: t("groups.table.delete.error.desc"),
 					});
 					console.error("Error deleting group:", error);
 				},
@@ -484,8 +484,8 @@ export function GroupsTable() {
 				});
 			},
 			onError: (error) => {
-				toast.error(t("groups.table.moveFailed"), {
-					description: t("groups.table.tryLater"),
+				toast.error(t("groups.table.move.error"), {
+					description: t("groups.table.move.error.desc"),
 				});
 				console.error("Error updating group display order:", error);
 			},
@@ -590,15 +590,15 @@ export function GroupsTable() {
 											{debouncedSearchTerm ? (
 												<>
 													<p className="text-sm text-muted-foreground">
-														{t("groups.table.noResults", { term: debouncedSearchTerm })}
+														{t("groups.table.noresults", { term: debouncedSearchTerm })}
 													</p>
 													<p className="text-xs text-muted-foreground">
-														{t("groups.table.tryAdjusting")}
+														{t("groups.table.noresults.hint")}
 													</p>
 												</>
 											) : (
 												<p className="text-sm text-muted-foreground">
-													{t("groups.table.noGroups")}
+													{t("groups.table.empty")}
 												</p>
 											)}
 										</div>
@@ -683,7 +683,7 @@ export function GroupsTable() {
 																onClick={() => handleAddSubgroup(group.id)}
 															>
 																<Plus className="h-3 w-3" />
-																<span className="sr-only">{t("groups.table.addSubgroup")}</span>
+																<span className="sr-only">{t("groups.table.addsubgroup.sr")}</span>
 															</Button>
 														</div>
 													</TableCell>
@@ -697,7 +697,7 @@ export function GroupsTable() {
 															<DropdownMenuTrigger asChild>
 																<Button variant="ghost" size="icon">
 																	<MoreHorizontal className="h-4 w-4" />
-																	<span className="sr-only">{t("groups.table.openMenu")}</span>
+																	<span className="sr-only">{t("groups.table.openmenu")}</span>
 																</Button>
 															</DropdownMenuTrigger>
 															<DropdownMenuContent align="end">
@@ -707,7 +707,7 @@ export function GroupsTable() {
 																		data-tour={idx === 0 ? "first-group-link" : undefined}
 																		params={{ id: group.id }}
 																	>
-																		{t("groups.table.viewDetails")}
+																		{t("groups.table.viewdetails")}
 																	</Link>
 																</DropdownMenuItem>
 																<DropdownMenuItem asChild>
@@ -723,7 +723,7 @@ export function GroupsTable() {
 																	onClick={() => handleAddSubgroup(group.id)}
 																>
 																	<Plus className="mr-2 h-4 w-4" />
-																	{t("groups.table.addSubgroup")}
+																	{t("groups.table.addsubgroup.menu")}
 																</DropdownMenuItem>
 																<DropdownMenuSeparator />
 																<DropdownMenuItem
@@ -733,7 +733,7 @@ export function GroupsTable() {
 																	}
 																>
 																	<ArrowUp className="mr-2 h-4 w-4" />
-																	{t("groups.table.moveUp")}
+																	{t("groups.table.moveup")}
 																</DropdownMenuItem>
 																<DropdownMenuItem
 																	onClick={() => moveGroup(group, "down")}
@@ -742,7 +742,7 @@ export function GroupsTable() {
 																	}
 																>
 																	<ArrowDown className="mr-2 h-4 w-4" />
-																	{t("groups.table.moveDown")}
+																	{t("groups.table.movedown")}
 																</DropdownMenuItem>
 																<DropdownMenuSeparator />
 																<DropdownMenuItem
@@ -772,7 +772,7 @@ export function GroupsTable() {
 			{apiGroups?.data && apiGroups.pagination.total > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span>{t("groups.table.itemsPerPage")}</span>
+						<span>{t("groups.table.itemsperpage")}</span>
 						<Select
 							value={itemsPerPage.toString()}
 							onValueChange={(value) => {

@@ -292,7 +292,7 @@ function ShareGroupPage({ params }: ShareGroupPageProps) {
 							<div className="space-y-2">
 								<div className="flex justify-between">
 									<span className="text-sm text-muted-foreground">
-										{t("channels")}
+										{t("share.channels")}
 									</span>
 									{isLoading ? (
 										<div className="h-4 w-10 rounded bg-muted animate-pulse" />

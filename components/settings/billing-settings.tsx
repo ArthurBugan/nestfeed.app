@@ -1,7 +1,13 @@
 "use client";
 
 import { DodoPayments as DodoPaymentsCheckout } from "dodopayments-checkout";
-import { AlertTriangle, Check, CreditCard, Download } from "lucide-react";
+import {
+	AlertTriangle,
+	Check,
+	FileText,
+	ExternalLink,
+	Loader2,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,11 +21,20 @@ import {
 } from "@/components/ui/dialog";
 import { Progress } from "@/components/ui/progress";
 import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "@/components/ui/table";
+import {
 	useCancelSubscription,
 	useCreateCheckoutSession,
 } from "@/hooks/mutations/usePaymentMutations";
 import { useLanguage } from "@/components/language-provider";
 import { useDashboardTotal } from "@/hooks/useQuery/useDashboard";
+import { useInvoices } from "@/hooks/useQuery/useInvoices";
 import { useUser } from "@/hooks/useQuery/useUser";
 
 export function BillingSettings() {
@@ -29,7 +44,9 @@ export function BillingSettings() {
 	const createCheckoutSessionMutation = useCreateCheckoutSession();
 	const cancelSubscriptionMutation = useCancelSubscription();
 	const [showCancelDialog, setShowCancelDialog] = useState(false);
-
+	const { data: invoicesData, isLoading: invoicesLoading } = useInvoices();
+	const invoices = invoicesData || [];
+	console.log(invoices)
 	useEffect(() => {
 		DodoPaymentsCheckout.Initialize({ mode: "test", displayType: "overlay" });
 	}, []);
@@ -232,15 +249,87 @@ export function BillingSettings() {
 
 			{/* History */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4">
-				<h2 className="font-semibold text-sm mb-1">{t("billing.history")}</h2>
-				<Button
-					size="sm"
-					variant="secondary"
-					onClick={() => window.open("https://gumroad.com/dashboard", "_blank")}
-					className="w-full"
-				>
-					<Download className="h-3.5 w-3.5 mr-1" /> {t("billing.view")}
-				</Button>
+				<h2 className="font-semibold text-sm mb-3">{t("billing.history")}</h2>
+				{invoicesLoading ? (
+					<div className="flex justify-center py-6">
+						<Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+					</div>
+				) : invoices.length === 0 ? (
+					<div className="text-center py-6 text-sm text-muted-foreground">
+						<FileText className="h-8 w-8 mx-auto mb-2 opacity-50" />
+						<p>No invoices yet</p>
+					</div>
+				) : (
+					<div className="rounded-md border">
+						<Table>
+							<TableHeader>
+								<TableRow>
+									<TableHead>Date</TableHead>
+									<TableHead>Customer</TableHead>
+									<TableHead>Amount</TableHead>
+									<TableHead>Status</TableHead>
+									<TableHead className="text-right">Invoice</TableHead>
+								</TableRow>
+							</TableHeader>
+							<TableBody>
+								{invoices.map((inv) => (
+									<TableRow key={inv.paymentId}>
+										<TableCell className="text-sm whitespace-nowrap">
+											{new Date(inv.createdAt).toLocaleDateString()}
+										</TableCell>
+										<TableCell className="text-sm">
+											<div className="flex flex-col">
+												<span className="font-medium">{inv.customerName}</span>
+												<span className="text-xs text-muted-foreground">
+													{inv.customerEmail}
+												</span>
+											</div>
+										</TableCell>
+										<TableCell className="text-sm font-medium whitespace-nowrap">
+											{inv.currency}{" "}
+											{(inv.totalAmount / 100).toLocaleString(undefined, {
+												minimumFractionDigits: 2,
+												maximumFractionDigits: 2,
+											})}
+										</TableCell>
+										<TableCell>
+											<Badge
+												variant={
+													inv.status === "succeeded"
+														? "secondary"
+														: "outline"
+												}
+												className="text-xs capitalize"
+											>
+												{inv.refundStatus
+													? `Refunded`
+													: inv.status.replace(/_/g, " ")}
+											</Badge>
+										</TableCell>
+										<TableCell className="text-right">
+											{inv.invoiceUrl && (
+												<Button
+													variant="ghost"
+													size="icon"
+													className="h-7 w-7"
+													asChild
+												>
+													<a
+														href={inv.invoiceUrl}
+														target="_blank"
+														rel="noopener noreferrer"
+													>
+														<ExternalLink className="h-3.5 w-3.5" />
+													</a>
+												</Button>
+											)}
+										</TableCell>
+									</TableRow>
+								))}
+							</TableBody>
+						</Table>
+					</div>
+				)}
 			</div>
 
 			{/* Cancel Subscription Dialog */}
