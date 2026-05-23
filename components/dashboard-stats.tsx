@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDashboardTotal } from "@/hooks/useQuery/useDashboard";
+import { useLanguage } from "@/components/language-provider";
 
 export function DashboardStats() {
 	const { data, isLoading } = useDashboardTotal();
@@ -16,12 +17,13 @@ export function DashboardStats() {
 	const youtubeChannels = data?.youtubeChannels ?? 0;
 	const sharedGroups = data?.sharedGroups ?? 0;
 	const animeChannels = data?.animeChannels ?? 0;
+	const { t } = useLanguage();
 
 	return (
 		<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">Total Groups</CardTitle>
+					<CardTitle className="text-sm font-medium">{t("stats.total.groups")}</CardTitle>
 					<FolderKanban className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
 				<CardContent>
@@ -41,7 +43,7 @@ export function DashboardStats() {
 			</Card>
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">Total Channels inside Groups</CardTitle>
+					<CardTitle className="text-sm font-medium">{t("stats.total.channels.groups")}</CardTitle>
 					<Youtube className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
 				<CardContent>
@@ -61,7 +63,7 @@ export function DashboardStats() {
 			</Card>
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">Shared Groups</CardTitle>
+					<CardTitle className="text-sm font-medium">{t("stats.shared.groups")}</CardTitle>
 					<Share2 className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
 				<CardContent>
@@ -82,7 +84,7 @@ export function DashboardStats() {
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 					<CardTitle className="text-sm font-medium">
-						Total Youtube Channels
+						{t("stats.total.youtube")}
 					</CardTitle>
 					<Activity className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
@@ -104,7 +106,7 @@ export function DashboardStats() {
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
 					<CardTitle className="text-sm font-medium">
-						Total Anime Channels
+						{t("stats.total.anime")}
 					</CardTitle>
 					<Activity className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>

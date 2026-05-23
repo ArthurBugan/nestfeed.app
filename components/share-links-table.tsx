@@ -46,6 +46,7 @@ import {
 	useDeleteShareLink,
 	useShareLinks,
 } from "@/hooks/useQuery/useShareLinks";
+import { useLanguage } from "@/components/language-provider";
 import { IconViewer } from "./icon-picker";
 
 const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
@@ -83,6 +84,7 @@ const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
 };
 
 export function ShareLinksTable() {
+	const { t } = useLanguage();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(25);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -184,7 +186,7 @@ export function ShareLinksTable() {
 	};
 
 	const formatDate = (dateString?: string) => {
-		if (!dateString) return "No expiration";
+		if (!dateString) return t("sharelinks.noexpiration");
 		return new Date(dateString).toLocaleDateString();
 	};
 
@@ -341,7 +343,7 @@ export function ShareLinksTable() {
 												<span className="text-sm">
 													{link.createdAt
 														? new Date(link.createdAt).toLocaleDateString()
-														: "Unknown"}
+														: t("sharelinks.unknown")}
 												</span>
 											</div>
 										</TableCell>

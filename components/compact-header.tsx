@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X, Youtube } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/components/language-provider";
 import { LanguageSelector } from "./language-selector";
 
 interface CompactHeaderProps {
@@ -13,6 +14,7 @@ interface CompactHeaderProps {
 
 export function CompactHeader({ homeLink = "/", showGetStarted = true }: CompactHeaderProps) {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+	const { t } = useLanguage();
 
 	return (
 		<header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -23,21 +25,21 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 				</Link>
 
 				<div className="hidden md:flex items-center gap-6">
-					<Link to="/dashboard" className="text-sm hover:text-foreground/80 transition-colors">Dashboard</Link>
-					<a href="#features" className="text-sm hover:text-foreground/80 transition-colors">Features</a>
-					<a href="#integrations" className="text-sm hover:text-foreground/80 transition-colors">Integrations</a>
-					<a href="#pricing" className="text-sm hover:text-foreground/80 transition-colors">Pricing</a>
-					<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">Reviews</a>
-					<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">Blog</Link>
+					<Link to="/dashboard" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.dashboard")}</Link>
+					<a href="#features" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.features")}</a>
+					<a href="#integrations" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.integrations")}</a>
+					<a href="#pricing" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.pricing")}</a>
+					<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.reviews")}</a>
+					<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.blog")}</Link>
 				</div>
 
 				<div className="hidden md:flex items-center gap-2">
 					<LanguageSelector />
 					<Button size="sm" variant="ghost" asChild>
-							<Link to="/login">Login</Link>
+							<Link to="/login">{t("nav.signin")}</Link>
 						</Button>
 						<Button size="sm" variant="ghost" asChild>
-							<Link to="/register">Get Started</Link>
+							<Link to="/register">{t("nav.getstarted")}</Link>
 						</Button>
 				</div>
 
@@ -55,15 +57,15 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 				<div className="md:hidden border-t py-4">
 					<div className="flex flex-col gap-2 px-4">
 						<LanguageSelector />
-						<Link to="/dashboard" className="text-sm hover:text-foreground/80 transition-colors">Dashboard</Link>
-						<a href="#features" className="text-sm hover:text-foreground/80 transition-colors">Features</a>
-						<a href="#integrations" className="text-sm hover:text-foreground/80 transition-colors">Integrations</a>
-						<a href="#pricing" className="text-sm hover:text-foreground/80 transition-colors">Pricing</a>
-						<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">Reviews</a>
-						<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">Blog</Link>
+						<Link to="/dashboard" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.dashboard")}</Link>
+						<a href="#features" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.features")}</a>
+						<a href="#integrations" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.integrations")}</a>
+						<a href="#pricing" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.pricing")}</a>
+						<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.reviews")}</a>
+						<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.blog")}</Link>
 						{showGetStarted && (
 							<Button size="sm" asChild className="bg-primary hover:bg-primary/90 mt-2">
-								<Link to="/register">Get Started</Link>
+								<Link to="/register">{t("nav.getstarted")}</Link>
 							</Button>
 						)}
 					</div>

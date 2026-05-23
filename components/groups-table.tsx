@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
 	ArrowDown,
@@ -174,6 +175,7 @@ const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
 };
 
 export function GroupsTable() {
+	const { t } = useLanguage();
 	const navigate = useNavigate();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(25);
@@ -399,13 +401,13 @@ export function GroupsTable() {
 			// Bulk update all groups' display order via API
 			updateGroupsDisplayOrder.mutate(sortedOrders, {
 				onSuccess: () => {
-					toast.success("Group order updated", {
-						description: "The group order has been saved",
+					toast.success(t("groups.table.updated"), {
+						description: t("groups.table.updated.desc"),
 					});
 				},
 				onError: (error) => {
-					toast.error("Failed to update group order", {
-						description: "Please try again later",
+					toast.error(t("groups.table.update.error"), {
+						description: t("groups.table.update.error.desc"),
 					});
 					console.error("Error updating group display order:", error);
 				},
@@ -416,18 +418,18 @@ export function GroupsTable() {
 	const handleDeleteGroup = (groupId: string, groupName: string) => {
 		if (
 			confirm(
-				`Are you sure you want to delete "${groupName}"? This action cannot be undone.`,
+				t("groups.table.delete.confirm", { name: groupName }),
 			)
 		) {
 			deleteGroup.mutate(groupId, {
 				onSuccess: () => {
-					toast.success("Group deleted successfully", {
-						description: `"${groupName}" has been deleted.`,
+					toast.success(t("groups.table.deleted"), {
+						description: t("groups.table.deleted.desc", { name: groupName }),
 					});
 				},
 				onError: (error) => {
-					toast.error("Failed to delete group", {
-						description: "Please try again later.",
+					toast.error(t("groups.table.delete.error"), {
+						description: t("groups.table.delete.error.desc"),
 					});
 					console.error("Error deleting group:", error);
 				},
@@ -477,13 +479,13 @@ export function GroupsTable() {
 		// Bulk update all groups' display order via API
 		updateGroupsDisplayOrder.mutate(orders, {
 			onSuccess: () => {
-				toast.success("Group moved", {
-					description: `${group.name} moved ${direction}`,
+				toast.success(t("groups.table.moved"), {
+					description: t("groups.table.moved.desc", { name: group.name, direction }),
 				});
 			},
 			onError: (error) => {
-				toast.error("Failed to move group", {
-					description: "Please try again later",
+				toast.error(t("groups.table.move.error"), {
+					description: t("groups.table.move.error.desc"),
 				});
 				console.error("Error updating group display order:", error);
 			},
@@ -547,7 +549,7 @@ export function GroupsTable() {
 		<div className="space-y-4">
 			<div className="flex items-center gap-2">
 				<Input
-					placeholder="Search groups..."
+					placeholder={t("groups.table.search")}
 					value={searchTerm}
 					onChange={(e) => setSearchTerm(e.target.value)}
 					className="max-w-sm"
@@ -563,11 +565,11 @@ export function GroupsTable() {
 						<TableHeader>
 							<TableRow>
 								<TableHead className="w-[50px]"></TableHead>
-								<TableHead>Name</TableHead>
-								<TableHead>Category</TableHead>
-								<TableHead>Channels</TableHead>
-								<TableHead>Created</TableHead>
-								<TableHead className="text-right">Actions</TableHead>
+								<TableHead>{t("groups.table.name")}</TableHead>
+								<TableHead>{t("groups.table.category")}</TableHead>
+								<TableHead>{t("groups.table.channels")}</TableHead>
+								<TableHead>{t("groups.table.created")}</TableHead>
+								<TableHead className="text-right">{t("groups.table.actions")}</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>
@@ -576,7 +578,7 @@ export function GroupsTable() {
 									<TableCell colSpan={6} className="h-24 text-center">
 										<div className="flex flex-col items-center justify-center space-y-2">
 											<p className="text-sm text-muted-foreground">
-												Loading groups...
+												{t("groups.table.loading")}
 											</p>
 										</div>
 									</TableCell>
@@ -588,15 +590,15 @@ export function GroupsTable() {
 											{debouncedSearchTerm ? (
 												<>
 													<p className="text-sm text-muted-foreground">
-														No groups match "{debouncedSearchTerm}"
+														{t("groups.table.noresults", { term: debouncedSearchTerm })}
 													</p>
 													<p className="text-xs text-muted-foreground">
-														Try adjusting your search terms
+														{t("groups.table.noresults.hint")}
 													</p>
 												</>
 											) : (
 												<p className="text-sm text-muted-foreground">
-													No groups found
+													{t("groups.table.empty")}
 												</p>
 											)}
 										</div>
@@ -669,7 +671,7 @@ export function GroupsTable() {
 																		(g) => g.id === group.parentId,
 																	) && (
 																		<span className="ml-2 text-xs text-muted-foreground">
-																			(subgroup)
+																			{t("groups.table.subgroup")}
 																		</span>
 																	)}
 															</Link>
@@ -681,7 +683,7 @@ export function GroupsTable() {
 																onClick={() => handleAddSubgroup(group.id)}
 															>
 																<Plus className="h-3 w-3" />
-																<span className="sr-only">Add subgroup</span>
+																<span className="sr-only">{t("groups.table.addsubgroup.sr")}</span>
 															</Button>
 														</div>
 													</TableCell>
@@ -695,7 +697,7 @@ export function GroupsTable() {
 															<DropdownMenuTrigger asChild>
 																<Button variant="ghost" size="icon">
 																	<MoreHorizontal className="h-4 w-4" />
-																	<span className="sr-only">Open menu</span>
+																	<span className="sr-only">{t("groups.table.openmenu")}</span>
 																</Button>
 															</DropdownMenuTrigger>
 															<DropdownMenuContent align="end">
@@ -705,7 +707,7 @@ export function GroupsTable() {
 																		data-tour={idx === 0 ? "first-group-link" : undefined}
 																		params={{ id: group.id }}
 																	>
-																		View details
+																		{t("groups.table.viewdetails")}
 																	</Link>
 																</DropdownMenuItem>
 																<DropdownMenuItem asChild>
@@ -714,14 +716,14 @@ export function GroupsTable() {
 																		params={{ id: group.id }}
 																	>
 																		<Pencil className="mr-2 h-4 w-4" />
-																		Edit
+																		{t("groups.table.edit")}
 																	</Link>
 																</DropdownMenuItem>
 																<DropdownMenuItem
 																	onClick={() => handleAddSubgroup(group.id)}
 																>
 																	<Plus className="mr-2 h-4 w-4" />
-																	Add Subgroup
+																	{t("groups.table.addsubgroup.menu")}
 																</DropdownMenuItem>
 																<DropdownMenuSeparator />
 																<DropdownMenuItem
@@ -731,7 +733,7 @@ export function GroupsTable() {
 																	}
 																>
 																	<ArrowUp className="mr-2 h-4 w-4" />
-																	Move Up
+																	{t("groups.table.moveup")}
 																</DropdownMenuItem>
 																<DropdownMenuItem
 																	onClick={() => moveGroup(group, "down")}
@@ -740,7 +742,7 @@ export function GroupsTable() {
 																	}
 																>
 																	<ArrowDown className="mr-2 h-4 w-4" />
-																	Move Down
+																	{t("groups.table.movedown")}
 																</DropdownMenuItem>
 																<DropdownMenuSeparator />
 																<DropdownMenuItem
@@ -751,7 +753,7 @@ export function GroupsTable() {
 																	disabled={deleteGroup.isPending}
 																>
 																	<Trash2 className="mr-2 h-4 w-4" />
-																	Delete
+																	{t("groups.table.delete")}
 																</DropdownMenuItem>
 															</DropdownMenuContent>
 														</DropdownMenu>
@@ -770,7 +772,7 @@ export function GroupsTable() {
 			{apiGroups?.data && apiGroups.pagination.total > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span>Items per page:</span>
+						<span>{t("groups.table.itemsperpage")}</span>
 						<Select
 							value={itemsPerPage.toString()}
 							onValueChange={(value) => {

@@ -1,5 +1,6 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
 import { Link } from "@tanstack/react-router";
 import {
 	ExternalLink,
@@ -80,6 +81,7 @@ const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
 };
 
 export function AllAnimesTable() {
+	const { t } = useLanguage();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(25);
 	const [searchTerm, setSearchTerm] = useState("");
@@ -198,7 +200,7 @@ export function AllAnimesTable() {
 		<div className="space-y-4">
 			<div className="flex items-center gap-2">
 				<Input
-					placeholder="Search animes..."
+					placeholder={t("all.animes.search")}
 					value={searchTerm}
 					onChange={(e) => handleSearchChange(e.target.value)}
 					className="max-w-sm"
@@ -207,7 +209,7 @@ export function AllAnimesTable() {
 
 			{error && (
 				<div className="text-destructive text-sm">
-					Error loading channels: {error.message}
+					{t("all.animes.error", { message: error.message })}
 				</div>
 			)}
 
@@ -215,22 +217,22 @@ export function AllAnimesTable() {
 				<Table>
 					<TableHeader>
 						<TableRow>
-							<TableHead>Channel</TableHead>
-							<TableHead>Group</TableHead>
-							<TableHead className="text-right">Actions</TableHead>
+							<TableHead>{t("all.animes.channel")}</TableHead>
+							<TableHead>{t("all.animes.group")}</TableHead>
+							<TableHead className="text-right">{t("all.animes.actions")}</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
 						{isLoading ? (
 							<TableRow>
 								<TableCell colSpan={5} className="h-24 text-center">
-									Loading channels...
+									{t("all.animes.loading")}
 								</TableCell>
 							</TableRow>
 						) : !animesData?.data || animesData.data.length === 0 ? (
 							<TableRow>
 								<TableCell colSpan={5} className="h-24 text-center">
-									No animes found.
+									{t("all.animes.empty")}
 								</TableCell>
 							</TableRow>
 						) : (
@@ -297,7 +299,7 @@ export function AllAnimesTable() {
 															anime.id,
 														)
 													}
-													placeholder="Assign Group"
+													placeholder={t("all.animes.assign")}
 													renderItem={(item) => (
 														<div className="flex items-center gap-8">
 															{item.icon && (
@@ -317,7 +319,7 @@ export function AllAnimesTable() {
 												<DropdownMenuTrigger asChild>
 													<Button variant="ghost" size="icon">
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">Open menu</span>
+														<span className="sr-only">{t("all.animes.openmenu")}</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -328,7 +330,7 @@ export function AllAnimesTable() {
 															rel="noopener noreferrer"
 														>
 															<ExternalLink className="mr-2 h-4 w-4" />
-															Visit anime
+															{t("all.animes.visit")}
 														</a>
 													</DropdownMenuItem>
 													<DropdownMenuItem asChild>
@@ -337,7 +339,7 @@ export function AllAnimesTable() {
 															params={{ id: anime.id }}
 														>
 															<FolderKanban className="mr-2 h-4 w-4" />
-															Change group
+															{t("all.animes.changegroup")}
 														</Link>
 													</DropdownMenuItem>
 													<DropdownMenuItem
@@ -350,7 +352,7 @@ export function AllAnimesTable() {
 														) : (
 															<Trash2 className="mr-2 h-4 w-4" />
 														)}
-														Delete channel
+														{t("all.animes.delete")}
 													</DropdownMenuItem>
 												</DropdownMenuContent>
 											</DropdownMenu>
@@ -366,7 +368,7 @@ export function AllAnimesTable() {
 			{data && data.length > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">Items per page:</span>
+						<span className="whitespace-nowrap">{t("all.animes.itemsperpage")}</span>
 						<GenericCombobox
 							data={[
 								{ value: "10", label: "10" },
@@ -379,7 +381,7 @@ export function AllAnimesTable() {
 								setItemsPerPage(Number(value));
 								setCurrentPage(1); // Reset to first page when changing items per page
 							}}
-							placeholder="Items per page"
+							placeholder={t("all.animes.itemsPerPagePlaceholder")}
 						/>
 					</div>
 					<Pagination>

@@ -28,6 +28,7 @@ export const queryKeys = {
 		limit?: number;
 		search?: string;
 	}) => (params ? ["groupShelves", params] : ["groupShelves"]),
+	invoices: () => ["invoices"],
 	websites: (params?: { page?: number; limit?: number; search?: string }) =>
 		params ? ["websites", params] : ["websites"],
 	infiniteWebsites: (params?: { limit?: number; search?: string }) => [

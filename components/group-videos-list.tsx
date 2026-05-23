@@ -29,6 +29,7 @@ import {
 	useDeleteAllGroupVideos,
 	useGroupVideos,
 } from "@/hooks/useQuery/useGroupVideos";
+import { useLanguage } from "@/components/language-provider";
 import { cn } from "@/lib/utils";
 
 interface GroupVideosListProps {
@@ -74,6 +75,7 @@ function formatPublishedDate(dateString: string): string {
 }
 
 export function GroupVideosList({ groupId }: GroupVideosListProps) {
+	const { t } = useLanguage();
 	const [currentPage, setCurrentPage] = useState(1);
 	const [itemsPerPage, setItemsPerPage] = useState(8);
 	const [searchQuery, setSearchQuery] = useState("");
@@ -494,10 +496,10 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								}}
 							>
 								<SelectTrigger className="h-8 w-32 text-xs">
-									<SelectValue placeholder="All channels" />
+									<SelectValue placeholder={t("videos.all.channels")} />
 								</SelectTrigger>
 								<SelectContent>
-									<SelectItem value="all">All channels</SelectItem>
+									<SelectItem value="all">{t("videos.all.channels")}</SelectItem>
 									{channels.map((channel) => (
 										<SelectItem key={channel.id} value={channel.id}>
 											{channel.name}

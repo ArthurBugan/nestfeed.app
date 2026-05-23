@@ -4,6 +4,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight, Home, Play, Users } from "lucide-react";
 import { useEffect, useMemo, useRef } from "react";
 import { toast } from "sonner";
+import { useLanguage } from "@/components/language-provider";
 import { ChannelsTable } from "@/components/channels-table";
 import { GroupDetails } from "@/components/group-details";
 import { GroupVideosList } from "@/components/group-videos-list";
@@ -24,6 +25,7 @@ export const Route = createFileRoute("/_app/dashboard/groups/$id/")({
 });
 
 function GroupDetailPage() {
+	const { t } = useLanguage();
 	const { id } = Route.useParams();
 	const { data: group, isLoading } = useGroup(id);
 	const { data: groupsData } = useGroups({ limit: 100 });
@@ -66,7 +68,7 @@ function GroupDetailPage() {
 		if (syncedIdRef.current !== id) {
 			syncedIdRef.current = id;
 			syncVideos.mutate(id, {
-				onError: () => toast.error("Failed to sync videos"),
+				onError: () => toast.error(t("group.detail.sync.error")),
 			});
 		}
 	}, [id, syncVideos]);
@@ -74,8 +76,8 @@ function GroupDetailPage() {
 	useEffect(() => {
 		const urlParams = new URLSearchParams(window.location.search);
 		if (urlParams.get("settings-saved") === "true") {
-			toast.info("Settings Applied", {
-				description: "Your group settings have been applied.",
+			toast.info(t("group.detail.settings.applied"), {
+				description: t("group.detail.settings.desc"),
 			});
 			window.history.replaceState({}, document.title, window.location.pathname);
 		}
@@ -110,7 +112,7 @@ function GroupDetailPage() {
 						to="/dashboard/groups"
 						className="hover:text-destructive transition-colors"
 					>
-						Home
+						{t("group.detail.breadcrumb")}
 					</Link>
 					{breadcrumbs.map((crumb, index) => (
 						<>
@@ -150,7 +152,7 @@ function GroupDetailPage() {
 							<div className="flex-1 min-w-0">
 								<p className="font-medium text-sm truncate">{child.name}</p>
 								<p className="text-xs text-muted-foreground">
-									{child.channelCount} channels
+									{t("group.detail.channels.count", { count: String(child.channelCount) })}
 								</p>
 							</div>
 						</Link>
@@ -168,7 +170,7 @@ function GroupDetailPage() {
 						value="channels"
 						className="flex items-center gap-2"
 					>
-						<Users className="h-3.5 w-3.5" /> Channels
+						<Users className="h-3.5 w-3.5" /> {t("group.detail.tab.channels")}
 						<Badge variant="secondary" className="ml-1">
 							{group.channels?.length || 0}
 						</Badge>
@@ -177,7 +179,7 @@ function GroupDetailPage() {
 						value="videos"
 						className="flex items-center gap-2"
 					>
-						<Play className="h-3.5 w-3.5" /> Videos
+						<Play className="h-3.5 w-3.5" /> {t("group.detail.tab.videos")}
 						<Badge variant="secondary" className="ml-1">
 							{videoCount}
 						</Badge>

@@ -47,6 +47,7 @@ import {
 } from "@/hooks/useQuery/useChannels";
 import { useGroup } from "@/hooks/useQuery/useGroups";
 import { useUser } from "@/hooks/useQuery/useUser";
+import { useLanguage } from "@/components/language-provider";
 import { getChannelUrl } from "@/lib/utils";
 
 import { toast } from "sonner";
@@ -62,6 +63,7 @@ function AddChannelPage() {
 	const { id } = Route.useParams();
 	const { data: groupData } = useGroup(id);
 	const { data: user } = useUser();
+	const { t } = useLanguage();
 	const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
 	const [step, setStep] = useState<"select" | "review">("select");
 
@@ -322,7 +324,7 @@ function AddChannelPage() {
 											) : (
 												<Search className="mr-2 h-4 w-4" />
 											)}
-											{isSearching ? "" : "Search"}
+											{isSearching ? "" : t("channels.add.search")}
 										</Button>
 										<Button
 											type="button"
@@ -355,7 +357,7 @@ function AddChannelPage() {
 											) : (
 												<Search className="mr-2 h-4 w-4" />
 											)}
-											{isSearching ? "" : "Search"}
+											{isSearching ? "" : t("channels.add.search")}
 										</Button>
 										<Button
 											type="button"
@@ -383,7 +385,7 @@ function AddChannelPage() {
 											variant="secondary"
 											disabled={isFetchingUrl || !urlInput.trim()}
 										>
-											{isFetchingUrl ? "Fetching..." : "Fetch"}
+											{isFetchingUrl ? t("channels.add.fetching") : t("channels.add.fetch")}
 										</Button>
 									</form>
 									{fetchError && (
@@ -439,7 +441,7 @@ function AddChannelPage() {
 												) : (
 													<Plus className="mr-1 h-4 w-4" />
 												)}
-												{isSelected(channel.id) ? "Added" : "Add"}
+												{isSelected(channel.id) ? t("channels.add.added") : t("channels.add.add")}
 											</Button>
 										</div>
 									))
@@ -481,7 +483,7 @@ function AddChannelPage() {
 												) : (
 													<Plus className="mr-1 h-4 w-4" />
 												)}
-												{isSelected(channel.id) ? "Added" : "Add"}
+												{isSelected(channel.id) ? t("channels.add.added") : t("channels.add.add")}
 											</Button>
 										</div>
 									))}

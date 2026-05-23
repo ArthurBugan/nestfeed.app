@@ -37,6 +37,7 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
+import { useLanguage } from "@/components/language-provider";
 import { useCopyShelf, useGroupShelves } from "@/hooks/useQuery/useGroupShelf";
 
 export const Route = createFileRoute("/_app/dashboard/groupshelf/")({
@@ -49,6 +50,7 @@ function GroupShelfPage() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 
+	const { t } = useLanguage();
 	const { data, isLoading, error } = useGroupShelves({
 		page: currentPage,
 		limit: itemsPerPage,
@@ -59,7 +61,7 @@ function GroupShelfPage() {
 	const handleCopy = (shelfId: string, shelfName: string) => {
 		copyShelf.mutate(shelfId, {
 			onSuccess: () => {
-				toast.success("Copied", {
+				toast.success(t("copied"), {
 					description: `"${shelfName}" has been copied.`,
 				});
 			},
@@ -114,7 +116,7 @@ function GroupShelfPage() {
 		return (
 			<div className="space-y-6">
 				<DashboardHeader
-					title="Groupshelf"
+					title={t("groupshelf.title")}
 					description="Copy groups from other users"
 				/>
 				<Card>
@@ -134,7 +136,7 @@ function GroupShelfPage() {
 	return (
 		<div className="space-y-6">
 			<DashboardHeader
-				title="Groupshelf"
+				title={t("groupshelf.title")}
 				description="Copy groups from other users"
 			/>
 			<Card>

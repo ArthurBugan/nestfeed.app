@@ -11,6 +11,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { useGroup } from "@/hooks/useQuery/useGroups";
+import { useLanguage } from "@/components/language-provider";
 
 interface GroupDetailsProps {
 	id: string;
@@ -18,6 +19,7 @@ interface GroupDetailsProps {
 
 export function GroupDetails({ id }: GroupDetailsProps) {
 	const { data: group } = useGroup(id);
+	const { t } = useLanguage();
 
 	if (!group) {
 		return null;
@@ -46,13 +48,13 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 						{group.enableGroupshelf && (
 							<Badge variant="outline" className="gap-1">
 								<Library className="h-3 w-3" />
-								Group Shelf
+								{t("group.details.shelf")}
 							</Badge>
 						)}
 						<Button variant="outline" size="sm" asChild>
 							<Link to={"/dashboard/groups/$id/edit"} params={{ id: group.id }}>
 								<Pencil className="mr-2 h-4 w-4" />
-								Edit Group
+								{t("group.details.edit")}
 							</Link>
 						</Button>
 						<Button variant="outline" size="sm" asChild>
@@ -61,7 +63,7 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 								params={{ id: group.id }}
 							>
 								<Share2 className="mr-2 h-4 w-4" />
-								Share
+								{t("group.details.share")}
 							</Link>
 						</Button>
 						<Button
@@ -75,7 +77,7 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 								params={{ id: group.id }}
 							>
 								<Plus className="mr-2 h-4 w-4" />
-								Add Channel
+								{t("group.details.addchannel")}
 							</Link>
 						</Button>
 					</div>
@@ -84,7 +86,7 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 			<CardContent>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 					<div className="space-y-1">
-						<p className="text-sm font-medium text-muted-foreground">Created</p>
+						<p className="text-sm font-medium text-muted-foreground">{t("group.details.created")}</p>
 						<p>
 							{group.createdAt
 								? new Date(group.createdAt).toLocaleDateString()
@@ -93,7 +95,7 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 					</div>
 					<div className="space-y-1">
 						<p className="text-sm font-medium text-muted-foreground">
-							Channels
+							{t("group.details.channels")}
 						</p>
 						{group.channelCount ? <p>{group.channelCount}</p> : 0}
 					</div>

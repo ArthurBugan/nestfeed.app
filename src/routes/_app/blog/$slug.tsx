@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { CompactHeader } from "@/components/compact-header";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
@@ -30,6 +31,7 @@ export const Route = createFileRoute("/_app/blog/$slug")({
 });
 
 function BlogPostComponent() {
+	const { t } = useLanguage();
 	const { post } = Route.useLoaderData();
 
 	return (
@@ -39,7 +41,7 @@ function BlogPostComponent() {
 			<article className="container mx-auto px-4 py-8 max-w-3xl">
 				{/* Back */}
 				<Link to="/blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors">
-					<ArrowLeft className="h-3.5 w-3.5" /> Back to Blog
+					<ArrowLeft className="h-3.5 w-3.5" /> {t("blog.post.back")}
 				</Link>
 
 				{/* Header */}
@@ -82,8 +84,8 @@ function BlogPostComponent() {
 
 				{/* Author Bio */}
 				<div className="bg-card/50 backdrop-blur-sm p-6 rounded-xl border space-y-4">
-					<h3 className="font-semibold text-sm mb-2">Written by {post.author}</h3>
-					<p className="text-sm text-muted-foreground">Author of Nestfeed articles. Passionate about YouTube productivity and organization.</p>
+					<h3 className="font-semibold text-sm mb-2">{t("blog.post.written", { author: post.author })}</h3>
+					<p className="text-sm text-muted-foreground">{t("blog.post.author.desc")}</p>
 				</div>
 			</article>
 		</div>

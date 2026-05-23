@@ -33,7 +33,7 @@ export function MainNavbar() {
 								to="/dashboard"
 								className="text-sm font-medium hover:text-primary transition-colors group"
 							>
-								Dashboard
+								{t("nav.dashboard")}
 								<div className="h-0.5 w-0 bg-primary transition-all group-hover:w-full"></div>
 							</Link>
 						<Link
@@ -68,7 +68,7 @@ export function MainNavbar() {
 							to="/blog"
 							className="text-sm font-medium hover:text-primary transition-colors group"
 						>
-							Blog
+							{t("nav.blog")}
 							<div className="h-0.5 w-0 bg-primary transition-all group-hover:w-full"></div>
 						</Link>
 					</div>

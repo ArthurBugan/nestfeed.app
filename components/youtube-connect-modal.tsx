@@ -2,6 +2,7 @@
 
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { AlertTriangle, Youtube } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
 	Dialog,
@@ -22,6 +23,7 @@ export function YouTubeConnectModal({
 	onOpenChange,
 }: YouTubeConnectModalProps) {
 	const navigate = useNavigate();
+	const { t } = useLanguage();
 
 	return (
 		<Dialog open={open} onOpenChange={onOpenChange}>
@@ -29,22 +31,20 @@ export function YouTubeConnectModal({
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
 						<Youtube className="h-5 w-5 text-red-50" />
-						Connect Your YouTube Account
+						{t("youtube.connect.title")}
 					</DialogTitle>
 					<DialogDescription>
-							You don&apos;t have any YouTube channels connected yet.
+							{t("youtube.connect.desc")}
 					</DialogDescription>
 				</DialogHeader>
 				<div className="py-4">
 					<p className="text-sm text-muted-foreground">
-						To be able to organize your YouTube subscriptions and see their latest videos, please
-						connect your Google account with YouTube subscriptions in your
-						account settings.
+						{t("youtube.connect.body")}
 					</p>
 				</div>
 				<DialogFooter>
 					<Button variant="outline" onClick={() => onOpenChange(false)}>
-						Maybe Later
+						{t("youtube.connect.later")}
 					</Button>
 					<Button
 						variant="secondary"
@@ -53,7 +53,7 @@ export function YouTubeConnectModal({
 							navigate({ to: "/dashboard/settings/account" });
 						}}
 					>
-						Go to Account Settings
+						{t("youtube.connect.settings")}
 					</Button>
 				</DialogFooter>
 			</DialogContent>
