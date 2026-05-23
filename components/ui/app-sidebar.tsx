@@ -65,7 +65,7 @@ export function AppSidebar() {
 	const location = useLocation();
 	const { data: user } = useUser();
 	const { state } = useSidebar();
-	const { t } = useLanguage();
+	const { t, language, setLanguage } = useLanguage();
 	const isCollapsed = state === "collapsed";
 
 	const mainItems: NavItem[] = [
@@ -300,6 +300,33 @@ export function AppSidebar() {
 				</SidebarContent>
 
 				<SidebarFooter className="border-t border-sidebar-border/50 p-3">
+					{/* Language Switcher */}
+					{!isCollapsed && (
+						<div className="px-3 py-2 border-t border-sidebar-border/50">
+							<div className="flex items-center justify-between">
+								<span className="text-xs text-muted-foreground/70 font-medium">
+									Language
+								</span>
+								<div className="flex gap-1">
+									{(["en", "pt", "es"] as const).map((lang) => (
+										<button
+											key={lang}
+											type="button"
+											onClick={() => setLanguage(lang)}
+											className={cn(
+												"px-2 py-0.5 rounded text-xs font-medium transition-all",
+												language === lang
+													? "bg-primary text-primary-foreground shadow-sm"
+													: "text-muted-foreground hover:text-foreground hover:bg-accent",
+											)}
+										>
+											{lang === "en" ? "EN" : lang === "pt" ? "PT" : "ES"}
+										</button>
+									))}
+								</div>
+							</div>
+						</div>
+					)}
 					<SidebarMenu>
 						<SidebarMenuItem>
 							<DropdownMenu>
