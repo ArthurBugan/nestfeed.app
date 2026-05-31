@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/components/language-provider";
+import { ConfirmDialog } from "@/components/confirm-dialog";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
 	ArrowDown,
@@ -182,6 +183,10 @@ export function GroupsTable() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 	const [upgradeModalOpen, setUpgradeModalOpen] = useState(false);
+	const [deleteConfirm, setDeleteConfirm] = useState<{
+		groupId: string;
+		groupName: string;
+	} | null>(null);
 
 	const { data: apiGroups, isLoading } = useGroups({
 		page: currentPage,
@@ -416,25 +421,26 @@ export function GroupsTable() {
 	};
 
 	const handleDeleteGroup = (groupId: string, groupName: string) => {
-		if (
-			confirm(
-				t("groups.table.delete.confirm", { name: groupName }),
-			)
-		) {
-			deleteGroup.mutate(groupId, {
-				onSuccess: () => {
-					toast.success(t("groups.table.deleted"), {
-						description: t("groups.table.deleted.desc", { name: groupName }),
-					});
-				},
-				onError: (error) => {
-					toast.error(t("groups.table.delete.error"), {
-						description: t("groups.table.delete.error.desc"),
-					});
-					console.error("Error deleting group:", error);
-				},
-			});
-		}
+		setDeleteConfirm({ groupId, groupName });
+	};
+
+	const handleConfirmDelete = () => {
+		if (!deleteConfirm) return;
+		const { groupId, groupName } = deleteConfirm;
+		deleteGroup.mutate(groupId, {
+			onSuccess: () => {
+				toast.success(t("groups.table.deleted"), {
+					description: t("groups.table.deleted.desc", { name: groupName }),
+				});
+			},
+			onError: (error) => {
+				toast.error(t("groups.table.delete.error"), {
+					description: t("groups.table.delete.error.desc"),
+				});
+				console.error("Error deleting group:", error);
+			},
+		});
+		setDeleteConfirm(null);
 	};
 
 	const moveGroup = (group: TableGroup, direction: "up" | "down") => {
@@ -847,6 +853,16 @@ export function GroupsTable() {
 					type="group"
 				/>
 			)}
+
+			<ConfirmDialog
+				open={!!deleteConfirm}
+				onOpenChange={(open) => !open && setDeleteConfirm(null)}
+				title="Delete Group"
+				description={`Are you sure you want to delete "${deleteConfirm?.groupName}"? This action cannot be undone.`}
+				onConfirm={handleConfirmDelete}
+				confirmText="Delete"
+				variant="destructive"
+			/>
 		</div>
 	);
 }

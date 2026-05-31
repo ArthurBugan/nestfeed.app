@@ -47,6 +47,7 @@ import {
 	useShareLinks,
 } from "@/hooks/useQuery/useShareLinks";
 import { useLanguage } from "@/components/language-provider";
+import { ConfirmDialog } from "./confirm-dialog";
 import { IconViewer } from "./icon-picker";
 
 const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
@@ -90,6 +91,10 @@ export function ShareLinksTable() {
 	const [searchTerm, setSearchTerm] = useState("");
 	const [debouncedSearchTerm, setDebouncedSearchTerm] = useState("");
 	const [adIndices, setAdIndices] = useState<number[]>([]);
+	const [deleteConfirm, setDeleteConfirm] = useState<{
+		linkId: string;
+		linkCode: string;
+	} | null>(null);
 	const { mutate: deleteShareLink, isPending: isDeletingLink } =
 		useDeleteShareLink();
 
@@ -102,13 +107,13 @@ export function ShareLinksTable() {
 
 	// Handle delete share link
 	const handleDeleteShareLink = (linkId: string, linkCode: string) => {
-		if (
-			confirm(
-				`Are you sure you want to delete share link "${linkCode}"? This action cannot be undone.`,
-			)
-		) {
-			deleteShareLink({ id: linkId });
-		}
+		setDeleteConfirm({ linkId, linkCode });
+	};
+
+	const handleConfirmDeleteShareLink = () => {
+		if (!deleteConfirm) return;
+		deleteShareLink({ id: deleteConfirm.linkId });
+		setDeleteConfirm(null);
 	};
 
 	// Handle copy link to clipboard
@@ -214,6 +219,7 @@ export function ShareLinksTable() {
 	};
 
 	return (
+		<>
 		<div className="space-y-4">
 			<div className="flex items-center gap-2">
 				<Input
@@ -483,5 +489,16 @@ export function ShareLinksTable() {
 				</div>
 			)}
 		</div>
+
+		<ConfirmDialog
+			open={!!deleteConfirm}
+			onOpenChange={(open) => !open && setDeleteConfirm(null)}
+			title="Delete Share Link"
+			description={`Are you sure you want to delete share link "${deleteConfirm?.linkCode}"? This action cannot be undone.`}
+			onConfirm={handleConfirmDeleteShareLink}
+			confirmText="Delete"
+			variant="destructive"
+		/>
+	</>
 	);
 }

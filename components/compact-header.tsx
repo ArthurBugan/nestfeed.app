@@ -47,6 +47,7 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 					variant="ghost"
 					size="icon"
 					className="md:hidden"
+					aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
 					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 				>
 					{mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}

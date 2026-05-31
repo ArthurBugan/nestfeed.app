@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.groupifyapp",
+      "sha256_cert_fingerprints": [
+        "4D:6A:36:7C:48:3F:CC:3E:0E:52:5C:6F:C0:F3:85:B6:6A:D6:5E:C3:F1:68:AD:B2:76:E4:D7:02:31:D9:A4:70"
+      ]
+    }
+  }
+]
