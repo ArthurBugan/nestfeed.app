@@ -86,7 +86,7 @@ export function GroupSettings() {
 				<h2 className="font-semibold text-sm mb-1">{t("group.settings.categories")}</h2>
 				<div className="flex gap-2">
 					<Input placeholder={t("group.settings.addcategory")} value={newCategory} onChange={(e) => setNewCategory(e.target.value)} onKeyPress={(e) => e.key === "Enter" && addCategory()} className="h-9 flex-1" />
-					<Button size="icon" onClick={addCategory}><Plus className="h-4 w-4" /></Button>
+					<Button size="icon" onClick={addCategory} aria-label="Add category"><Plus className="h-4 w-4" /></Button>
 				</div>
 				<div className="flex flex-wrap gap-2">
 					{categories.map((c) => (

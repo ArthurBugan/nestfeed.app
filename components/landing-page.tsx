@@ -656,26 +656,8 @@ export function LandingPage() {
 											>
 												<Star className="h-3.5 w-3.5 fill-current" />
 											</motion.div>
-									))}
-								</div>
-								<div className="mt-6 pt-4 border-t border-border/50">
-									<p className="text-sm text-muted-foreground mb-3">
-										Help us grow by starring our repositories!
-									</p>
-									<div className="flex items-center gap-3">
-										<Button
-											variant="outline"
-											size="sm"
-											asChild
-											className="rounded-xl border-muted-foreground/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
-										>
-											<a href="https://github.com/ArthurBugan/nestfeed.application" target="_blank" rel="noopener noreferrer">
-												<IconViewer icon="mdi:github" className="h-4 w-4 mr-1" />
-												Star on GitHub
-											</a>
-										</Button>
+										))}
 									</div>
-								</div>
 									<p className="text-sm leading-relaxed">"{tm.content}"</p>
 									<div className="flex items-center gap-2 pt-2 border-t">
 										<Avatar className="h-6 w-6">
@@ -907,31 +889,32 @@ export function LandingPage() {
 						</div>
 						<div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto text-sm text-muted-foreground">
 							<p>© 2026 Groupify. All rights reserved.</p>
-							<a
-								href="https://acidtools.com"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<img
-									src="https://acidtools.com/assets/images/badge-dark.png"
-									alt="Acid Tools"
-									className="h-12"
-								/>
-							</a>
-							<a href="https://www.foundrlist.com/product/groupify-2?utm_source=badge&amp;utm_medium=embed" target="_blank" className="h-12" rel="noopener">
-								<img src="https://www.foundrlist.com/api/badge/groupify-2" alt="Featured on FoundrList" width="150" className="h-12" height="48" />
-							</a>
-							<a href="https://peerpush.net/p/groupify"
-								target="_blank"
-								rel="noopener"
-								className="h-12"
-							>
-								<img
-									src="https://peerpush.net/p/groupify/badge.png"
-									alt="Groupify badge"
-									className="h-12"
-								/>
-							</a>
+							<div className="flex items-center gap-3 flex-shrink-0">
+								<a
+									href="https://acidtools.com"
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									<img
+										src="https://acidtools.com/assets/images/badge-dark.png"
+										alt="Acid Tools"
+										className="h-12 max-w-[120px]"
+									/>
+								</a>
+								<a href="https://www.foundrlist.com/product/groupify-2?utm_source=badge&amp;utm_medium=embed" target="_blank" rel="noopener">
+									<img src="https://www.foundrlist.com/api/badge/groupify-2" alt="Featured on FoundrList" width="150" className="h-12 max-w-[120px]" height="48" />
+								</a>
+								<a href="https://peerpush.net/p/groupify"
+									target="_blank"
+									rel="noopener"
+								>
+									<img
+										src="https://peerpush.net/p/groupify/badge.png"
+										alt="Groupify badge"
+										className="h-12 max-w-[120px]"
+									/>
+								</a>
+							</div>
 						</div>
 					</div>
 				</footer>

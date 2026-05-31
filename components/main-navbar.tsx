@@ -91,6 +91,7 @@ export function MainNavbar() {
 						variant="ghost"
 						size="icon"
 						className="md:hidden"
+						aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
 						onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 					>
 						{mobileMenuOpen ? (

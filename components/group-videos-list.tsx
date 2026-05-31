@@ -30,6 +30,7 @@ import {
 	useGroupVideos,
 } from "@/hooks/useQuery/useGroupVideos";
 import { useLanguage } from "@/components/language-provider";
+import { ConfirmDialog } from "./confirm-dialog";
 import { cn } from "@/lib/utils";
 
 interface GroupVideosListProps {
@@ -85,6 +86,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 	);
 	const [viewMode, setViewMode] = useState<"grid" | "list" | "compact">("grid");
 	const [selectedChannel, setSelectedChannel] = useState<string>("all");
+	const [clearAllConfirm, setClearAllConfirm] = useState(false);
 
 	const { data: groupData } = useGroupDetail(groupId);
 	const channels = groupData?.channels || [];
@@ -267,6 +269,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 						variant="outline"
 						size="icon"
 						className="h-7 w-7"
+						aria-label="Next page"
 						onClick={() =>
 							handlePageChange(Math.min(totalPages, currentPage + 1))
 						}
@@ -467,6 +470,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 	}
 
 	return (
+		<div>
 		<Card>
 			<CardHeader className="pb-3">
 				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -541,6 +545,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								variant={viewMode === "grid" ? "secondary" : "ghost"}
 								size="icon"
 								className="h-8 w-8 rounded-none"
+								aria-label="Grid view"
 								onClick={() => handleViewModeChange("grid")}
 							>
 								<LayoutGrid className="h-3.5 w-3.5" />
@@ -549,6 +554,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								variant={viewMode === "list" ? "secondary" : "ghost"}
 								size="icon"
 								className="h-8 w-8 rounded-none"
+								aria-label="List view"
 								onClick={() => handleViewModeChange("list")}
 							>
 								<List className="h-3.5 w-3.5" />
@@ -557,6 +563,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								variant={viewMode === "compact" ? "secondary" : "ghost"}
 								size="icon"
 								className="h-8 w-8 rounded-none"
+								aria-label="Compact view"
 								onClick={() => handleViewModeChange("compact")}
 							>
 								<AlignJustify className="h-3.5 w-3.5" />
@@ -569,15 +576,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								variant="ghost"
 								size="sm"
 								className="h-8 text-xs text-red-600 hover:text-red-700 hover:bg-red-50"
-								onClick={() => {
-									if (
-										confirm(
-											"Are you sure you want to clear all videos from this group? Its going to resync all videos from YouTube and force a new collection.",
-										)
-									) {
-										deleteAllVideos.mutate(groupId);
-									}
-								}}
+								onClick={() => setClearAllConfirm(true)}
 								disabled={deleteAllVideos.isPending}
 							>
 								<Trash2 className="h-3.5 w-3.5 mr-1" />
@@ -602,5 +601,19 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 				)}
 			</CardContent>
 		</Card>
+
+		<ConfirmDialog
+			open={clearAllConfirm}
+			onOpenChange={(open) => !open && setClearAllConfirm(false)}
+			title="Clear All Videos"
+			description="Are you sure you want to clear all videos from this group? This will resync all videos from YouTube and force a new collection."
+			onConfirm={() => {
+				deleteAllVideos.mutate(groupId);
+				setClearAllConfirm(false);
+			}}
+			confirmText="Clear All"
+			variant="destructive"
+		/>
+		</div>
 	);
 }

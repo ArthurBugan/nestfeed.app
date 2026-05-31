@@ -46,7 +46,6 @@ export function BillingSettings() {
 	const [showCancelDialog, setShowCancelDialog] = useState(false);
 	const { data: invoicesData, isLoading: invoicesLoading } = useInvoices();
 	const invoices = invoicesData || [];
-	console.log(invoices)
 	useEffect(() => {
 		DodoPaymentsCheckout.Initialize({ mode: "test", displayType: "overlay" });
 	}, []);
@@ -312,6 +311,7 @@ export function BillingSettings() {
 													variant="ghost"
 													size="icon"
 													className="h-7 w-7"
+													aria-label="Open invoice"
 													asChild
 												>
 													<a
