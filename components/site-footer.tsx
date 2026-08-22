@@ -85,6 +85,16 @@ export function SiteFooter({ showBadges = false }: { showBadges?: boolean }) {
 									{t("footer.contact")}
 								</Link>
 							</li>
+							<li>
+								<Link to="/faq" className="hover:text-foreground">
+									{t("footer.faq")}
+								</Link>
+							</li>
+							<li>
+								<Link to="/changelog" className="hover:text-foreground">
+									{t("footer.changelog")}
+								</Link>
+							</li>
 						</ul>
 					</nav>
 					<nav aria-label={t("footer.company")}>

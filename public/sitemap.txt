@@ -636,7 +636,9 @@ https://groupify.dev/blog/zee5-youtube-channel-analytical-profile
 https://groupify.dev/blog/zig-sharko-youtube-channel-analysis
 https://groupify.dev/blog/zuni-and-family-youtube-channel-analysis
 https://groupify.dev/blog/zutigang-youtube-channel-analysis
+https://groupify.dev/changelog
 https://groupify.dev/contact
+https://groupify.dev/faq
 https://groupify.dev/privacy
 https://groupify.dev/support
 https://groupify.dev/terms

@@ -31,6 +31,8 @@ const translations = {
 		"footer.tagline":
 			"The best way to organize, manage, and share your YouTube subscriptions.",
 		"footer.resources": "Resources",
+		"footer.faq": "FAQ",
+		"footer.changelog": "Changelog",
 		"footer.helpcenter": "Help Center",
 		"footer.community": "Community",
 		"footer.contact": "Contact",
@@ -1026,6 +1028,8 @@ const translations = {
 		"footer.tagline":
 			"A melhor forma de organizar, gerenciar e compartilhar suas inscrições do YouTube.",
 		"footer.resources": "Recursos",
+		"footer.faq": "Perguntas frequentes",
+		"footer.changelog": "Novidades",
 		"footer.helpcenter": "Central de Ajuda",
 		"footer.community": "Comunidade",
 		"footer.contact": "Contato",
@@ -1966,7 +1970,9 @@ const translations = {
 		// Footer / About / Contact / Consent
 		"footer.tagline":
 			"La mejor forma de organizar, gestionar y compartir tus suscripciones de YouTube.",
-		"footer.resources": "Recursos",
+
+		"footer.faq": "Preguntas frecuentes",
+		"footer.changelog": "Novedades",
 		"footer.community": "Comunidad",
 		"footer.contact": "Contacto",
 		"footer.about": "Acerca de",
