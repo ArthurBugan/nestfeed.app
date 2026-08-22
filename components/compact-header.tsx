@@ -1,10 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Youtube } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { useLanguage } from "@/components/language-provider";
+import { Button } from "@/components/ui/button";
 import { LanguageSelector } from "./language-selector";
 
 interface CompactHeaderProps {
@@ -12,7 +13,10 @@ interface CompactHeaderProps {
 	showGetStarted?: boolean;
 }
 
-export function CompactHeader({ homeLink = "/", showGetStarted = true }: CompactHeaderProps) {
+export function CompactHeader({
+	homeLink = "/",
+	showGetStarted = true,
+}: CompactHeaderProps) {
 	const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const { t } = useLanguage();
 
@@ -20,27 +24,57 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 		<header className="sticky top-0 z-50 border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
 			<div className="container mx-auto px-4 h-12 flex items-center justify-between">
 				<Link to={homeLink} className="flex items-center gap-2">
-					<Youtube className="h-5 w-5 text-primary" />
-					<span className="font-semibold">Nestfeed</span>
+					<YoutubeIcon className="h-5 w-5 text-primary" />
+					<span className="font-semibold">Groupify</span>
 				</Link>
 
 				<div className="hidden md:flex items-center gap-6">
-					<Link to="/dashboard" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.dashboard")}</Link>
-					<a href="#features" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.features")}</a>
-					<a href="#integrations" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.integrations")}</a>
-					<a href="#pricing" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.pricing")}</a>
-					<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.reviews")}</a>
-					<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.blog")}</Link>
+					<Link
+						to="/dashboard"
+						className="text-sm hover:text-foreground/80 transition-colors"
+					>
+						{t("nav.dashboard")}
+					</Link>
+					<a
+						href="#features"
+						className="text-sm hover:text-foreground/80 transition-colors"
+					>
+						{t("nav.features")}
+					</a>
+					<a
+						href="#integrations"
+						className="text-sm hover:text-foreground/80 transition-colors"
+					>
+						{t("nav.integrations")}
+					</a>
+					<a
+						href="#pricing"
+						className="text-sm hover:text-foreground/80 transition-colors"
+					>
+						{t("nav.pricing")}
+					</a>
+					<a
+						href="#testimonials"
+						className="text-sm hover:text-foreground/80 transition-colors"
+					>
+						{t("nav.reviews")}
+					</a>
+					<Link
+						to="/blog"
+						className="text-sm hover:text-foreground/80 transition-colors"
+					>
+						{t("nav.blog")}
+					</Link>
 				</div>
 
 				<div className="hidden md:flex items-center gap-2">
 					<LanguageSelector />
 					<Button size="sm" variant="ghost" asChild>
-							<Link to="/login">{t("nav.signin")}</Link>
-						</Button>
-						<Button size="sm" variant="ghost" asChild>
-							<Link to="/register">{t("nav.getstarted")}</Link>
-						</Button>
+						<Link to="/login">{t("nav.signin")}</Link>
+					</Button>
+					<Button size="sm" variant="ghost" asChild>
+						<Link to="/register">{t("nav.getstarted")}</Link>
+					</Button>
 				</div>
 
 				<Button
@@ -50,7 +84,11 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 					aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
 					onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
 				>
-					{mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+					{mobileMenuOpen ? (
+						<X className="h-5 w-5" />
+					) : (
+						<Menu className="h-5 w-5" />
+					)}
 				</Button>
 			</div>
 
@@ -58,14 +96,48 @@ export function CompactHeader({ homeLink = "/", showGetStarted = true }: Compact
 				<div className="md:hidden border-t py-4">
 					<div className="flex flex-col gap-2 px-4">
 						<LanguageSelector />
-						<Link to="/dashboard" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.dashboard")}</Link>
-						<a href="#features" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.features")}</a>
-						<a href="#integrations" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.integrations")}</a>
-						<a href="#pricing" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.pricing")}</a>
-						<a href="#testimonials" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.reviews")}</a>
-						<Link to="/blog" className="text-sm hover:text-foreground/80 transition-colors">{t("nav.blog")}</Link>
+						<Link
+							to="/dashboard"
+							className="text-sm hover:text-foreground/80 transition-colors"
+						>
+							{t("nav.dashboard")}
+						</Link>
+						<a
+							href="#features"
+							className="text-sm hover:text-foreground/80 transition-colors"
+						>
+							{t("nav.features")}
+						</a>
+						<a
+							href="#integrations"
+							className="text-sm hover:text-foreground/80 transition-colors"
+						>
+							{t("nav.integrations")}
+						</a>
+						<a
+							href="#pricing"
+							className="text-sm hover:text-foreground/80 transition-colors"
+						>
+							{t("nav.pricing")}
+						</a>
+						<a
+							href="#testimonials"
+							className="text-sm hover:text-foreground/80 transition-colors"
+						>
+							{t("nav.reviews")}
+						</a>
+						<Link
+							to="/blog"
+							className="text-sm hover:text-foreground/80 transition-colors"
+						>
+							{t("nav.blog")}
+						</Link>
 						{showGetStarted && (
-							<Button size="sm" asChild className="bg-primary hover:bg-primary/90 mt-2">
+							<Button
+								size="sm"
+								asChild
+								className="bg-primary hover:bg-primary/90 mt-2"
+							>
 								<Link to="/register">{t("nav.getstarted")}</Link>
 							</Button>
 						)}

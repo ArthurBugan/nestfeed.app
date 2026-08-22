@@ -1,7 +1,10 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Plus, Share2 } from "lucide-react";
+import { useState } from "react";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { IconViewer } from "@/components/icon-picker";
+import { useLanguage } from "@/components/language-provider";
+import { ShareLinksTable } from "@/components/share-links-table";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -12,10 +15,7 @@ import {
 	DialogTitle,
 	DialogTrigger,
 } from "@/components/ui/dialog";
-import { ShareLinksTable } from "@/components/share-links-table";
-import { useLanguage } from "@/components/language-provider";
 import { useGroups } from "@/hooks/useQuery/useGroups";
-import { useState } from "react";
 
 export const Route = createFileRoute("/_app/dashboard/share-links/")({
 	component: ShareLinksPage,
@@ -77,7 +77,9 @@ function ShareLinksPage() {
 										<div className="flex-1 min-w-0">
 											<p className="font-medium truncate">{group.name}</p>
 											<p className="text-xs text-muted-foreground">
-												{t("sharelinks.channels", { count: String(group.channelCount) })}
+												{t("sharelinks.channels", {
+													count: String(group.channelCount),
+												})}
 											</p>
 										</div>
 									</button>
@@ -90,17 +92,17 @@ function ShareLinksPage() {
 
 			<div className="rounded-lg border bg-card p-6">
 				<div className="flex justify-center py-4">
-						<ins
-							className="adsbygoogle"
-							style={{
-								display: "inline-block",
-								width: "728px",
-								height: "90px",
-							}}
-							data-ad-client="ca-pub-4077364511521347"
-							data-ad-slot="5153442110"
-						></ins>
-					</div>
+					<ins
+						className="adsbygoogle"
+						style={{
+							display: "inline-block",
+							width: "728px",
+							height: "90px",
+						}}
+						data-ad-client="ca-pub-4077364511521347"
+						data-ad-slot="5153442110"
+					></ins>
+				</div>
 				<div className="flex items-center gap-2 mb-4">
 					<Share2 className="h-5 w-5 text-muted-foreground" />
 					<h3 className="text-lg font-semibold">{t("sharelinks.all")}</h3>

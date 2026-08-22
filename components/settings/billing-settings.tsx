@@ -4,11 +4,12 @@ import { DodoPayments as DodoPaymentsCheckout } from "dodopayments-checkout";
 import {
 	AlertTriangle,
 	Check,
-	FileText,
 	ExternalLink,
+	FileText,
 	Loader2,
 } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -32,7 +33,6 @@ import {
 	useCancelSubscription,
 	useCreateCheckoutSession,
 } from "@/hooks/mutations/usePaymentMutations";
-import { useLanguage } from "@/components/language-provider";
 import { useDashboardTotal } from "@/hooks/useQuery/useDashboard";
 import { useInvoices } from "@/hooks/useQuery/useInvoices";
 import { useUser } from "@/hooks/useQuery/useUser";
@@ -185,12 +185,24 @@ export function BillingSettings() {
 							className={`rounded-xl border p-4 ${plan.current ? "border-primary/30 bg-primary/5" : ""}`}
 						>
 							<div className="flex items-center justify-between mb-2">
-								<h3 className="font-semibold text-sm">{plan.name === "Free" ? t("billing.free.name") : plan.name === "Basic" ? t("billing.basic.name") : t("billing.pro.name")}</h3>
-								{plan.current && <Badge variant="secondary">{t("billing.current.badge")}</Badge>}
+								<h3 className="font-semibold text-sm">
+									{plan.name === "Free"
+										? t("billing.free.name")
+										: plan.name === "Basic"
+											? t("billing.basic.name")
+											: t("billing.pro.name")}
+								</h3>
+								{plan.current && (
+									<Badge variant="secondary">
+										{t("billing.current.badge")}
+									</Badge>
+								)}
 							</div>
 							<p className="text-lg font-bold mb-3">
 								{plan.price}
-								<span className="text-xs text-muted-foreground">{t("billing.month")}</span>
+								<span className="text-xs text-muted-foreground">
+									{t("billing.month")}
+								</span>
 							</p>
 							<ul className="space-y-1.5 mb-4">
 								<li>
@@ -238,7 +250,9 @@ export function BillingSettings() {
 										}
 									}}
 								>
-									{plan.current ? t("billing.current.badge") : t("billing.change")}
+									{plan.current
+										? t("billing.current.badge")
+										: t("billing.change")}
 								</Button>
 							)}
 						</div>
@@ -294,9 +308,7 @@ export function BillingSettings() {
 										<TableCell>
 											<Badge
 												variant={
-													inv.status === "succeeded"
-														? "secondary"
-														: "outline"
+													inv.status === "succeeded" ? "secondary" : "outline"
 												}
 												className="text-xs capitalize"
 											>
@@ -340,9 +352,7 @@ export function BillingSettings() {
 							<AlertTriangle className="h-5 w-5 text-amber-500" />
 							{t("billing.cancel.title")}
 						</DialogTitle>
-						<DialogDescription>
-							{t("billing.cancel.desc")}
-						</DialogDescription>
+						<DialogDescription>{t("billing.cancel.desc")}</DialogDescription>
 					</DialogHeader>
 					<DialogFooter>
 						<Button

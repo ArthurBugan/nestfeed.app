@@ -1,7 +1,8 @@
 "use client";
 
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { AlertTriangle, Youtube } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
@@ -30,12 +31,10 @@ export function YouTubeConnectModal({
 			<DialogContent>
 				<DialogHeader>
 					<DialogTitle className="flex items-center gap-2">
-						<Youtube className="h-5 w-5 text-red-50" />
+						<YoutubeIcon className="h-5 w-5 text-red-50" />
 						{t("youtube.connect.title")}
 					</DialogTitle>
-					<DialogDescription>
-							{t("youtube.connect.desc")}
-					</DialogDescription>
+					<DialogDescription>{t("youtube.connect.desc")}</DialogDescription>
 				</DialogHeader>
 				<div className="py-4">
 					<p className="text-sm text-muted-foreground">

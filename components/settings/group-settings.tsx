@@ -7,7 +7,13 @@ import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import {
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
+} from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 
 export function GroupSettings() {
@@ -17,7 +23,12 @@ export function GroupSettings() {
 	const [autoSort, setAutoSort] = useState(true);
 	const [defaultView, setDefaultView] = useState("grid");
 	const [sortOrder, setSortOrder] = useState("subscribers-desc");
-	const [categories, setCategories] = useState(["Gaming", "Technology", "Food", "Music"]);
+	const [categories, setCategories] = useState([
+		"Gaming",
+		"Technology",
+		"Food",
+		"Music",
+	]);
 	const [newCategory, setNewCategory] = useState("");
 	const [isSaving, setIsSaving] = useState(false);
 
@@ -50,70 +61,153 @@ export function GroupSettings() {
 
 	const saveSettings = async () => {
 		setIsSaving(true);
-		await new Promise(r => setTimeout(r, 500));
+		await new Promise((r) => setTimeout(r, 500));
 		toast.success(t("group.settings.saved"));
 		setIsSaving(false);
 	};
 
 	const saveToStorage = () => {
-		localStorage.setItem("groupSettings", JSON.stringify({ maxChannels, allowDuplicates, autoSort, defaultView, sortOrder, categories }));
+		localStorage.setItem(
+			"groupSettings",
+			JSON.stringify({
+				maxChannels,
+				allowDuplicates,
+				autoSort,
+				defaultView,
+				sortOrder,
+				categories,
+			}),
+		);
 	};
 
 	return (
 		<div className="space-y-4">
 			{/* Configuration */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4 space-y-3">
-				<h2 className="font-semibold text-sm mb-1">{t("group.settings.config")}</h2>
+				<h2 className="font-semibold text-sm mb-1">
+					{t("group.settings.config")}
+				</h2>
 
 				<div className="flex items-center justify-between">
-					<Label htmlFor="max-channels" className="text-sm">{t("group.settings.maxchannels")}</Label>
-					<Input id="max-channels" type="number" value={maxChannels} onChange={(e) => setMaxChannels(e.target.value)} className="w-20 h-9" />
+					<Label htmlFor="max-channels" className="text-sm">
+						{t("group.settings.maxchannels")}
+					</Label>
+					<Input
+						id="max-channels"
+						type="number"
+						value={maxChannels}
+						onChange={(e) => setMaxChannels(e.target.value)}
+						className="w-20 h-9"
+					/>
 				</div>
 
 				<div className="flex items-center justify-between">
-					<Label htmlFor="duplicates" className="text-sm">{t("group.settings.duplicates")}</Label>
-					<Switch id="duplicates" checked={allowDuplicates} onCheckedChange={setAllowDuplicates} />
+					<Label htmlFor="duplicates" className="text-sm">
+						{t("group.settings.duplicates")}
+					</Label>
+					<Switch
+						id="duplicates"
+						checked={allowDuplicates}
+						onCheckedChange={setAllowDuplicates}
+					/>
 				</div>
 
 				<div className="flex items-center justify-between">
-					<Label htmlFor="auto-sort" className="text-sm">{t("group.settings.autosort")}</Label>
-					<Switch id="auto-sort" checked={autoSort} onCheckedChange={setAutoSort} />
+					<Label htmlFor="auto-sort" className="text-sm">
+						{t("group.settings.autosort")}
+					</Label>
+					<Switch
+						id="auto-sort"
+						checked={autoSort}
+						onCheckedChange={setAutoSort}
+					/>
 				</div>
 			</div>
 
 			{/* Categories */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4 space-y-3">
-				<h2 className="font-semibold text-sm mb-1">{t("group.settings.categories")}</h2>
+				<h2 className="font-semibold text-sm mb-1">
+					{t("group.settings.categories")}
+				</h2>
 				<div className="flex gap-2">
-					<Input placeholder={t("group.settings.addcategory")} value={newCategory} onChange={(e) => setNewCategory(e.target.value)} onKeyPress={(e) => e.key === "Enter" && addCategory()} className="h-9 flex-1" />
-					<Button size="icon" onClick={addCategory} aria-label="Add category"><Plus className="h-4 w-4" /></Button>
+					<Input
+						placeholder={t("group.settings.addcategory")}
+						value={newCategory}
+						onChange={(e) => setNewCategory(e.target.value)}
+						onKeyPress={(e) => e.key === "Enter" && addCategory()}
+						className="h-9 flex-1"
+					/>
+					<Button size="icon" onClick={addCategory} aria-label="Add category">
+						<Plus className="h-4 w-4" />
+					</Button>
 				</div>
 				<div className="flex flex-wrap gap-2">
 					{categories.map((c) => (
-						<span key={c} className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-muted text-xs">{c}<button onClick={() => removeCategory(c)}><X className="h-3 w-3" /></button></span>
+						<span
+							key={c}
+							className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-muted text-xs"
+						>
+							{c}
+							<button onClick={() => removeCategory(c)}>
+								<X className="h-3 w-3" />
+							</button>
+						</span>
 					))}
 				</div>
 			</div>
 
 			{/* Defaults */}
 			<div className="rounded-xl border bg-card/50 backdrop-blur-sm p-4 space-y-3">
-				<h2 className="font-semibold text-sm mb-1">{t("group.settings.defaults")}</h2>
+				<h2 className="font-semibold text-sm mb-1">
+					{t("group.settings.defaults")}
+				</h2>
 				<div className="grid grid-cols-2 gap-3">
 					<Select value={defaultView} onValueChange={setDefaultView}>
-						<Label className="text-xs mb-1.5 block">{t("group.settings.defaultview")}</Label>
-						<SelectTrigger className="h-9"><SelectValue /></SelectTrigger>
-						<SelectContent><SelectItem value="grid">{t("group.settings.grid")}</SelectItem><SelectItem value="list">{t("group.settings.list")}</SelectItem><SelectItem value="compact">{t("group.settings.compact")}</SelectItem></SelectContent>
+						<Label className="text-xs mb-1.5 block">
+							{t("group.settings.defaultview")}
+						</Label>
+						<SelectTrigger className="h-9">
+							<SelectValue />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectItem value="grid">{t("group.settings.grid")}</SelectItem>
+							<SelectItem value="list">{t("group.settings.list")}</SelectItem>
+							<SelectItem value="compact">
+								{t("group.settings.compact")}
+							</SelectItem>
+						</SelectContent>
 					</Select>
 
 					<Select value={sortOrder} onValueChange={setSortOrder}>
-						<Label className="text-xs mb-1.5 block">{t("group.settings.sortorder")}</Label>
-						<SelectTrigger className="h-9"><SelectValue /></SelectTrigger>
-						<SelectContent><SelectItem value="subscribers-desc">{t("group.settings.sort.subscribers")}</SelectItem><SelectItem value="name-asc">{t("group.settings.sort.name")}</SelectItem></SelectContent>
+						<Label className="text-xs mb-1.5 block">
+							{t("group.settings.sortorder")}
+						</Label>
+						<SelectTrigger className="h-9">
+							<SelectValue />
+						</SelectTrigger>
+						<SelectContent>
+							<SelectItem value="subscribers-desc">
+								{t("group.settings.sort.subscribers")}
+							</SelectItem>
+							<SelectItem value="name-asc">
+								{t("group.settings.sort.name")}
+							</SelectItem>
+						</SelectContent>
 					</Select>
 				</div>
 			</div>
 
-			<div className="flex justify-end"><Button size="sm" onClick={saveSettings} disabled={isSaving}>{isSaving ? t("group.settings.saving") : <><Save className="h-3.5 w-3.5 mr-1" /> {t("group.settings.save")}</>}</Button></div>
+			<div className="flex justify-end">
+				<Button size="sm" onClick={saveSettings} disabled={isSaving}>
+					{isSaving ? (
+						t("group.settings.saving")
+					) : (
+						<>
+							<Save className="h-3.5 w-3.5 mr-1" /> {t("group.settings.save")}
+						</>
+					)}
+				</Button>
+			</div>
 		</div>
 	);
 }

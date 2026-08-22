@@ -43,7 +43,9 @@ export function UpgradePlanModal({
 				</DialogHeader>
 				<div className="py-4">
 					<p className="text-sm text-muted-foreground">
-						{type === "channel" ? t("upgrade.body.channels") : t("upgrade.body.groups")}
+						{type === "channel"
+							? t("upgrade.body.channels")
+							: t("upgrade.body.groups")}
 					</p>
 				</div>
 				<DialogFooter>

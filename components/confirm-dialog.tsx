@@ -1,3 +1,4 @@
+import { Trash2 } from "lucide-react";
 import {
 	AlertDialog,
 	AlertDialogAction,
@@ -8,7 +9,6 @@ import {
 	AlertDialogHeader,
 	AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
-import { Trash2 } from "lucide-react";
 
 interface ConfirmDialogProps {
 	open: boolean;
@@ -51,9 +51,7 @@ export function ConfirmDialog({
 								}`}
 							/>
 						</div>
-						<AlertDialogTitle className="text-base">
-							{title}
-						</AlertDialogTitle>
+						<AlertDialogTitle className="text-base">{title}</AlertDialogTitle>
 					</div>
 					<AlertDialogDescription className="pt-2">
 						{description}
@@ -67,9 +65,7 @@ export function ConfirmDialog({
 							onConfirm();
 						}}
 						className={
-							variant === "destructive"
-								? "bg-red-500 hover:bg-red-600"
-								: ""
+							variant === "destructive" ? "bg-red-500 hover:bg-red-600" : ""
 						}
 					>
 						{confirmText}

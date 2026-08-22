@@ -1,6 +1,8 @@
 // src/routes/__root.tsx
 /// <reference types="vite/client" />
 
+import Clarity from "@microsoft/clarity";
+import rybbit from "@rybbit/js";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
@@ -12,25 +14,24 @@ import {
 } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { AppearanceProvider } from "@/components/appearance-provider";
+import { CookieConsent } from "@/components/cookie-consent";
 import { LanguageProvider } from "@/components/language-provider";
 import { NotFound } from "@/components/not-found";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { AnalyticsListener } from "@/hooks/analytics-listener";
 import { queryClient } from "@/hooks/utils/queryClient";
 import appCss from "@/styles/app.css?url";
-import { AnalyticsListener } from "@/hooks/analytics-listener";
-import rybbit from "@rybbit/js";
-import Clarity from '@microsoft/clarity';
 
 const VITE_CLARITY_PROJECT_ID = import.meta.env.VITE_CLARITY_PROJECT_ID;
 
 if (typeof window !== "undefined") {
 	await rybbit.init({
-	  analyticsHost: "https://rybbit.nestfeed.app/api",
-	  siteId: "5bd1e2c51d8f",
-	  replayPrivacyConfig: {
-		slimDOMOptions: true
-	  }
+		analyticsHost: "https://rybbit.nestfeed.app/api",
+		siteId: "5bd1e2c51d8f",
+		replayPrivacyConfig: {
+			slimDOMOptions: true,
+		},
 	});
 
 	Clarity.init(VITE_CLARITY_PROJECT_ID);
@@ -48,8 +49,15 @@ export const Route = createRootRoute({
 				content: "width=device-width, initial-scale=1",
 			},
 			{
-				title: "Nestfeed - Group anything",
+				title: "Groupify – Organize your YouTube channels into groups",
 			},
+			{
+				name: "description",
+				content:
+					"Groupify helps you organize YouTube channels into groups, curate watchlists and share them with friends. Built for creators, anime fans and anyone taming their subscriptions.",
+			},
+			{ property: "og:type", content: "website" },
+			{ property: "og:site_name", content: "Groupify" },
 		],
 		links: [{ rel: "stylesheet", href: appCss }],
 	}),
@@ -85,18 +93,24 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 				></script>
 			</head>
 			<body>
-				<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TZ924QCW" title="Google Tag Manager"
-				height="0" width="0" style={{display:'none',visibility:'hidden'}}></iframe></noscript>
+				<noscript>
+					<iframe
+						src="https://www.googletagmanager.com/ns.html?id=GTM-TZ924QCW"
+						title="Google Tag Manager"
+						height="0"
+						width="0"
+						style={{ display: "none", visibility: "hidden" }}
+					></iframe>
+				</noscript>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange
 				>
-					<AppearanceProvider>
-						{children}
-					</AppearanceProvider>
+					<AppearanceProvider>{children}</AppearanceProvider>
 				</ThemeProvider>
+				<CookieConsent />
 				{/** biome-ignore lint/correctness/useUniqueElementIds: <implement gtm> */}
 				<script id="gtm">
 					{`
@@ -107,7 +121,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 					})(window,document,'script','dataLayer','GTM-TZ924QCW');
 				`}
 				</script>
-				<script async src="https://www.googletagmanager.com/gtag/js?id=G-D7BS3V6VJF"></script>
+				<script
+					async
+					src="https://www.googletagmanager.com/gtag/js?id=G-D7BS3V6VJF"
+				></script>
 				<script>
 					{`
 					window.dataLayer = window.dataLayer || [];

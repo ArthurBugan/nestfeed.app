@@ -11,11 +11,13 @@ import {
 	Search,
 	Trash2,
 	X,
-	Youtube,
 } from "lucide-react";
 import type React from "react";
 import { useEffect, useMemo, useState } from "react";
+import { toast } from "sonner";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { DashboardHeader } from "@/components/dashboard-header";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -42,15 +44,12 @@ import {
 	type Channel,
 	getChannels,
 	useChannels,
-	useUpdateChannelsBatch,
 	useFetchChannelFromUrl,
+	useUpdateChannelsBatch,
 } from "@/hooks/useQuery/useChannels";
 import { useGroup } from "@/hooks/useQuery/useGroups";
 import { useUser } from "@/hooks/useQuery/useUser";
-import { useLanguage } from "@/components/language-provider";
 import { getChannelUrl } from "@/lib/utils";
-
-import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/dashboard/groups/$id/add-channel/")(
 	{
@@ -309,7 +308,8 @@ function AddChannelPage() {
 								<TabsContent value="search" className="space-y-4">
 									<form onSubmit={handleSearch} className="flex gap-2 mb-4">
 										<Input
-											placeholder="Search for YouTube channels..." data-tour="channel-search-input"
+											placeholder="Search for YouTube channels..."
+											data-tour="channel-search-input"
 											value={searchQuery}
 											onChange={(e) => setSearchQuery(e.target.value)}
 											className="flex-1"
@@ -385,7 +385,9 @@ function AddChannelPage() {
 											variant="secondary"
 											disabled={isFetchingUrl || !urlInput.trim()}
 										>
-											{isFetchingUrl ? t("channels.add.fetching") : t("channels.add.fetch")}
+											{isFetchingUrl
+												? t("channels.add.fetching")
+												: t("channels.add.fetch")}
 										</Button>
 									</form>
 									{fetchError && (
@@ -415,7 +417,7 @@ function AddChannelPage() {
 														alt={channel.name}
 													/>
 													<AvatarFallback>
-														<Youtube className="h-5 w-5" />
+														<YoutubeIcon className="h-5 w-5" />
 													</AvatarFallback>
 												</Avatar>
 												<div>
@@ -434,14 +436,16 @@ function AddChannelPage() {
 												}
 												onClick={() => handleAddChannel(channel)}
 												disabled={isSelected(channel.id)}
-																data-tour="channel-add-btn"
+												data-tour="channel-add-btn"
 											>
 												{isSelected(channel.id) ? (
 													<Check className="mr-1 h-4 w-4" />
 												) : (
 													<Plus className="mr-1 h-4 w-4" />
 												)}
-												{isSelected(channel.id) ? t("channels.add.added") : t("channels.add.add")}
+												{isSelected(channel.id)
+													? t("channels.add.added")
+													: t("channels.add.add")}
 											</Button>
 										</div>
 									))
@@ -457,7 +461,7 @@ function AddChannelPage() {
 														alt={channel.name}
 													/>
 													<AvatarFallback>
-														<Youtube className="h-5 w-5" />
+														<YoutubeIcon className="h-5 w-5" />
 													</AvatarFallback>
 												</Avatar>
 												<div>
@@ -476,14 +480,16 @@ function AddChannelPage() {
 												}
 												onClick={() => handleAddChannel(channel)}
 												disabled={isSelected(channel.id)}
-																data-tour="channel-add-btn"
+												data-tour="channel-add-btn"
 											>
 												{isSelected(channel.id) ? (
 													<Check className="mr-1 h-4 w-4" />
 												) : (
 													<Plus className="mr-1 h-4 w-4" />
 												)}
-												{isSelected(channel.id) ? t("channels.add.added") : t("channels.add.add")}
+												{isSelected(channel.id)
+													? t("channels.add.added")
+													: t("channels.add.add")}
 											</Button>
 										</div>
 									))}
@@ -560,7 +566,7 @@ function AddChannelPage() {
 						<CardContent className="space-y-4">
 							{selectedChannels.length === 0 ? (
 								<div className="text-center py-8 text-muted-foreground">
-									<Youtube className="mx-auto h-12 w-12 mb-4 opacity-50" />
+									<YoutubeIcon className="mx-auto h-12 w-12 mb-4 opacity-50" />
 									<p className="text-lg font-medium">No channels selected</p>
 									<p className="text-sm mt-2 mb-4">
 										Go back to select channels to add
@@ -588,7 +594,7 @@ function AddChannelPage() {
 															alt={channel.name}
 														/>
 														<AvatarFallback>
-															<Youtube className="h-5 w-5" />
+															<YoutubeIcon className="h-5 w-5" />
 														</AvatarFallback>
 													</Avatar>
 													<div>

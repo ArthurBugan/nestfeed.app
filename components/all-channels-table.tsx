@@ -1,6 +1,5 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
 import { Link } from "@tanstack/react-router";
 import {
 	ExternalLink,
@@ -9,10 +8,11 @@ import {
 	MoreHorizontal,
 	Pencil,
 	Trash2,
-	Youtube,
 } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { YoutubeIcon } from "@/components/brand-icons";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { GenericCombobox } from "@/components/ui/combobox";
@@ -244,7 +244,9 @@ export function AllChannelsTable() {
 						<TableRow>
 							<TableHead>{t("all.channels.channel")}</TableHead>
 							<TableHead>{t("all.channels.group")}</TableHead>
-							<TableHead className="text-right">{t("all.channels.actions")}</TableHead>
+							<TableHead className="text-right">
+								{t("all.channels.actions")}
+							</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -275,7 +277,7 @@ export function AllChannelsTable() {
 														alt={channel.name}
 													/>
 													<AvatarFallback>
-														<Youtube className="h-4 w-4" />
+														<YoutubeIcon className="h-4 w-4" />
 													</AvatarFallback>
 												</Avatar>
 												<div>
@@ -344,7 +346,9 @@ export function AllChannelsTable() {
 												<DropdownMenuTrigger asChild>
 													<Button variant="ghost" size="icon">
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">{t("all.channels.openmenu")}</span>
+														<span className="sr-only">
+															{t("all.channels.openmenu")}
+														</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -402,7 +406,9 @@ export function AllChannelsTable() {
 			{data?.data && data.data.length > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">{t("all.channels.itemsperpage")}</span>
+						<span className="whitespace-nowrap">
+							{t("all.channels.itemsperpage")}
+						</span>
 						<GenericCombobox
 							data={[
 								{ value: "10", label: "10" },

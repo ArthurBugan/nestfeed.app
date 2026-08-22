@@ -3,8 +3,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, CheckCircle, Mail, RefreshCw } from "lucide-react";
 import { Suspense } from "react";
-import { useLanguage } from "@/components/language-provider";
 import { CompactHeader } from "@/components/compact-header";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
 	Card,

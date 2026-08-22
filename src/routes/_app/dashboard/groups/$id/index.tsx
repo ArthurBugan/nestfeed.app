@@ -4,11 +4,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ChevronRight, Home, Play, Users } from "lucide-react";
 import { useEffect, useMemo, useRef } from "react";
 import { toast } from "sonner";
-import { useLanguage } from "@/components/language-provider";
 import { ChannelsTable } from "@/components/channels-table";
 import { GroupDetails } from "@/components/group-details";
 import { GroupVideosList } from "@/components/group-videos-list";
 import { IconViewer } from "@/components/icon-picker";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -152,7 +152,9 @@ function GroupDetailPage() {
 							<div className="flex-1 min-w-0">
 								<p className="font-medium text-sm truncate">{child.name}</p>
 								<p className="text-xs text-muted-foreground">
-									{t("group.detail.channels.count", { count: String(child.channelCount) })}
+									{t("group.detail.channels.count", {
+										count: String(child.channelCount),
+									})}
 								</p>
 							</div>
 						</Link>
@@ -166,19 +168,13 @@ function GroupDetailPage() {
 			{/* Tabs */}
 			<Tabs defaultValue="channels" className="space-y-4">
 				<TabsList className="grid grid-cols-2 w-auto bg-muted/30">
-					<TabsTrigger
-						value="channels"
-						className="flex items-center gap-2"
-					>
+					<TabsTrigger value="channels" className="flex items-center gap-2">
 						<Users className="h-3.5 w-3.5" /> {t("group.detail.tab.channels")}
 						<Badge variant="secondary" className="ml-1">
 							{group.channels?.length || 0}
 						</Badge>
 					</TabsTrigger>
-					<TabsTrigger
-						value="videos"
-						className="flex items-center gap-2"
-					>
+					<TabsTrigger value="videos" className="flex items-center gap-2">
 						<Play className="h-3.5 w-3.5" /> {t("group.detail.tab.videos")}
 						<Badge variant="secondary" className="ml-1">
 							{videoCount}

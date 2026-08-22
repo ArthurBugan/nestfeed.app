@@ -5,6 +5,7 @@ import {
 	useRouterState,
 } from "@tanstack/react-router";
 import React from "react";
+import { OnboardingTour } from "@/components/onboarding-tour";
 import { AppSidebar } from "@/components/ui/app-sidebar";
 import {
 	Breadcrumb,
@@ -20,7 +21,6 @@ import {
 	SidebarProvider,
 	SidebarTrigger,
 } from "@/components/ui/sidebar";
-import { OnboardingTour } from "@/components/onboarding-tour";
 import { TourProvider } from "@/hooks/useOnboardingTour";
 
 export const Route = createFileRoute("/_app/dashboard")({

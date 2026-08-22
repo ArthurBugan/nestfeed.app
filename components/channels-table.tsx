@@ -1,6 +1,5 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
 import {
 	AlignJustify,
 	ExternalLink,
@@ -9,9 +8,10 @@ import {
 	Loader2,
 	MoreHorizontal,
 	Trash2,
-	Youtube,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -113,7 +113,9 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 				<TableHeader>
 					<TableRow>
 						<TableHead>{t("channels.table.channel")}</TableHead>
-						<TableHead className="text-right">{t("channels.table.actions")}</TableHead>
+						<TableHead className="text-right">
+							{t("channels.table.actions")}
+						</TableHead>
 					</TableRow>
 				</TableHeader>
 				<TableBody>
@@ -134,7 +136,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 												alt={channel.name}
 											/>
 											<AvatarFallback>
-												<Youtube className="h-4 w-4" />
+												<YoutubeIcon className="h-4 w-4" />
 											</AvatarFallback>
 										</Avatar>
 										<div>
@@ -150,7 +152,9 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 										<DropdownMenuTrigger asChild>
 											<Button variant="ghost" size="icon">
 												<MoreHorizontal className="h-4 w-4" />
-												<span className="sr-only">{t("channels.table.openmenu")}</span>
+												<span className="sr-only">
+													{t("channels.table.openmenu")}
+												</span>
 											</Button>
 										</DropdownMenuTrigger>
 										<DropdownMenuContent align="end">
@@ -205,7 +209,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 										alt={channel.name}
 									/>
 									<AvatarFallback>
-										<Youtube className="h-24 w-24" />
+										<YoutubeIcon className="h-24 w-24" />
 									</AvatarFallback>
 								</Avatar>
 								<h3 className="font-medium mb-2">{channel.name}</h3>
@@ -267,7 +271,7 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 									alt={channel.name}
 								/>
 								<AvatarFallback>
-									<Youtube className="h-4 w-4" />
+									<YoutubeIcon className="h-4 w-4" />
 								</AvatarFallback>
 							</Avatar>
 							<div className="overflow-hidden">
@@ -319,9 +323,15 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							<SelectValue />
 						</SelectTrigger>
 						<SelectContent>
-							<SelectItem value="recent">{t("channels.table.sort.recent")}</SelectItem>
-							<SelectItem value="name-asc">{t("channels.table.sort.nameaz")}</SelectItem>
-							<SelectItem value="name-desc">{t("channels.table.sort.nameza")}</SelectItem>
+							<SelectItem value="recent">
+								{t("channels.table.sort.recent")}
+							</SelectItem>
+							<SelectItem value="name-asc">
+								{t("channels.table.sort.nameaz")}
+							</SelectItem>
+							<SelectItem value="name-desc">
+								{t("channels.table.sort.nameza")}
+							</SelectItem>
 						</SelectContent>
 					</Select>
 					<div className="flex border rounded-md overflow-hidden">
@@ -350,7 +360,9 @@ export function ChannelsTable({ groupId }: ChannelsTableProps) {
 							onClick={() => setViewMode("compact")}
 						>
 							<AlignJustify className="h-4 w-4" />
-							<span className="sr-only">{t("channels.table.view.compact")}</span>
+							<span className="sr-only">
+								{t("channels.table.view.compact")}
+							</span>
 						</Button>
 					</div>
 				</div>

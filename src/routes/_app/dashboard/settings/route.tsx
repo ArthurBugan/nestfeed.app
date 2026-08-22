@@ -1,4 +1,9 @@
-import { createFileRoute, Outlet, useLocation, useNavigate } from "@tanstack/react-router";
+import {
+	createFileRoute,
+	Outlet,
+	useLocation,
+	useNavigate,
+} from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -22,12 +27,24 @@ function SettingsPage() {
 			<h1 className="text-xl font-semibold">{t("settings.title")}</h1>
 			<p className="text-sm text-muted-foreground">{t("settings.desc")}</p>
 
-			<Tabs value={activeTab} onValueChange={(v) => router({ to: `/dashboard/settings/${v}` })} className="space-y-4">
+			<Tabs
+				value={activeTab}
+				onValueChange={(v) => router({ to: `/dashboard/settings/${v}` })}
+				className="space-y-4"
+			>
 				<TabsList className="grid grid-cols-4 w-full bg-muted/30">
-					<TabsTrigger value="billing" className="">{t("settings.tab.billing")}</TabsTrigger>
-					<TabsTrigger value="account" className="">{t("settings.tab.account")}</TabsTrigger>
-					<TabsTrigger value="appearance" className="">{t("settings.tab.appearance")}</TabsTrigger>
-					<TabsTrigger value="groups" className="">{t("settings.tab.groups")}</TabsTrigger>
+					<TabsTrigger value="billing" className="">
+						{t("settings.tab.billing")}
+					</TabsTrigger>
+					<TabsTrigger value="account" className="">
+						{t("settings.tab.account")}
+					</TabsTrigger>
+					<TabsTrigger value="appearance" className="">
+						{t("settings.tab.appearance")}
+					</TabsTrigger>
+					<TabsTrigger value="groups" className="">
+						{t("settings.tab.groups")}
+					</TabsTrigger>
 				</TabsList>
 				<Outlet />
 			</Tabs>

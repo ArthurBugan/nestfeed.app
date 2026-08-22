@@ -3,6 +3,7 @@ import { Loader2, Plus } from "lucide-react";
 import { useState } from "react";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { GroupsTable } from "@/components/groups-table";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
 	Card,
@@ -12,7 +13,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { UpgradePlanModal } from "@/components/upgrade-plan-modal";
-import { useLanguage } from "@/components/language-provider";
 import { useGroups } from "@/hooks/useQuery/useGroups";
 import { useUser } from "@/hooks/useQuery/useUser";
 
@@ -90,7 +90,9 @@ function GroupsPage() {
 				</div>
 				<Card>
 					<CardHeader>
-						<CardTitle className="text-red-600">{t("groups.error.title")}</CardTitle>
+						<CardTitle className="text-red-600">
+							{t("groups.error.title")}
+						</CardTitle>
 						<CardDescription>
 							{error.message || t("groups.error.description")}
 						</CardDescription>
@@ -111,7 +113,7 @@ function GroupsPage() {
 					className="bg-primary hover:bg-primary/90 text-white"
 					type="button"
 					onClick={handleNewGroup}
-				data-tour="new-group-btn"
+					data-tour="new-group-btn"
 				>
 					<Plus className="mr-2 h-4 w-4" />
 					{t("groups.new")}

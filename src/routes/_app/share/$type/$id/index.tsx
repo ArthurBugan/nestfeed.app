@@ -3,6 +3,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { AlertTriangle, Clock, Copy, Users } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { useLanguage } from "@/components/language-provider";
 import { useConsumeShareLink, useShareLink } from "@/hooks/useQuery/useShare";
 
 export const Route = createFileRoute("/_app/share/$type/$id/")({
@@ -36,7 +36,9 @@ function ShareLinkPage() {
 			<div className="flex min-h-screen items-center justify-center">
 				<Card className="w-full max-w-md">
 					<CardHeader>
-						<CardTitle className="text-center">{t("share.loading.title")}</CardTitle>
+						<CardTitle className="text-center">
+							{t("share.loading.title")}
+						</CardTitle>
 						<CardDescription className="text-center">
 							{t("share.loading.desc")}
 						</CardDescription>
@@ -65,9 +67,7 @@ function ShareLinkPage() {
 						{isExpired && (
 							<Alert>
 								<AlertTriangle className="h-4 w-4" />
-								<AlertDescription>
-									{t("share.alert.expired")}
-								</AlertDescription>
+								<AlertDescription>{t("share.alert.expired")}</AlertDescription>
 							</Alert>
 						)}
 					</CardContent>
@@ -107,8 +107,12 @@ function ShareLinkPage() {
 					</CardTitle>
 					<CardDescription>
 						{type !== "copy"
-							? t("share.card.collab.desc", { name: shareLink?.groupName || "a group" })
-							: t("share.card.copy.desc", { name: shareLink?.groupName || "a group" })}
+							? t("share.card.collab.desc", {
+									name: shareLink?.groupName || "a group",
+								})
+							: t("share.card.copy.desc", {
+									name: shareLink?.groupName || "a group",
+								})}
 					</CardDescription>
 				</CardHeader>
 				<CardContent className="space-y-4">
@@ -117,7 +121,9 @@ function ShareLinkPage() {
 							<h3 className="font-medium">
 								{shareLink?.groupName || t("share.group.unknown")}
 							</h3>
-							<Badge>{shareLink?.groupDescription || t("share.label.unknown")}</Badge>
+							<Badge>
+								{shareLink?.groupDescription || t("share.label.unknown")}
+							</Badge>
 						</div>
 						<p className="text-sm text-muted-foreground">
 							{shareLink?.groupDescription || t("share.desc.none")}
@@ -128,7 +134,9 @@ function ShareLinkPage() {
 
 					<div className="space-y-2">
 						<div className="flex justify-between">
-							<span className="text-sm text-muted-foreground">{t("share.channels")}</span>
+							<span className="text-sm text-muted-foreground">
+								{t("share.channels")}
+							</span>
 							<span className="font-medium">
 								{shareLink?.channelCount || "0"}
 							</span>
@@ -152,10 +160,13 @@ function ShareLinkPage() {
 						<Alert>
 							<Users className="h-4 w-4" />
 							<AlertDescription>
-								{t("share.permission.alert", { permission: shareLink?.permission || "" })}
+								{t("share.permission.alert", {
+									permission: shareLink?.permission || "",
+								})}
 								{shareLink?.permission === "view" && t("share.permission.view")}
 								{shareLink?.permission === "edit" && t("share.permission.edit")}
-								{shareLink?.permission === "admin" && t("share.permission.admin")}
+								{shareLink?.permission === "admin" &&
+									t("share.permission.admin")}
 							</AlertDescription>
 						</Alert>
 					) : (
@@ -163,7 +174,9 @@ function ShareLinkPage() {
 							<Alert>
 								<Copy className="h-4 w-4" />
 								<AlertDescription>
-									{t("share.copy.alert", { count: String(shareLink?.channelCount || "0") })}
+									{t("share.copy.alert", {
+										count: String(shareLink?.channelCount || "0"),
+									})}
 								</AlertDescription>
 							</Alert>
 						</div>

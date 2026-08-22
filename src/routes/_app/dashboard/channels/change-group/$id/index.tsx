@@ -7,9 +7,10 @@ import {
 	useParams,
 	useRouter,
 } from "@tanstack/react-router";
-import { ArrowLeft, FolderKanban, Save, Youtube } from "lucide-react";
+import { ArrowLeft, FolderKanban, Save } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { IconViewer } from "@/components/icon-picker";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -94,7 +95,7 @@ function ChangeGroupPage() {
 								alt={channel.name}
 							/>
 							<AvatarFallback>
-								<Youtube className="h-8 w-8" />
+								<YoutubeIcon className="h-8 w-8" />
 							</AvatarFallback>
 						</Avatar>
 						<div>

@@ -1,6 +1,5 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
 import { Link } from "@tanstack/react-router";
 import {
 	ExternalLink,
@@ -12,6 +11,7 @@ import {
 	Trash2,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import {
@@ -39,8 +39,8 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import {
-	useWebsites,
 	useDeleteWebsiteMutation,
+	useWebsites,
 } from "@/hooks/useQuery/useWebsites";
 import { getChannelUrl } from "@/lib/utils";
 
@@ -152,7 +152,9 @@ export function AllWebsitesTable() {
 							<TableHead>{t("all.websites.website")}</TableHead>
 							<TableHead>{t("all.websites.url")}</TableHead>
 							<TableHead>{t("all.websites.group")}</TableHead>
-							<TableHead className="text-right">{t("all.websites.actions")}</TableHead>
+							<TableHead className="text-right">
+								{t("all.websites.actions")}
+							</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -208,7 +210,9 @@ export function AllWebsitesTable() {
 														className="h-8 w-8"
 													>
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">{t("all.websites.openMenu")}</span>
+														<span className="sr-only">
+															{t("all.websites.openMenu")}
+														</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">

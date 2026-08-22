@@ -1,6 +1,5 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
 import { Link } from "@tanstack/react-router";
 import {
 	ExternalLink,
@@ -8,9 +7,10 @@ import {
 	Loader2,
 	MoreHorizontal,
 	Trash2,
-	Youtube,
 } from "lucide-react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { GenericCombobox } from "@/components/ui/combobox";
@@ -39,12 +39,12 @@ import {
 	TableRow,
 } from "@/components/ui/table";
 import { useAllAnimes } from "@/hooks/useQuery/useAnimes";
-import { IconViewer } from "./icon-picker";
-import { useGroups } from "@/hooks/useQuery/useGroups";
 import {
 	useDeleteChannelMutation,
 	useUpdateChannel,
 } from "@/hooks/useQuery/useChannels";
+import { useGroups } from "@/hooks/useQuery/useGroups";
+import { IconViewer } from "./icon-picker";
 
 const AdRow: React.FC<{ colSpan: number }> = ({ colSpan }) => {
 	const adRef = useRef<any>(null);
@@ -219,7 +219,9 @@ export function AllAnimesTable() {
 						<TableRow>
 							<TableHead>{t("all.animes.channel")}</TableHead>
 							<TableHead>{t("all.animes.group")}</TableHead>
-							<TableHead className="text-right">{t("all.animes.actions")}</TableHead>
+							<TableHead className="text-right">
+								{t("all.animes.actions")}
+							</TableHead>
 						</TableRow>
 					</TableHeader>
 					<TableBody>
@@ -250,7 +252,7 @@ export function AllAnimesTable() {
 														alt={anime.name}
 													/>
 													<AvatarFallback>
-														<Youtube className="h-10 w-10" />
+														<YoutubeIcon className="h-10 w-10" />
 													</AvatarFallback>
 												</Avatar>
 												<div>
@@ -319,7 +321,9 @@ export function AllAnimesTable() {
 												<DropdownMenuTrigger asChild>
 													<Button variant="ghost" size="icon">
 														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">{t("all.animes.openmenu")}</span>
+														<span className="sr-only">
+															{t("all.animes.openmenu")}
+														</span>
 													</Button>
 												</DropdownMenuTrigger>
 												<DropdownMenuContent align="end">
@@ -368,7 +372,9 @@ export function AllAnimesTable() {
 			{data && data.length > 0 && (
 				<div className="flex items-center justify-between">
 					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">{t("all.animes.itemsperpage")}</span>
+						<span className="whitespace-nowrap">
+							{t("all.animes.itemsperpage")}
+						</span>
 						<GenericCombobox
 							data={[
 								{ value: "10", label: "10" },
