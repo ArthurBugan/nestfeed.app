@@ -27,6 +27,64 @@ const translations = {
 		"nav.signin": "Sign In",
 		"nav.getstarted": "Get Started",
 
+		// Footer / About / Contact / Consent
+		"footer.tagline":
+			"The best way to organize, manage, and share your YouTube subscriptions.",
+		"footer.resources": "Resources",
+		"footer.helpcenter": "Help Center",
+		"footer.community": "Community",
+		"footer.contact": "Contact",
+		"footer.about": "About",
+		"footer.privacy": "Privacy Policy",
+		"footer.terms": "Terms of Service",
+		"about.badge": "About us",
+		"about.title": "About Groupify",
+		"about.subtitle":
+			"We help YouTube lovers tame their subscriptions: organize channels into groups, curate what to watch and share it all with friends.",
+		"about.mission.title": "Our mission",
+		"about.mission.text":
+			"YouTube is the biggest video library in the world, but managing hundreds of channels is a mess. Groupify gives every channel a home: create groups for animes, news, fitness, cooking or anything else, keep them organized over time and share a single link instead of a wall of recommendations.",
+		"about.story.title": "Why we built it",
+		"about.story.text":
+			"Groupify started as a personal need: too many subscriptions, too many “watch later” piles and no good way to hand a curated set of channels to a friend. Today it is a full dashboard where you can connect your account, group your channels, sync their latest videos and share public links with anyone.",
+		"about.values.title": "What we care about",
+		"about.value1.title": "Organization first",
+		"about.value1.desc":
+			"Groups are the core of the product. Simple to build, easy to reorder and always in sync with your channel list.",
+		"about.value2.title": "Sharing built-in",
+		"about.value2.desc":
+			"Every group can become a public share link, so your curation reaches friends and followers without friction.",
+		"about.value3.title": "Privacy respected",
+		"about.value3.desc":
+			"Clear cookie choices, non-personalized ads by default until you opt in, and easy ways to contact us about your data.",
+		"about.cta.title": "Ready to organize your channels?",
+		"about.cta.text":
+			"Create your free account and build your first group in minutes — or read the blog for tips on curating your YouTube life.",
+		"contact.badge": "Contact",
+		"contact.title": "Get in touch",
+		"contact.subtitle":
+			"Questions, feedback or partnership ideas? We usually answer within one business day.",
+		"contact.email.title": "Email us",
+		"contact.email.desc":
+			"Write to our team directly for support, billing or privacy requests.",
+		"contact.email.button": "Send email",
+		"contact.community.title": "Discord community",
+		"contact.community.desc":
+			"Chat with other users, report bugs and follow product updates in real time.",
+		"contact.community.button": "Join Discord",
+		"contact.help.title": "Help center",
+		"contact.help.desc":
+			"Browse guides and answers to the most common questions about Groupify.",
+		"contact.help.button": "Open help center",
+		"contact.response":
+			"For privacy-specific requests (data access, correction or deletion), email us and we will respond within 30 days as required by applicable law.",
+		"consent.title": "Cookies & ads",
+		"consent.text":
+			"We use cookies for essential site functions and analytics. With your consent we also show personalized ads via Google AdSense; without it, ads remain non-personalized.",
+		"consent.accept": "Accept all",
+		"consent.reject": "Non-personalized only",
+		"consent.learnMore": "Privacy policy",
+
 		// Login Page
 		"login.welcome": "Welcome back! Please sign in to your account.",
 		"login.title": "Sign In",
@@ -170,18 +228,19 @@ const translations = {
 		// Landing Page - New Content
 		"landing.hero.badge": "YouTube Channel Organizer + Browser Extension",
 		"landing.hero.title":
-			"Nestfeed — The Ultimate YouTube Channel Organizer & Subscription Manager",
+			"Groupify — The Ultimate YouTube Channel Organizer & Subscription Manager",
 		"landing.hero.subtitle":
-			"Manage your YouTube subscriptions with Nestfeed, the smart YouTube channel management tool for content creators and teams. Organize channels into custom groups, collaborate, and never lose track of a video again.",
-		"landing.hero.cta.primary": "Try Nestfeed Free",
+			"Manage your YouTube subscriptions with Groupify, the smart YouTube channel management tool for content creators and teams. Organize channels into custom groups, collaborate, and never lose track of a video again.",
+		"landing.hero.cta.primary": "Try Groupify Free",
 		"landing.hero.cta.secondary": "Watch Demo",
 		"landing.hero.trust1": "No credit card required",
 		"landing.hero.trust2": "14-day free trial",
 		"landing.hero.trust3": "Cancel anytime",
-		"landing.hero.preview": "Nestfeed Dashboard Preview",
+		"landing.hero.preview": "Groupify Dashboard Preview",
 
 		// Landing Page - Features Section
-		"landing.features.title": "Everything You Need to Organize YouTube Channels & Subscriptions",
+		"landing.features.title":
+			"Everything You Need to Organize YouTube Channels & Subscriptions",
 		"landing.features.subtitle":
 			"Powerful content creator tools for managing, curating, and sharing your YouTube subscriptions with ease.",
 		"landing.features.smart.title": "Smart YouTube Organization",
@@ -192,7 +251,7 @@ const translations = {
 			"Generate shareable group links so teams and communities can view or copy curated channel collections. Perfect for collaborative YouTube channel management and content curation.",
 		"landing.features.permissions.title": "Team Permissions",
 		"landing.features.permissions.desc":
-			"Assign view-only, editor, or admin roles to control who can modify your groups. Granular team permissions make Nestfeed the ideal YouTube channel management tool for agencies and studios.",
+			"Assign view-only, editor, or admin roles to control who can modify your groups. Granular team permissions make Groupify the ideal YouTube channel management tool for agencies and studios.",
 		"landing.features.bulk.title": "Bulk Operations",
 		"landing.features.bulk.desc":
 			"Add, remove, or move multiple YouTube channels across groups in seconds. Powerful batch actions save hours of manual YouTube subscription management.",
@@ -205,42 +264,46 @@ const translations = {
 
 		// Landing Page - Browser Extension Section
 		"landing.extension.badge": "YouTube Browser Extension",
-		"landing.extension.title": "Save YouTube Channels to Groups While You Browse",
+		"landing.extension.title":
+			"Save YouTube Channels to Groups While You Browse",
 		"landing.extension.subtitle":
-			"Our browser extension integrates directly with YouTube. When you discover a channel you want to follow, click the Nestfeed icon and add it to any group without leaving the page. The easiest YouTube channel organizer for everyday browsing.",
+			"Our browser extension integrates directly with YouTube. When you discover a channel you want to follow, click the Groupify icon and add it to any group without leaving the page. The easiest YouTube channel organizer for everyday browsing.",
 		"landing.extension.success": "Channel added to group",
 		"landing.extension.subscribers": "subscribers",
 
 		// Landing Page - Testimonials Section
 		"landing.testimonials.title": "Loved by Content Creators",
 		"landing.testimonials.subtitle":
-			"See why thousands trust Nestfeed as their YouTube channel management tool",
+			"See why thousands trust Groupify as their YouTube channel management tool",
 		"landing.testimonials.alex.content":
-			"Nestfeed completely changed how I manage my YouTube subscriptions. I keep my educational research separate from casual watching — it's the YouTube channel organizer I always needed.",
+			"Groupify completely changed how I manage my YouTube subscriptions. I keep my educational research separate from casual watching — it's the YouTube channel organizer I always needed.",
 		"landing.testimonials.sarah.content":
-			"Our team shares curated YouTube playlists daily using Nestfeed. The collaboration features and granular permissions make it the best YouTube channel management tool for agencies.",
+			"Our team shares curated YouTube playlists daily using Groupify. The collaboration features and granular permissions make it the best YouTube channel management tool for agencies.",
 		"landing.testimonials.mike.content":
-			"As a creator with dozens of niche interests, Nestfeed helps me manage my YouTube subscriptions better than anything else. The nested groups feature is a lifesaver for staying organized.",
+			"As a creator with dozens of niche interests, Groupify helps me manage my YouTube subscriptions better than anything else. The nested groups feature is a lifesaver for staying organized.",
 
 		// Landing Page - Pricing Section
 		"landing.pricing.title": "Simple, Transparent Pricing",
 		"landing.pricing.subtitle":
 			"Start organizing your YouTube subscriptions today. Every plan includes a 14-day free trial.",
 		"landing.pricing.free.name": "Free",
-		"landing.pricing.free.desc": "Perfect for getting started with YouTube channel organization",
+		"landing.pricing.free.desc":
+			"Perfect for getting started with YouTube channel organization",
 		"landing.pricing.pro.name": "Pro",
-		"landing.pricing.pro.desc": "Best for content creators who need advanced YouTube subscription management",
+		"landing.pricing.pro.desc":
+			"Best for content creators who need advanced YouTube subscription management",
 		"landing.pricing.business.name": "Business",
-		"landing.pricing.business.desc": "For teams and agencies managing multiple YouTube channel collections",
+		"landing.pricing.business.desc":
+			"For teams and agencies managing multiple YouTube channel collections",
 		"landing.pricing.cta.free": "Start Organizing Free",
-		"landing.pricing.cta.pro": "Try Nestfeed Pro Free",
+		"landing.pricing.cta.pro": "Try Groupify Pro Free",
 		"landing.pricing.cta.business": "Get Business",
 		"landing.pricing.mostpopular": "MOST POPULAR",
 
 		// Landing Page - CTA Section
 		"landing.cta.title": "Take Control of Your YouTube Subscriptions",
 		"landing.cta.subtitle":
-			"Join thousands of content creators and teams who use Nestfeed — the smart YouTube channel organizer for managing, curating, and sharing subscriptions.",
+			"Join thousands of content creators and teams who use Groupify — the smart YouTube channel organizer for managing, curating, and sharing subscriptions.",
 		"landing.cta.primary": "Start Organizing Free",
 		"landing.cta.secondary": "Join Community",
 
@@ -248,7 +311,7 @@ const translations = {
 		"testimonials.badge": "Testimonials",
 		"testimonials.title": "Loved by Creators",
 		"testimonials.subtitle":
-			"See what content creators and agencies are saying about Nestfeed.",
+			"See what content creators and agencies are saying about Groupify.",
 		"testimonials.alex.content":
 			"This tool has revolutionized how I manage my 50+ YouTube channels. The grouping feature is a game-changer!",
 		"testimonials.sarah.content":
@@ -276,7 +339,7 @@ const translations = {
 		"cta.badge": "Ready to Launch",
 		"cta.title": "Ready to Get Started?",
 		"cta.subtitle":
-			"Join thousands of content creators who are already using Nestfeed to organize and grow their YouTube presence.",
+			"Join thousands of content creators who are already using Groupify to organize and grow their YouTube presence.",
 
 		share_link_generated_success_description:
 			"Share link generated successfully",
@@ -344,7 +407,8 @@ const translations = {
 		"dashboard.greeting.morning": "Good morning",
 		"dashboard.greeting.afternoon": "Good afternoon",
 		"dashboard.greeting.evening": "Good evening",
-		"dashboard.greeting.subtitle": "Here's what's happening with your groups today",
+		"dashboard.greeting.subtitle":
+			"Here's what's happening with your groups today",
 		"dashboard.quickactions": "Quick Actions",
 		"dashboard.create.group": "Create Group",
 		"dashboard.create.group.desc": "Organize channels",
@@ -389,18 +453,19 @@ const translations = {
 		"group.form.shelf": "Enable Group Shelf",
 		"group.form.validation.required": "Required",
 		"group.form.validation.max50": "Max 50 chars",
-		"group.form.validation.pattern": "Only letters, numbers, spaces, hyphens, underscores",
+		"group.form.validation.pattern":
+			"Only letters, numbers, spaces, hyphens, underscores",
 		"group.form.category.placeholder": "Select a category",
 		"group.form.icon.placeholder": "Select an icon",
 
 		// Blog
 		"blog.title": "Latest Updates",
-		"blog.brand": "Nestfeed Blog",
+		"blog.brand": "Groupify Blog",
 		"blog.search": "Search...",
 		"blog.featured": "Featured",
 		"blog.trending": "Trending",
 		"blog.read": "Read Article",
-		"blog.author.team": "Nestfeed Team",
+		"blog.author.team": "Equipe Groupify",
 		"blog.results": "Results",
 		"blog.allposts": "All Posts",
 		"blog.none.title": "No posts found",
@@ -429,7 +494,7 @@ const translations = {
 
 		// Social Login Labels
 		"login.welcome.badge": "Welcome back",
-		"register.welcome.badge": "Join Nestfeed",
+		"register.welcome.badge": "Join Groupify",
 		"login.social.google": "Google",
 		"login.social.discord": "Discord",
 
@@ -456,7 +521,7 @@ const translations = {
 		"groups.table.created": "Created",
 		"groups.table.actions": "Actions",
 		"groups.table.loading": "Loading groups...",
-		"groups.table.noresults": "No groups match \"{search}\"",
+		"groups.table.noresults": 'No groups match "{search}"',
 		"groups.table.noresults.hint": "Try adjusting your search terms",
 		"groups.table.empty": "No groups found",
 		"groups.table.subgroup": "(subgroup)",
@@ -473,9 +538,10 @@ const translations = {
 		"groups.table.updated.desc": "The group order has been saved",
 		"groups.table.update.error": "Failed to update group order",
 		"groups.table.update.error.desc": "Please try again later",
-		"groups.table.delete.confirm": "Are you sure you want to delete \"{name}\"? This action cannot be undone.",
+		"groups.table.delete.confirm":
+			'Are you sure you want to delete "{name}"? This action cannot be undone.',
 		"groups.table.deleted": "Group deleted successfully",
-		"groups.table.deleted.desc": "\"{name}\" has been deleted.",
+		"groups.table.deleted.desc": '"{name}" has been deleted.',
 		"groups.table.delete.error": "Failed to delete group",
 		"groups.table.delete.error.desc": "Please try again later.",
 		"groups.table.moved": "Group moved",
@@ -516,7 +582,8 @@ const translations = {
 		"all.channels.itemsPerPagePlaceholder": "Items per page",
 		"all.channels.openmenu": "Open menu",
 		"all.channels.notfound": "No channels found",
-		"all.channels.sync": "Sync your Google account to import your YouTube channels.",
+		"all.channels.sync":
+			"Sync your Google account to import your YouTube channels.",
 		"all.channels.sync.link": "Go to settings",
 		"all.channels.syncDescription": "Sync your Google account to",
 
@@ -559,7 +626,8 @@ const translations = {
 
 		// Group List
 		"group.list.empty.title": "No groups yet",
-		"group.list.empty.desc": "Start organizing your YouTube channels into groups",
+		"group.list.empty.desc":
+			"Start organizing your YouTube channels into groups",
 		"group.list.create": "Create Your First Group",
 		"group.list.channels": "{count} channels",
 
@@ -572,40 +640,50 @@ const translations = {
 
 		// Recent Activity
 		"recent.feature.organize.title": "Organize with Groups",
-		"recent.feature.organize.desc": "Create unlimited groups to organize your YouTube channels by topic, project, or any criteria you need.",
+		"recent.feature.organize.desc":
+			"Create unlimited groups to organize your YouTube channels by topic, project, or any criteria you need.",
 		"recent.feature.organize.badge": "Core Feature",
 		"recent.feature.share.title": "Share & Collaborate",
-		"recent.feature.share.desc": "Generate share links to let others view or copy your groups. Perfect for teams and communities.",
+		"recent.feature.share.desc":
+			"Generate share links to let others view or copy your groups. Perfect for teams and communities.",
 		"recent.feature.share.badge": "Popular",
 		"recent.feature.permissions.title": "Team Permissions",
-		"recent.feature.permissions.desc": "Control access with view, edit, or admin permissions. Manage who can modify your groups.",
+		"recent.feature.permissions.desc":
+			"Control access with view, edit, or admin permissions. Manage who can modify your groups.",
 		"recent.feature.permissions.badge": "Pro",
 		"recent.feature.bulk.title": "Bulk Operations",
-		"recent.feature.bulk.desc": "Add, remove, or move multiple channels at once. Save time with powerful batch actions.",
+		"recent.feature.bulk.desc":
+			"Add, remove, or move multiple channels at once. Save time with powerful batch actions.",
 		"recent.feature.extension.title": "Extension Integration",
-		"recent.feature.extension.desc": "Use our browser extension to quickly add channels while browsing YouTube directly.",
+		"recent.feature.extension.desc":
+			"Use our browser extension to quickly add channels while browsing YouTube directly.",
 		"recent.feature.extension.badge": "New",
 		"recent.tip.title": "Pro Tip",
-		"recent.tip.desc": "Use subgroups to create nested hierarchies. Perfect for organizing large collections by sub-topic or project phase.",
+		"recent.tip.desc":
+			"Use subgroups to create nested hierarchies. Perfect for organizing large collections by sub-topic or project phase.",
 
 		// Recommendation Cards
 		"rec.crunchyroll.badge": "New Integration",
 		"rec.crunchyroll.anime": "Anime",
 		"rec.crunchyroll.title": "Crunchyroll Integration",
-		"rec.crunchyroll.desc": "Seamlessly combine YouTube and Crunchyroll anime content",
+		"rec.crunchyroll.desc":
+			"Seamlessly combine YouTube and Crunchyroll anime content",
 		"rec.crunchyroll.overlay": "The ultimate anime tracking experience",
 		"rec.crunchyroll.unlock": "Unlock the full anime experience",
 		"rec.crunchyroll.feature1": "Track anime across both platforms",
 		"rec.crunchyroll.feature2": "Control all your collections",
 		"rec.crunchyroll.feature3": "Discovery new animes",
 		"rec.crunchyroll.feature4": "Share curated collections",
-		"rec.crunchyroll.connect": "Connect your Crunchyroll account to organize all your favorite anime content in one place.",
+		"rec.crunchyroll.connect":
+			"Connect your Crunchyroll account to organize all your favorite anime content in one place.",
 		"rec.crunchyroll.button": "Checkout Crunchyroll",
 		"rec.support.title": "Support This Project",
-		"rec.support.desc": "Help us keep the YouTube Group Manager alive and growing",
+		"rec.support.desc":
+			"Help us keep the YouTube Group Manager alive and growing",
 		"rec.support.text": "Your support helps us:",
 		"rec.support.feature1": "Maintain server infrastructure",
-		"rec.support.feature2": "Develop new features like the Crunchyroll integration",
+		"rec.support.feature2":
+			"Develop new features like the Crunchyroll integration",
 		"rec.support.feature3": "Improve existing functionality",
 		"rec.support.feature4": "Keep the service free for everyone",
 		"rec.support.onetime": "One-time",
@@ -613,7 +691,8 @@ const translations = {
 		"rec.support.cancel": "Cancel anytime",
 		"rec.support.secure": "Secure one-time payment",
 		"rec.support.donate": "Donate ${amount} {type}",
-		"rec.support.footer": "100% of donations go toward development and server costs",
+		"rec.support.footer":
+			"100% of donations go toward development and server costs",
 
 		// Shared Groups Overview
 		"shared.overview.empty.title": "No shared groups yet",
@@ -627,7 +706,8 @@ const translations = {
 
 		// Top Channels
 		"top.channels.title": "Top Performing Channels",
-		"top.channels.desc": "Your channels with the most subscribers and engagement",
+		"top.channels.desc":
+			"Your channels with the most subscribers and engagement",
 		"top.channels.search": "Search channels...",
 		"top.channels.channel": "Channel",
 		"top.channels.group": "Group",
@@ -640,17 +720,23 @@ const translations = {
 
 		// Upgrade Plan Modal
 		"upgrade.title": "Upgrade Your Plan",
-		"upgrade.desc.channels": "You've reached the maximum number of channels allowed on your current plan.",
-		"upgrade.desc.groups": "You've reached the maximum number of groups allowed on your current plan.",
-		"upgrade.body.channels": "To add more channels, please upgrade your plan to unlock more features.",
-		"upgrade.body.groups": "To create more groups, please upgrade your plan to unlock more features.",
+		"upgrade.desc.channels":
+			"You've reached the maximum number of channels allowed on your current plan.",
+		"upgrade.desc.groups":
+			"You've reached the maximum number of groups allowed on your current plan.",
+		"upgrade.body.channels":
+			"To add more channels, please upgrade your plan to unlock more features.",
+		"upgrade.body.groups":
+			"To create more groups, please upgrade your plan to unlock more features.",
 		"upgrade.cancel": "Cancel",
 		"upgrade.button": "Upgrade Plan",
 
 		// YouTube Connect Modal
 		"youtube.connect.title": "Connect Your YouTube Account",
-		"youtube.connect.desc": "You don't have any YouTube channels connected yet.",
-		"youtube.connect.body": "To be able to organize your YouTube subscriptions and see their latest videos, please connect your Google account with YouTube subscriptions in your account settings.",
+		"youtube.connect.desc":
+			"You don't have any YouTube channels connected yet.",
+		"youtube.connect.body":
+			"To be able to organize your YouTube subscriptions and see their latest videos, please connect your Google account with YouTube subscriptions in your account settings.",
 		"youtube.connect.later": "Maybe Later",
 		"youtube.connect.settings": "Go to Account Settings",
 
@@ -666,9 +752,11 @@ const translations = {
 		"support.title1": "How can we",
 		"support.title2": "help you",
 		"support.title3": "today?",
-		"support.subtitle": "Whether you're troubleshooting an issue or want to help us shape the future of YouTube organization, we're just a click away.",
+		"support.subtitle":
+			"Whether you're troubleshooting an issue or want to help us shape the future of YouTube organization, we're just a click away.",
 		"support.community.title": "Join the Community",
-		"support.community.desc": "Get instant help from our team and fellow Nestfeed users. Share your setup, suggest new features, and stay updated.",
+		"support.community.desc":
+			"Get instant help from our team and fellow Groupify users. Share your setup, suggest new features, and stay updated.",
 		"support.community.members": "1k+ Members",
 		"support.community.beta": "Beta Access",
 		"support.community.button": "Open Discord",
@@ -679,34 +767,41 @@ const translations = {
 		"support.feature3.title": "Feature Requests",
 		"support.feature3.desc": "Vote on the next features we build.",
 		"support.email.title": "Email Support",
-		"support.email.desc": "Need a formal response? Send us an email and our support team will get back to you within 24 hours.",
+		"support.email.desc":
+			"Need a formal response? Send us an email and our support team will get back to you within 24 hours.",
 		"support.email.address": "admin@nestfeed.app",
 		"support.oss.title": "Open Source",
-		"support.oss.desc": "Our core extension is open source. Browse the code, report technical bugs, or contribute on GitHub.",
+		"support.oss.desc":
+			"Our core extension is open source. Browse the code, report technical bugs, or contribute on GitHub.",
 		"support.oss.button": "View on GitHub",
-		"support.footer": "(c) 2025 Nestfeed. All rights reserved.",
+		"support.footer": "(c) 2025 Groupify. All rights reserved.",
 
 		// Share Page
 		"share.loading.title": "Loading...",
 		"share.loading.desc": "Fetching group information...",
 		"share.error.expired": "Link Expired",
 		"share.error.title": "Error",
-		"share.error.expired.desc": "This share link has expired and is no longer valid.",
+		"share.error.expired.desc":
+			"This share link has expired and is no longer valid.",
 		"share.error.loading.desc": "Failed to load group data",
-		"share.alert.expired": "Share links have a limited validity period. Please contact the person who shared this link to get a new one.",
+		"share.alert.expired":
+			"Share links have a limited validity period. Please contact the person who shared this link to get a new one.",
 		"share.button.dashboard": "Go to Dashboard",
 		"share.card.collab": "Join Collaboration",
 		"share.card.copy": "Copy Group",
-		"share.card.collab.desc": "You've been invited to collaborate on \"{name}\"",
-		"share.card.copy.desc": "Copy all channels from \"{name}\" to your account",
+		"share.card.collab.desc": 'You\'ve been invited to collaborate on "{name}"',
+		"share.card.copy.desc": 'Copy all channels from "{name}" to your account',
 		"share.group.unknown": "Unknown Group",
 		"share.label.unknown": "Unknown",
 		"share.desc.none": "No description available",
 		"share.channels": "Channels",
 		"share.permission.alert": "You will join as a {permission} permission.",
-		"share.permission.view": " You will only be able to view channels and groups",
-		"share.permission.edit": " You will be able to add, remove, and edit groups and channels.",
-		"share.permission.admin": " You will have full control over group and can invite others.",
+		"share.permission.view":
+			" You will only be able to view channels and groups",
+		"share.permission.edit":
+			" You will be able to add, remove, and edit groups and channels.",
+		"share.permission.admin":
+			" You will have full control over group and can invite others.",
 		"share.copy.alert": "This will copy all {count} channels to your account.",
 		"share.cancel": "Cancel",
 		"share.joining": "Joining...",
@@ -716,11 +811,14 @@ const translations = {
 
 		// Subscription Confirm
 		"subscription.confirming": "Confirming your email",
-		"subscription.confirming.desc": "Please wait while we validate your confirmation link...",
+		"subscription.confirming.desc":
+			"Please wait while we validate your confirmation link...",
 		"subscription.failed": "Confirmation failed",
-		"subscription.failed.desc": "We couldn't verify your email address. The link may have expired or is invalid.",
+		"subscription.failed.desc":
+			"We couldn't verify your email address. The link may have expired or is invalid.",
 		"subscription.success": "Email confirmed!",
-		"subscription.success.desc": "Your email has been successfully verified. You can now access all features of your account.",
+		"subscription.success.desc":
+			"Your email has been successfully verified. You can now access all features of your account.",
 		"subscription.dashboard": "Continue to Dashboard",
 		"subscription.error.default": "Failed to confirm subscription",
 
@@ -733,7 +831,8 @@ const translations = {
 		"forgot.confirm.back": "Back to sign in",
 		"forgot.confirm.error.match": "Passwords do not match",
 		"forgot.confirm.success": "Password reset successfully",
-		"forgot.confirm.error.default": "Failed to reset password. Please try again.",
+		"forgot.confirm.error.default":
+			"Failed to reset password. Please try again.",
 
 		// Settings
 		"settings.title": "Settings",
@@ -763,7 +862,8 @@ const translations = {
 		"account.delete": "Delete Account",
 		"account.delete.confirm": "Delete Account?",
 		"account.delete.irreversible": "This cannot be undone.",
-		"account.delete.body": "All your data including groups, analytics, and settings will be permanently deleted.",
+		"account.delete.body":
+			"All your data including groups, analytics, and settings will be permanently deleted.",
 		"account.delete.check1": "I understand all data will be lost",
 		"account.delete.check2": "This action cannot be undone",
 		"account.delete.type": "Type DELETE to confirm",
@@ -789,7 +889,8 @@ const translations = {
 		"billing.history": "Billing History",
 		"billing.view": "View on Gumroad",
 		"billing.cancel.title": "Cancel Subscription",
-		"billing.cancel.desc": "Are you sure you want to cancel your subscription? You will lose access to premium features at the end of your billing period.",
+		"billing.cancel.desc":
+			"Are you sure you want to cancel your subscription? You will lose access to premium features at the end of your billing period.",
 		"billing.keep": "Keep Subscription",
 		"billing.cancel.confirm": "Cancel Subscription",
 
@@ -816,7 +917,7 @@ const translations = {
 		"appearance.theme": "Theme",
 		"appearance.light": "Light",
 		"appearance.dark": "Dark",
-		"appearance.nestfeed": "Nestfeed",
+		"appearance.nestfeed": "Groupify",
 
 		// Dashboard Routes
 		"dashboard.channels.title": "All Channels",
@@ -860,7 +961,8 @@ const translations = {
 		// Blog Post
 		"blog.post.back": "Back to Blog",
 		"blog.post.written": "Written by {author}",
-		"blog.post.author.desc": "Author of Nestfeed articles. Passionate about YouTube productivity and organization.",
+		"blog.post.author.desc":
+			"Author of Groupify articles. Passionate about YouTube productivity and organization.",
 	},
 	pt: {
 		collaborate_invite_title: "Convidar Colaboradores",
@@ -919,6 +1021,64 @@ const translations = {
 		"nav.blog": "Blog",
 		"nav.signin": "Entrar",
 		"nav.getstarted": "Começar",
+
+		// Footer / About / Contact / Consent
+		"footer.tagline":
+			"A melhor forma de organizar, gerenciar e compartilhar suas inscrições do YouTube.",
+		"footer.resources": "Recursos",
+		"footer.helpcenter": "Central de Ajuda",
+		"footer.community": "Comunidade",
+		"footer.contact": "Contato",
+		"footer.about": "Sobre",
+		"footer.privacy": "Política de Privacidade",
+		"footer.terms": "Termos de Serviço",
+		"about.badge": "Sobre nós",
+		"about.title": "Sobre o Groupify",
+		"about.subtitle":
+			"Ajudamos amantes do YouTube a domar suas inscrições: organize canais em grupos, curadorie o que assistir e compartilhe tudo com amigos.",
+		"about.mission.title": "Nossa missão",
+		"about.mission.text":
+			"O YouTube é a maior biblioteca de vídeos do mundo, mas gerenciar centenas de canais é um caos. O Groupify dá um lar para cada canal: crie grupos para animes, notícias, fitness, culinária ou qualquer outra coisa, mantenha tudo organizado e compartilhe um único link em vez de um mar de recomendações.",
+		"about.story.title": "Por que criamos",
+		"about.story.text":
+			"O Groupify nasceu de uma necessidade pessoal: muitas inscrições, muitas pilhas de “assistir depois” e nenhuma boa forma de entregar uma seleção de canais a um amigo. Hoje é um painel completo onde você conecta sua conta, agrupa seus canais, sincroniza os últimos vídeos e compartilha links públicos com qualquer pessoa.",
+		"about.values.title": "O que valorizamos",
+		"about.value1.title": "Organização em primeiro lugar",
+		"about.value1.desc":
+			"Grupos são o núcleo do produto. Simples de criar, fáceis de reordenar e sempre em sincronia com sua lista de canais.",
+		"about.value2.title": "Compartilhamento integrado",
+		"about.value2.desc":
+			"Todo grupo pode virar um link público de compartilhamento, para que sua curadoria chegue aos amigos sem fricção.",
+		"about.value3.title": "Privacidade respeitada",
+		"about.value3.desc":
+			"Escolhas de cookies claras, anúncios não personalizados por padrão até você autorizar, e formas fáceis de falar conosco sobre seus dados.",
+		"about.cta.title": "Pronto para organizar seus canais?",
+		"about.cta.text":
+			"Crie sua conta gratuita e monte seu primeiro grupo em minutos — ou leia o blog com dicas para cuidar da sua vida no YouTube.",
+		"contact.badge": "Contato",
+		"contact.title": "Fale com a gente",
+		"contact.subtitle":
+			"Dúvidas, feedback ou parcerias? Normalmente respondemos em até um dia útil.",
+		"contact.email.title": "E-mail",
+		"contact.email.desc":
+			"Escreva diretamente à nossa equipe para suporte, cobrança ou pedidos de privacidade.",
+		"contact.email.button": "Enviar e-mail",
+		"contact.community.title": "Comunidade no Discord",
+		"contact.community.desc":
+			"Converse com outros usuários, reporte bugs e acompanhe novidades em tempo real.",
+		"contact.community.button": "Entrar no Discord",
+		"contact.help.title": "Central de ajuda",
+		"contact.help.desc":
+			"Veja guias e respostas para as dúvidas mais comuns sobre o Groupify.",
+		"contact.help.button": "Abrir central de ajuda",
+		"contact.response":
+			"Para solicitações específicas de privacidade (acesso, correção ou exclusão de dados), envie um e-mail e responderemos em até 30 dias, conforme a lei aplicável.",
+		"consent.title": "Cookies & anúncios",
+		"consent.text":
+			"Usamos cookies essenciais e de análise. Com seu consentimento também exibimos anúncios personalizados via Google AdSense; sem ele, os anúncios permanecem não personalizados.",
+		"consent.accept": "Aceitar todos",
+		"consent.reject": "Apenas não personalizados",
+		"consent.learnMore": "Política de privacidade",
 
 		// Login Page
 		"login.welcome": "Bem-vindo de volta! Faça login em sua conta.",
@@ -1063,13 +1223,13 @@ const translations = {
 		"landing.hero.badge": "Agora com Extensão de Navegador",
 		"landing.hero.title": "Organize Seu YouTube Como Nunca Antes",
 		"landing.hero.subtitle":
-			"O Nestfeed ajuda você a organizar, gerenciar e compartilhar suas inscrições do YouTube. Crie grupos personalizados, colabore com equipes e nunca perca o controle de seus canais favoritos novamente.",
+			"O Groupify ajuda você a organizar, gerenciar e compartilhar suas inscrições do YouTube. Crie grupos personalizados, colabore com equipes e nunca perca o controle de seus canais favoritos novamente.",
 		"landing.hero.cta.primary": "Iniciar Teste Grátis",
 		"landing.hero.cta.secondary": "Ver Demo",
 		"landing.hero.trust1": "Não requer cartão de crédito",
 		"landing.hero.trust2": "Teste grátis de 14 dias",
 		"landing.hero.trust3": "Cancele a qualquer momento",
-		"landing.hero.preview": "Painel do Nestfeed",
+		"landing.hero.preview": "Painel do Groupify",
 
 		// Landing Page - Features Section
 		"landing.features.title": "Tudo Que Você Precisa para Organizar o YouTube",
@@ -1098,20 +1258,20 @@ const translations = {
 		"landing.extension.badge": "Extensão de Navegador",
 		"landing.extension.title": "Adicione Canais Enquanto Navega",
 		"landing.extension.subtitle":
-			"Nossa extensão de navegador se integra perfeitamente com o YouTube. Quando encontrar um canal que deseja salvar, basta clicar no ícone do Nestfeed e adicioná-lo a qualquer grupo instantaneamente.",
+			"Nossa extensão de navegador se integra perfeitamente com o YouTube. Quando encontrar um canal que deseja salvar, basta clicar no ícone do Groupify e adicioná-lo a qualquer grupo instantaneamente.",
 		"landing.extension.success": "Canal adicionado ao grupo",
 		"landing.extension.subscribers": "inscritos",
 
 		// Landing Page - Testimonials Section
 		"landing.testimonials.title": "Adorado por Criadores de Conteúdo",
 		"landing.testimonials.subtitle":
-			"Veja o que nossos usuários estão dizendo sobre o Nestfeed",
+			"Veja o que nossos usuários estão dizendo sobre o Groupify",
 		"landing.testimonials.alex.content":
-			"O Nestfeed transformou completamente como eu gerencio minhas inscrições do YouTube. Finalmente posso manter meu conteúdo educacional separado do entretenimento!",
+			"O Groupify transformou completamente como eu gerencio minhas inscrições do YouTube. Finalmente posso manter meu conteúdo educacional separado do entretenimento!",
 		"landing.testimonials.sarah.content":
 			"A capacidade de compartilhar grupos curados com minha equipe foi uma revolução. Podemos compartilhar rapidamente insights do setor e análises de concorrentes.",
 		"landing.testimonials.mike.content":
-			"Já experimentei muitas ferramentas, mas o Nestfeed é a única que realmente entende como os criadores de conteúdo trabalham. O recurso de grupos aninhados é brilhante!",
+			"Já experimentei muitas ferramentas, mas o Groupify é a única que realmente entende como os criadores de conteúdo trabalham. O recurso de grupos aninhados é brilhante!",
 
 		// Landing Page - Pricing Section
 		"landing.pricing.title": "Preços Simples e Transparentes",
@@ -1131,7 +1291,7 @@ const translations = {
 		// Landing Page - CTA Section
 		"landing.cta.title": "Pronto para Organizar Seu YouTube?",
 		"landing.cta.subtitle":
-			"Junte-se a milhares de criadores de conteúdo e equipes que confiam no Nestfeed para gerenciar suas inscrições do YouTube.",
+			"Junte-se a milhares de criadores de conteúdo e equipes que confiam no Groupify para gerenciar suas inscrições do YouTube.",
 		"landing.cta.primary": "Começar Grátis",
 		"landing.cta.secondary": "Juntar-se à Comunidade",
 
@@ -1139,7 +1299,7 @@ const translations = {
 		"testimonials.badge": "Depoimentos",
 		"testimonials.title": "Amado por Criadores",
 		"testimonials.subtitle":
-			"Veja o que criadores de conteúdo e agências estão dizendo sobre o Nestfeed.",
+			"Veja o que criadores de conteúdo e agências estão dizendo sobre o Groupify.",
 		"testimonials.alex.content":
 			"Esta ferramenta revolucionou como gestiono mis más de 50 canales de YouTube. ¡La función de agrupación es revolucionária!",
 		"testimonials.sarah.content":
@@ -1167,14 +1327,14 @@ const translations = {
 		"cta.badge": "Pronto para Lanzar",
 		"cta.title": "¿Listo para Comenzar?",
 		"cta.subtitle":
-			"Únete a miles de creadores de contenido que já estão usando o Nestfeed para organizar e expandir sua presença no YouTube.",
+			"Únete a miles de creadores de contenido que já estão usando o Groupify para organizar e expandir sua presença no YouTube.",
 
 		// Footer
 		"footer.description":
 			"La herramienta definitiva para organizar y gestionar tu portafolio de canales de YouTube con diseño moderno y características poderosas.",
-		"footer.product": "Producto",
-		"footer.support": "Soporte",
+		"footer.product": "Produto",
 		"footer.company": "Empresa",
+		"footer.support": "Soporte",
 		"footer.copyright":
 			"Todos los derechos reservados. Hecho con ❤️ para creadores de contenido.",
 
@@ -1182,7 +1342,8 @@ const translations = {
 		"dashboard.greeting.morning": "Bom dia",
 		"dashboard.greeting.afternoon": "Boa tarde",
 		"dashboard.greeting.evening": "Boa noite",
-		"dashboard.greeting.subtitle": "Veja o que está acontecendo com seus grupos hoje",
+		"dashboard.greeting.subtitle":
+			"Veja o que está acontecendo com seus grupos hoje",
 		"dashboard.quickactions": "Ações Rápidas",
 		"dashboard.create.group": "Criar Grupo",
 		"dashboard.create.group.desc": "Organizar canais",
@@ -1227,18 +1388,19 @@ const translations = {
 		"group.form.shelf": "Ativar Prateleira de Grupos",
 		"group.form.validation.required": "Obrigatório",
 		"group.form.validation.max50": "Máx 50 caracteres",
-		"group.form.validation.pattern": "Apenas letras, números, espaços, hífens e underscores",
+		"group.form.validation.pattern":
+			"Apenas letras, números, espaços, hífens e underscores",
 		"group.form.category.placeholder": "Selecione uma categoria",
 		"group.form.icon.placeholder": "Selecione um ícone",
 
 		// Blog
 		"blog.title": "Últimas Atualizações",
-		"blog.brand": "Blog Nestfeed",
+		"blog.brand": "Blog do Groupify",
 		"blog.search": "Pesquisar...",
 		"blog.featured": "Em Destaque",
 		"blog.trending": "Trending",
 		"blog.read": "Ler Artigo",
-		"blog.author.team": "Equipe Nestfeed",
+		"blog.author.team": "Equipe Groupify",
 		"blog.results": "Resultados",
 		"blog.allposts": "Todos os Posts",
 		"blog.none.title": "Nenhum post encontrado",
@@ -1267,7 +1429,7 @@ const translations = {
 
 		// Social Login Labels
 		"login.welcome.badge": "Bem-vindo de volta",
-		"register.welcome.badge": "Junte-se ao Nestfeed",
+		"register.welcome.badge": "Junte-se ao Groupify",
 		"login.social.google": "Google",
 		"login.social.discord": "Discord",
 
@@ -1294,7 +1456,7 @@ const translations = {
 		"groups.table.created": "Criado",
 		"groups.table.actions": "Ações",
 		"groups.table.loading": "Carregando grupos...",
-		"groups.table.noresults": "Nenhum grupo corresponde a \"{search}\"",
+		"groups.table.noresults": 'Nenhum grupo corresponde a "{search}"',
 		"groups.table.noresults.hint": "Tente ajustar seus termos de pesquisa",
 		"groups.table.empty": "Nenhum grupo encontrado",
 		"groups.table.subgroup": "(subgrupo)",
@@ -1311,9 +1473,10 @@ const translations = {
 		"groups.table.updated.desc": "A ordem dos grupos foi salva",
 		"groups.table.update.error": "Falha ao atualizar ordem dos grupos",
 		"groups.table.update.error.desc": "Tente novamente mais tarde",
-		"groups.table.delete.confirm": "Tem certeza que deseja excluir \"{name}\"? Esta ação não pode ser desfeita.",
+		"groups.table.delete.confirm":
+			'Tem certeza que deseja excluir "{name}"? Esta ação não pode ser desfeita.',
 		"groups.table.deleted": "Grupo excluído com sucesso",
-		"groups.table.deleted.desc": "\"{name}\" foi excluído.",
+		"groups.table.deleted.desc": '"{name}" foi excluído.',
 		"groups.table.delete.error": "Falha ao excluir grupo",
 		"groups.table.delete.error.desc": "Tente novamente mais tarde.",
 		"groups.table.moved": "Grupo movido",
@@ -1354,7 +1517,8 @@ const translations = {
 		"all.channels.itemsPerPagePlaceholder": "Itens por página",
 		"all.channels.openmenu": "Abrir menu",
 		"all.channels.notfound": "Nenhum canal encontrado",
-		"all.channels.sync": "Sincronize sua conta do Google para importar seus canais do YouTube.",
+		"all.channels.sync":
+			"Sincronize sua conta do Google para importar seus canais do YouTube.",
 		"all.channels.sync.link": "Ir para configurações",
 		"all.channels.syncDescription": "Sincronize sua conta do Google para",
 
@@ -1397,7 +1561,8 @@ const translations = {
 
 		// Group List
 		"group.list.empty.title": "Nenhum grupo ainda",
-		"group.list.empty.desc": "Comece a organizar seus canais do YouTube em grupos",
+		"group.list.empty.desc":
+			"Comece a organizar seus canais do YouTube em grupos",
 		"group.list.create": "Criar Seu Primeiro Grupo",
 		"group.list.channels": "{count} canais",
 
@@ -1410,40 +1575,51 @@ const translations = {
 
 		// Recent Activity
 		"recent.feature.organize.title": "Organizar com Grupos",
-		"recent.feature.organize.desc": "Crie grupos ilimitados para organizar seus canais do YouTube por tópico, projeto ou qualquer critério necessário.",
+		"recent.feature.organize.desc":
+			"Crie grupos ilimitados para organizar seus canais do YouTube por tópico, projeto ou qualquer critério necessário.",
 		"recent.feature.organize.badge": "Recurso Principal",
 		"recent.feature.share.title": "Compartilhar e Colaborar",
-		"recent.feature.share.desc": "Gere links de compartilhamento para que outros vejam ou copiem seus grupos. Perfeito para equipes e comunidades.",
+		"recent.feature.share.desc":
+			"Gere links de compartilhamento para que outros vejam ou copiem seus grupos. Perfeito para equipes e comunidades.",
 		"recent.feature.share.badge": "Popular",
 		"recent.feature.permissions.title": "Permissões de Equipe",
-		"recent.feature.permissions.desc": "Controle o acesso com permissões de visualização, edição ou administração. Gerencie quem pode modificar seus grupos.",
+		"recent.feature.permissions.desc":
+			"Controle o acesso com permissões de visualização, edição ou administração. Gerencie quem pode modificar seus grupos.",
 		"recent.feature.permissions.badge": "Pro",
 		"recent.feature.bulk.title": "Operações em Massa",
-		"recent.feature.bulk.desc": "Adicione, remova ou mova vários canais de uma vez. Economize tempo com ações em lote poderosas.",
+		"recent.feature.bulk.desc":
+			"Adicione, remova ou mova vários canais de uma vez. Economize tempo com ações em lote poderosas.",
 		"recent.feature.extension.title": "Integração com Extensão",
-		"recent.feature.extension.desc": "Use nossa extensão de navegador para adicionar canais rapidamente enquanto navega no YouTube diretamente.",
+		"recent.feature.extension.desc":
+			"Use nossa extensão de navegador para adicionar canais rapidamente enquanto navega no YouTube diretamente.",
 		"recent.feature.extension.badge": "Novo",
 		"recent.tip.title": "Dica Profissional",
-		"recent.tip.desc": "Use subgrupos para criar hierarquias aninhadas. Perfeito para organizar grandes coleções por subtópico ou fase do projeto.",
+		"recent.tip.desc":
+			"Use subgrupos para criar hierarquias aninhadas. Perfeito para organizar grandes coleções por subtópico ou fase do projeto.",
 
 		// Recommendation Cards
 		"rec.crunchyroll.badge": "Nova Integração",
 		"rec.crunchyroll.anime": "Anime",
 		"rec.crunchyroll.title": "Integração Crunchyroll",
-		"rec.crunchyroll.desc": "Combine perfeitamente conteúdo de anime do YouTube e Crunchyroll",
-		"rec.crunchyroll.overlay": "A experiência definitiva de rastreamento de animes",
+		"rec.crunchyroll.desc":
+			"Combine perfeitamente conteúdo de anime do YouTube e Crunchyroll",
+		"rec.crunchyroll.overlay":
+			"A experiência definitiva de rastreamento de animes",
 		"rec.crunchyroll.unlock": "Desbloqueie a experiência completa de anime",
 		"rec.crunchyroll.feature1": "Acompanhe animes em ambas as plataformas",
 		"rec.crunchyroll.feature2": "Controle todas as suas coleções",
 		"rec.crunchyroll.feature3": "Descubra novos animes",
 		"rec.crunchyroll.feature4": "Compartilhe coleções selecionadas",
-		"rec.crunchyroll.connect": "Conecte sua conta Crunchyroll para organizar todo o seu conteúdo de anime favorito em um só lugar.",
+		"rec.crunchyroll.connect":
+			"Conecte sua conta Crunchyroll para organizar todo o seu conteúdo de anime favorito em um só lugar.",
 		"rec.crunchyroll.button": "Conhecer Crunchyroll",
 		"rec.support.title": "Apoie Este Projeto",
-		"rec.support.desc": "Ajude-nos a manter o YouTube Group Manager vivo e crescendo",
+		"rec.support.desc":
+			"Ajude-nos a manter o YouTube Group Manager vivo e crescendo",
 		"rec.support.text": "Seu apoio nos ajuda a:",
 		"rec.support.feature1": "Manter a infraestrutura do servidor",
-		"rec.support.feature2": "Desenvolver novos recursos como a integração Crunchyroll",
+		"rec.support.feature2":
+			"Desenvolver novos recursos como a integração Crunchyroll",
 		"rec.support.feature3": "Melhorar a funcionalidade existente",
 		"rec.support.feature4": "Manter o serviço gratuito para todos",
 		"rec.support.onetime": "Único",
@@ -1451,11 +1627,13 @@ const translations = {
 		"rec.support.cancel": "Cancelar a qualquer momento",
 		"rec.support.secure": "Pagamento único seguro",
 		"rec.support.donate": "Doar ${amount} {type}",
-		"rec.support.footer": "100% das doações vão para desenvolvimento e custos de servidor",
+		"rec.support.footer":
+			"100% das doações vão para desenvolvimento e custos de servidor",
 
 		// Shared Groups Overview
 		"shared.overview.empty.title": "Nenhum grupo compartilhado ainda",
-		"shared.overview.empty.desc": "Grupos compartilhados com você aparecerão aqui",
+		"shared.overview.empty.desc":
+			"Grupos compartilhados com você aparecerão aqui",
 		"shared.overview.owned": "Propriedade de {name}",
 		"shared.overview.progress": "Progresso dos Canais",
 		"shared.overview.shared": "Compartilhado",
@@ -1478,17 +1656,23 @@ const translations = {
 
 		// Upgrade Plan Modal
 		"upgrade.title": "Atualizar Seu Plano",
-		"upgrade.desc.channels": "Você atingiu o número máximo de canais permitido no seu plano atual.",
-		"upgrade.desc.groups": "Você atingiu o número máximo de grupos permitido no seu plano atual.",
-		"upgrade.body.channels": "Para adicionar mais canais, atualize seu plano para desbloquear mais recursos.",
-		"upgrade.body.groups": "Para criar mais grupos, atualize seu plano para desbloquear mais recursos.",
+		"upgrade.desc.channels":
+			"Você atingiu o número máximo de canais permitido no seu plano atual.",
+		"upgrade.desc.groups":
+			"Você atingiu o número máximo de grupos permitido no seu plano atual.",
+		"upgrade.body.channels":
+			"Para adicionar mais canais, atualize seu plano para desbloquear mais recursos.",
+		"upgrade.body.groups":
+			"Para criar mais grupos, atualize seu plano para desbloquear mais recursos.",
 		"upgrade.cancel": "Cancelar",
 		"upgrade.button": "Atualizar Plano",
 
 		// YouTube Connect Modal
 		"youtube.connect.title": "Conectar Sua Conta do YouTube",
-		"youtube.connect.desc": "Você ainda não tem nenhum canal do YouTube conectado.",
-		"youtube.connect.body": "Para organizar suas inscrições do YouTube e ver seus vídeos mais recentes, conecte sua conta do Google com inscrições do YouTube nas configurações da sua conta.",
+		"youtube.connect.desc":
+			"Você ainda não tem nenhum canal do YouTube conectado.",
+		"youtube.connect.body":
+			"Para organizar suas inscrições do YouTube e ver seus vídeos mais recentes, conecte sua conta do Google com inscrições do YouTube nas configurações da sua conta.",
 		"youtube.connect.later": "Talvez Depois",
 		"youtube.connect.settings": "Ir para Configurações da Conta",
 
@@ -1504,47 +1688,58 @@ const translations = {
 		"support.title1": "Como podemos",
 		"support.title2": "ajudar",
 		"support.title3": "você hoje?",
-		"support.subtitle": "Seja resolvendo um problema ou querendo ajudar a moldar o futuro da organização do YouTube, estamos a um clique de distância.",
+		"support.subtitle":
+			"Seja resolvendo um problema ou querendo ajudar a moldar o futuro da organização do YouTube, estamos a um clique de distância.",
 		"support.community.title": "Junte-se à Comunidade",
-		"support.community.desc": "Obtenha ajuda instantânea de nossa equipe e outros usuários do Nestfeed. Compartilhe sua configuração, sugira novos recursos e fique atualizado.",
+		"support.community.desc":
+			"Obtenha ajuda instantânea de nossa equipe e outros usuários do Groupify. Compartilhe sua configuração, sugira novos recursos e fique atualizado.",
 		"support.community.members": "Mais de 1k Membros",
 		"support.community.beta": "Acesso Beta",
 		"support.community.button": "Abrir Discord",
 		"support.feature1.title": "Solução de Problemas em Tempo Real",
-		"support.feature1.desc": "Acesso direto aos nossos desenvolvedores para correções rápidas.",
+		"support.feature1.desc":
+			"Acesso direto aos nossos desenvolvedores para correções rápidas.",
 		"support.feature2.title": "Suporte Prioritário",
-		"support.feature2.desc": "Membros do Discord recebem tempos de resposta mais rápidos.",
+		"support.feature2.desc":
+			"Membros do Discord recebem tempos de resposta mais rápidos.",
 		"support.feature3.title": "Solicitações de Recursos",
-		"support.feature3.desc": "Vote nos próximos recursos que vamos desenvolver.",
+		"support.feature3.desc":
+			"Vote nos próximos recursos que vamos desenvolver.",
 		"support.email.title": "Suporte por Email",
-		"support.email.desc": "Precisa de uma resposta formal? Envie-nos um email e nossa equipe de suporte responderá em até 24 horas.",
+		"support.email.desc":
+			"Precisa de uma resposta formal? Envie-nos um email e nossa equipe de suporte responderá em até 24 horas.",
 		"support.email.address": "admin@nestfeed.app",
 		"support.oss.title": "Código Aberto",
-		"support.oss.desc": "Nossa extensão principal é de código aberto. Navegue pelo código, reporte bugs técnicos ou contribua no GitHub.",
+		"support.oss.desc":
+			"Nossa extensão principal é de código aberto. Navegue pelo código, reporte bugs técnicos ou contribua no GitHub.",
 		"support.oss.button": "Ver no GitHub",
-		"support.footer": "(c) 2025 Nestfeed. Todos os direitos reservados.",
+		"support.footer": "(c) 2025 Groupify. Todos os direitos reservados.",
 
 		// Share Page
 		"share.loading.title": "Carregando...",
 		"share.loading.desc": "Buscando informações do grupo...",
 		"share.error.expired": "Link Expirado",
 		"share.error.title": "Erro",
-		"share.error.expired.desc": "Este link de compartilhamento expirou e não é mais válido.",
+		"share.error.expired.desc":
+			"Este link de compartilhamento expirou e não é mais válido.",
 		"share.error.loading.desc": "Falha ao carregar dados do grupo",
-		"share.alert.expired": "Os links de compartilhamento têm um período de validade limitado. Entre em contato com a pessoa que compartilhou este link para obter um novo.",
+		"share.alert.expired":
+			"Os links de compartilhamento têm um período de validade limitado. Entre em contato com a pessoa que compartilhou este link para obter um novo.",
 		"share.button.dashboard": "Ir para o Painel",
 		"share.card.collab": "Participar da Colaboração",
 		"share.card.copy": "Copiar Grupo",
-		"share.card.collab.desc": "Você foi convidado a colaborar em \"{name}\"",
-		"share.card.copy.desc": "Copiar todos os canais de \"{name}\" para sua conta",
+		"share.card.collab.desc": 'Você foi convidado a colaborar em "{name}"',
+		"share.card.copy.desc": 'Copiar todos os canais de "{name}" para sua conta',
 		"share.group.unknown": "Grupo Desconhecido",
 		"share.label.unknown": "Desconhecido",
 		"share.desc.none": "Nenhuma descrição disponível",
 		"share.channels": "Canais",
 		"share.permission.alert": "Você entrará como permissão de {permission}.",
 		"share.permission.view": " Você poderá apenas visualizar canais e grupos",
-		"share.permission.edit": " Você poderá adicionar, remover e editar grupos e canais.",
-		"share.permission.admin": " Você terá controle total sobre o grupo e poderá convidar outros.",
+		"share.permission.edit":
+			" Você poderá adicionar, remover e editar grupos e canais.",
+		"share.permission.admin":
+			" Você terá controle total sobre o grupo e poderá convidar outros.",
 		"share.copy.alert": "Isso copiará todos os {count} canais para sua conta.",
 		"share.cancel": "Cancelar",
 		"share.joining": "Entrando...",
@@ -1554,11 +1749,14 @@ const translations = {
 
 		// Subscription Confirm
 		"subscription.confirming": "Confirmando seu email",
-		"subscription.confirming.desc": "Aguarde enquanto validamos seu link de confirmação...",
+		"subscription.confirming.desc":
+			"Aguarde enquanto validamos seu link de confirmação...",
 		"subscription.failed": "Falha na confirmação",
-		"subscription.failed.desc": "Não foi possível verificar seu endereço de email. O link pode ter expirado ou ser inválido.",
+		"subscription.failed.desc":
+			"Não foi possível verificar seu endereço de email. O link pode ter expirado ou ser inválido.",
 		"subscription.success": "Email confirmado!",
-		"subscription.success.desc": "Seu email foi verificado com sucesso. Agora você pode acessar todos os recursos da sua conta.",
+		"subscription.success.desc":
+			"Seu email foi verificado com sucesso. Agora você pode acessar todos os recursos da sua conta.",
 		"subscription.dashboard": "Ir para o Painel",
 		"subscription.error.default": "Falha ao confirmar inscrição",
 
@@ -1571,7 +1769,8 @@ const translations = {
 		"forgot.confirm.back": "Voltar ao login",
 		"forgot.confirm.error.match": "As senhas não coincidem",
 		"forgot.confirm.success": "Senha redefinida com sucesso",
-		"forgot.confirm.error.default": "Falha ao redefinir senha. Tente novamente.",
+		"forgot.confirm.error.default":
+			"Falha ao redefinir senha. Tente novamente.",
 
 		// Settings
 		"settings.title": "Configurações",
@@ -1601,7 +1800,8 @@ const translations = {
 		"account.delete": "Excluir Conta",
 		"account.delete.confirm": "Excluir Conta?",
 		"account.delete.irreversible": "Isso não pode ser desfeito.",
-		"account.delete.body": "Todos os seus dados, incluindo grupos, análises e configurações, serão excluídos permanentemente.",
+		"account.delete.body":
+			"Todos os seus dados, incluindo grupos, análises e configurações, serão excluídos permanentemente.",
 		"account.delete.check1": "Eu entendo que todos os dados serão perdidos",
 		"account.delete.check2": "Esta ação não pode ser desfeita",
 		"account.delete.type": "Digite DELETE para confirmar",
@@ -1627,7 +1827,8 @@ const translations = {
 		"billing.history": "Histórico de Faturamento",
 		"billing.view": "Ver no Gumroad",
 		"billing.cancel.title": "Cancelar Assinatura",
-		"billing.cancel.desc": "Tem certeza que deseja cancelar sua assinatura? Você perderá o acesso aos recursos premium no final do seu período de faturamento.",
+		"billing.cancel.desc":
+			"Tem certeza que deseja cancelar sua assinatura? Você perderá o acesso aos recursos premium no final do seu período de faturamento.",
 		"billing.keep": "Manter Assinatura",
 		"billing.cancel.confirm": "Cancelar Assinatura",
 
@@ -1654,7 +1855,7 @@ const translations = {
 		"appearance.theme": "Tema",
 		"appearance.light": "Claro",
 		"appearance.dark": "Escuro",
-		"appearance.nestfeed": "Nestfeed",
+		"appearance.nestfeed": "Groupify",
 
 		// Dashboard Routes
 		"dashboard.channels.title": "Todos os Canais",
@@ -1666,10 +1867,12 @@ const translations = {
 
 		// Share Links Page
 		"sharelinks.page.title": "Links de Compartilhamento",
-		"sharelinks.page.desc": "Gerenciar e monitorar todos os seus links de compartilhamento",
+		"sharelinks.page.desc":
+			"Gerenciar e monitorar todos os seus links de compartilhamento",
 		"sharelinks.create": "Criar Novo Link",
 		"sharelinks.select.title": "Selecionar um Grupo",
-		"sharelinks.select.desc": "Escolha um grupo para criar um link de compartilhamento.",
+		"sharelinks.select.desc":
+			"Escolha um grupo para criar um link de compartilhamento.",
 		"sharelinks.nogroups": "Nenhum grupo encontrado. Crie um grupo primeiro.",
 		"sharelinks.channels": "{count} canais",
 		"sharelinks.all": "Todos os Links de Compartilhamento",
@@ -1681,7 +1884,8 @@ const translations = {
 		"group.detail.tab.videos": "Vídeos",
 		"group.detail.sync.error": "Falha ao sincronizar vídeos",
 		"group.detail.settings.applied": "Configurações Aplicadas",
-		"group.detail.settings.desc": "Suas configurações de grupo foram aplicadas.",
+		"group.detail.settings.desc":
+			"Suas configurações de grupo foram aplicadas.",
 
 		// Group Edit/Create
 		"group.edit.title": "Editar Grupo",
@@ -1698,7 +1902,8 @@ const translations = {
 		// Blog Post
 		"blog.post.back": "Voltar ao Blog",
 		"blog.post.written": "Escrito por {author}",
-		"blog.post.author.desc": "Autor de artigos do Nestfeed. Apaixonado por produtividade e organização no YouTube.",
+		"blog.post.author.desc":
+			"Autor de artigos do Groupify. Apaixonado por produtividade e organização no YouTube.",
 	},
 	es: {
 		collaborate_invite_title: "Invitar Colaboradores",
@@ -1757,6 +1962,63 @@ const translations = {
 		"nav.blog": "Blog",
 		"nav.signin": "Iniciar Sesión",
 		"nav.getstarted": "Comenzar",
+
+		// Footer / About / Contact / Consent
+		"footer.tagline":
+			"La mejor forma de organizar, gestionar y compartir tus suscripciones de YouTube.",
+		"footer.resources": "Recursos",
+		"footer.community": "Comunidad",
+		"footer.contact": "Contacto",
+		"footer.about": "Acerca de",
+		"footer.privacy": "Política de Privacidad",
+		"footer.terms": "Términos del Servicio",
+		"about.badge": "Sobre nosotros",
+		"about.title": "Acerca de Groupify",
+		"about.subtitle":
+			"Ayudamos a los amantes de YouTube a domar sus suscripciones: organiza canales en grupos, curate lo que ver y compártelo todo con amigos.",
+		"about.mission.title": "Nuestra misión",
+		"about.mission.text":
+			"YouTube es la videoteca más grande del mundo, pero gestionar cientos de canales es un caos. Groupify le da un hogar a cada canal: crea grupos de animes, noticias, fitness, cocina o lo que quieras, mantenlos organizados y comparte un solo enlace en lugar de un muro de recomendaciones.",
+		"about.story.title": "Por qué lo creamos",
+		"about.story.text":
+			"Groupify nació de una necesidad personal: demasiadas suscripciones, demasiadas pilas de “ver más tarde” y ninguna buena forma de entregar una selección de canales a un amigo. Hoy es un panel completo donde conectas tu cuenta, agrupas tus canales, sincronizas sus últimos vídeos y compartes enlaces públicos con cualquiera.",
+		"about.values.title": "Lo que nos importa",
+		"about.value1.title": "Organización primero",
+		"about.value1.desc":
+			"Los grupos son el núcleo del producto. Fáciles de crear, de reordenar y siempre en sincronía con tu lista de canales.",
+		"about.value2.title": "Compartir integrado",
+		"about.value2.desc":
+			"Cada grupo puede convertirse en un enlace público, para que tu curaduría llegue a tus amigos sin fricción.",
+		"about.value3.title": "Privacidad respetada",
+		"about.value3.desc":
+			"Elecciones de cookies claras, anuncios no personalizados por defecto hasta que aceptes y formas sencillas de contactarnos sobre tus datos.",
+		"about.cta.title": "¿Listo para organizar tus canales?",
+		"about.cta.text":
+			"Crea tu cuenta gratis y arma tu primer grupo en minutos — o lee el blog con consejos para tu vida en YouTube.",
+		"contact.badge": "Contacto",
+		"contact.title": "Ponte en contacto",
+		"contact.subtitle":
+			"¿Preguntas, comentarios o alianzas? Solemos responder en un día hábil.",
+		"contact.email.title": "Escríbenos",
+		"contact.email.desc":
+			"Escribe directamente a nuestro equipo para soporte, facturación o privacidad.",
+		"contact.email.button": "Enviar correo",
+		"contact.community.title": "Comunidad en Discord",
+		"contact.community.desc":
+			"Chatea con otros usuarios, reporta errores y sigue las novedades en tiempo real.",
+		"contact.community.button": "Unirse a Discord",
+		"contact.help.title": "Centro de ayuda",
+		"contact.help.desc":
+			"Explora guías y respuestas a las preguntas más frecuentes sobre Groupify.",
+		"contact.help.button": "Abrir centro de ayuda",
+		"contact.response":
+			"Para solicitudes de privacidad (acceso, corrección o eliminación de datos), envíanos un correo y responderemos en un plazo de 30 días conforme a la ley aplicable.",
+		"consent.title": "Cookies y anuncios",
+		"consent.text":
+			"Usamos cookies esenciales y de análisis. Con tu consentimiento también mostramos anuncios personalizados vía Google AdSense; sin él, los anuncios permanecen no personalizados.",
+		"consent.accept": "Aceptar todo",
+		"consent.reject": "Solo no personalizados",
+		"consent.learnMore": "Política de privacidad",
 
 		// Login Page
 		"login.welcome":
@@ -1908,13 +2170,13 @@ const translations = {
 		"landing.hero.badge": "Ahora con Extensión de Navegador",
 		"landing.hero.title": "Organiza Tu YouTube Como Nunca Antes",
 		"landing.hero.subtitle":
-			"Nestfeed te ayuda a organizar, gestionar y compartir tus suscripciones de YouTube. Crea grupos personalizados, colabora con equipos y nunca pierdas el control de tus canales favoritos.",
+			"Groupify te ayuda a organizar, gestionar y compartir tus suscripciones de YouTube. Crea grupos personalizados, colabora con equipos y nunca pierdas el control de tus canales favoritos.",
 		"landing.hero.cta.primary": "Iniciar Prueba Gratuita",
 		"landing.hero.cta.secondary": "Ver Demo",
 		"landing.hero.trust1": "No se requiere tarjeta de crédito",
 		"landing.hero.trust2": "Prueba gratuita de 14 días",
 		"landing.hero.trust3": "Cancela en cualquier momento",
-		"landing.hero.preview": "Panel de Nestfeed",
+		"landing.hero.preview": "Panel de Groupify",
 
 		// Landing Page - Features Section
 		"landing.features.title": "Todo Lo Que Necesitas para Organizar YouTube",
@@ -1943,20 +2205,20 @@ const translations = {
 		"landing.extension.badge": "Extensión de Navegador",
 		"landing.extension.title": "Agrega Canales Mientras Navegas",
 		"landing.extension.subtitle":
-			"Nuestra extensión de navegador se integra perfectamente con YouTube. Cuando encuentres un canal que quieras guardar, solo haz clic en el icono de Nestfeed y agrégalo a cualquier grupo instantáneamente.",
+			"Nuestra extensión de navegador se integra perfectamente con YouTube. Cuando encuentres un canal que quieras guardar, solo haz clic en el icono de Groupify y agrégalo a cualquier grupo instantáneamente.",
 		"landing.extension.success": "Canal agregado al grupo",
 		"landing.extension.subscribers": "suscriptores",
 
 		// Landing Page - Testimonials Section
 		"landing.testimonials.title": "Amado por Creadores de Contenido",
 		"landing.testimonials.subtitle":
-			"Mira lo que nuestros usuarios están diciendo sobre Nestfeed",
+			"Mira lo que nuestros usuarios están diciendo sobre Groupify",
 		"landing.testimonials.alex.content":
-			"Nestfeed ha transformado completamente cómo gestiono mis suscripciones de YouTube. ¡Finalmente puedo mantener mi contenido educativo separado del entretenimiento!",
+			"Groupify ha transformado completamente cómo gestiono mis suscripciones de YouTube. ¡Finalmente puedo mantener mi contenido educativo separado del entretenimiento!",
 		"landing.testimonials.sarah.content":
 			"La capacidad de compartir grupos curados con mi equipo ha sido un cambio radical. Podemos compartir rápidamente insights de la industria y análisis de competidores.",
 		"landing.testimonials.mike.content":
-			"He probado muchas herramientas, pero Nestfeed es la única que realmente entiende cómo trabajan los creadores de contenido. ¡La función de grupos anidados es brillante!",
+			"He probado muchas herramientas, pero Groupify es la única que realmente entiende cómo trabajan los creadores de contenido. ¡La función de grupos anidados es brillante!",
 
 		// Landing Page - Pricing Section
 		"landing.pricing.title": "Precios Simples y Transparentes",
@@ -1976,7 +2238,7 @@ const translations = {
 		// Landing Page - CTA Section
 		"landing.cta.title": "¿Listo para Organizar Tu YouTube?",
 		"landing.cta.subtitle":
-			"Únete a miles de creadores de contenido y equipos que confían en Nestfeed para gestionar sus suscripciones de YouTube.",
+			"Únete a miles de creadores de contenido y equipos que confían en Groupify para gestionar sus suscripciones de YouTube.",
 		"landing.cta.primary": "Comenzar Gratis",
 		"landing.cta.secondary": "Unirse a la Comunidad",
 
@@ -1984,7 +2246,7 @@ const translations = {
 		"testimonials.badge": "Testimonios",
 		"testimonials.title": "Amado por Creadores",
 		"testimonials.subtitle":
-			"Ve lo que creadores de contenido y agencias están diciendo sobre Nestfeed.",
+			"Ve lo que creadores de contenido y agencias están diciendo sobre Groupify.",
 		"testimonials.alex.content":
 			"Esta herramienta ha revolucionado cómo gestiono mis más de 50 canales de YouTube. ¡La función de agrupación es revolucionária!",
 		"testimonials.sarah.content":
@@ -2012,7 +2274,7 @@ const translations = {
 		"cta.badge": "Listo para Lanzar",
 		"cta.title": "¿Listo para Comenzar?",
 		"cta.subtitle":
-			"Únete a miles de creadores de contenido que já estão usando o Nestfeed para organizar y hacer crecer su presencia en YouTube.",
+			"Únete a miles de creadores de contenido que já estão usando o Groupify para organizar y hacer crecer su presencia en YouTube.",
 
 		// Footer
 		"footer.description":
@@ -2054,7 +2316,8 @@ const translations = {
 		"groups.new": "Nuevo Grupo",
 		"groups.loading": "Cargando grupos...",
 		"groups.error.title": "Error al Cargar Grupos",
-		"groups.error.description": "No se pudieron cargar los grupos. Inténtalo de nuevo.",
+		"groups.error.description":
+			"No se pudieron cargar los grupos. Inténtalo de nuevo.",
 
 		// Group Form
 		"group.form.name": "Nombre",
@@ -2072,18 +2335,19 @@ const translations = {
 		"group.form.shelf": "Activar Estante de Grupos",
 		"group.form.validation.required": "Requerido",
 		"group.form.validation.max50": "Máx 50 caracteres",
-		"group.form.validation.pattern": "Solo letras, números, espacios, guiones y guiones bajos",
+		"group.form.validation.pattern":
+			"Solo letras, números, espacios, guiones y guiones bajos",
 		"group.form.category.placeholder": "Selecciona una categoría",
 		"group.form.icon.placeholder": "Selecciona un icono",
 
 		// Blog
 		"blog.title": "Últimas Actualizaciones",
-		"blog.brand": "Blog Nestfeed",
+		"blog.brand": "Blog do Groupify",
 		"blog.search": "Buscar...",
 		"blog.featured": "Destacado",
 		"blog.trending": "Tendencia",
 		"blog.read": "Leer Artículo",
-		"blog.author.team": "Equipo Nestfeed",
+		"blog.author.team": "Equipo Groupify",
 		"blog.results": "Resultados",
 		"blog.allposts": "Todos los Posts",
 		"blog.none.title": "No se encontraron posts",
@@ -2112,7 +2376,7 @@ const translations = {
 
 		// Social Login Labels
 		"login.welcome.badge": "Bienvenido de nuevo",
-		"register.welcome.badge": "Únete a Nestfeed",
+		"register.welcome.badge": "Únete a Groupify",
 		"login.social.google": "Google",
 		"login.social.discord": "Discord",
 
@@ -2139,7 +2403,7 @@ const translations = {
 		"groups.table.created": "Creado",
 		"groups.table.actions": "Acciones",
 		"groups.table.loading": "Cargando grupos...",
-		"groups.table.noresults": "Ningún grupo coincide con \"{search}\"",
+		"groups.table.noresults": 'Ningún grupo coincide con "{search}"',
 		"groups.table.noresults.hint": "Intenta ajustar tus términos de búsqueda",
 		"groups.table.empty": "No se encontraron grupos",
 		"groups.table.subgroup": "(subgrupo)",
@@ -2156,9 +2420,10 @@ const translations = {
 		"groups.table.updated.desc": "El orden de los grupos se ha guardado",
 		"groups.table.update.error": "Error al actualizar el orden de los grupos",
 		"groups.table.update.error.desc": "Inténtalo de nuevo más tarde",
-		"groups.table.delete.confirm": "¿Estás seguro de que deseas eliminar \"{name}\"? Esta acción no se puede deshacer.",
+		"groups.table.delete.confirm":
+			'¿Estás seguro de que deseas eliminar "{name}"? Esta acción no se puede deshacer.',
 		"groups.table.deleted": "Grupo eliminado con éxito",
-		"groups.table.deleted.desc": "\"{name}\" ha sido eliminado.",
+		"groups.table.deleted.desc": '"{name}" ha sido eliminado.',
 		"groups.table.delete.error": "Error al eliminar el grupo",
 		"groups.table.delete.error.desc": "Inténtalo de nuevo más tarde.",
 		"groups.table.moved": "Grupo movido",
@@ -2199,7 +2464,8 @@ const translations = {
 		"all.channels.itemsPerPagePlaceholder": "Elementos por página",
 		"all.channels.openmenu": "Abrir menú",
 		"all.channels.notfound": "No se encontraron canales",
-		"all.channels.sync": "Sincroniza tu cuenta de Google para importar tus canales de YouTube.",
+		"all.channels.sync":
+			"Sincroniza tu cuenta de Google para importar tus canales de YouTube.",
 		"all.channels.sync.link": "Ir a configuración",
 		"all.channels.syncDescription": "Sincroniza tu cuenta de Google para",
 
@@ -2242,7 +2508,8 @@ const translations = {
 
 		// Group List
 		"group.list.empty.title": "Aún no hay grupos",
-		"group.list.empty.desc": "Comienza a organizar tus canales de YouTube en grupos",
+		"group.list.empty.desc":
+			"Comienza a organizar tus canales de YouTube en grupos",
 		"group.list.create": "Crear Tu Primer Grupo",
 		"group.list.channels": "{count} canales",
 
@@ -2255,40 +2522,51 @@ const translations = {
 
 		// Recent Activity
 		"recent.feature.organize.title": "Organizar con Grupos",
-		"recent.feature.organize.desc": "Crea grupos ilimitados para organizar tus canales de YouTube por tema, proyecto o cualquier criterio que necesites.",
+		"recent.feature.organize.desc":
+			"Crea grupos ilimitados para organizar tus canales de YouTube por tema, proyecto o cualquier criterio que necesites.",
 		"recent.feature.organize.badge": "Funcionalidad Principal",
 		"recent.feature.share.title": "Compartir y Colaborar",
-		"recent.feature.share.desc": "Genera enlaces compartibles para que otros vean o copien tus grupos. Perfecto para equipos y comunidades.",
+		"recent.feature.share.desc":
+			"Genera enlaces compartibles para que otros vean o copien tus grupos. Perfecto para equipos y comunidades.",
 		"recent.feature.share.badge": "Popular",
 		"recent.feature.permissions.title": "Permisos de Equipo",
-		"recent.feature.permissions.desc": "Controla el acceso con permisos de vista, edición o administración. Gestiona quién puede modificar tus grupos.",
+		"recent.feature.permissions.desc":
+			"Controla el acceso con permisos de vista, edición o administración. Gestiona quién puede modificar tus grupos.",
 		"recent.feature.permissions.badge": "Pro",
 		"recent.feature.bulk.title": "Operaciones Masivas",
-		"recent.feature.bulk.desc": "Añade, elimina o mueve varios canales a la vez. Ahorra tiempo con potentes acciones por lote.",
+		"recent.feature.bulk.desc":
+			"Añade, elimina o mueve varios canales a la vez. Ahorra tiempo con potentes acciones por lote.",
 		"recent.feature.extension.title": "Integración con Extensión",
-		"recent.feature.extension.desc": "Usa nuestra extensión de navegador para añadir canales rápidamente mientras navegas por YouTube directamente.",
+		"recent.feature.extension.desc":
+			"Usa nuestra extensión de navegador para añadir canales rápidamente mientras navegas por YouTube directamente.",
 		"recent.feature.extension.badge": "Nuevo",
 		"recent.tip.title": "Consejo Profesional",
-		"recent.tip.desc": "Usa subgrupos para crear jerarquías anidadas. Perfecto para organizar grandes colecciones por subtema o fase del proyecto.",
+		"recent.tip.desc":
+			"Usa subgrupos para crear jerarquías anidadas. Perfecto para organizar grandes colecciones por subtema o fase del proyecto.",
 
 		// Recommendation Cards
 		"rec.crunchyroll.badge": "Nueva Integración",
 		"rec.crunchyroll.anime": "Anime",
 		"rec.crunchyroll.title": "Integración Crunchyroll",
-		"rec.crunchyroll.desc": "Combina perfectamente contenido de anime de YouTube y Crunchyroll",
-		"rec.crunchyroll.overlay": "La experiencia definitiva de seguimiento de animes",
+		"rec.crunchyroll.desc":
+			"Combina perfectamente contenido de anime de YouTube y Crunchyroll",
+		"rec.crunchyroll.overlay":
+			"La experiencia definitiva de seguimiento de animes",
 		"rec.crunchyroll.unlock": "Desbloquea la experiencia completa de anime",
 		"rec.crunchyroll.feature1": "Sigue animes en ambas plataformas",
 		"rec.crunchyroll.feature2": "Controla todas tus colecciones",
 		"rec.crunchyroll.feature3": "Descubre nuevos animes",
 		"rec.crunchyroll.feature4": "Comparte colecciones seleccionadas",
-		"rec.crunchyroll.connect": "Conecta tu cuenta de Crunchyroll para organizar todo tu contenido de anime favorito en un solo lugar.",
+		"rec.crunchyroll.connect":
+			"Conecta tu cuenta de Crunchyroll para organizar todo tu contenido de anime favorito en un solo lugar.",
 		"rec.crunchyroll.button": "Conocer Crunchyroll",
 		"rec.support.title": "Apoya Este Proyecto",
-		"rec.support.desc": "Ayúdanos a mantener vivo y en crecimiento el YouTube Group Manager",
+		"rec.support.desc":
+			"Ayúdanos a mantener vivo y en crecimiento el YouTube Group Manager",
 		"rec.support.text": "Tu apoyo nos ayuda a:",
 		"rec.support.feature1": "Mantener la infraestructura del servidor",
-		"rec.support.feature2": "Desarrollar nuevas funciones como la integración de Crunchyroll",
+		"rec.support.feature2":
+			"Desarrollar nuevas funciones como la integración de Crunchyroll",
 		"rec.support.feature3": "Mejorar la funcionalidad existente",
 		"rec.support.feature4": "Mantener el servicio gratuito para todos",
 		"rec.support.onetime": "Único",
@@ -2296,11 +2574,13 @@ const translations = {
 		"rec.support.cancel": "Cancelar en cualquier momento",
 		"rec.support.secure": "Pago único seguro",
 		"rec.support.donate": "Donar ${amount} {type}",
-		"rec.support.footer": "El 100% de las donaciones se destinan al desarrollo y costos del servidor",
+		"rec.support.footer":
+			"El 100% de las donaciones se destinan al desarrollo y costos del servidor",
 
 		// Shared Groups Overview
 		"shared.overview.empty.title": "Aún no hay grupos compartidos",
-		"shared.overview.empty.desc": "Los grupos compartidos contigo aparecerán aquí",
+		"shared.overview.empty.desc":
+			"Los grupos compartidos contigo aparecerán aquí",
 		"shared.overview.owned": "Propiedad de {name}",
 		"shared.overview.progress": "Progreso de Canales",
 		"shared.overview.shared": "Compartido",
@@ -2323,17 +2603,22 @@ const translations = {
 
 		// Upgrade Plan Modal
 		"upgrade.title": "Mejorar Tu Plan",
-		"upgrade.desc.channels": "Has alcanzado el número máximo de canales permitidos en tu plan actual.",
-		"upgrade.desc.groups": "Has alcanzado el número máximo de grupos permitidos en tu plan actual.",
-		"upgrade.body.channels": "Para añadir más canales, mejora tu plan para desbloquear más funciones.",
-		"upgrade.body.groups": "Para crear más grupos, mejora tu plan para desbloquear más funciones.",
+		"upgrade.desc.channels":
+			"Has alcanzado el número máximo de canales permitidos en tu plan actual.",
+		"upgrade.desc.groups":
+			"Has alcanzado el número máximo de grupos permitidos en tu plan actual.",
+		"upgrade.body.channels":
+			"Para añadir más canales, mejora tu plan para desbloquear más funciones.",
+		"upgrade.body.groups":
+			"Para crear más grupos, mejora tu plan para desbloquear más funciones.",
 		"upgrade.cancel": "Cancelar",
 		"upgrade.button": "Mejorar Plan",
 
 		// YouTube Connect Modal
 		"youtube.connect.title": "Conectar Tu Cuenta de YouTube",
 		"youtube.connect.desc": "Aún no tienes ningún canal de YouTube conectado.",
-		"youtube.connect.body": "Para organizar tus suscripciones de YouTube y ver sus últimos videos, conecta tu cuenta de Google con suscripciones de YouTube en la configuración de tu cuenta.",
+		"youtube.connect.body":
+			"Para organizar tus suscripciones de YouTube y ver sus últimos videos, conecta tu cuenta de Google con suscripciones de YouTube en la configuración de tu cuenta.",
 		"youtube.connect.later": "Quizás Después",
 		"youtube.connect.settings": "Ir a Configuración de la Cuenta",
 
@@ -2349,47 +2634,58 @@ const translations = {
 		"support.title1": "¿Cómo podemos",
 		"support.title2": "ayudarte",
 		"support.title3": "hoy?",
-		"support.subtitle": "Ya sea que estés solucionando un problema o quieras ayudar a dar forma al futuro de la organización de YouTube, estamos a un clic de distancia.",
+		"support.subtitle":
+			"Ya sea que estés solucionando un problema o quieras ayudar a dar forma al futuro de la organización de YouTube, estamos a un clic de distancia.",
 		"support.community.title": "Únete a la Comunidad",
-		"support.community.desc": "Obtén ayuda instantánea de nuestro equipo y otros usuarios de Nestfeed. Comparte tu configuración, sugiere nuevas funciones y mantente actualizado.",
+		"support.community.desc":
+			"Obtén ayuda instantánea de nuestro equipo y otros usuarios de Groupify. Comparte tu configuración, sugiere nuevas funciones y mantente actualizado.",
 		"support.community.members": "Más de 1k Miembros",
 		"support.community.beta": "Acceso Beta",
 		"support.community.button": "Abrir Discord",
 		"support.feature1.title": "Solución de Problemas en Tiempo Real",
-		"support.feature1.desc": "Acceso directo a nuestros desarrolladores para soluciones rápidas.",
+		"support.feature1.desc":
+			"Acceso directo a nuestros desarrolladores para soluciones rápidas.",
 		"support.feature2.title": "Soporte Prioritario",
-		"support.feature2.desc": "Los miembros de Discord reciben tiempos de respuesta más rápidos.",
+		"support.feature2.desc":
+			"Los miembros de Discord reciben tiempos de respuesta más rápidos.",
 		"support.feature3.title": "Solicitudes de Funciones",
-		"support.feature3.desc": "Vota por las próximas funciones que construiremos.",
+		"support.feature3.desc":
+			"Vota por las próximas funciones que construiremos.",
 		"support.email.title": "Soporte por Correo Electrónico",
-		"support.email.desc": "¿Necesitas una respuesta formal? Envíanos un correo y nuestro equipo de soporte te responderá en 24 horas.",
+		"support.email.desc":
+			"¿Necesitas una respuesta formal? Envíanos un correo y nuestro equipo de soporte te responderá en 24 horas.",
 		"support.email.address": "admin@nestfeed.app",
 		"support.oss.title": "Código Abierto",
-		"support.oss.desc": "Nuestra extensión principal es de código abierto. Explora el código, reporta errores técnicos o contribuye en GitHub.",
+		"support.oss.desc":
+			"Nuestra extensión principal es de código abierto. Explora el código, reporta errores técnicos o contribuye en GitHub.",
 		"support.oss.button": "Ver en GitHub",
-		"support.footer": "(c) 2025 Nestfeed. Todos los derechos reservados.",
+		"support.footer": "(c) 2025 Groupify. Todos los derechos reservados.",
 
 		// Share Page
 		"share.loading.title": "Cargando...",
 		"share.loading.desc": "Obteniendo información del grupo...",
 		"share.error.expired": "Enlace Expirado",
 		"share.error.title": "Error",
-		"share.error.expired.desc": "Este enlace de compartir ha expirado y ya no es válido.",
+		"share.error.expired.desc":
+			"Este enlace de compartir ha expirado y ya no es válido.",
 		"share.error.loading.desc": "Error al cargar los datos del grupo",
-		"share.alert.expired": "Los enlaces de compartir tienen un período de validez limitado. Contacta a la persona que compartió este enlace para obtener uno nuevo.",
+		"share.alert.expired":
+			"Los enlaces de compartir tienen un período de validez limitado. Contacta a la persona que compartió este enlace para obtener uno nuevo.",
 		"share.button.dashboard": "Ir al Panel",
 		"share.card.collab": "Unirse a la Colaboración",
 		"share.card.copy": "Copiar Grupo",
-		"share.card.collab.desc": "Has sido invitado a colaborar en \"{name}\"",
-		"share.card.copy.desc": "Copiar todos los canales de \"{name}\" a tu cuenta",
+		"share.card.collab.desc": 'Has sido invitado a colaborar en "{name}"',
+		"share.card.copy.desc": 'Copiar todos los canales de "{name}" a tu cuenta',
 		"share.group.unknown": "Grupo Desconocido",
 		"share.label.unknown": "Desconocido",
 		"share.desc.none": "No hay descripción disponible",
 		"share.channels": "Canales",
 		"share.permission.alert": "Te unirás como permiso de {permission}.",
 		"share.permission.view": " Solo podrás ver canales y grupos",
-		"share.permission.edit": " Podrás añadir, eliminar y editar grupos y canales.",
-		"share.permission.admin": " Tendrás control total sobre el grupo y podrás invitar a otros.",
+		"share.permission.edit":
+			" Podrás añadir, eliminar y editar grupos y canales.",
+		"share.permission.admin":
+			" Tendrás control total sobre el grupo y podrás invitar a otros.",
 		"share.copy.alert": "Esto copiará todos los {count} canales a tu cuenta.",
 		"share.cancel": "Cancelar",
 		"share.joining": "Uniéndose...",
@@ -2399,11 +2695,14 @@ const translations = {
 
 		// Subscription Confirm
 		"subscription.confirming": "Confirmando tu correo electrónico",
-		"subscription.confirming.desc": "Por favor espera mientras validamos tu enlace de confirmación...",
+		"subscription.confirming.desc":
+			"Por favor espera mientras validamos tu enlace de confirmación...",
 		"subscription.failed": "Confirmación fallida",
-		"subscription.failed.desc": "No pudimos verificar tu dirección de correo electrónico. El enlace puede haber expirado o ser inválido.",
+		"subscription.failed.desc":
+			"No pudimos verificar tu dirección de correo electrónico. El enlace puede haber expirado o ser inválido.",
 		"subscription.success": "¡Correo confirmado!",
-		"subscription.success.desc": "Tu correo electrónico ha sido verificado con éxito. Ahora puedes acceder a todas las funciones de tu cuenta.",
+		"subscription.success.desc":
+			"Tu correo electrónico ha sido verificado con éxito. Ahora puedes acceder a todas las funciones de tu cuenta.",
 		"subscription.dashboard": "Continuar al Panel",
 		"subscription.error.default": "Error al confirmar la suscripción",
 
@@ -2416,7 +2715,8 @@ const translations = {
 		"forgot.confirm.back": "Volver a iniciar sesión",
 		"forgot.confirm.error.match": "Las contraseñas no coinciden",
 		"forgot.confirm.success": "Contraseña restablecida con éxito",
-		"forgot.confirm.error.default": "Error al restablecer la contraseña. Inténtalo de nuevo.",
+		"forgot.confirm.error.default":
+			"Error al restablecer la contraseña. Inténtalo de nuevo.",
 
 		// Settings
 		"settings.title": "Configuración",
@@ -2446,7 +2746,8 @@ const translations = {
 		"account.delete": "Eliminar Cuenta",
 		"account.delete.confirm": "¿Eliminar Cuenta?",
 		"account.delete.irreversible": "Esto no se puede deshacer.",
-		"account.delete.body": "Todos tus datos, incluyendo grupos, análisis y configuraciones, serán eliminados permanentemente.",
+		"account.delete.body":
+			"Todos tus datos, incluyendo grupos, análisis y configuraciones, serán eliminados permanentemente.",
 		"account.delete.check1": "Entiendo que todos los datos se perderán",
 		"account.delete.check2": "Esta acción no se puede deshacer",
 		"account.delete.type": "Escribe DELETE para confirmar",
@@ -2472,7 +2773,8 @@ const translations = {
 		"billing.history": "Historial de Facturación",
 		"billing.view": "Ver en Gumroad",
 		"billing.cancel.title": "Cancelar Suscripción",
-		"billing.cancel.desc": "¿Estás seguro de que deseas cancelar tu suscripción? Perderás el acceso a las funciones premium al final de tu período de facturación.",
+		"billing.cancel.desc":
+			"¿Estás seguro de que deseas cancelar tu suscripción? Perderás el acceso a las funciones premium al final de tu período de facturación.",
 		"billing.keep": "Mantener Suscripción",
 		"billing.cancel.confirm": "Cancelar Suscripción",
 
@@ -2499,7 +2801,7 @@ const translations = {
 		"appearance.theme": "Tema",
 		"appearance.light": "Claro",
 		"appearance.dark": "Oscuro",
-		"appearance.nestfeed": "Nestfeed",
+		"appearance.nestfeed": "Groupify",
 
 		// Dashboard Routes
 		"dashboard.channels.title": "Todos los Canales",
@@ -2511,7 +2813,8 @@ const translations = {
 
 		// Share Links Page
 		"sharelinks.page.title": "Enlaces Compartidos",
-		"sharelinks.page.desc": "Gestiona y monitorea todos tus enlaces compartidos",
+		"sharelinks.page.desc":
+			"Gestiona y monitorea todos tus enlaces compartidos",
 		"sharelinks.create": "Crear Nuevo Enlace",
 		"sharelinks.select.title": "Seleccionar un Grupo",
 		"sharelinks.select.desc": "Elige un grupo para crear un enlace compartido.",
@@ -2536,14 +2839,16 @@ const translations = {
 		"group.create.desc": "Organiza tus canales de YouTube en grupos",
 		"group.create.submit": "Crear",
 		"group.edit.error": "Error",
-		"group.edit.error.desc": "Error al actualizar el grupo. Inténtalo de nuevo.",
+		"group.edit.error.desc":
+			"Error al actualizar el grupo. Inténtalo de nuevo.",
 		"group.create.error": "Error",
 		"group.create.error.desc": "Error al crear el grupo. Inténtalo de nuevo.",
 
 		// Blog Post
 		"blog.post.back": "Volver al Blog",
 		"blog.post.written": "Escrito por {author}",
-		"blog.post.author.desc": "Autor de artículos de Nestfeed. Apasionado por la productividad y organización en YouTube.",
+		"blog.post.author.desc":
+			"Autor de artículos de Groupify. Apasionado por la productividad y organización en YouTube.",
 	},
 };
 

@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -46,7 +47,6 @@ import {
 	useDeleteShareLink,
 	useShareLinks,
 } from "@/hooks/useQuery/useShareLinks";
-import { useLanguage } from "@/components/language-provider";
 import { ConfirmDialog } from "./confirm-dialog";
 import { IconViewer } from "./icon-picker";
 
@@ -220,285 +220,285 @@ export function ShareLinksTable() {
 
 	return (
 		<>
-		<div className="space-y-4">
-			<div className="flex items-center gap-2">
-				<Input
-					placeholder="Search share links, groups, or permissions..."
-					value={searchTerm}
-					onChange={(e) => handleSearchChange(e.target.value)}
-					className="max-w-sm"
-				/>
-			</div>
-
-			{error && (
-				<div className="text-destructive text-sm">
-					Error loading share links: {error.message}
+			<div className="space-y-4">
+				<div className="flex items-center gap-2">
+					<Input
+						placeholder="Search share links, groups, or permissions..."
+						value={searchTerm}
+						onChange={(e) => handleSearchChange(e.target.value)}
+						className="max-w-sm"
+					/>
 				</div>
-			)}
 
-			<div className="rounded-md border bg-card">
-				<Table>
-					<TableHeader>
-						<TableRow>
-							<TableHead>Link Code</TableHead>
-							<TableHead>Group</TableHead>
-							<TableHead>Type</TableHead>
-							<TableHead>Permission</TableHead>
-							<TableHead>Created</TableHead>
-							<TableHead>Expires</TableHead>
-							<TableHead className="text-right">Actions</TableHead>
-						</TableRow>
-					</TableHeader>
-					<TableBody>
-						{isLoading ? (
+				{error && (
+					<div className="text-destructive text-sm">
+						Error loading share links: {error.message}
+					</div>
+				)}
+
+				<div className="rounded-md border bg-card">
+					<Table>
+						<TableHeader>
 							<TableRow>
-								<TableCell colSpan={7} className="h-24 text-center">
-									Loading share links...
-								</TableCell>
+								<TableHead>Link Code</TableHead>
+								<TableHead>Group</TableHead>
+								<TableHead>Type</TableHead>
+								<TableHead>Permission</TableHead>
+								<TableHead>Created</TableHead>
+								<TableHead>Expires</TableHead>
+								<TableHead className="text-right">Actions</TableHead>
 							</TableRow>
-						) : data?.data?.length === 0 ? (
-							<TableRow>
-								<TableCell colSpan={7} className="h-24 text-center">
-									No share links found.
-								</TableCell>
-							</TableRow>
-						) : (
-							data?.data?.map?.((link, idx) => (
-								<>
-									{adIndices.includes(idx) && (
-										<AdRow colSpan={7} key={`ad-${link.id}-${idx}`} />
-									)}
-									<TableRow key={link.id}>
-										<TableCell>
-											<div className="flex items-center gap-2">
-												<Badge variant="outline">{link.linkCode}</Badge>
-												<Button
-													variant="ghost"
-													size="icon"
-													className="h-6 w-6 p-0"
-													onClick={() =>
-														handleCopyLink(link.linkCode, link.linkType)
-													}
-												>
-													<Copy className="h-3 w-3" />
-													<span className="sr-only">Copy link</span>
-												</Button>
-											</div>
-										</TableCell>
-										<TableCell>
-											<div className="flex items-center gap-2">
-												<Avatar className="h-6 w-6">
-													<IconViewer
-														icon={link.groupIcon || "/placeholder.svg"}
-													/>
-													<AvatarFallback>
-														<Users className="h-3 w-3" />
-													</AvatarFallback>
-												</Avatar>
-												<Link
-													to={`/dashboard/groups/$id`}
-													params={{ id: link.group_id }}
-													className="hover:underline"
-												>
-													{link.groupName}
-												</Link>
-											</div>
-										</TableCell>
-										<TableCell>
-											<Badge variant={getLinkTypeBadgeVariant(link.linkType)}>
-												{link.linkType === "collaborate" ? (
-													<>
-														<Users className="mr-1 h-3 w-3" />
-														Collaborate
-													</>
-												) : (
-													<>
-														<Copy className="mr-1 h-3 w-3" />
-														Copy
-													</>
-												)}
-											</Badge>
-										</TableCell>
-										<TableCell>
-											{link.permission && (
-												<Badge
-													variant={getPermissionBadgeVariant(link.permission)}
-												>
-													{link.permission === "admin" ? (
+						</TableHeader>
+						<TableBody>
+							{isLoading ? (
+								<TableRow>
+									<TableCell colSpan={7} className="h-24 text-center">
+										Loading share links...
+									</TableCell>
+								</TableRow>
+							) : data?.data?.length === 0 ? (
+								<TableRow>
+									<TableCell colSpan={7} className="h-24 text-center">
+										No share links found.
+									</TableCell>
+								</TableRow>
+							) : (
+								data?.data?.map?.((link, idx) => (
+									<>
+										{adIndices.includes(idx) && (
+											<AdRow colSpan={7} key={`ad-${link.id}-${idx}`} />
+										)}
+										<TableRow key={link.id}>
+											<TableCell>
+												<div className="flex items-center gap-2">
+													<Badge variant="outline">{link.linkCode}</Badge>
+													<Button
+														variant="ghost"
+														size="icon"
+														className="h-6 w-6 p-0"
+														onClick={() =>
+															handleCopyLink(link.linkCode, link.linkType)
+														}
+													>
+														<Copy className="h-3 w-3" />
+														<span className="sr-only">Copy link</span>
+													</Button>
+												</div>
+											</TableCell>
+											<TableCell>
+												<div className="flex items-center gap-2">
+													<Avatar className="h-6 w-6">
+														<IconViewer
+															icon={link.groupIcon || "/placeholder.svg"}
+														/>
+														<AvatarFallback>
+															<Users className="h-3 w-3" />
+														</AvatarFallback>
+													</Avatar>
+													<Link
+														to={`/dashboard/groups/$id`}
+														params={{ id: link.group_id }}
+														className="hover:underline"
+													>
+														{link.groupName}
+													</Link>
+												</div>
+											</TableCell>
+											<TableCell>
+												<Badge variant={getLinkTypeBadgeVariant(link.linkType)}>
+													{link.linkType === "collaborate" ? (
 														<>
-															<Edit className="mr-1 h-3 w-3" />
-															Admin
-														</>
-													) : link.permission === "edit" ? (
-														<>
-															<Edit className="mr-1 h-3 w-3" />
-															Edit
+															<Users className="mr-1 h-3 w-3" />
+															Collaborate
 														</>
 													) : (
 														<>
-															<Eye className="mr-1 h-3 w-3" />
-															View
+															<Copy className="mr-1 h-3 w-3" />
+															Copy
 														</>
 													)}
 												</Badge>
-											)}
-										</TableCell>
-										<TableCell>
-											<div className="flex items-center gap-1">
-												<Calendar className="h-3 w-3 text-muted-foreground" />
-												<span className="text-sm">
-													{link.createdAt
-														? new Date(link.createdAt).toLocaleDateString()
-														: t("sharelinks.unknown")}
-												</span>
-											</div>
-										</TableCell>
-										<TableCell>
-											<div className="flex items-center gap-1">
-												<Calendar className="h-3 w-3 text-muted-foreground" />
-												<span className="text-sm">
-													{formatDate(link.expiresAt)}
-												</span>
-											</div>
-										</TableCell>
-										<TableCell className="text-right">
-											<DropdownMenu>
-												<DropdownMenuTrigger asChild>
-													<Button variant="ghost" size="icon">
-														<MoreHorizontal className="h-4 w-4" />
-														<span className="sr-only">Open menu</span>
-													</Button>
-												</DropdownMenuTrigger>
-												<DropdownMenuContent align="end">
-													<DropdownMenuItem
-														onClick={() =>
-															handleCopyLink(link.linkCode, link.linkType)
-														}
+											</TableCell>
+											<TableCell>
+												{link.permission && (
+													<Badge
+														variant={getPermissionBadgeVariant(link.permission)}
 													>
-														<Copy className="mr-2 h-4 w-4" />
-														Copy link
-													</DropdownMenuItem>
-													<DropdownMenuItem asChild>
-														<a
-															href={`${window.location.origin}/share/${link.linkType}/${link.linkCode}`}
-															target="_blank"
-															rel="noopener noreferrer"
-														>
-															<ExternalLink className="mr-2 h-4 w-4" />
-															Test link
-														</a>
-													</DropdownMenuItem>
-													<DropdownMenuItem
-														onClick={() =>
-															handleCopyLink(link.linkCode, link.linkType)
-														}
-													>
-														<Share2 className="mr-2 h-4 w-4" />
-														Share
-													</DropdownMenuItem>
-													<DropdownMenuItem
-														onClick={() =>
-															handleDeleteShareLink(link.id, link.linkCode)
-														}
-														className="text-destructive"
-														disabled={isDeletingLink}
-													>
-														{isDeletingLink ? (
-															<Loader2 className="animate-spin mr-2 h-4 w-4" />
+														{link.permission === "admin" ? (
+															<>
+																<Edit className="mr-1 h-3 w-3" />
+																Admin
+															</>
+														) : link.permission === "edit" ? (
+															<>
+																<Edit className="mr-1 h-3 w-3" />
+																Edit
+															</>
 														) : (
-															<Trash2 className="mr-2 h-4 w-4" />
+															<>
+																<Eye className="mr-1 h-3 w-3" />
+																View
+															</>
 														)}
-														Delete link
-													</DropdownMenuItem>
-												</DropdownMenuContent>
-											</DropdownMenu>
-										</TableCell>
-									</TableRow>
-								</>
-							))
-						)}
-					</TableBody>
-				</Table>
+													</Badge>
+												)}
+											</TableCell>
+											<TableCell>
+												<div className="flex items-center gap-1">
+													<Calendar className="h-3 w-3 text-muted-foreground" />
+													<span className="text-sm">
+														{link.createdAt
+															? new Date(link.createdAt).toLocaleDateString()
+															: t("sharelinks.unknown")}
+													</span>
+												</div>
+											</TableCell>
+											<TableCell>
+												<div className="flex items-center gap-1">
+													<Calendar className="h-3 w-3 text-muted-foreground" />
+													<span className="text-sm">
+														{formatDate(link.expiresAt)}
+													</span>
+												</div>
+											</TableCell>
+											<TableCell className="text-right">
+												<DropdownMenu>
+													<DropdownMenuTrigger asChild>
+														<Button variant="ghost" size="icon">
+															<MoreHorizontal className="h-4 w-4" />
+															<span className="sr-only">Open menu</span>
+														</Button>
+													</DropdownMenuTrigger>
+													<DropdownMenuContent align="end">
+														<DropdownMenuItem
+															onClick={() =>
+																handleCopyLink(link.linkCode, link.linkType)
+															}
+														>
+															<Copy className="mr-2 h-4 w-4" />
+															Copy link
+														</DropdownMenuItem>
+														<DropdownMenuItem asChild>
+															<a
+																href={`${window.location.origin}/share/${link.linkType}/${link.linkCode}`}
+																target="_blank"
+																rel="noopener noreferrer"
+															>
+																<ExternalLink className="mr-2 h-4 w-4" />
+																Test link
+															</a>
+														</DropdownMenuItem>
+														<DropdownMenuItem
+															onClick={() =>
+																handleCopyLink(link.linkCode, link.linkType)
+															}
+														>
+															<Share2 className="mr-2 h-4 w-4" />
+															Share
+														</DropdownMenuItem>
+														<DropdownMenuItem
+															onClick={() =>
+																handleDeleteShareLink(link.id, link.linkCode)
+															}
+															className="text-destructive"
+															disabled={isDeletingLink}
+														>
+															{isDeletingLink ? (
+																<Loader2 className="animate-spin mr-2 h-4 w-4" />
+															) : (
+																<Trash2 className="mr-2 h-4 w-4" />
+															)}
+															Delete link
+														</DropdownMenuItem>
+													</DropdownMenuContent>
+												</DropdownMenu>
+											</TableCell>
+										</TableRow>
+									</>
+								))
+							)}
+						</TableBody>
+					</Table>
+				</div>
+
+				{data && data.data?.length > 0 && (
+					<div className="flex items-center justify-between">
+						<div className="flex items-center gap-2 text-sm text-muted-foreground">
+							<span className="whitespace-nowrap">Items per page:</span>
+							<select
+								value={itemsPerPage}
+								onChange={(e) => {
+									setItemsPerPage(Number(e.target.value));
+									setCurrentPage(1); // Reset to first page when changing items per page
+								}}
+								className="border rounded px-2 py-1 h-8"
+							>
+								<option value="10">10</option>
+								<option value="25">25</option>
+								<option value="50">50</option>
+								<option value="100">100</option>
+							</select>
+						</div>
+						<Pagination>
+							<PaginationContent>
+								<PaginationItem>
+									<PaginationPrevious
+										size={"sm"}
+										onClick={() =>
+											setCurrentPage((prev) => Math.max(prev - 1, 1))
+										}
+										isActive={currentPage === 1}
+									/>
+								</PaginationItem>
+
+								{getPaginationPages().map((page) => (
+									<PaginationItem key={`page-${page}`}>
+										{page === "..." ? (
+											<PaginationEllipsis />
+										) : (
+											<PaginationLink
+												size={"sm"}
+												onClick={() => setCurrentPage(page as number)}
+												isActive={currentPage === page}
+											>
+												{page}
+											</PaginationLink>
+										)}
+									</PaginationItem>
+								))}
+
+								<PaginationItem>
+									<PaginationNext
+										size={"sm"}
+										onClick={() =>
+											setCurrentPage((prev) =>
+												Math.min(
+													prev + 1,
+													Math.ceil(data.pagination.total / itemsPerPage),
+												),
+											)
+										}
+										isActive={
+											currentPage >=
+											Math.ceil(data.pagination.total / itemsPerPage)
+										}
+									/>
+								</PaginationItem>
+							</PaginationContent>
+						</Pagination>
+					</div>
+				)}
 			</div>
 
-			{data && data.data?.length > 0 && (
-				<div className="flex items-center justify-between">
-					<div className="flex items-center gap-2 text-sm text-muted-foreground">
-						<span className="whitespace-nowrap">Items per page:</span>
-						<select
-							value={itemsPerPage}
-							onChange={(e) => {
-								setItemsPerPage(Number(e.target.value));
-								setCurrentPage(1); // Reset to first page when changing items per page
-							}}
-							className="border rounded px-2 py-1 h-8"
-						>
-							<option value="10">10</option>
-							<option value="25">25</option>
-							<option value="50">50</option>
-							<option value="100">100</option>
-						</select>
-					</div>
-					<Pagination>
-						<PaginationContent>
-							<PaginationItem>
-								<PaginationPrevious
-									size={"sm"}
-									onClick={() =>
-										setCurrentPage((prev) => Math.max(prev - 1, 1))
-									}
-									isActive={currentPage === 1}
-								/>
-							</PaginationItem>
-
-							{getPaginationPages().map((page) => (
-								<PaginationItem key={`page-${page}`}>
-									{page === "..." ? (
-										<PaginationEllipsis />
-									) : (
-										<PaginationLink
-											size={"sm"}
-											onClick={() => setCurrentPage(page as number)}
-											isActive={currentPage === page}
-										>
-											{page}
-										</PaginationLink>
-									)}
-								</PaginationItem>
-							))}
-
-							<PaginationItem>
-								<PaginationNext
-									size={"sm"}
-									onClick={() =>
-										setCurrentPage((prev) =>
-											Math.min(
-												prev + 1,
-												Math.ceil(data.pagination.total / itemsPerPage),
-											),
-										)
-									}
-									isActive={
-										currentPage >=
-										Math.ceil(data.pagination.total / itemsPerPage)
-									}
-								/>
-							</PaginationItem>
-						</PaginationContent>
-					</Pagination>
-				</div>
-			)}
-		</div>
-
-		<ConfirmDialog
-			open={!!deleteConfirm}
-			onOpenChange={(open) => !open && setDeleteConfirm(null)}
-			title="Delete Share Link"
-			description={`Are you sure you want to delete share link "${deleteConfirm?.linkCode}"? This action cannot be undone.`}
-			onConfirm={handleConfirmDeleteShareLink}
-			confirmText="Delete"
-			variant="destructive"
-		/>
-	</>
+			<ConfirmDialog
+				open={!!deleteConfirm}
+				onOpenChange={(open) => !open && setDeleteConfirm(null)}
+				title="Delete Share Link"
+				description={`Are you sure you want to delete share link "${deleteConfirm?.linkCode}"? This action cannot be undone.`}
+				onConfirm={handleConfirmDeleteShareLink}
+				confirmText="Delete"
+				variant="destructive"
+			/>
+		</>
 	);
 }

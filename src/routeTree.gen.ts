@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AppTermsRouteImport } from './routes/_app/terms'
 import { Route as AppPrivacyRouteImport } from './routes/_app/privacy'
+import { Route as AppContactRouteImport } from './routes/_app/contact'
+import { Route as AppAboutRouteImport } from './routes/_app/about'
 import { Route as AppDashboardRouteRouteImport } from './routes/_app/dashboard/route'
 import { Route as AuthRegisterIndexRouteImport } from './routes/_auth/register/index'
 import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
@@ -58,6 +60,16 @@ const AppTermsRoute = AppTermsRouteImport.update({
 const AppPrivacyRoute = AppPrivacyRouteImport.update({
   id: '/_app/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppContactRoute = AppContactRouteImport.update({
+  id: '/_app/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAboutRoute = AppAboutRouteImport.update({
+  id: '/_app/about',
+  path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppDashboardRouteRoute = AppDashboardRouteRouteImport.update({
@@ -244,6 +256,8 @@ const AppDashboardAnimesChangeGroupIdIndexRoute =
 
 export interface FileRoutesByFullPath {
   '/dashboard': typeof AppDashboardRouteRouteWithChildren
+  '/about': typeof AppAboutRoute
+  '/contact': typeof AppContactRoute
   '/privacy': typeof AppPrivacyRoute
   '/terms': typeof AppTermsRoute
   '/': typeof AppIndexRoute
@@ -280,6 +294,8 @@ export interface FileRoutesByFullPath {
   '/dashboard/groups/$id/share': typeof AppDashboardGroupsIdShareIndexRoute
 }
 export interface FileRoutesByTo {
+  '/about': typeof AppAboutRoute
+  '/contact': typeof AppContactRoute
   '/privacy': typeof AppPrivacyRoute
   '/terms': typeof AppTermsRoute
   '/': typeof AppIndexRoute
@@ -318,6 +334,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app/dashboard': typeof AppDashboardRouteRouteWithChildren
+  '/_app/about': typeof AppAboutRoute
+  '/_app/contact': typeof AppContactRoute
   '/_app/privacy': typeof AppPrivacyRoute
   '/_app/terms': typeof AppTermsRoute
   '/_app/': typeof AppIndexRoute
@@ -357,6 +375,8 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/dashboard'
+    | '/about'
+    | '/contact'
     | '/privacy'
     | '/terms'
     | '/'
@@ -393,6 +413,8 @@ export interface FileRouteTypes {
     | '/dashboard/groups/$id/share'
   fileRoutesByTo: FileRoutesByTo
   to:
+    | '/about'
+    | '/contact'
     | '/privacy'
     | '/terms'
     | '/'
@@ -430,6 +452,8 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/_app/dashboard'
+    | '/_app/about'
+    | '/_app/contact'
     | '/_app/privacy'
     | '/_app/terms'
     | '/_app/'
@@ -468,6 +492,8 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   AppDashboardRouteRoute: typeof AppDashboardRouteRouteWithChildren
+  AppAboutRoute: typeof AppAboutRoute
+  AppContactRoute: typeof AppContactRoute
   AppPrivacyRoute: typeof AppPrivacyRoute
   AppTermsRoute: typeof AppTermsRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -504,6 +530,20 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof AppPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/contact': {
+      id: '/_app/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof AppContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/about': {
+      id: '/_app/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AppAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_app/dashboard': {
@@ -804,6 +844,8 @@ const AppDashboardRouteRouteWithChildren =
 
 const rootRouteChildren: RootRouteChildren = {
   AppDashboardRouteRoute: AppDashboardRouteRouteWithChildren,
+  AppAboutRoute: AppAboutRoute,
+  AppContactRoute: AppContactRoute,
   AppPrivacyRoute: AppPrivacyRoute,
   AppTermsRoute: AppTermsRoute,
   AppIndexRoute: AppIndexRoute,

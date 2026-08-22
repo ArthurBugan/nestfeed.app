@@ -1,7 +1,22 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
-import { ConfirmDialog } from "@/components/confirm-dialog";
+import {
+	closestCenter,
+	DndContext,
+	type DragEndEvent,
+	KeyboardSensor,
+	PointerSensor,
+	useSensor,
+	useSensors,
+} from "@dnd-kit/core";
+import {
+	arrayMove,
+	SortableContext,
+	sortableKeyboardCoordinates,
+	useSortable,
+	verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { Link, useNavigate } from "@tanstack/react-router";
 import {
 	ArrowDown,
@@ -17,24 +32,9 @@ import {
 import type React from "react";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
-import {
-	DndContext,
-	closestCenter,
-	KeyboardSensor,
-	PointerSensor,
-	useSensor,
-	useSensors,
-	DragEndEvent,
-} from "@dnd-kit/core";
-import {
-	SortableContext,
-	arrayMove,
-	sortableKeyboardCoordinates,
-	useSortable,
-	verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
-import { CSS } from "@dnd-kit/utilities";
+import { ConfirmDialog } from "@/components/confirm-dialog";
 import { IconViewer } from "@/components/icon-picker";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -486,7 +486,10 @@ export function GroupsTable() {
 		updateGroupsDisplayOrder.mutate(orders, {
 			onSuccess: () => {
 				toast.success(t("groups.table.moved"), {
-					description: t("groups.table.moved.desc", { name: group.name, direction }),
+					description: t("groups.table.moved.desc", {
+						name: group.name,
+						direction,
+					}),
 				});
 			},
 			onError: (error) => {
@@ -575,7 +578,9 @@ export function GroupsTable() {
 								<TableHead>{t("groups.table.category")}</TableHead>
 								<TableHead>{t("groups.table.channels")}</TableHead>
 								<TableHead>{t("groups.table.created")}</TableHead>
-								<TableHead className="text-right">{t("groups.table.actions")}</TableHead>
+								<TableHead className="text-right">
+									{t("groups.table.actions")}
+								</TableHead>
 							</TableRow>
 						</TableHeader>
 						<TableBody>
@@ -596,7 +601,9 @@ export function GroupsTable() {
 											{debouncedSearchTerm ? (
 												<>
 													<p className="text-sm text-muted-foreground">
-														{t("groups.table.noresults", { term: debouncedSearchTerm })}
+														{t("groups.table.noresults", {
+															term: debouncedSearchTerm,
+														})}
 													</p>
 													<p className="text-xs text-muted-foreground">
 														{t("groups.table.noresults.hint")}
@@ -667,7 +674,9 @@ export function GroupsTable() {
 															/>
 															<Link
 																to={`/dashboard/groups/$id`}
-																		data-tour={idx === 0 ? "first-group-link" : undefined}
+																data-tour={
+																	idx === 0 ? "first-group-link" : undefined
+																}
 																params={{ id: group.id }}
 																className="font-medium hover:underline"
 															>
@@ -689,7 +698,9 @@ export function GroupsTable() {
 																onClick={() => handleAddSubgroup(group.id)}
 															>
 																<Plus className="h-3 w-3" />
-																<span className="sr-only">{t("groups.table.addsubgroup.sr")}</span>
+																<span className="sr-only">
+																	{t("groups.table.addsubgroup.sr")}
+																</span>
 															</Button>
 														</div>
 													</TableCell>
@@ -703,14 +714,18 @@ export function GroupsTable() {
 															<DropdownMenuTrigger asChild>
 																<Button variant="ghost" size="icon">
 																	<MoreHorizontal className="h-4 w-4" />
-																	<span className="sr-only">{t("groups.table.openmenu")}</span>
+																	<span className="sr-only">
+																		{t("groups.table.openmenu")}
+																	</span>
 																</Button>
 															</DropdownMenuTrigger>
 															<DropdownMenuContent align="end">
 																<DropdownMenuItem asChild>
 																	<Link
 																		to={`/dashboard/groups/$id`}
-																		data-tour={idx === 0 ? "first-group-link" : undefined}
+																		data-tour={
+																			idx === 0 ? "first-group-link" : undefined
+																		}
 																		params={{ id: group.id }}
 																	>
 																		{t("groups.table.viewdetails")}

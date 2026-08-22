@@ -1,14 +1,9 @@
 "use client";
 
-import { useLanguage } from "@/components/language-provider";
-import {
-	ExternalLink,
-	Minus,
-	TrendingDown,
-	TrendingUp,
-	Youtube,
-} from "lucide-react";
+import { ExternalLink, Minus, TrendingDown, TrendingUp } from "lucide-react";
 import { useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
+import { useLanguage } from "@/components/language-provider";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -137,9 +132,7 @@ export function TopChannelsTable() {
 			<CardHeader className="flex flex-row items-center justify-between">
 				<div>
 					<CardTitle>{t("top.channels.title")}</CardTitle>
-					<CardDescription>
-						{t("top.channels.desc")}
-					</CardDescription>
+					<CardDescription>{t("top.channels.desc")}</CardDescription>
 				</div>
 				<Input
 					placeholder={t("top.channels.search")}
@@ -179,7 +172,7 @@ export function TopChannelsTable() {
 														alt={channel.name}
 													/>
 													<AvatarFallback>
-														<Youtube className="h-4 w-4" />
+														<YoutubeIcon className="h-4 w-4" />
 													</AvatarFallback>
 												</Avatar>
 												<div className="flex flex-col">
@@ -195,7 +188,9 @@ export function TopChannelsTable() {
 														</a>
 													</div>
 													<span className="text-xs text-muted-foreground">
-														{t("top.channels.videos", { count: String(channel.videos) })}
+														{t("top.channels.videos", {
+															count: String(channel.videos),
+														})}
 													</span>
 												</div>
 											</div>

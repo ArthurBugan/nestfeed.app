@@ -4,6 +4,7 @@ import { useState } from "react";
 import { toast } from "sonner";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { IconViewer } from "@/components/icon-picker";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import {
@@ -37,7 +38,6 @@ import {
 	TableHeader,
 	TableRow,
 } from "@/components/ui/table";
-import { useLanguage } from "@/components/language-provider";
 import { useCopyShelf, useGroupShelves } from "@/hooks/useQuery/useGroupShelf";
 
 export const Route = createFileRoute("/_app/dashboard/groupshelf/")({

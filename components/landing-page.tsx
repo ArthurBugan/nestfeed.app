@@ -2,16 +2,10 @@
 
 import { Link } from "@tanstack/react-router";
 import { motion, useInView } from "framer-motion";
-import {
-	ArrowRight,
-	Check,
-	Github,
-	Play,
-	Sparkles,
-	Star,
-	Youtube,
-} from "lucide-react";
+import { ArrowRight, Check, Play, Sparkles, Star } from "lucide-react";
 import { useRef } from "react";
+import { GithubIcon, YoutubeIcon } from "@/components/brand-icons";
+import { SiteFooter } from "@/components/site-footer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -25,12 +19,6 @@ import { useLanguage } from "./language-provider";
 const fadeInUp: any = {
 	hidden: { opacity: 0, y: 32 },
 	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
-const fadeIn: any = {
-	hidden: { opacity: 0 },
-	visible: { opacity: 1, transition: { duration: 0.6 } },
 };
 
 // biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
@@ -392,7 +380,7 @@ export function LandingPage() {
 											className="flex items-center gap-3 p-2.5 rounded-lg bg-muted/40 hover:bg-muted/60 transition-colors"
 										>
 											<div className="w-8 h-8 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-												<Youtube className="h-4 w-4 text-white" />
+												<YoutubeIcon className="h-4 w-4 text-white" />
 											</div>
 											<div className="flex-1">
 												<div className="text-sm font-medium">{g.name}</div>
@@ -526,7 +514,7 @@ export function LandingPage() {
 							<CompactCard className="p-4">
 								<div className="flex items-center gap-3 mb-4">
 									<div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
-										<Youtube className="h-5 w-5 text-white" />
+										<YoutubeIcon className="h-5 w-5 text-white" />
 									</div>
 									<div>
 										<div className="font-medium text-sm">Marques Brownlee</div>
@@ -558,7 +546,7 @@ export function LandingPage() {
 					<AnimatedSection variants={fadeInUp}>
 						<div className="text-center mb-8 space-y-3">
 							<Badge variant="outline" className="bg-muted/50">
-								<Github className="h-3 w-3 mr-1" /> Open Source
+								<GithubIcon className="h-3 w-3 mr-1" /> Open Source
 							</Badge>
 							<h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
 								Star Us on GitHub
@@ -598,7 +586,7 @@ export function LandingPage() {
 											whileHover={{ rotate: 12, scale: 1.1 }}
 											className="w-10 h-10 rounded-lg bg-red-primary/10 flex items-center justify-center"
 										>
-											<Github className="h-5 w-5 text-primary" />
+											<GithubIcon className="h-5 w-5 text-primary" />
 										</motion.div>
 										<div className="font-medium">{repo.name}</div>
 									</div>
@@ -807,118 +795,7 @@ export function LandingPage() {
 			</section>
 
 			{/* Footer */}
-			<AnimatedSection variants={fadeIn}>
-				<footer className="border-t py-12">
-					<div className="container mx-auto px-4">
-						<div className="grid md:grid-cols-4 gap-8 mb-8 max-w-5xl mx-auto">
-							<div>
-								<div className="flex items-center gap-2 mb-3">
-									<motion.div whileHover={{ rotate: 12 }}>
-										<Youtube className="h-4 w-4 text-primary" />
-									</motion.div>
-									<span className="font-semibold">NestFeed</span>
-								</div>
-								<p className="text-sm text-muted-foreground leading-relaxed">
-									The best way to organize, manage, and share your YouTube
-									subscriptions.
-								</p>
-							</div>
-							<div>
-								<h4 className="font-medium mb-3">Product</h4>
-								<ul className="space-y-2 text-sm text-muted-foreground">
-									<li>
-										<Link to="/dashboard" className="hover:text-foreground">
-											Dashboard
-										</Link>
-									</li>
-									<li>
-										<a href="#features" className="hover:text-foreground">
-											Features
-										</a>
-									</li>
-									<li>
-										<a href="#pricing" className="hover:text-foreground">
-											Pricing
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div>
-								<h4 className="font-medium mb-3">Support</h4>
-								<ul className="space-y-2 text-sm text-muted-foreground">
-									<li>
-										<a
-											href="https://discord.gg/Hp4MvPanwr"
-											target="_blank"
-											className="hover:text-foreground"
-											rel="noopener"
-										>
-											Help Center
-										</a>
-									</li>
-									<li>
-										<a
-											href="mailto:admin@nestfeed.app"
-											className="hover:text-foreground"
-										>
-											Contact
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div>
-								<h4 className="font-medium mb-3">Legal</h4>
-								<ul className="space-y-2 text-sm text-muted-foreground">
-									<li>
-										<Link to="/blog" className="hover:text-foreground">
-											Blog
-										</Link>
-									</li>
-									<li>
-										<Link to="/privacy" className="hover:text-foreground">
-											Privacy
-										</Link>
-									</li>
-									<li>
-										<Link to="/terms" className="hover:text-foreground">
-											Terms
-										</Link>
-									</li>
-								</ul>
-							</div>
-						</div>
-						<div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 max-w-5xl mx-auto text-sm text-muted-foreground">
-							<p>© 2026 Groupify. All rights reserved.</p>
-							<div className="flex items-center gap-3 flex-shrink-0">
-								<a
-									href="https://acidtools.com"
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									<img
-										src="https://acidtools.com/assets/images/badge-dark.png"
-										alt="Acid Tools"
-										className="h-12 max-w-[120px]"
-									/>
-								</a>
-								<a href="https://www.foundrlist.com/product/groupify-2?utm_source=badge&amp;utm_medium=embed" target="_blank" rel="noopener">
-									<img src="https://www.foundrlist.com/api/badge/groupify-2" alt="Featured on FoundrList" width="150" className="h-12 max-w-[120px]" height="48" />
-								</a>
-								<a href="https://peerpush.net/p/groupify"
-									target="_blank"
-									rel="noopener"
-								>
-									<img
-										src="https://peerpush.net/p/groupify/badge.png"
-										alt="Groupify badge"
-										className="h-12 max-w-[120px]"
-									/>
-								</a>
-							</div>
-						</div>
-					</div>
-				</footer>
-			</AnimatedSection>
+			<SiteFooter showBadges />
 		</div>
 	);
 }

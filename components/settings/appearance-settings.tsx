@@ -1,9 +1,9 @@
 "use client";
 
 import { Flame, Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { useTheme } from "@/components/theme-provider";
-import { useEffect, useState } from "react";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 
 export function AppearanceSettings() {
@@ -40,7 +40,9 @@ export function AppearanceSettings() {
 							<RadioGroupItem value="groupify" />
 							<Flame className="h-5 w-5 text-primary" />
 							<div>
-								<p className="text-sm font-medium">{t("appearance.nestfeed")}</p>
+								<p className="text-sm font-medium">
+									{t("appearance.nestfeed")}
+								</p>
 							</div>
 						</label>
 					</div>

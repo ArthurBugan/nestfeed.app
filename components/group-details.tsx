@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Library, Pencil, Plus, Share2 } from "lucide-react";
 import { IconViewer } from "@/components/icon-picker";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,7 +12,6 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import { useGroup } from "@/hooks/useQuery/useGroups";
-import { useLanguage } from "@/components/language-provider";
 
 interface GroupDetailsProps {
 	id: string;
@@ -69,7 +69,7 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 						<Button
 							className="bg-primary hover:bg-primary/90 text-white"
 							type="button"
-								data-tour="add-channel-btn"
+							data-tour="add-channel-btn"
 							asChild
 						>
 							<Link
@@ -86,7 +86,9 @@ export function GroupDetails({ id }: GroupDetailsProps) {
 			<CardContent>
 				<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
 					<div className="space-y-1">
-						<p className="text-sm font-medium text-muted-foreground">{t("group.details.created")}</p>
+						<p className="text-sm font-medium text-muted-foreground">
+							{t("group.details.created")}
+						</p>
 						<p>
 							{group.createdAt
 								? new Date(group.createdAt).toLocaleDateString()

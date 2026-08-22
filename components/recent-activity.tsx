@@ -8,9 +8,9 @@ import {
 	Users,
 	Zap,
 } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/components/language-provider";
 
 const features = [
 	{
@@ -113,7 +113,9 @@ export function RecentActivity() {
 						<Sparkles className="h-5 w-5 text-primary" />
 					</div>
 					<div>
-						<h4 className="font-semibold text-sm mb-1">{t("recent.tip.title")}</h4>
+						<h4 className="font-semibold text-sm mb-1">
+							{t("recent.tip.title")}
+						</h4>
 						<p className="text-xs text-muted-foreground">
 							{t("recent.tip.desc")}
 						</p>

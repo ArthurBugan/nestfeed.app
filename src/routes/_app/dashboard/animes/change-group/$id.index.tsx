@@ -6,9 +6,10 @@ import {
 	useNavigate,
 	useRouter,
 } from "@tanstack/react-router";
-import { ArrowLeft, Save, Youtube } from "lucide-react";
+import { ArrowLeft, Save } from "lucide-react";
 import type React from "react";
 import { useEffect, useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { IconViewer } from "@/components/icon-picker";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -51,14 +52,14 @@ function ChangeGroupPage() {
 			await patchChannel.mutateAsync({
 				id: channel.id,
 				data: { id: channel.id, groupId: selectedGroup },
-			})
+			});
 		}
 
 		setIsLoading(false);
 		navigate({
 			to: "/dashboard/channels",
-		})
-	}
+		});
+	};
 
 	if (isChannelLoading || isGroupsLoading) {
 		return <div>Loading channel details...</div>;
@@ -92,7 +93,7 @@ function ChangeGroupPage() {
 								alt={channel.name}
 							/>
 							<AvatarFallback>
-								<Youtube className="h-8 w-8" />
+								<YoutubeIcon className="h-8 w-8" />
 							</AvatarFallback>
 						</Avatar>
 						<div>
@@ -165,5 +166,5 @@ function ChangeGroupPage() {
 				</CardContent>
 			</Card>
 		</div>
-	)
+	);
 }

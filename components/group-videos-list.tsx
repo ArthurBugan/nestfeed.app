@@ -13,6 +13,7 @@ import {
 	Trash2,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -29,9 +30,8 @@ import {
 	useDeleteAllGroupVideos,
 	useGroupVideos,
 } from "@/hooks/useQuery/useGroupVideos";
-import { useLanguage } from "@/components/language-provider";
-import { ConfirmDialog } from "./confirm-dialog";
 import { cn } from "@/lib/utils";
+import { ConfirmDialog } from "./confirm-dialog";
 
 interface GroupVideosListProps {
 	groupId: string;
@@ -254,8 +254,7 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 								size="icon"
 								className={cn(
 									"h-7 w-7 text-xs",
-									currentPage === page &&
-										"bg-primary",
+									currentPage === page && "bg-primary",
 								)}
 								onClick={() => handlePageChange(page as number)}
 								disabled={isLoading}
@@ -471,149 +470,151 @@ export function GroupVideosList({ groupId }: GroupVideosListProps) {
 
 	return (
 		<div>
-		<Card>
-			<CardHeader className="pb-3">
-				<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-					<CardTitle className="text-base flex items-center gap-2">
-						<Play className="h-4 w-4 text-primary" />
-						Latest Videos
-						<Badge variant="secondary" className="text-xs px-1.5 py-0 h-5">
-							{hasFilters
-								? `${sortedVideos.length} of ${totalVideos}`
-								: totalVideos}
-						</Badge>
-						{hasFilters && (
-							<span className="text-xs text-muted-foreground font-normal">
-								(filtered)
-							</span>
-						)}
-					</CardTitle>
+			<Card>
+				<CardHeader className="pb-3">
+					<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+						<CardTitle className="text-base flex items-center gap-2">
+							<Play className="h-4 w-4 text-primary" />
+							Latest Videos
+							<Badge variant="secondary" className="text-xs px-1.5 py-0 h-5">
+								{hasFilters
+									? `${sortedVideos.length} of ${totalVideos}`
+									: totalVideos}
+							</Badge>
+							{hasFilters && (
+								<span className="text-xs text-muted-foreground font-normal">
+									(filtered)
+								</span>
+							)}
+						</CardTitle>
 
-					<div className="flex items-center gap-2">
-						{/* Channel Filter */}
-						{channels.length > 0 && (
+						<div className="flex items-center gap-2">
+							{/* Channel Filter */}
+							{channels.length > 0 && (
+								<Select
+									value={selectedChannel}
+									onValueChange={(v) => {
+										setSelectedChannel(v);
+										setCurrentPage(1);
+									}}
+								>
+									<SelectTrigger className="h-8 w-32 text-xs">
+										<SelectValue placeholder={t("videos.all.channels")} />
+									</SelectTrigger>
+									<SelectContent>
+										<SelectItem value="all">
+											{t("videos.all.channels")}
+										</SelectItem>
+										{channels.map((channel) => (
+											<SelectItem key={channel.id} value={channel.id}>
+												{channel.name}
+											</SelectItem>
+										))}
+									</SelectContent>
+								</Select>
+							)}
+
+							{/* Search */}
+							<div className="relative">
+								<Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+								<Input
+									placeholder="Search videos..."
+									value={searchQuery}
+									onChange={(e) => setSearchQuery(e.target.value)}
+									className="pl-7 h-8 text-sm w-40 sm:w-48"
+								/>
+							</div>
+
+							{/* Sort */}
 							<Select
-								value={selectedChannel}
-								onValueChange={(v) => {
-									setSelectedChannel(v);
-									setCurrentPage(1);
-								}}
+								value={sortOrder}
+								onValueChange={(v) => setSortOrder(v as typeof sortOrder)}
 							>
-								<SelectTrigger className="h-8 w-32 text-xs">
-									<SelectValue placeholder={t("videos.all.channels")} />
+								<SelectTrigger className="h-8 w-28 text-xs">
+									<SelectValue />
 								</SelectTrigger>
 								<SelectContent>
-									<SelectItem value="all">{t("videos.all.channels")}</SelectItem>
-									{channels.map((channel) => (
-										<SelectItem key={channel.id} value={channel.id}>
-											{channel.name}
-										</SelectItem>
-									))}
+									<SelectItem value="recent">Recent</SelectItem>
+									<SelectItem value="oldest">Oldest</SelectItem>
+									<SelectItem value="views">Views</SelectItem>
 								</SelectContent>
 							</Select>
-						)}
 
-						{/* Search */}
-						<div className="relative">
-							<Search className="absolute left-2 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
-							<Input
-								placeholder="Search videos..."
-								value={searchQuery}
-								onChange={(e) => setSearchQuery(e.target.value)}
-								className="pl-7 h-8 text-sm w-40 sm:w-48"
-							/>
+							{/* View Mode Toggle */}
+							<div className="flex border rounded-md overflow-hidden">
+								<Button
+									variant={viewMode === "grid" ? "secondary" : "ghost"}
+									size="icon"
+									className="h-8 w-8 rounded-none"
+									aria-label="Grid view"
+									onClick={() => handleViewModeChange("grid")}
+								>
+									<LayoutGrid className="h-3.5 w-3.5" />
+								</Button>
+								<Button
+									variant={viewMode === "list" ? "secondary" : "ghost"}
+									size="icon"
+									className="h-8 w-8 rounded-none"
+									aria-label="List view"
+									onClick={() => handleViewModeChange("list")}
+								>
+									<List className="h-3.5 w-3.5" />
+								</Button>
+								<Button
+									variant={viewMode === "compact" ? "secondary" : "ghost"}
+									size="icon"
+									className="h-8 w-8 rounded-none"
+									aria-label="Compact view"
+									onClick={() => handleViewModeChange("compact")}
+								>
+									<AlignJustify className="h-3.5 w-3.5" />
+								</Button>
+							</div>
+
+							{/* Clear All Videos */}
+							{allVideos.length > 0 && (
+								<Button
+									variant="ghost"
+									size="sm"
+									className="h-8 text-xs text-red-600 hover:text-red-700 hover:bg-red-50"
+									onClick={() => setClearAllConfirm(true)}
+									disabled={deleteAllVideos.isPending}
+								>
+									<Trash2 className="h-3.5 w-3.5 mr-1" />
+									{deleteAllVideos.isPending ? "Clearing..." : "Clear All"}
+								</Button>
+							)}
 						</div>
-
-						{/* Sort */}
-						<Select
-							value={sortOrder}
-							onValueChange={(v) => setSortOrder(v as typeof sortOrder)}
-						>
-							<SelectTrigger className="h-8 w-28 text-xs">
-								<SelectValue />
-							</SelectTrigger>
-							<SelectContent>
-								<SelectItem value="recent">Recent</SelectItem>
-								<SelectItem value="oldest">Oldest</SelectItem>
-								<SelectItem value="views">Views</SelectItem>
-							</SelectContent>
-						</Select>
-
-						{/* View Mode Toggle */}
-						<div className="flex border rounded-md overflow-hidden">
-							<Button
-								variant={viewMode === "grid" ? "secondary" : "ghost"}
-								size="icon"
-								className="h-8 w-8 rounded-none"
-								aria-label="Grid view"
-								onClick={() => handleViewModeChange("grid")}
-							>
-								<LayoutGrid className="h-3.5 w-3.5" />
-							</Button>
-							<Button
-								variant={viewMode === "list" ? "secondary" : "ghost"}
-								size="icon"
-								className="h-8 w-8 rounded-none"
-								aria-label="List view"
-								onClick={() => handleViewModeChange("list")}
-							>
-								<List className="h-3.5 w-3.5" />
-							</Button>
-							<Button
-								variant={viewMode === "compact" ? "secondary" : "ghost"}
-								size="icon"
-								className="h-8 w-8 rounded-none"
-								aria-label="Compact view"
-								onClick={() => handleViewModeChange("compact")}
-							>
-								<AlignJustify className="h-3.5 w-3.5" />
-							</Button>
+					</div>
+				</CardHeader>
+				<CardContent className="pt-0 space-y-4">
+					{sortedVideos.length === 0 ? (
+						<div className="text-center py-8 text-muted-foreground">
+							<p>No videos match your search</p>
 						</div>
+					) : (
+						<>
+							{viewMode === "grid" && renderGridView()}
+							{viewMode === "list" && renderListView()}
+							{viewMode === "compact" && renderCompactView()}
+							{renderPagination()}
+						</>
+					)}
+				</CardContent>
+			</Card>
 
-						{/* Clear All Videos */}
-						{allVideos.length > 0 && (
-							<Button
-								variant="ghost"
-								size="sm"
-								className="h-8 text-xs text-red-600 hover:text-red-700 hover:bg-red-50"
-								onClick={() => setClearAllConfirm(true)}
-								disabled={deleteAllVideos.isPending}
-							>
-								<Trash2 className="h-3.5 w-3.5 mr-1" />
-								{deleteAllVideos.isPending ? "Clearing..." : "Clear All"}
-							</Button>
-						)}
-					</div>
-				</div>
-			</CardHeader>
-			<CardContent className="pt-0 space-y-4">
-				{sortedVideos.length === 0 ? (
-					<div className="text-center py-8 text-muted-foreground">
-						<p>No videos match your search</p>
-					</div>
-				) : (
-					<>
-						{viewMode === "grid" && renderGridView()}
-						{viewMode === "list" && renderListView()}
-						{viewMode === "compact" && renderCompactView()}
-						{renderPagination()}
-					</>
-				)}
-			</CardContent>
-		</Card>
-
-		<ConfirmDialog
-			open={clearAllConfirm}
-			onOpenChange={(open) => !open && setClearAllConfirm(false)}
-			title="Clear All Videos"
-			description="Are you sure you want to clear all videos from this group? This will resync all videos from YouTube and force a new collection."
-			onConfirm={() => {
-				deleteAllVideos.mutate(groupId);
-				setClearAllConfirm(false);
-			}}
-			confirmText="Clear All"
-			variant="destructive"
-		/>
+			<ConfirmDialog
+				open={clearAllConfirm}
+				onOpenChange={(open) => !open && setClearAllConfirm(false)}
+				title="Clear All Videos"
+				description="Are you sure you want to clear all videos from this group? This will resync all videos from YouTube and force a new collection."
+				onConfirm={() => {
+					deleteAllVideos.mutate(groupId);
+					setClearAllConfirm(false);
+				}}
+				confirmText="Clear All"
+				variant="destructive"
+			/>
 		</div>
 	);
 }

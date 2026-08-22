@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /dashboard
+Disallow: /login
+Disallow: /register
+Disallow: /forgot-password
+Disallow: /share
+Disallow: /subscriptions
 
-Sitemap: https://nestfeed.app/sitemap.xml
+Sitemap: https://groupify.dev/sitemap.xml

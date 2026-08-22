@@ -57,9 +57,7 @@ function CrunchyrollIntegrationCard() {
 				<CardTitle className="text-xl flex items-center gap-2 text-orange-700 dark:text-orange-400">
 					{t("rec.crunchyroll.title")}
 				</CardTitle>
-				<CardDescription>
-					{t("rec.crunchyroll.desc")}
-				</CardDescription>
+				<CardDescription>{t("rec.crunchyroll.desc")}</CardDescription>
 			</CardHeader>
 
 			<CardContent className="pt-2 pb-0">
@@ -113,7 +111,8 @@ function CrunchyrollIntegrationCard() {
 					asChild
 				>
 					<Link to="/dashboard/animes">
-						{t("rec.crunchyroll.button")} <ArrowRight className="ml-2 h-4 w-4" />
+						{t("rec.crunchyroll.button")}{" "}
+						<ArrowRight className="ml-2 h-4 w-4" />
 					</Link>
 				</Button>
 			</CardFooter>
@@ -145,9 +144,7 @@ function DonationSupportCard() {
 					<Heart className="h-5 w-5 text-primary" />
 					{t("rec.support.title")}
 				</CardTitle>
-				<CardDescription>
-					{t("rec.support.desc")}
-				</CardDescription>
+				<CardDescription>{t("rec.support.desc")}</CardDescription>
 			</CardHeader>
 
 			<CardContent className="space-y-4">
@@ -225,7 +222,9 @@ function DonationSupportCard() {
 									)}
 								>
 									<span className="text-lg font-bold">${amount}</span>
-									<span className="text-xs text-muted-foreground">{t("rec.support.monthly")}</span>
+									<span className="text-xs text-muted-foreground">
+										{t("rec.support.monthly")}
+									</span>
 								</button>
 							))}
 						</div>
@@ -240,11 +239,24 @@ function DonationSupportCard() {
 			</CardContent>
 
 			<CardFooter className="flex flex-col gap-2">
-				<Button variant={"secondary"} onClick={() => {
-					window.open(`https://ko-fi.com/scriptingarthur?amount=${selectedAmount}`)
-				}} className="w-full" type="button">
+				<Button
+					variant={"secondary"}
+					onClick={() => {
+						window.open(
+							`https://ko-fi.com/scriptingarthur?amount=${selectedAmount}`,
+						);
+					}}
+					className="w-full"
+					type="button"
+				>
 					<Coffee className="mr-2 h-4 w-4" />
-					{t("rec.support.donate", { amount: selectedAmount, type: donationType === "monthly" ? t("rec.support.monthly").toLowerCase() : "" })}
+					{t("rec.support.donate", {
+						amount: selectedAmount,
+						type:
+							donationType === "monthly"
+								? t("rec.support.monthly").toLowerCase()
+								: "",
+					})}
 				</Button>
 				<p className="text-xs text-center text-muted-foreground">
 					{t("rec.support.footer")}

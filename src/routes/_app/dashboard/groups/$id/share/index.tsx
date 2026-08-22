@@ -1,16 +1,11 @@
 "use client";
 
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import {
-	ArrowLeft,
-	Copy,
-	LinkIcon,
-	Share2,
-	Users,
-} from "lucide-react";
+import { ArrowLeft, Copy, LinkIcon, Share2, Users } from "lucide-react";
 import { useEffect, useId, useState } from "react";
-import { useGenerateShareLink } from "@/hooks/useQuery/useShare";
+import { toast } from "sonner";
 import { DashboardHeader } from "@/components/dashboard-header";
+import { useLanguage } from "@/components/language-provider";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -27,8 +22,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGroup } from "@/hooks/useQuery/useGroups";
-import { useLanguage } from "@/components/language-provider";
-import { toast } from "sonner";
+import { useGenerateShareLink } from "@/hooks/useQuery/useShare";
 
 interface ShareGroupPageProps {
 	params: {
@@ -74,18 +68,21 @@ function ShareGroupPage({ params }: ShareGroupPageProps) {
 	}, [groupData, id]);
 
 	const generateShareLink = async () => {
-		generateShareLinkMutation.mutate({
-			id: group.id,
-			linkType: activeTab === "collaborate" ? sharePermission : "copy",
-			permission: activeTab === "collaborate" ? sharePermission : "",
-		}, {
-			onSuccess: ({data}) => {
-				setShareLink(data?.shareLink || "");
+		generateShareLinkMutation.mutate(
+			{
+				id: group.id,
+				linkType: activeTab === "collaborate" ? sharePermission : "copy",
+				permission: activeTab === "collaborate" ? sharePermission : "",
 			},
-			onError: (error) => {
-				toast.error("Error sharing group", { description: error.message });
+			{
+				onSuccess: ({ data }) => {
+					setShareLink(data?.shareLink || "");
+				},
+				onError: (error) => {
+					toast.error("Error sharing group", { description: error.message });
+				},
 			},
-		});
+		);
 	};
 
 	const isGeneratingLink = generateShareLinkMutation.isPending;
@@ -167,9 +164,7 @@ function ShareGroupPage({ params }: ShareGroupPageProps) {
 							<Card>
 								<CardHeader>
 									<CardTitle>{t("share_link_title")}</CardTitle>
-									<CardDescription>
-										{t("share_link_desc")}
-									</CardDescription>
+									<CardDescription>{t("share_link_desc")}</CardDescription>
 								</CardHeader>
 								<CardContent className="space-y-4">
 									{shareLink ? (
@@ -208,9 +203,7 @@ function ShareGroupPage({ params }: ShareGroupPageProps) {
 							<Card>
 								<CardHeader>
 									<CardTitle>{t("copy_link_title")}</CardTitle>
-									<CardDescription>
-										{t("copy_link_desc")}
-									</CardDescription>
+									<CardDescription>{t("copy_link_desc")}</CardDescription>
 								</CardHeader>
 								<CardContent className="space-y-4">
 									<div className="space-y-4">
@@ -249,7 +242,9 @@ function ShareGroupPage({ params }: ShareGroupPageProps) {
 												disabled={isGeneratingLink}
 											>
 												<LinkIcon className="mr-2 h-4 w-4" />
-												{isGeneratingLink ? t("generating") : t("generate_copy_link")}
+												{isGeneratingLink
+													? t("generating")
+													: t("generate_copy_link")}
 											</Button>
 										)}
 									</div>
@@ -311,17 +306,17 @@ function ShareGroupPage({ params }: ShareGroupPageProps) {
 							<Separator />
 
 							<div className="space-y-2">
-								<h4 className="text-sm font-medium">{t("share_settings_title")}</h4>
+								<h4 className="text-sm font-medium">
+									{t("share_settings_title")}
+								</h4>
 								<p className="text-xs text-muted-foreground">
 									{activeTab === "collaborate"
 										? t("share_settings_collab", {
-											permission:
-												sharePermission,
-										})
+												permission: sharePermission,
+											})
 										: t("share_settings_copy", {
-											destination:
-												copyDestination,
-										})}
+												destination: copyDestination,
+											})}
 								</p>
 							</div>
 						</CardContent>

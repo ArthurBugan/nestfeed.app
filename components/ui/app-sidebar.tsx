@@ -8,7 +8,6 @@ import {
 	Share2,
 	User2,
 	Video,
-	Youtube,
 	LogOut,
 	CreditCard,
 	UserCircle,
@@ -38,6 +37,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Link, useNavigate, useLocation } from "@tanstack/react-router";
 import { useLogoutMutation } from "@/hooks/mutations/useUserMutations";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { cn } from "@/lib/utils";
 import { useUser } from "@/hooks/useQuery/useUser";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -56,8 +56,6 @@ interface NavItem {
 	icon: React.ElementType;
 	dataTour?: string;
 }
-
-
 
 export function AppSidebar() {
 	const logoutMutation = useLogoutMutation();
@@ -83,7 +81,7 @@ export function AppSidebar() {
 		{
 			title: t("sidebar.channels"),
 			url: "/dashboard/channels",
-			icon: Youtube,
+			icon: YoutubeIcon,
 		},
 		{
 			title: "Share Links",
@@ -155,7 +153,7 @@ export function AppSidebar() {
 							<div className="relative">
 								<div className="absolute inset-0 bg-primary rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
 								<div className="relative bg-primary rounded-lg p-2 shadow-lg">
-									<Youtube className="h-5 w-5 text-white" />
+									<YoutubeIcon className="h-5 w-5 text-white" />
 								</div>
 							</div>
 							<div
@@ -165,7 +163,7 @@ export function AppSidebar() {
 								)}
 							>
 								<span className="text-lg font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent whitespace-nowrap">
-									Nestfeed
+									Groupify
 								</span>
 							</div>
 						</Link>
@@ -178,7 +176,7 @@ export function AppSidebar() {
 							<div className="relative">
 								<div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary rounded-lg blur opacity-20 group-hover:opacity-40 transition-opacity" />
 								<div className="relative bg-gradient-to-br from-primary to-secondary rounded-lg p-2 shadow-lg">
-									<Youtube className="h-4 w-4 text-white" />
+									<YoutubeIcon className="h-4 w-4 text-white" />
 								</div>
 							</div>
 						</Link>
@@ -306,8 +304,18 @@ export function AppSidebar() {
 							<div className="flex items-center justify-between">
 								<div className="flex items-center gap-2">
 									<div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center">
-										<svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-											<path strokeLinecap="round" strokeLinejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+										<svg
+											className="h-3 w-3 text-primary"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+											strokeWidth={2}
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+											/>
 										</svg>
 									</div>
 									<span className="text-xs text-muted-foreground/70 font-medium">
@@ -342,16 +350,38 @@ export function AppSidebar() {
 						>
 							<div className="flex items-center gap-2">
 								<div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
-									<svg className="h-3 w-3 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-										<path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+									<svg
+										className="h-3 w-3 text-primary"
+										fill="none"
+										viewBox="0 0 24 24"
+										stroke="currentColor"
+										strokeWidth={2}
+									>
+										<path
+											strokeLinecap="round"
+											strokeLinejoin="round"
+											d="M13 10V3L4 14h7v7l9-11h-7z"
+										/>
 									</svg>
 								</div>
-								<span className="text-muted-foreground/70 font-medium">Plan</span>
+								<span className="text-muted-foreground/70 font-medium">
+									Plan
+								</span>
 							</div>
 							<span className="inline-flex items-center gap-1.5 font-semibold text-primary uppercase tracking-wider">
 								{user.planName}
-								<svg className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-									<path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+								<svg
+									className="h-3 w-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all"
+									fill="none"
+									viewBox="0 0 24 24"
+									stroke="currentColor"
+									strokeWidth={2}
+								>
+									<path
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										d="M9 5l7 7-7 7"
+									/>
 								</svg>
 							</span>
 						</button>

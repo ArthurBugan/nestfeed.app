@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useLanguage } from "@/components/language-provider";
 import { AllChannelsTable } from "@/components/all-channels-table";
 import { DashboardHeader } from "@/components/dashboard-header";
+import { useLanguage } from "@/components/language-provider";
 import { Card, CardContent } from "@/components/ui/card";
 
 export const Route = createFileRoute("/_app/dashboard/channels/")({

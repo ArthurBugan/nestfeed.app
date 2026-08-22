@@ -3,13 +3,13 @@
 import { useNavigate } from "@tanstack/react-router";
 import { FolderKanban, Loader2, Plus } from "lucide-react";
 import { useState } from "react";
+import { useLanguage } from "@/components/language-provider";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { UpgradePlanModal } from "@/components/upgrade-plan-modal";
 import { useGroups } from "@/hooks/useQuery/useGroups";
 import { useUser } from "@/hooks/useQuery/useUser";
 import { cn } from "@/lib/utils";
-import { useLanguage } from "@/components/language-provider";
 
 export function GroupList() {
 	const navigate = useNavigate();
@@ -93,7 +93,9 @@ export function GroupList() {
 									</Badge>
 								)}
 								<span className="text-xs text-muted-foreground">
-									{t("group.list.channels", { count: String(group.channelCount || 0) })}
+									{t("group.list.channels", {
+										count: String(group.channelCount || 0),
+									})}
 								</span>
 							</div>
 						</div>

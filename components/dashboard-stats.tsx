@@ -4,11 +4,11 @@ import {
 	Loader2,
 	Share2,
 	TrendingUp,
-	Youtube,
 } from "lucide-react";
+import { YoutubeIcon } from "@/components/brand-icons";
+import { useLanguage } from "@/components/language-provider";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useDashboardTotal } from "@/hooks/useQuery/useDashboard";
-import { useLanguage } from "@/components/language-provider";
 
 export function DashboardStats() {
 	const { data, isLoading } = useDashboardTotal();
@@ -23,7 +23,9 @@ export function DashboardStats() {
 		<div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">{t("stats.total.groups")}</CardTitle>
+					<CardTitle className="text-sm font-medium">
+						{t("stats.total.groups")}
+					</CardTitle>
 					<FolderKanban className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
 				<CardContent>
@@ -43,8 +45,10 @@ export function DashboardStats() {
 			</Card>
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">{t("stats.total.channels.groups")}</CardTitle>
-					<Youtube className="h-4 w-4 text-muted-foreground" />
+					<CardTitle className="text-sm font-medium">
+						{t("stats.total.channels.groups")}
+					</CardTitle>
+					<YoutubeIcon className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
 				<CardContent>
 					{isLoading ? (
@@ -63,7 +67,9 @@ export function DashboardStats() {
 			</Card>
 			<Card>
 				<CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-					<CardTitle className="text-sm font-medium">{t("stats.shared.groups")}</CardTitle>
+					<CardTitle className="text-sm font-medium">
+						{t("stats.shared.groups")}
+					</CardTitle>
 					<Share2 className="h-4 w-4 text-muted-foreground" />
 				</CardHeader>
 				<CardContent>

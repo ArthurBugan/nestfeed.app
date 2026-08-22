@@ -2,21 +2,34 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
 	Calendar,
 	Clock,
+	X as CloseIcon,
 	Search,
 	Sparkles,
 	TrendingUp,
-	X as CloseIcon,
 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
 import { CompactHeader } from "@/components/compact-header";
+import { useLanguage } from "@/components/language-provider";
+import { SiteFooter } from "@/components/site-footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { type BlogQueryParams, useBlogPosts } from "@/hooks/useQuery/useBlog";
-import { useLanguage } from "@/components/language-provider";
 
 export const Route = createFileRoute("/_app/blog/")({
 	component: BlogIndex,
+	head: () => ({
+		meta: [
+			{ title: "Blog – Groupify" },
+			{
+				name: "description",
+				content:
+					"Guides and insights on organizing YouTube channels, curating watchlists and getting the most out of your subscriptions with Groupify.",
+			},
+			{ property: "og:type", content: "website" },
+		],
+		links: [{ rel: "canonical", href: "https://groupify.dev/blog" }],
+	}),
 });
 
 const CATEGORIES = [
@@ -33,7 +46,7 @@ function BlogIndex() {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [debouncedSearch, setDebouncedSearch] = useState("");
 	const [currentPage, setCurrentPage] = useState(1);
-	const [itemsPerPage, setItemsPerPage] = useState(9);
+	const [itemsPerPage] = useState(9);
 	const { t } = useLanguage();
 
 	useEffect(() => {
@@ -103,7 +116,9 @@ function BlogIndex() {
 								}}
 								className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${activeCategory === cat ? "bg-gradient-to-r from-primary to-secondary text-white" : "bg-muted text-muted-foreground hover:bg-muted/80"}`}
 							>
-										<span className="text-white text-sm font-semibold">{t("blog.category." + cat.toLowerCase())}</span>
+								<span className="text-white text-sm font-semibold">
+									{t(`blog.category.${cat.toLowerCase()}`)}
+								</span>
 							</Button>
 						))}
 					</div>
@@ -136,7 +151,9 @@ function BlogIndex() {
 							<div className="mb-12">
 								<div className="flex items-center gap-2 mb-6">
 									<TrendingUp className="h-4 w-4 text-primary" />
-									<h2 className="text-lg font-semibold">{t("blog.featured")}</h2>
+									<h2 className="text-lg font-semibold">
+										{t("blog.featured")}
+									</h2>
 								</div>
 								<Link to={`/blog/$slug`} params={{ slug: featuredPost.slug }}>
 									<div className="rounded-xl border bg-gradient-to-br from-primary/5 to-secondary/5 overflow-hidden hover:shadow-lg transition-shadow cursor-pointer">
@@ -200,7 +217,9 @@ function BlogIndex() {
 								<div className="mb-12">
 									<div className="flex items-center gap-2 mb-6">
 										<TrendingUp className="h-4 w-4 text-orange-500" />
-										<h2 className="text-lg font-semibold">{t("blog.trending")}</h2>
+										<h2 className="text-lg font-semibold">
+											{t("blog.trending")}
+										</h2>
 									</div>
 									<div className="grid md:grid-cols-3 gap-4">
 										{trendingPosts.slice(0, 3).map((post, i) => (
@@ -243,11 +262,11 @@ function BlogIndex() {
 								<div className="flex items-center gap-2">
 									<Clock className="h-4 w-4 text-primary" />
 									<h2 className="text-lg font-semibold">
-								{debouncedSearch
-									? t("blog.results")
-									: activeCategory !== "All"
-										? `${activeCategory} Posts`
-										: t("blog.allposts")}
+										{debouncedSearch
+											? t("blog.results")
+											: activeCategory !== "All"
+												? `${activeCategory} Posts`
+												: t("blog.allposts")}
 									</h2>
 								</div>
 								<span className="text-xs text-muted-foreground">
@@ -347,6 +366,8 @@ function BlogIndex() {
 					</>
 				)}
 			</main>
+
+			<SiteFooter />
 		</div>
 	);
 }

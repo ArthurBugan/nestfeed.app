@@ -1,7 +1,7 @@
 "use client";
 
-import { useTheme } from "@/components/theme-provider";
 import * as React from "react";
+import { useTheme } from "@/components/theme-provider";
 
 type AccentColor = "blue" | "green" | "purple" | "red" | "orange" | "black";
 type FontSize = "small" | "medium" | "large";

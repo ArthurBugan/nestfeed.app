@@ -12,6 +12,7 @@ import {
 	IconPickerTrigger,
 	IconViewer,
 } from "@/components/icon-picker";
+import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 import {
 	Form,
@@ -31,7 +32,6 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { useLanguage } from "@/components/language-provider";
 import type { Group } from "@/hooks/useQuery/useGroups";
 
 function createGroupFormSchema(t: (key: string) => string) {
@@ -185,9 +185,16 @@ export function GroupForm({
 							name="name"
 							render={({ field }) => (
 								<FormItem>
-									<FormLabel className="text-sm font-medium">{t("group.form.name")}</FormLabel>
+									<FormLabel className="text-sm font-medium">
+										{t("group.form.name")}
+									</FormLabel>
 									<FormControl>
-										<Input placeholder={t("group.form.name.placeholder")} className="h-10" data-tour="group-name-input" {...field} />
+										<Input
+											placeholder={t("group.form.name.placeholder")}
+											className="h-10"
+											data-tour="group-name-input"
+											{...field}
+										/>
 									</FormControl>
 									<FormMessage />
 								</FormItem>
@@ -228,8 +235,13 @@ export function GroupForm({
 											defaultValue={field.value}
 										>
 											<FormControl>
-												<SelectTrigger className="h-10" data-tour="group-category">
-													<SelectValue placeholder={t("group.form.category.placeholder")} />
+												<SelectTrigger
+													className="h-10"
+													data-tour="group-category"
+												>
+													<SelectValue
+														placeholder={t("group.form.category.placeholder")}
+													/>
 												</SelectTrigger>
 											</FormControl>
 											<SelectContent>
@@ -250,7 +262,9 @@ export function GroupForm({
 								name="icon"
 								render={({ field }) => (
 									<FormItem>
-										<FormLabel className="text-sm font-medium">{t("group.form.icon")}</FormLabel>
+										<FormLabel className="text-sm font-medium">
+											{t("group.form.icon")}
+										</FormLabel>
 										<FormControl>
 											<IconPicker
 												value={field.value}
@@ -279,11 +293,15 @@ export function GroupForm({
 										>
 											<FormControl>
 												<SelectTrigger className="h-10">
-													<SelectValue placeholder={t("group.form.parent.none")} />
+													<SelectValue
+														placeholder={t("group.form.parent.none")}
+													/>
 												</SelectTrigger>
 											</FormControl>
 											<SelectContent>
-												<SelectItem value="none">{t("group.form.parent.none")}</SelectItem>
+												<SelectItem value="none">
+													{t("group.form.parent.none")}
+												</SelectItem>
 												{groups.map((g) => (
 													<SelectItem key={g.id} value={g.id}>
 														<div className="flex items-center gap-2">

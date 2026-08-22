@@ -1,8 +1,9 @@
 "use client";
 
 import { Link } from "@tanstack/react-router";
-import { Menu, X, Youtube } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "./language-provider";
 import { LanguageSelector } from "./language-selector";
@@ -18,11 +19,11 @@ export function MainNavbar() {
 					<div className="flex items-center gap-2">
 						<Link to="/" className="flex items-center gap-2">
 							<div className="relative">
-								<Youtube className="h-8 w-8 text-red-500" />
+								<YoutubeIcon className="h-8 w-8 text-red-500" />
 								<div className="absolute -top-1 -right-1 h-3 w-3 bg-gradient-to-r from-primary to-secondary rounded-full animate-pulse"></div>
 							</div>
 							<span className="text-xl font-bold bg-gradient-to-r from-foreground to-muted-foreground bg-clip-text text-transparent">
-								Nestfeed
+								Groupify
 							</span>
 						</Link>
 					</div>
@@ -30,12 +31,12 @@ export function MainNavbar() {
 					{/* Desktop Navigation */}
 					<div className="hidden md:flex items-center gap-8">
 						<Link
-								to="/dashboard"
-								className="text-sm font-medium hover:text-primary transition-colors group"
-							>
-								{t("nav.dashboard")}
-								<div className="h-0.5 w-0 bg-primary transition-all group-hover:w-full"></div>
-							</Link>
+							to="/dashboard"
+							className="text-sm font-medium hover:text-primary transition-colors group"
+						>
+							{t("nav.dashboard")}
+							<div className="h-0.5 w-0 bg-primary transition-all group-hover:w-full"></div>
+						</Link>
 						<Link
 							to="/#features"
 							className="text-sm font-medium hover:text-primary transition-colors group"

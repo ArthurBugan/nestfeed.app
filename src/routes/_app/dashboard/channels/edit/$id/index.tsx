@@ -1,9 +1,10 @@
 "use client";
 
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ArrowLeft, Save, Youtube } from "lucide-react";
+import { ArrowLeft, Save } from "lucide-react";
 import type React from "react";
 import { useEffect, useId, useState } from "react";
+import { YoutubeIcon } from "@/components/brand-icons";
 import { DashboardHeader } from "@/components/dashboard-header";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -120,7 +121,7 @@ function ChannelEditPage({ params }: ChannelEditPageProps) {
 								alt={channel.name}
 							/>
 							<AvatarFallback>
-								<Youtube className="h-8 w-8" />
+								<YoutubeIcon className="h-8 w-8" />
 							</AvatarFallback>
 						</Avatar>
 						<div>
