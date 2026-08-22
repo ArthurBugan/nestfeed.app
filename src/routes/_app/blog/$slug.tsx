@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, Clock, Share2 } from "lucide-react";
 import { LinkedinIcon, TwitterIcon } from "@/components/brand-icons";
 import { CompactHeader } from "@/components/compact-header";
@@ -15,11 +15,19 @@ export const Route = createFileRoute("/_app/blog/$slug")({
 	loader: async ({ params }) => {
 		const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 		const response = await fetch(`${VITE_BASE_URL}/api/v3/blog/${params.slug}`);
-		if (!response.ok) throw new Error("Failed to fetch blog post");
+		if (!response.ok) throw notFound();
+		const contentType = response.headers.get("content-type") || "";
+		if (!contentType.includes("application/json")) {
+			throw notFound();
+		}
 		const json = await response.json();
-		// Normalize response envelope: `{ data: { data: BlogPost } }` (or already-unwrapped)
-		const post = json?.data?.data ?? json?.data ?? null;
-		if (!post?.slug) throw new Error("Blog post not found");
+		// Endpoint may return the bare post, `{ data: post }`, or `{ data: { data: post } }`
+		const candidate = json?.data?.data ?? json?.data ?? json;
+		const post =
+			candidate && typeof candidate === "object" && !Array.isArray(candidate)
+				? candidate
+				: null;
+		if (!post?.slug) throw notFound();
 		return { post };
 	},
 	head: ({ loaderData }) => {

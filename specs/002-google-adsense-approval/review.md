@@ -66,3 +66,12 @@ rejected. Before resubmitting:
 3. Resubmit the AdSense application
 4. Optional later: onboard an IAB TCF-certified CMP to enable personalized ads
    in EEA/UK (banner already defaults to non-personalized)
+
+## Addendum (2026-08-22): Content-quality items 5 & 6
+
+- **Changelog page** (`/changelog`): nine releases reconstructed from real git
+  history — demonstrates active maintenance with verifiable dates.
+- **FAQ page** (`/faq`): eight substantive Q&As + FAQPage JSON-LD for rich
+  results; footer links added sitewide (i18n'd en/pt/es).
+- Sitemap regenerated; both pages included. Gates: biome clean, tsc at
+  baseline (76), 20/20 tests, production build green.

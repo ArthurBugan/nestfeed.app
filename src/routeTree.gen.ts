@@ -12,7 +12,9 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AppTermsRouteImport } from './routes/_app/terms'
 import { Route as AppPrivacyRouteImport } from './routes/_app/privacy'
+import { Route as AppFaqRouteImport } from './routes/_app/faq'
 import { Route as AppContactRouteImport } from './routes/_app/contact'
+import { Route as AppChangelogRouteImport } from './routes/_app/changelog'
 import { Route as AppAboutRouteImport } from './routes/_app/about'
 import { Route as AppDashboardRouteRouteImport } from './routes/_app/dashboard/route'
 import { Route as AuthRegisterIndexRouteImport } from './routes/_auth/register/index'
@@ -62,9 +64,19 @@ const AppPrivacyRoute = AppPrivacyRouteImport.update({
   path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppFaqRoute = AppFaqRouteImport.update({
+  id: '/_app/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppContactRoute = AppContactRouteImport.update({
   id: '/_app/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppChangelogRoute = AppChangelogRouteImport.update({
+  id: '/_app/changelog',
+  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppAboutRoute = AppAboutRouteImport.update({
@@ -257,7 +269,9 @@ const AppDashboardAnimesChangeGroupIdIndexRoute =
 export interface FileRoutesByFullPath {
   '/dashboard': typeof AppDashboardRouteRouteWithChildren
   '/about': typeof AppAboutRoute
+  '/changelog': typeof AppChangelogRoute
   '/contact': typeof AppContactRoute
+  '/faq': typeof AppFaqRoute
   '/privacy': typeof AppPrivacyRoute
   '/terms': typeof AppTermsRoute
   '/': typeof AppIndexRoute
@@ -295,7 +309,9 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/about': typeof AppAboutRoute
+  '/changelog': typeof AppChangelogRoute
   '/contact': typeof AppContactRoute
+  '/faq': typeof AppFaqRoute
   '/privacy': typeof AppPrivacyRoute
   '/terms': typeof AppTermsRoute
   '/': typeof AppIndexRoute
@@ -335,7 +351,9 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app/dashboard': typeof AppDashboardRouteRouteWithChildren
   '/_app/about': typeof AppAboutRoute
+  '/_app/changelog': typeof AppChangelogRoute
   '/_app/contact': typeof AppContactRoute
+  '/_app/faq': typeof AppFaqRoute
   '/_app/privacy': typeof AppPrivacyRoute
   '/_app/terms': typeof AppTermsRoute
   '/_app/': typeof AppIndexRoute
@@ -376,7 +394,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/dashboard'
     | '/about'
+    | '/changelog'
     | '/contact'
+    | '/faq'
     | '/privacy'
     | '/terms'
     | '/'
@@ -414,7 +434,9 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
+    | '/changelog'
     | '/contact'
+    | '/faq'
     | '/privacy'
     | '/terms'
     | '/'
@@ -453,7 +475,9 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_app/dashboard'
     | '/_app/about'
+    | '/_app/changelog'
     | '/_app/contact'
+    | '/_app/faq'
     | '/_app/privacy'
     | '/_app/terms'
     | '/_app/'
@@ -493,7 +517,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AppDashboardRouteRoute: typeof AppDashboardRouteRouteWithChildren
   AppAboutRoute: typeof AppAboutRoute
+  AppChangelogRoute: typeof AppChangelogRoute
   AppContactRoute: typeof AppContactRoute
+  AppFaqRoute: typeof AppFaqRoute
   AppPrivacyRoute: typeof AppPrivacyRoute
   AppTermsRoute: typeof AppTermsRoute
   AppIndexRoute: typeof AppIndexRoute
@@ -532,11 +558,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/faq': {
+      id: '/_app/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof AppFaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_app/contact': {
       id: '/_app/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof AppContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/changelog': {
+      id: '/_app/changelog'
+      path: '/changelog'
+      fullPath: '/changelog'
+      preLoaderRoute: typeof AppChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_app/about': {
@@ -845,7 +885,9 @@ const AppDashboardRouteRouteWithChildren =
 const rootRouteChildren: RootRouteChildren = {
   AppDashboardRouteRoute: AppDashboardRouteRouteWithChildren,
   AppAboutRoute: AppAboutRoute,
+  AppChangelogRoute: AppChangelogRoute,
   AppContactRoute: AppContactRoute,
+  AppFaqRoute: AppFaqRoute,
   AppPrivacyRoute: AppPrivacyRoute,
   AppTermsRoute: AppTermsRoute,
   AppIndexRoute: AppIndexRoute,
