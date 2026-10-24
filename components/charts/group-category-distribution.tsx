@@ -2,36 +2,38 @@
 
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import {
+	type ChartConfig,
 	ChartContainer,
 	ChartLegend,
-	ChartLegendItem,
-	ChartTooltip,
+	ChartLegendContent,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 
 // Sample data for the chart
 const data = [
-	{ name: "Technology", value: 35, color: "hsl(var(--chart-1))" },
-	{ name: "Gaming", value: 25, color: "hsl(var(--chart-2))" },
-	{ name: "Entertainment", value: 15, color: "hsl(var(--chart-3))" },
-	{ name: "Education", value: 12, color: "hsl(var(--chart-4))" },
-	{ name: "Other", value: 13, color: "hsl(var(--chart-5))" },
+	{ name: "Technology", value: 35, color: "var(--chart-1)" },
+	{ name: "Gaming", value: 25, color: "var(--chart-2)" },
+	{ name: "Entertainment", value: 15, color: "var(--chart-3)" },
+	{ name: "Education", value: 12, color: "var(--chart-4)" },
+	{ name: "Other", value: 13, color: "var(--chart-5)" },
 ];
+
+const chartConfig = {
+	Technology: { label: "Technology", color: "var(--chart-1)" },
+	Gaming: { label: "Gaming", color: "var(--chart-2)" },
+	Entertainment: { label: "Entertainment", color: "var(--chart-3)" },
+	Education: { label: "Education", color: "var(--chart-4)" },
+	Other: { label: "Other", color: "var(--chart-5)" },
+} as const satisfies ChartConfig;
 
 export function GroupCategoryDistribution() {
 	return (
 		<div className="space-y-4">
-			<ChartLegend className="flex-wrap gap-4">
-				{data.map((entry, index) => (
-					<ChartLegendItem
-						key={`legend-${index}`}
-						name={entry.name}
-						color={entry.color}
-					/>
-				))}
-			</ChartLegend>
+			<ChartLegend
+				content={<ChartLegendContent className="flex-wrap gap-4" />}
+			/>
 
-			<ChartContainer className="h-[300px]">
+			<ChartContainer config={chartConfig} className="h-[300px]">
 				<ResponsiveContainer width="100%" height="100%">
 					<PieChart>
 						<Pie
@@ -43,7 +45,9 @@ export function GroupCategoryDistribution() {
 							paddingAngle={2}
 							dataKey="value"
 							label={({ name, percent }) =>
-								`${name} (${(percent * 100).toFixed(0)}%)`
+								name != null && percent != null
+									? `${name} (${(percent * 100).toFixed(0)}%)`
+									: undefined
 							}
 							labelLine={false}
 						>
@@ -54,25 +58,7 @@ export function GroupCategoryDistribution() {
 						<Tooltip
 							content={({ active, payload }) => {
 								if (active && payload && payload.length) {
-									return (
-										<ChartTooltip>
-											<ChartTooltipContent>
-												<div className="flex items-center gap-2">
-													<div
-														className="h-2 w-2 rounded-full"
-														style={{
-															backgroundColor: payload[0].payload.color,
-														}}
-													/>
-													<p className="font-semibold">{payload[0].name}</p>
-												</div>
-												<p className="text-sm">
-													{payload[0].value} channels (
-													{((payload[0].value / 100) * 100).toFixed(0)}%)
-												</p>
-											</ChartTooltipContent>
-										</ChartTooltip>
-									);
+									return <ChartTooltipContent payload={payload} />;
 								}
 								return null;
 							}}

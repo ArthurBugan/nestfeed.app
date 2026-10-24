@@ -23,11 +23,12 @@ export const Route = createFileRoute("/_app/dashboard/channels/edit/$id/")({
 	component: ChannelEditPage,
 });
 
-function ChannelEditPage({ params }: ChannelEditPageProps) {
+function ChannelEditPage() {
+	const { id } = Route.useParams();
 	const router = useNavigate();
 	const [isLoading, setIsLoading] = useState(false);
 	const [channel, setChannel] = useState({
-		id: params.id,
+		id: id,
 		name: "",
 		url: "",
 		description: "",
@@ -77,14 +78,14 @@ function ChannelEditPage({ params }: ChannelEditPageProps) {
 				},
 			};
 
-			const channelData = mockChannels[params.id];
+			const channelData = mockChannels[id];
 			if (channelData) {
 				setChannel(channelData);
 			}
 		};
 
 		fetchChannel();
-	}, [params.id]);
+	}, [id]);
 
 	const handleSubmit = async (e: React.FormEvent) => {
 		e.preventDefault();

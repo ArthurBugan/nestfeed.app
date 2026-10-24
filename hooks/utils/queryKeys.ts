@@ -1,26 +1,26 @@
 export const queryKeys = {
 	users: () => ["users"],
-	user: (id) => ["user", id],
+	user: (id: string) => ["user", id],
 	me: () => ["me"],
 	posts: () => ["posts"],
-	post: (id) => ["post", id],
+	post: (id: string) => ["post", id],
 	auth: () => ["auth"],
 	groups: (params?: { page?: number; limit?: number; search?: string }) =>
 		params ? ["groups", params] : ["groups"],
-	group: (id) => ["group", id],
+	group: (id: string) => ["group", id],
 	channels: (params?: {
 		page?: number;
 		limit?: number;
 		search?: string;
 		groupId?: string;
 	}) => (params ? ["channels", params] : ["channels"]),
-	channel: (id) => ["channel", id],
-	shareLink: (id) => ["shareLink", id],
+	channel: (id: string) => ["channel", id],
+	shareLink: (id: string) => ["shareLink", id],
 	shareLinks: (params?: { page?: number; limit?: number; search?: string }) =>
 		params ? ["shareLinks", params] : ["shareLinks"],
 	animes: (params?: { page?: number; limit?: number; search?: string }) =>
 		params ? ["animes", params] : ["animes"],
-	anime: (id) => ["anime", id],
+	anime: (id: string) => ["anime", id],
 	groupVideos: (groupId: string, params?: { page?: number; limit?: number }) =>
 		params ? ["groupVideos", groupId, params] : ["groupVideos", groupId],
 	groupShelves: (params?: {

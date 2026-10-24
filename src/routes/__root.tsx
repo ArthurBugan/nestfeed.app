@@ -34,7 +34,7 @@ if (typeof window !== "undefined") {
 		},
 	});
 
-	Clarity.init(VITE_CLARITY_PROJECT_ID);
+	Clarity.init(VITE_CLARITY_PROJECT_ID ?? "");
 }
 
 export const Route = createRootRoute({

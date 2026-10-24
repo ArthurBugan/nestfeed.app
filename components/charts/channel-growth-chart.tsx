@@ -12,10 +12,10 @@ import {
 } from "recharts";
 import { Button } from "@/components/ui/button";
 import {
+	type ChartConfig,
 	ChartContainer,
 	ChartLegend,
-	ChartLegendItem,
-	ChartTooltip,
+	ChartLegendContent,
 	ChartTooltipContent,
 } from "@/components/ui/chart";
 
@@ -30,28 +30,30 @@ const data = [
 	{ day: "30", subscribers: 152000, views: 612000 },
 ];
 
+const chartConfig = {
+	subscribers: { label: "Subscribers", color: "var(--chart-1)" },
+	views: { label: "Views", color: "var(--chart-2)" },
+} as const satisfies ChartConfig;
+
 type TimeRange = "30days" | "90days" | "year";
 
 export function ChannelGrowthChart() {
 	const [timeRange, setTimeRange] = useState<TimeRange>("30days");
 
 	// Format numbers to be more readable
-	const formatNumber = (value: number) => {
+	const formatNumber = (value: number): string => {
 		if (value >= 1000000) {
 			return `${(value / 1000000).toFixed(1)}M`;
 		} else if (value >= 1000) {
 			return `${(value / 1000).toFixed(1)}K`;
 		}
-		return value;
+		return value.toString();
 	};
 
 	return (
 		<div className="space-y-4">
 			<div className="flex items-center justify-between">
-				<ChartLegend className="gap-4">
-					<ChartLegendItem name="Subscribers" color="hsl(var(--chart-1))" />
-					<ChartLegendItem name="Views" color="hsl(var(--chart-2))" />
-				</ChartLegend>
+				<ChartLegend content={<ChartLegendContent />} />
 
 				<div className="flex gap-1">
 					<Button
@@ -78,7 +80,7 @@ export function ChannelGrowthChart() {
 				</div>
 			</div>
 
-			<ChartContainer className="h-[300px]">
+			<ChartContainer config={chartConfig} className="h-[300px]">
 				<ResponsiveContainer width="100%" height="100%">
 					<LineChart
 						data={data}
@@ -94,7 +96,7 @@ export function ChannelGrowthChart() {
 							className="text-sm text-muted-foreground"
 							tickLine={false}
 							axisLine={false}
-							tickFormatter={(value) => `Day ${value}`}
+							tickFormatter={(value: string) => `Day ${value}`}
 						/>
 						<YAxis
 							className="text-sm text-muted-foreground"
@@ -103,27 +105,14 @@ export function ChannelGrowthChart() {
 							tickFormatter={formatNumber}
 						/>
 						<Tooltip
-							content={({ active, payload }) => {
+							content={({ active, payload, label }) => {
 								if (active && payload && payload.length) {
 									return (
-										<ChartTooltip>
-											<ChartTooltipContent className="space-y-1">
-												<p className="text-sm">Day {payload[0].payload.day}</p>
-												<div className="flex items-center gap-2">
-													<div className="h-2 w-2 rounded-full bg-[hsl(var(--chart-1))]" />
-													<p className="text-sm">
-														Subscribers:{" "}
-														{formatNumber(payload[0].value as number)}
-													</p>
-												</div>
-												<div className="flex items-center gap-2">
-													<div className="h-2 w-2 rounded-full bg-[hsl(var(--chart-2))]" />
-													<p className="text-sm">
-														Views: {formatNumber(payload[1].value as number)}
-													</p>
-												</div>
-											</ChartTooltipContent>
-										</ChartTooltip>
+										<ChartTooltipContent
+											className="space-y-1"
+											label={`Day ${label}`}
+											payload={payload}
+										/>
 									);
 								}
 								return null;
@@ -132,17 +121,17 @@ export function ChannelGrowthChart() {
 						<Line
 							type="monotone"
 							dataKey="subscribers"
-							stroke="hsl(var(--chart-1))"
+							stroke="var(--chart-1)"
 							strokeWidth={2}
-							dot={{ fill: "hsl(var(--chart-1))", r: 4 }}
+							dot={{ fill: "var(--chart-1)", r: 4 }}
 							activeDot={{ r: 6 }}
 						/>
 						<Line
 							type="monotone"
 							dataKey="views"
-							stroke="hsl(var(--chart-2))"
+							stroke="var(--chart-2)"
 							strokeWidth={2}
-							dot={{ fill: "hsl(var(--chart-2))", r: 4 }}
+							dot={{ fill: "var(--chart-2)", r: 4 }}
 							activeDot={{ r: 6 }}
 						/>
 					</LineChart>
