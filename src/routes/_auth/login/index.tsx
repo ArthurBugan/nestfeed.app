@@ -58,7 +58,10 @@ function LoginPage() {
 		} catch (error) {
 			form.setError("root", {
 				type: "manual",
-				message: error?.message || "Login failed.",
+				message:
+					error instanceof Error
+						? error.message
+						: (error as { message?: string })?.message || "Login failed.",
 			});
 		}
 	};

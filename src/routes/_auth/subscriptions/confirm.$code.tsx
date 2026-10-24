@@ -26,7 +26,10 @@ function RouteComponent() {
 				await confirmMutation.mutateAsync({ token: code });
 				setIsConfirmed(true);
 			} catch (err) {
-				setError(err ? err.message : t("subscription.error.default"));
+				setError(
+					(err as { message?: string })?.message ??
+						t("subscription.error.default"),
+				);
 			} finally {
 				setIsLoading(false);
 			}

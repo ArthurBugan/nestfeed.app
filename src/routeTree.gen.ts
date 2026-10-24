@@ -10,73 +10,48 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
-import { Route as AppTermsRouteImport } from './routes/_app/terms'
-import { Route as AppPrivacyRouteImport } from './routes/_app/privacy'
-import { Route as AppFaqRouteImport } from './routes/_app/faq'
-import { Route as AppContactRouteImport } from './routes/_app/contact'
-import { Route as AppChangelogRouteImport } from './routes/_app/changelog'
 import { Route as AppAboutRouteImport } from './routes/_app/about'
+import { Route as AppChangelogRouteImport } from './routes/_app/changelog'
+import { Route as AppContactRouteImport } from './routes/_app/contact'
 import { Route as AppDashboardRouteRouteImport } from './routes/_app/dashboard/route'
-import { Route as AuthRegisterIndexRouteImport } from './routes/_auth/register/index'
-import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
-import { Route as AuthForgotPasswordIndexRouteImport } from './routes/_auth/forgot-password/index'
-import { Route as AppSupportIndexRouteImport } from './routes/_app/support/index'
-import { Route as AppDashboardIndexRouteImport } from './routes/_app/dashboard/index'
+import { Route as AppFaqRouteImport } from './routes/_app/faq'
+import { Route as AppPrivacyRouteImport } from './routes/_app/privacy'
+import { Route as AppTermsRouteImport } from './routes/_app/terms'
 import { Route as AppBlogIndexRouteImport } from './routes/_app/blog/index'
 import { Route as AppBlogSlugRouteImport } from './routes/_app/blog/$slug'
+import { Route as AppDashboardIndexRouteImport } from './routes/_app/dashboard/index'
 import { Route as AppDashboardSettingsRouteRouteImport } from './routes/_app/dashboard/settings/route'
-import { Route as AppDashboardWebsitesIndexRouteImport } from './routes/_app/dashboard/websites/index'
-import { Route as AppDashboardShareLinksIndexRouteImport } from './routes/_app/dashboard/share-links/index'
-import { Route as AppDashboardGroupshelfIndexRouteImport } from './routes/_app/dashboard/groupshelf/index'
-import { Route as AppDashboardGroupsIndexRouteImport } from './routes/_app/dashboard/groups/index'
-import { Route as AppDashboardChannelsIndexRouteImport } from './routes/_app/dashboard/channels/index'
+import { Route as AppSupportIndexRouteImport } from './routes/_app/support/index'
+import { Route as AuthForgotPasswordIndexRouteImport } from './routes/_auth/forgot-password/index'
+import { Route as AuthLoginIndexRouteImport } from './routes/_auth/login/index'
+import { Route as AuthRegisterIndexRouteImport } from './routes/_auth/register/index'
 import { Route as AppDashboardAnimesIndexRouteImport } from './routes/_app/dashboard/animes/index'
+import { Route as AppDashboardChannelsIndexRouteImport } from './routes/_app/dashboard/channels/index'
+import { Route as AppDashboardGroupsIndexRouteImport } from './routes/_app/dashboard/groups/index'
+import { Route as AppDashboardGroupshelfIndexRouteImport } from './routes/_app/dashboard/groupshelf/index'
+import { Route as AppDashboardShareLinksIndexRouteImport } from './routes/_app/dashboard/share-links/index'
+import { Route as AppDashboardWebsitesIndexRouteImport } from './routes/_app/dashboard/websites/index'
 import { Route as AuthSubscriptionsConfirmCodeRouteImport } from './routes/_auth/subscriptions/confirm.$code'
-import { Route as AuthForgotPasswordSuccessEmailIndexRouteImport } from './routes/_auth/forgot-password/success/$email/index'
-import { Route as AuthForgotPasswordConfirmIdIndexRouteImport } from './routes/_auth/forgot-password/confirm/$id/index'
-import { Route as AppShareTypeIdIndexRouteImport } from './routes/_app/share/$type/$id/index'
-import { Route as AppDashboardSettingsGroupsIndexRouteImport } from './routes/_app/dashboard/settings/groups/index'
-import { Route as AppDashboardSettingsBillingIndexRouteImport } from './routes/_app/dashboard/settings/billing/index'
-import { Route as AppDashboardSettingsAppearanceIndexRouteImport } from './routes/_app/dashboard/settings/appearance/index'
-import { Route as AppDashboardSettingsAccountIndexRouteImport } from './routes/_app/dashboard/settings/account/index'
-import { Route as AppDashboardGroupsNewIndexRouteImport } from './routes/_app/dashboard/groups/new/index'
 import { Route as AppDashboardGroupsIdIndexRouteImport } from './routes/_app/dashboard/groups/$id/index'
-import { Route as AppDashboardGroupsIdShareIndexRouteImport } from './routes/_app/dashboard/groups/$id/share/index'
-import { Route as AppDashboardGroupsIdEditIndexRouteImport } from './routes/_app/dashboard/groups/$id/edit/index'
-import { Route as AppDashboardGroupsIdAddChannelIndexRouteImport } from './routes/_app/dashboard/groups/$id/add-channel/index'
-import { Route as AppDashboardChannelsEditIdIndexRouteImport } from './routes/_app/dashboard/channels/edit/$id/index'
-import { Route as AppDashboardChannelsChangeGroupIdIndexRouteImport } from './routes/_app/dashboard/channels/change-group/$id/index'
-import { Route as AppDashboardAnimesEditIdIndexRouteImport } from './routes/_app/dashboard/animes/edit/$id.index'
+import { Route as AppDashboardGroupsNewIndexRouteImport } from './routes/_app/dashboard/groups/new/index'
+import { Route as AppDashboardSettingsAccountIndexRouteImport } from './routes/_app/dashboard/settings/account/index'
+import { Route as AppDashboardSettingsAppearanceIndexRouteImport } from './routes/_app/dashboard/settings/appearance/index'
+import { Route as AppDashboardSettingsBillingIndexRouteImport } from './routes/_app/dashboard/settings/billing/index'
+import { Route as AppDashboardSettingsGroupsIndexRouteImport } from './routes/_app/dashboard/settings/groups/index'
+import { Route as AppShareTypeIdIndexRouteImport } from './routes/_app/share/$type/$id/index'
+import { Route as AuthForgotPasswordConfirmIdIndexRouteImport } from './routes/_auth/forgot-password/confirm/$id/index'
+import { Route as AuthForgotPasswordSuccessEmailIndexRouteImport } from './routes/_auth/forgot-password/success/$email/index'
 import { Route as AppDashboardAnimesChangeGroupIdIndexRouteImport } from './routes/_app/dashboard/animes/change-group/$id.index'
+import { Route as AppDashboardAnimesEditIdIndexRouteImport } from './routes/_app/dashboard/animes/edit/$id.index'
+import { Route as AppDashboardChannelsChangeGroupIdIndexRouteImport } from './routes/_app/dashboard/channels/change-group/$id/index'
+import { Route as AppDashboardChannelsEditIdIndexRouteImport } from './routes/_app/dashboard/channels/edit/$id/index'
+import { Route as AppDashboardGroupsIdAddChannelIndexRouteImport } from './routes/_app/dashboard/groups/$id/add-channel/index'
+import { Route as AppDashboardGroupsIdEditIndexRouteImport } from './routes/_app/dashboard/groups/$id/edit/index'
+import { Route as AppDashboardGroupsIdShareIndexRouteImport } from './routes/_app/dashboard/groups/$id/share/index'
 
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/_app/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppTermsRoute = AppTermsRouteImport.update({
-  id: '/_app/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppPrivacyRoute = AppPrivacyRouteImport.update({
-  id: '/_app/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppFaqRoute = AppFaqRouteImport.update({
-  id: '/_app/faq',
-  path: '/faq',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppContactRoute = AppContactRouteImport.update({
-  id: '/_app/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppChangelogRoute = AppChangelogRouteImport.update({
-  id: '/_app/changelog',
-  path: '/changelog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AppAboutRoute = AppAboutRouteImport.update({
@@ -84,35 +59,35 @@ const AppAboutRoute = AppAboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppChangelogRoute = AppChangelogRouteImport.update({
+  id: '/_app/changelog',
+  path: '/changelog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppContactRoute = AppContactRouteImport.update({
+  id: '/_app/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppDashboardRouteRoute = AppDashboardRouteRouteImport.update({
   id: '/_app/dashboard',
   path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthRegisterIndexRoute = AuthRegisterIndexRouteImport.update({
-  id: '/_auth/register/',
-  path: '/register/',
+const AppFaqRoute = AppFaqRouteImport.update({
+  id: '/_app/faq',
+  path: '/faq',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
-  id: '/_auth/login/',
-  path: '/login/',
+const AppPrivacyRoute = AppPrivacyRouteImport.update({
+  id: '/_app/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthForgotPasswordIndexRoute = AuthForgotPasswordIndexRouteImport.update({
-  id: '/_auth/forgot-password/',
-  path: '/forgot-password/',
+const AppTermsRoute = AppTermsRouteImport.update({
+  id: '/_app/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
-} as any)
-const AppSupportIndexRoute = AppSupportIndexRouteImport.update({
-  id: '/_app/support/',
-  path: '/support/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppDashboardIndexRoute = AppDashboardIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AppDashboardRouteRoute,
 } as any)
 const AppBlogIndexRoute = AppBlogIndexRouteImport.update({
   id: '/_app/blog/',
@@ -124,33 +99,40 @@ const AppBlogSlugRoute = AppBlogSlugRouteImport.update({
   path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppDashboardIndexRoute = AppDashboardIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppDashboardRouteRoute,
+} as any)
 const AppDashboardSettingsRouteRoute =
   AppDashboardSettingsRouteRouteImport.update({
     id: '/settings',
     path: '/settings',
     getParentRoute: () => AppDashboardRouteRoute,
   } as any)
-const AppDashboardWebsitesIndexRoute =
-  AppDashboardWebsitesIndexRouteImport.update({
-    id: '/websites/',
-    path: '/websites/',
-    getParentRoute: () => AppDashboardRouteRoute,
-  } as any)
-const AppDashboardShareLinksIndexRoute =
-  AppDashboardShareLinksIndexRouteImport.update({
-    id: '/share-links/',
-    path: '/share-links/',
-    getParentRoute: () => AppDashboardRouteRoute,
-  } as any)
-const AppDashboardGroupshelfIndexRoute =
-  AppDashboardGroupshelfIndexRouteImport.update({
-    id: '/groupshelf/',
-    path: '/groupshelf/',
-    getParentRoute: () => AppDashboardRouteRoute,
-  } as any)
-const AppDashboardGroupsIndexRoute = AppDashboardGroupsIndexRouteImport.update({
-  id: '/groups/',
-  path: '/groups/',
+const AppSupportIndexRoute = AppSupportIndexRouteImport.update({
+  id: '/_app/support/',
+  path: '/support/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotPasswordIndexRoute = AuthForgotPasswordIndexRouteImport.update({
+  id: '/_auth/forgot-password/',
+  path: '/forgot-password/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthLoginIndexRoute = AuthLoginIndexRouteImport.update({
+  id: '/_auth/login/',
+  path: '/login/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRegisterIndexRoute = AuthRegisterIndexRouteImport.update({
+  id: '/_auth/register/',
+  path: '/register/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppDashboardAnimesIndexRoute = AppDashboardAnimesIndexRouteImport.update({
+  id: '/animes/',
+  path: '/animes/',
   getParentRoute: () => AppDashboardRouteRoute,
 } as any)
 const AppDashboardChannelsIndexRoute =
@@ -159,44 +141,51 @@ const AppDashboardChannelsIndexRoute =
     path: '/channels/',
     getParentRoute: () => AppDashboardRouteRoute,
   } as any)
-const AppDashboardAnimesIndexRoute = AppDashboardAnimesIndexRouteImport.update({
-  id: '/animes/',
-  path: '/animes/',
+const AppDashboardGroupsIndexRoute = AppDashboardGroupsIndexRouteImport.update({
+  id: '/groups/',
+  path: '/groups/',
   getParentRoute: () => AppDashboardRouteRoute,
 } as any)
+const AppDashboardGroupshelfIndexRoute =
+  AppDashboardGroupshelfIndexRouteImport.update({
+    id: '/groupshelf/',
+    path: '/groupshelf/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
+const AppDashboardShareLinksIndexRoute =
+  AppDashboardShareLinksIndexRouteImport.update({
+    id: '/share-links/',
+    path: '/share-links/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
+const AppDashboardWebsitesIndexRoute =
+  AppDashboardWebsitesIndexRouteImport.update({
+    id: '/websites/',
+    path: '/websites/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
 const AuthSubscriptionsConfirmCodeRoute =
   AuthSubscriptionsConfirmCodeRouteImport.update({
     id: '/_auth/subscriptions/confirm/$code',
     path: '/subscriptions/confirm/$code',
     getParentRoute: () => rootRouteImport,
   } as any)
-const AuthForgotPasswordSuccessEmailIndexRoute =
-  AuthForgotPasswordSuccessEmailIndexRouteImport.update({
-    id: '/_auth/forgot-password/success/$email/',
-    path: '/forgot-password/success/$email/',
-    getParentRoute: () => rootRouteImport,
+const AppDashboardGroupsIdIndexRoute =
+  AppDashboardGroupsIdIndexRouteImport.update({
+    id: '/groups/$id/',
+    path: '/groups/$id/',
+    getParentRoute: () => AppDashboardRouteRoute,
   } as any)
-const AuthForgotPasswordConfirmIdIndexRoute =
-  AuthForgotPasswordConfirmIdIndexRouteImport.update({
-    id: '/_auth/forgot-password/confirm/$id/',
-    path: '/forgot-password/confirm/$id/',
-    getParentRoute: () => rootRouteImport,
+const AppDashboardGroupsNewIndexRoute =
+  AppDashboardGroupsNewIndexRouteImport.update({
+    id: '/groups/new/',
+    path: '/groups/new/',
+    getParentRoute: () => AppDashboardRouteRoute,
   } as any)
-const AppShareTypeIdIndexRoute = AppShareTypeIdIndexRouteImport.update({
-  id: '/_app/share/$type/$id/',
-  path: '/share/$type/$id/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AppDashboardSettingsGroupsIndexRoute =
-  AppDashboardSettingsGroupsIndexRouteImport.update({
-    id: '/groups/',
-    path: '/groups/',
-    getParentRoute: () => AppDashboardSettingsRouteRoute,
-  } as any)
-const AppDashboardSettingsBillingIndexRoute =
-  AppDashboardSettingsBillingIndexRouteImport.update({
-    id: '/billing/',
-    path: '/billing/',
+const AppDashboardSettingsAccountIndexRoute =
+  AppDashboardSettingsAccountIndexRouteImport.update({
+    id: '/account/',
+    path: '/account/',
     getParentRoute: () => AppDashboardSettingsRouteRoute,
   } as any)
 const AppDashboardSettingsAppearanceIndexRoute =
@@ -205,52 +194,39 @@ const AppDashboardSettingsAppearanceIndexRoute =
     path: '/appearance/',
     getParentRoute: () => AppDashboardSettingsRouteRoute,
   } as any)
-const AppDashboardSettingsAccountIndexRoute =
-  AppDashboardSettingsAccountIndexRouteImport.update({
-    id: '/account/',
-    path: '/account/',
+const AppDashboardSettingsBillingIndexRoute =
+  AppDashboardSettingsBillingIndexRouteImport.update({
+    id: '/billing/',
+    path: '/billing/',
     getParentRoute: () => AppDashboardSettingsRouteRoute,
   } as any)
-const AppDashboardGroupsNewIndexRoute =
-  AppDashboardGroupsNewIndexRouteImport.update({
-    id: '/groups/new/',
-    path: '/groups/new/',
-    getParentRoute: () => AppDashboardRouteRoute,
+const AppDashboardSettingsGroupsIndexRoute =
+  AppDashboardSettingsGroupsIndexRouteImport.update({
+    id: '/groups/',
+    path: '/groups/',
+    getParentRoute: () => AppDashboardSettingsRouteRoute,
   } as any)
-const AppDashboardGroupsIdIndexRoute =
-  AppDashboardGroupsIdIndexRouteImport.update({
-    id: '/groups/$id/',
-    path: '/groups/$id/',
-    getParentRoute: () => AppDashboardRouteRoute,
+const AppShareTypeIdIndexRoute = AppShareTypeIdIndexRouteImport.update({
+  id: '/_app/share/$type/$id/',
+  path: '/share/$type/$id/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthForgotPasswordConfirmIdIndexRoute =
+  AuthForgotPasswordConfirmIdIndexRouteImport.update({
+    id: '/_auth/forgot-password/confirm/$id/',
+    path: '/forgot-password/confirm/$id/',
+    getParentRoute: () => rootRouteImport,
   } as any)
-const AppDashboardGroupsIdShareIndexRoute =
-  AppDashboardGroupsIdShareIndexRouteImport.update({
-    id: '/groups/$id/share/',
-    path: '/groups/$id/share/',
-    getParentRoute: () => AppDashboardRouteRoute,
+const AuthForgotPasswordSuccessEmailIndexRoute =
+  AuthForgotPasswordSuccessEmailIndexRouteImport.update({
+    id: '/_auth/forgot-password/success/$email/',
+    path: '/forgot-password/success/$email/',
+    getParentRoute: () => rootRouteImport,
   } as any)
-const AppDashboardGroupsIdEditIndexRoute =
-  AppDashboardGroupsIdEditIndexRouteImport.update({
-    id: '/groups/$id/edit/',
-    path: '/groups/$id/edit/',
-    getParentRoute: () => AppDashboardRouteRoute,
-  } as any)
-const AppDashboardGroupsIdAddChannelIndexRoute =
-  AppDashboardGroupsIdAddChannelIndexRouteImport.update({
-    id: '/groups/$id/add-channel/',
-    path: '/groups/$id/add-channel/',
-    getParentRoute: () => AppDashboardRouteRoute,
-  } as any)
-const AppDashboardChannelsEditIdIndexRoute =
-  AppDashboardChannelsEditIdIndexRouteImport.update({
-    id: '/channels/edit/$id/',
-    path: '/channels/edit/$id/',
-    getParentRoute: () => AppDashboardRouteRoute,
-  } as any)
-const AppDashboardChannelsChangeGroupIdIndexRoute =
-  AppDashboardChannelsChangeGroupIdIndexRouteImport.update({
-    id: '/channels/change-group/$id/',
-    path: '/channels/change-group/$id/',
+const AppDashboardAnimesChangeGroupIdIndexRoute =
+  AppDashboardAnimesChangeGroupIdIndexRouteImport.update({
+    id: '/animes/change-group/$id/',
+    path: '/animes/change-group/$id/',
     getParentRoute: () => AppDashboardRouteRoute,
   } as any)
 const AppDashboardAnimesEditIdIndexRoute =
@@ -259,10 +235,34 @@ const AppDashboardAnimesEditIdIndexRoute =
     path: '/animes/edit/$id/',
     getParentRoute: () => AppDashboardRouteRoute,
   } as any)
-const AppDashboardAnimesChangeGroupIdIndexRoute =
-  AppDashboardAnimesChangeGroupIdIndexRouteImport.update({
-    id: '/animes/change-group/$id/',
-    path: '/animes/change-group/$id/',
+const AppDashboardChannelsChangeGroupIdIndexRoute =
+  AppDashboardChannelsChangeGroupIdIndexRouteImport.update({
+    id: '/channels/change-group/$id/',
+    path: '/channels/change-group/$id/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
+const AppDashboardChannelsEditIdIndexRoute =
+  AppDashboardChannelsEditIdIndexRouteImport.update({
+    id: '/channels/edit/$id/',
+    path: '/channels/edit/$id/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
+const AppDashboardGroupsIdAddChannelIndexRoute =
+  AppDashboardGroupsIdAddChannelIndexRouteImport.update({
+    id: '/groups/$id/add-channel/',
+    path: '/groups/$id/add-channel/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
+const AppDashboardGroupsIdEditIndexRoute =
+  AppDashboardGroupsIdEditIndexRouteImport.update({
+    id: '/groups/$id/edit/',
+    path: '/groups/$id/edit/',
+    getParentRoute: () => AppDashboardRouteRoute,
+  } as any)
+const AppDashboardGroupsIdShareIndexRoute =
+  AppDashboardGroupsIdShareIndexRouteImport.update({
+    id: '/groups/$id/share/',
+    path: '/groups/$id/share/',
     getParentRoute: () => AppDashboardRouteRoute,
   } as any)
 
@@ -277,35 +277,35 @@ export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/dashboard/settings': typeof AppDashboardSettingsRouteRouteWithChildren
   '/blog/$slug': typeof AppBlogSlugRoute
-  '/blog': typeof AppBlogIndexRoute
+  '/blog/': typeof AppBlogIndexRoute
   '/dashboard/': typeof AppDashboardIndexRoute
-  '/support': typeof AppSupportIndexRoute
-  '/forgot-password': typeof AuthForgotPasswordIndexRoute
-  '/login': typeof AuthLoginIndexRoute
-  '/register': typeof AuthRegisterIndexRoute
+  '/support/': typeof AppSupportIndexRoute
+  '/forgot-password/': typeof AuthForgotPasswordIndexRoute
+  '/login/': typeof AuthLoginIndexRoute
+  '/register/': typeof AuthRegisterIndexRoute
   '/subscriptions/confirm/$code': typeof AuthSubscriptionsConfirmCodeRoute
-  '/dashboard/animes': typeof AppDashboardAnimesIndexRoute
-  '/dashboard/channels': typeof AppDashboardChannelsIndexRoute
-  '/dashboard/groups': typeof AppDashboardGroupsIndexRoute
-  '/dashboard/groupshelf': typeof AppDashboardGroupshelfIndexRoute
-  '/dashboard/share-links': typeof AppDashboardShareLinksIndexRoute
-  '/dashboard/websites': typeof AppDashboardWebsitesIndexRoute
-  '/dashboard/groups/$id': typeof AppDashboardGroupsIdIndexRoute
-  '/dashboard/groups/new': typeof AppDashboardGroupsNewIndexRoute
-  '/dashboard/settings/account': typeof AppDashboardSettingsAccountIndexRoute
-  '/dashboard/settings/appearance': typeof AppDashboardSettingsAppearanceIndexRoute
-  '/dashboard/settings/billing': typeof AppDashboardSettingsBillingIndexRoute
-  '/dashboard/settings/groups': typeof AppDashboardSettingsGroupsIndexRoute
-  '/share/$type/$id': typeof AppShareTypeIdIndexRoute
-  '/forgot-password/confirm/$id': typeof AuthForgotPasswordConfirmIdIndexRoute
-  '/forgot-password/success/$email': typeof AuthForgotPasswordSuccessEmailIndexRoute
-  '/dashboard/animes/change-group/$id': typeof AppDashboardAnimesChangeGroupIdIndexRoute
-  '/dashboard/animes/edit/$id': typeof AppDashboardAnimesEditIdIndexRoute
-  '/dashboard/channels/change-group/$id': typeof AppDashboardChannelsChangeGroupIdIndexRoute
-  '/dashboard/channels/edit/$id': typeof AppDashboardChannelsEditIdIndexRoute
-  '/dashboard/groups/$id/add-channel': typeof AppDashboardGroupsIdAddChannelIndexRoute
-  '/dashboard/groups/$id/edit': typeof AppDashboardGroupsIdEditIndexRoute
-  '/dashboard/groups/$id/share': typeof AppDashboardGroupsIdShareIndexRoute
+  '/dashboard/animes/': typeof AppDashboardAnimesIndexRoute
+  '/dashboard/channels/': typeof AppDashboardChannelsIndexRoute
+  '/dashboard/groups/': typeof AppDashboardGroupsIndexRoute
+  '/dashboard/groupshelf/': typeof AppDashboardGroupshelfIndexRoute
+  '/dashboard/share-links/': typeof AppDashboardShareLinksIndexRoute
+  '/dashboard/websites/': typeof AppDashboardWebsitesIndexRoute
+  '/dashboard/groups/$id/': typeof AppDashboardGroupsIdIndexRoute
+  '/dashboard/groups/new/': typeof AppDashboardGroupsNewIndexRoute
+  '/dashboard/settings/account/': typeof AppDashboardSettingsAccountIndexRoute
+  '/dashboard/settings/appearance/': typeof AppDashboardSettingsAppearanceIndexRoute
+  '/dashboard/settings/billing/': typeof AppDashboardSettingsBillingIndexRoute
+  '/dashboard/settings/groups/': typeof AppDashboardSettingsGroupsIndexRoute
+  '/share/$type/$id/': typeof AppShareTypeIdIndexRoute
+  '/forgot-password/confirm/$id/': typeof AuthForgotPasswordConfirmIdIndexRoute
+  '/forgot-password/success/$email/': typeof AuthForgotPasswordSuccessEmailIndexRoute
+  '/dashboard/animes/change-group/$id/': typeof AppDashboardAnimesChangeGroupIdIndexRoute
+  '/dashboard/animes/edit/$id/': typeof AppDashboardAnimesEditIdIndexRoute
+  '/dashboard/channels/change-group/$id/': typeof AppDashboardChannelsChangeGroupIdIndexRoute
+  '/dashboard/channels/edit/$id/': typeof AppDashboardChannelsEditIdIndexRoute
+  '/dashboard/groups/$id/add-channel/': typeof AppDashboardGroupsIdAddChannelIndexRoute
+  '/dashboard/groups/$id/edit/': typeof AppDashboardGroupsIdEditIndexRoute
+  '/dashboard/groups/$id/share/': typeof AppDashboardGroupsIdShareIndexRoute
 }
 export interface FileRoutesByTo {
   '/about': typeof AppAboutRoute
@@ -402,35 +402,35 @@ export interface FileRouteTypes {
     | '/'
     | '/dashboard/settings'
     | '/blog/$slug'
-    | '/blog'
+    | '/blog/'
     | '/dashboard/'
-    | '/support'
-    | '/forgot-password'
-    | '/login'
-    | '/register'
+    | '/support/'
+    | '/forgot-password/'
+    | '/login/'
+    | '/register/'
     | '/subscriptions/confirm/$code'
-    | '/dashboard/animes'
-    | '/dashboard/channels'
-    | '/dashboard/groups'
-    | '/dashboard/groupshelf'
-    | '/dashboard/share-links'
-    | '/dashboard/websites'
-    | '/dashboard/groups/$id'
-    | '/dashboard/groups/new'
-    | '/dashboard/settings/account'
-    | '/dashboard/settings/appearance'
-    | '/dashboard/settings/billing'
-    | '/dashboard/settings/groups'
-    | '/share/$type/$id'
-    | '/forgot-password/confirm/$id'
-    | '/forgot-password/success/$email'
-    | '/dashboard/animes/change-group/$id'
-    | '/dashboard/animes/edit/$id'
-    | '/dashboard/channels/change-group/$id'
-    | '/dashboard/channels/edit/$id'
-    | '/dashboard/groups/$id/add-channel'
-    | '/dashboard/groups/$id/edit'
-    | '/dashboard/groups/$id/share'
+    | '/dashboard/animes/'
+    | '/dashboard/channels/'
+    | '/dashboard/groups/'
+    | '/dashboard/groupshelf/'
+    | '/dashboard/share-links/'
+    | '/dashboard/websites/'
+    | '/dashboard/groups/$id/'
+    | '/dashboard/groups/new/'
+    | '/dashboard/settings/account/'
+    | '/dashboard/settings/appearance/'
+    | '/dashboard/settings/billing/'
+    | '/dashboard/settings/groups/'
+    | '/share/$type/$id/'
+    | '/forgot-password/confirm/$id/'
+    | '/forgot-password/success/$email/'
+    | '/dashboard/animes/change-group/$id/'
+    | '/dashboard/animes/edit/$id/'
+    | '/dashboard/channels/change-group/$id/'
+    | '/dashboard/channels/edit/$id/'
+    | '/dashboard/groups/$id/add-channel/'
+    | '/dashboard/groups/$id/edit/'
+    | '/dashboard/groups/$id/share/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/about'
@@ -544,32 +544,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/terms': {
-      id: '/_app/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof AppTermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/privacy': {
-      id: '/_app/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof AppPrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/faq': {
-      id: '/_app/faq'
-      path: '/faq'
-      fullPath: '/faq'
-      preLoaderRoute: typeof AppFaqRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/contact': {
-      id: '/_app/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof AppContactRouteImport
+    '/_app/about': {
+      id: '/_app/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AppAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_app/changelog': {
@@ -579,11 +558,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppChangelogRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/about': {
-      id: '/_app/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AppAboutRouteImport
+    '/_app/contact': {
+      id: '/_app/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof AppContactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_app/dashboard': {
@@ -593,45 +572,31 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/register/': {
-      id: '/_auth/register/'
-      path: '/register'
-      fullPath: '/register'
-      preLoaderRoute: typeof AuthRegisterIndexRouteImport
+    '/_app/faq': {
+      id: '/_app/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof AppFaqRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/login/': {
-      id: '/_auth/login/'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof AuthLoginIndexRouteImport
+    '/_app/privacy': {
+      id: '/_app/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof AppPrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/forgot-password/': {
-      id: '/_auth/forgot-password/'
-      path: '/forgot-password'
-      fullPath: '/forgot-password'
-      preLoaderRoute: typeof AuthForgotPasswordIndexRouteImport
+    '/_app/terms': {
+      id: '/_app/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof AppTermsRouteImport
       parentRoute: typeof rootRouteImport
-    }
-    '/_app/support/': {
-      id: '/_app/support/'
-      path: '/support'
-      fullPath: '/support'
-      preLoaderRoute: typeof AppSupportIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/dashboard/': {
-      id: '/_app/dashboard/'
-      path: '/'
-      fullPath: '/dashboard/'
-      preLoaderRoute: typeof AppDashboardIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
     }
     '/_app/blog/': {
       id: '/_app/blog/'
       path: '/blog'
-      fullPath: '/blog'
+      fullPath: '/blog/'
       preLoaderRoute: typeof AppBlogIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -642,6 +607,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppBlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_app/dashboard/': {
+      id: '/_app/dashboard/'
+      path: '/'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof AppDashboardIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
     '/_app/dashboard/settings': {
       id: '/_app/dashboard/settings'
       path: '/settings'
@@ -649,46 +621,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppDashboardSettingsRouteRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
-    '/_app/dashboard/websites/': {
-      id: '/_app/dashboard/websites/'
-      path: '/websites'
-      fullPath: '/dashboard/websites'
-      preLoaderRoute: typeof AppDashboardWebsitesIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_app/support/': {
+      id: '/_app/support/'
+      path: '/support'
+      fullPath: '/support/'
+      preLoaderRoute: typeof AppSupportIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_app/dashboard/share-links/': {
-      id: '/_app/dashboard/share-links/'
-      path: '/share-links'
-      fullPath: '/dashboard/share-links'
-      preLoaderRoute: typeof AppDashboardShareLinksIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_auth/forgot-password/': {
+      id: '/_auth/forgot-password/'
+      path: '/forgot-password'
+      fullPath: '/forgot-password/'
+      preLoaderRoute: typeof AuthForgotPasswordIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_app/dashboard/groupshelf/': {
-      id: '/_app/dashboard/groupshelf/'
-      path: '/groupshelf'
-      fullPath: '/dashboard/groupshelf'
-      preLoaderRoute: typeof AppDashboardGroupshelfIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_auth/login/': {
+      id: '/_auth/login/'
+      path: '/login'
+      fullPath: '/login/'
+      preLoaderRoute: typeof AuthLoginIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_app/dashboard/groups/': {
-      id: '/_app/dashboard/groups/'
-      path: '/groups'
-      fullPath: '/dashboard/groups'
-      preLoaderRoute: typeof AppDashboardGroupsIndexRouteImport
+    '/_auth/register/': {
+      id: '/_auth/register/'
+      path: '/register'
+      fullPath: '/register/'
+      preLoaderRoute: typeof AuthRegisterIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_app/dashboard/animes/': {
+      id: '/_app/dashboard/animes/'
+      path: '/animes'
+      fullPath: '/dashboard/animes/'
+      preLoaderRoute: typeof AppDashboardAnimesIndexRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
     '/_app/dashboard/channels/': {
       id: '/_app/dashboard/channels/'
       path: '/channels'
-      fullPath: '/dashboard/channels'
+      fullPath: '/dashboard/channels/'
       preLoaderRoute: typeof AppDashboardChannelsIndexRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
-    '/_app/dashboard/animes/': {
-      id: '/_app/dashboard/animes/'
-      path: '/animes'
-      fullPath: '/dashboard/animes'
-      preLoaderRoute: typeof AppDashboardAnimesIndexRouteImport
+    '/_app/dashboard/groups/': {
+      id: '/_app/dashboard/groups/'
+      path: '/groups'
+      fullPath: '/dashboard/groups/'
+      preLoaderRoute: typeof AppDashboardGroupsIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/groupshelf/': {
+      id: '/_app/dashboard/groupshelf/'
+      path: '/groupshelf'
+      fullPath: '/dashboard/groupshelf/'
+      preLoaderRoute: typeof AppDashboardGroupshelfIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/share-links/': {
+      id: '/_app/dashboard/share-links/'
+      path: '/share-links'
+      fullPath: '/dashboard/share-links/'
+      preLoaderRoute: typeof AppDashboardShareLinksIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/websites/': {
+      id: '/_app/dashboard/websites/'
+      path: '/websites'
+      fullPath: '/dashboard/websites/'
+      preLoaderRoute: typeof AppDashboardWebsitesIndexRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
     '/_auth/subscriptions/confirm/$code': {
@@ -698,116 +698,116 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthSubscriptionsConfirmCodeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_auth/forgot-password/success/$email/': {
-      id: '/_auth/forgot-password/success/$email/'
-      path: '/forgot-password/success/$email'
-      fullPath: '/forgot-password/success/$email'
-      preLoaderRoute: typeof AuthForgotPasswordSuccessEmailIndexRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_app/dashboard/groups/$id/': {
+      id: '/_app/dashboard/groups/$id/'
+      path: '/groups/$id'
+      fullPath: '/dashboard/groups/$id/'
+      preLoaderRoute: typeof AppDashboardGroupsIdIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
     }
-    '/_auth/forgot-password/confirm/$id/': {
-      id: '/_auth/forgot-password/confirm/$id/'
-      path: '/forgot-password/confirm/$id'
-      fullPath: '/forgot-password/confirm/$id'
-      preLoaderRoute: typeof AuthForgotPasswordConfirmIdIndexRouteImport
-      parentRoute: typeof rootRouteImport
+    '/_app/dashboard/groups/new/': {
+      id: '/_app/dashboard/groups/new/'
+      path: '/groups/new'
+      fullPath: '/dashboard/groups/new/'
+      preLoaderRoute: typeof AppDashboardGroupsNewIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
     }
-    '/_app/share/$type/$id/': {
-      id: '/_app/share/$type/$id/'
-      path: '/share/$type/$id'
-      fullPath: '/share/$type/$id'
-      preLoaderRoute: typeof AppShareTypeIdIndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_app/dashboard/settings/groups/': {
-      id: '/_app/dashboard/settings/groups/'
-      path: '/groups'
-      fullPath: '/dashboard/settings/groups'
-      preLoaderRoute: typeof AppDashboardSettingsGroupsIndexRouteImport
-      parentRoute: typeof AppDashboardSettingsRouteRoute
-    }
-    '/_app/dashboard/settings/billing/': {
-      id: '/_app/dashboard/settings/billing/'
-      path: '/billing'
-      fullPath: '/dashboard/settings/billing'
-      preLoaderRoute: typeof AppDashboardSettingsBillingIndexRouteImport
+    '/_app/dashboard/settings/account/': {
+      id: '/_app/dashboard/settings/account/'
+      path: '/account'
+      fullPath: '/dashboard/settings/account/'
+      preLoaderRoute: typeof AppDashboardSettingsAccountIndexRouteImport
       parentRoute: typeof AppDashboardSettingsRouteRoute
     }
     '/_app/dashboard/settings/appearance/': {
       id: '/_app/dashboard/settings/appearance/'
       path: '/appearance'
-      fullPath: '/dashboard/settings/appearance'
+      fullPath: '/dashboard/settings/appearance/'
       preLoaderRoute: typeof AppDashboardSettingsAppearanceIndexRouteImport
       parentRoute: typeof AppDashboardSettingsRouteRoute
     }
-    '/_app/dashboard/settings/account/': {
-      id: '/_app/dashboard/settings/account/'
-      path: '/account'
-      fullPath: '/dashboard/settings/account'
-      preLoaderRoute: typeof AppDashboardSettingsAccountIndexRouteImport
+    '/_app/dashboard/settings/billing/': {
+      id: '/_app/dashboard/settings/billing/'
+      path: '/billing'
+      fullPath: '/dashboard/settings/billing/'
+      preLoaderRoute: typeof AppDashboardSettingsBillingIndexRouteImport
       parentRoute: typeof AppDashboardSettingsRouteRoute
     }
-    '/_app/dashboard/groups/new/': {
-      id: '/_app/dashboard/groups/new/'
-      path: '/groups/new'
-      fullPath: '/dashboard/groups/new'
-      preLoaderRoute: typeof AppDashboardGroupsNewIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_app/dashboard/settings/groups/': {
+      id: '/_app/dashboard/settings/groups/'
+      path: '/groups'
+      fullPath: '/dashboard/settings/groups/'
+      preLoaderRoute: typeof AppDashboardSettingsGroupsIndexRouteImport
+      parentRoute: typeof AppDashboardSettingsRouteRoute
     }
-    '/_app/dashboard/groups/$id/': {
-      id: '/_app/dashboard/groups/$id/'
-      path: '/groups/$id'
-      fullPath: '/dashboard/groups/$id'
-      preLoaderRoute: typeof AppDashboardGroupsIdIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_app/share/$type/$id/': {
+      id: '/_app/share/$type/$id/'
+      path: '/share/$type/$id'
+      fullPath: '/share/$type/$id/'
+      preLoaderRoute: typeof AppShareTypeIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_app/dashboard/groups/$id/share/': {
-      id: '/_app/dashboard/groups/$id/share/'
-      path: '/groups/$id/share'
-      fullPath: '/dashboard/groups/$id/share'
-      preLoaderRoute: typeof AppDashboardGroupsIdShareIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_auth/forgot-password/confirm/$id/': {
+      id: '/_auth/forgot-password/confirm/$id/'
+      path: '/forgot-password/confirm/$id'
+      fullPath: '/forgot-password/confirm/$id/'
+      preLoaderRoute: typeof AuthForgotPasswordConfirmIdIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_app/dashboard/groups/$id/edit/': {
-      id: '/_app/dashboard/groups/$id/edit/'
-      path: '/groups/$id/edit'
-      fullPath: '/dashboard/groups/$id/edit'
-      preLoaderRoute: typeof AppDashboardGroupsIdEditIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
+    '/_auth/forgot-password/success/$email/': {
+      id: '/_auth/forgot-password/success/$email/'
+      path: '/forgot-password/success/$email'
+      fullPath: '/forgot-password/success/$email/'
+      preLoaderRoute: typeof AuthForgotPasswordSuccessEmailIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
-    '/_app/dashboard/groups/$id/add-channel/': {
-      id: '/_app/dashboard/groups/$id/add-channel/'
-      path: '/groups/$id/add-channel'
-      fullPath: '/dashboard/groups/$id/add-channel'
-      preLoaderRoute: typeof AppDashboardGroupsIdAddChannelIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
-    }
-    '/_app/dashboard/channels/edit/$id/': {
-      id: '/_app/dashboard/channels/edit/$id/'
-      path: '/channels/edit/$id'
-      fullPath: '/dashboard/channels/edit/$id'
-      preLoaderRoute: typeof AppDashboardChannelsEditIdIndexRouteImport
-      parentRoute: typeof AppDashboardRouteRoute
-    }
-    '/_app/dashboard/channels/change-group/$id/': {
-      id: '/_app/dashboard/channels/change-group/$id/'
-      path: '/channels/change-group/$id'
-      fullPath: '/dashboard/channels/change-group/$id'
-      preLoaderRoute: typeof AppDashboardChannelsChangeGroupIdIndexRouteImport
+    '/_app/dashboard/animes/change-group/$id/': {
+      id: '/_app/dashboard/animes/change-group/$id/'
+      path: '/animes/change-group/$id'
+      fullPath: '/dashboard/animes/change-group/$id/'
+      preLoaderRoute: typeof AppDashboardAnimesChangeGroupIdIndexRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
     '/_app/dashboard/animes/edit/$id/': {
       id: '/_app/dashboard/animes/edit/$id/'
       path: '/animes/edit/$id'
-      fullPath: '/dashboard/animes/edit/$id'
+      fullPath: '/dashboard/animes/edit/$id/'
       preLoaderRoute: typeof AppDashboardAnimesEditIdIndexRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
-    '/_app/dashboard/animes/change-group/$id/': {
-      id: '/_app/dashboard/animes/change-group/$id/'
-      path: '/animes/change-group/$id'
-      fullPath: '/dashboard/animes/change-group/$id'
-      preLoaderRoute: typeof AppDashboardAnimesChangeGroupIdIndexRouteImport
+    '/_app/dashboard/channels/change-group/$id/': {
+      id: '/_app/dashboard/channels/change-group/$id/'
+      path: '/channels/change-group/$id'
+      fullPath: '/dashboard/channels/change-group/$id/'
+      preLoaderRoute: typeof AppDashboardChannelsChangeGroupIdIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/channels/edit/$id/': {
+      id: '/_app/dashboard/channels/edit/$id/'
+      path: '/channels/edit/$id'
+      fullPath: '/dashboard/channels/edit/$id/'
+      preLoaderRoute: typeof AppDashboardChannelsEditIdIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/groups/$id/add-channel/': {
+      id: '/_app/dashboard/groups/$id/add-channel/'
+      path: '/groups/$id/add-channel'
+      fullPath: '/dashboard/groups/$id/add-channel/'
+      preLoaderRoute: typeof AppDashboardGroupsIdAddChannelIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/groups/$id/edit/': {
+      id: '/_app/dashboard/groups/$id/edit/'
+      path: '/groups/$id/edit'
+      fullPath: '/dashboard/groups/$id/edit/'
+      preLoaderRoute: typeof AppDashboardGroupsIdEditIndexRouteImport
+      parentRoute: typeof AppDashboardRouteRoute
+    }
+    '/_app/dashboard/groups/$id/share/': {
+      id: '/_app/dashboard/groups/$id/share/'
+      path: '/groups/$id/share'
+      fullPath: '/dashboard/groups/$id/share/'
+      preLoaderRoute: typeof AppDashboardGroupsIdShareIndexRouteImport
       parentRoute: typeof AppDashboardRouteRoute
     }
   }

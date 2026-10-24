@@ -1,12 +1,13 @@
 // vite.config.ts
+
+import contentCollections from "@content-collections/vite";
 import tailwindcss from "@tailwindcss/vite";
+import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import { defineConfig, type Plugin } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
-import contentCollections from "@content-collections/vite";
 import sitemapPlugin from "vite-plugin-tanstack-router-sitemap";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
 	server: {
@@ -24,7 +25,6 @@ export default defineConfig({
 		port: 3000,
 	},
 	build: {
-		cssCodeSplit: false,
 		outDir: "./output",
 		assetsDir: "assets",
 	},

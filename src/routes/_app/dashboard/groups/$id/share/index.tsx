@@ -24,17 +24,11 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useGroup } from "@/hooks/useQuery/useGroups";
 import { useGenerateShareLink } from "@/hooks/useQuery/useShare";
 
-interface ShareGroupPageProps {
-	params: {
-		id: string;
-	};
-}
-
 export const Route = createFileRoute("/_app/dashboard/groups/$id/share/")({
 	component: ShareGroupPage,
 });
 
-function ShareGroupPage({ params }: ShareGroupPageProps) {
+function ShareGroupPage() {
 	const router = useNavigate();
 	const { t } = useLanguage();
 	const { id } = Route.useParams();

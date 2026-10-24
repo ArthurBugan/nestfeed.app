@@ -1,6 +1,6 @@
 import { Progress as BaseProgress } from "@base-ui/react/progress";
 
-export function Progress({ value }) {
+export function Progress({ value }: { value: number | null }) {
 	return (
 		<BaseProgress.Root
 			className="grid w-full grid-cols-2 gap-y-2"

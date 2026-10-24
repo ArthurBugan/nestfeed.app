@@ -93,7 +93,11 @@ function RegisterPage() {
 		} catch (error) {
 			form.setError("root", {
 				type: "manual",
-				message: error?.message || "Registration failed.",
+				message:
+					error instanceof Error
+						? error.message
+						: (error as { message?: string })?.message ||
+							"Registration failed.",
 			});
 		}
 	};
