@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { useLanguage } from "@/components/language-provider";
 import { Button } from "@/components/ui/button";
 
+import { initAnalytics } from "@/lib/analytics";
+
 const STORAGE_KEY = "cookie-consent";
 
 declare global {
@@ -36,11 +38,13 @@ export function CookieConsent() {
 		const stored = getConsent();
 		applyAdPreference(stored);
 		if (!stored) setVisible(true);
+		else initAnalytics(); // choice previously stored — load trackers
 	}, []);
 
 	function choose(choice: ConsentChoice) {
 		window.localStorage.setItem(STORAGE_KEY, choice);
 		applyAdPreference(choice);
+		initAnalytics();
 		setVisible(false);
 	}
 

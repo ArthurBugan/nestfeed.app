@@ -7,6 +7,7 @@ const BADGES = [
 		href: "https://acidtools.com",
 		src: "https://acidtools.com/assets/images/badge-dark.png",
 		alt: "Acid Tools",
+		width: 120,
 	},
 	{
 		href: "https://www.foundrlist.com/product/groupify-2?utm_source=badge&utm_medium=embed",
@@ -18,6 +19,7 @@ const BADGES = [
 		href: "https://peerpush.net/p/groupify",
 		src: "https://peerpush.net/p/groupify/badge.png",
 		alt: "Groupify badge",
+		width: 120,
 	},
 ];
 
@@ -38,7 +40,7 @@ export function SiteFooter({ showBadges = false }: { showBadges?: boolean }) {
 						</p>
 					</div>
 					<nav aria-label={t("footer.product")}>
-						<h4 className="font-medium mb-3">{t("footer.product")}</h4>
+						<h3 className="font-medium mb-3">{t("footer.product")}</h3>
 						<ul className="space-y-2 text-sm text-muted-foreground">
 							<li>
 								<Link to="/dashboard" className="hover:text-foreground">
@@ -58,7 +60,7 @@ export function SiteFooter({ showBadges = false }: { showBadges?: boolean }) {
 						</ul>
 					</nav>
 					<nav aria-label={t("footer.resources")}>
-						<h4 className="font-medium mb-3">{t("footer.resources")}</h4>
+						<h3 className="font-medium mb-3">{t("footer.resources")}</h3>
 						<ul className="space-y-2 text-sm text-muted-foreground">
 							<li>
 								<Link to="/blog" className="hover:text-foreground">
@@ -98,7 +100,7 @@ export function SiteFooter({ showBadges = false }: { showBadges?: boolean }) {
 						</ul>
 					</nav>
 					<nav aria-label={t("footer.company")}>
-						<h4 className="font-medium mb-3">{t("footer.company")}</h4>
+						<h3 className="font-medium mb-3">{t("footer.company")}</h3>
 						<ul className="space-y-2 text-sm text-muted-foreground">
 							<li>
 								<Link to="/about" className="hover:text-foreground">

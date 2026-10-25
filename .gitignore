@@ -34,4 +34,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-*.vscode
+*.vscodelh-server.log
+
+# Lighthouse run logs
+lh-server.log

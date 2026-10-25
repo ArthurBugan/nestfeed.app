@@ -1,146 +1,40 @@
 "use client";
 
 import { Link } from "@tanstack/react-router";
-import { motion, useInView } from "framer-motion";
 import { ArrowRight, Check, Play, Sparkles, Star } from "lucide-react";
-import { useRef } from "react";
 import { GithubIcon, YoutubeIcon } from "@/components/brand-icons";
+import {
+	AppStoreIcon,
+	ChromeIcon,
+	FirefoxIcon,
+	GooglePlayIcon,
+} from "@/components/store-icons";
 import { SiteFooter } from "@/components/site-footer";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { CompactHeader } from "./compact-header";
-import { IconViewer } from "./icon-picker";
 import { useLanguage } from "./language-provider";
 
-// --- Animation variants ---
-// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
-const fadeInUp: any = {
-	hidden: { opacity: 0, y: 32 },
-	visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
-
-// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
-const staggerContainer: any = {
-	hidden: { opacity: 0 },
-	visible: {
-		opacity: 1,
-		transition: { staggerChildren: 0.1, delayChildren: 0.15 },
-	},
-};
-
-// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
-const scaleIn: any = {
-	hidden: { opacity: 0, scale: 0.92 },
-	visible: {
-		opacity: 1,
-		scale: 1,
-		transition: { duration: 0.6, ease: "easeOut" },
-	},
-};
-
-// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
-const slideInLeft: any = {
-	hidden: { opacity: 0, x: -48 },
-	visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type mismatch
-const slideInRight: any = {
-	hidden: { opacity: 0, x: 48 },
-	visible: { opacity: 1, x: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
-
-// Reusable section wrapper that animates on scroll
-function AnimatedSection({
-	children,
-	variants = fadeInUp,
-	className,
-}: {
-	children: React.ReactNode;
-	// biome-ignore lint/suspicious/noExplicitAny: framer-motion Variants type is overly strict
-	variants?: any;
-	className?: string;
-}) {
-	const ref = useRef(null);
-	const inView = useInView(ref, { once: true, margin: "-60px" });
-	return (
-		<motion.div
-			ref={ref}
-			initial="hidden"
-			animate={inView ? "visible" : "hidden"}
-			variants={variants}
-			className={className}
-		>
-			{children}
-		</motion.div>
-	);
-}
-
-// Reusable staggered grid wrapper
-function AnimatedGrid({
+// Reusable section wrapper: reveals on scroll via scroll-driven CSS animation
+// (progressive enhancement — falls back to static content).
+function RevealSection({
 	children,
 	className,
 }: {
 	children: React.ReactNode;
 	className?: string;
 }) {
-	const ref = useRef(null);
-	const inView = useInView(ref, { once: true, margin: "-60px" });
-	return (
-		<motion.div
-			ref={ref}
-			initial="hidden"
-			animate={inView ? "visible" : "hidden"}
-			variants={staggerContainer}
-			className={className}
-		>
-			{children}
-		</motion.div>
-	);
+	return <div className={cn("reveal-view", className)}>{children}</div>;
 }
 
 function AnimatedBackground() {
 	return (
 		<div className="absolute inset-0 -z-10 overflow-hidden">
-			<motion.div
-				className="absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-3xl"
-				animate={{
-					y: [0, -30, 0],
-					x: [0, 20, 0],
-					scale: [1, 1.08, 1],
-				}}
-				transition={{ duration: 18, repeat: Infinity, ease: "easeInOut" }}
-			/>
-			<motion.div
-				className="absolute top-[40%] -right-[10%] w-[40%] h-[40%] rounded-full bg-secondary/5 blur-3xl"
-				animate={{
-					y: [0, 25, 0],
-					x: [0, -15, 0],
-					scale: [1, 1.06, 1],
-				}}
-				transition={{
-					duration: 22,
-					repeat: Infinity,
-					ease: "easeInOut",
-					delay: 2,
-				}}
-			/>
-			<motion.div
-				className="absolute bottom-[10%] left-[20%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-3xl"
-				animate={{
-					y: [0, -20, 0],
-					x: [0, 25, 0],
-					scale: [1, 1.05, 1],
-				}}
-				transition={{
-					duration: 20,
-					repeat: Infinity,
-					ease: "easeInOut",
-					delay: 4,
-				}}
-			/>
+			<div className="anim-orb absolute -top-[20%] -left-[10%] w-[50%] h-[50%] rounded-full bg-primary/5 blur-3xl" />
+			<div className="anim-orb anim-orb-b absolute top-[40%] -right-[10%] w-[40%] h-[40%] rounded-full bg-secondary/5 blur-3xl" />
+			<div className="anim-orb anim-orb-c absolute bottom-[10%] left-[20%] w-[30%] h-[30%] rounded-full bg-primary/5 blur-3xl" />
 		</div>
 	);
 }
@@ -153,17 +47,20 @@ function CompactCard({
 	className?: string;
 }) {
 	return (
-		<motion.div
-			whileHover={{ y: -2, transition: { duration: 0.2 } }}
+		<div
 			className={cn(
-				"rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow duration-200",
+				"rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-[box-shadow,transform] duration-200",
 				className,
 			)}
 		>
 			{children}
-		</motion.div>
+		</div>
 	);
 }
+
+// Shared CTA hover/tap behaviour (replaces framer-motion pointers)
+const ctaMotion =
+	"transition-transform duration-200 hover:scale-[1.03] active:scale-[0.97]";
 
 export function LandingPage() {
 	const { t } = useLanguage();
@@ -277,84 +174,66 @@ export function LandingPage() {
 			<section className="relative py-20 lg:py-28">
 				<div className="container mx-auto px-4">
 					<div className="max-w-3xl mx-auto text-center space-y-6">
-						<AnimatedSection variants={fadeInUp}>
+						<div className="reveal-t">
 							<Badge
 								variant="outline"
 								className="gap-1 bg-primary/10 border-primary/30 text-primary"
 							>
 								<Sparkles className="h-3 w-3" /> {t("landing.hero.badge")}
 							</Badge>
-						</AnimatedSection>
-						<AnimatedSection variants={fadeInUp}>
-							<h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
-								{t("landing.hero.title")}
-							</h1>
-						</AnimatedSection>
-						<AnimatedSection variants={fadeInUp}>
-							<p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-								{t("landing.hero.subtitle")}
-							</p>
-						</AnimatedSection>
-						<AnimatedSection variants={fadeInUp}>
-							<div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-								<motion.div
-									whileHover={{ scale: 1.03 }}
-									whileTap={{ scale: 0.97 }}
+						</div>
+						<h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight">
+							{t("landing.hero.title")}
+						</h1>
+						<p className="text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
+							{t("landing.hero.subtitle")}
+						</p>
+						<div
+							className={cn(
+								"reveal-t flex flex-col sm:flex-row gap-3 justify-center pt-2",
+							)}
+							style={{ animationDelay: "120ms" }}
+						>
+							<div className={ctaMotion}>
+								<Button
+									size="lg"
+									className="bg-primary hover:bg-primary/90 shadow-md"
+									asChild
 								>
-									<Button
-										size="lg"
-										className="bg-primary hover:bg-primary/90 shadow-md"
-										asChild
-									>
-										<Link to="/register">
-											{t("landing.hero.cta.primary")}{" "}
-											<motion.span
-												animate={{ x: [0, 4, 0] }}
-												transition={{
-													duration: 1.5,
-													repeat: Infinity,
-													ease: "easeInOut",
-												}}
-											>
-												<ArrowRight className="ml-2 h-4 w-4" />
-											</motion.span>
-										</Link>
-									</Button>
-								</motion.div>
-								<motion.div
-									whileHover={{ scale: 1.03 }}
-									whileTap={{ scale: 0.97 }}
-								>
-									<Button size="lg" variant="outline" asChild>
-										<a
-											href="https://youtu.be/Hz-F6q0SZqU"
-											target="_blank"
-											rel="noopener"
-										>
-											<Play className="mr-2 h-4 w-4" />{" "}
-											{t("landing.hero.cta.secondary")}
-										</a>
-									</Button>
-								</motion.div>
+									<Link to="/register">
+										{t("landing.hero.cta.primary")}{" "}
+										<span className="anim-nudge inline-block">
+											<ArrowRight className="ml-2 h-4 w-4" />
+										</span>
+									</Link>
+								</Button>
 							</div>
-						</AnimatedSection>
-						<AnimatedGrid className="flex items-center justify-center gap-8 pt-6 text-sm text-muted-foreground">
+							<div className={ctaMotion}>
+								<Button size="lg" variant="outline" asChild>
+									<a
+										href="https://youtu.be/Hz-F6q0SZqU"
+										target="_blank"
+										rel="noopener"
+									>
+										<Play className="mr-2 h-4 w-4" />{" "}
+										{t("landing.hero.cta.secondary")}
+									</a>
+								</Button>
+							</div>
+						</div>
+						<RevealSection className="flex items-center justify-center gap-8 pt-6 text-sm text-muted-foreground">
 							{stats.map((s) => (
-								<motion.div
-									key={s.label}
-									variants={fadeInUp}
-									className="text-center"
-								>
+								<div key={s.label} className="text-center">
 									<div className="font-semibold text-foreground">{s.value}</div>
 									<div>{s.label}</div>
-								</motion.div>
+								</div>
 							))}
-						</AnimatedGrid>
+						</RevealSection>
 					</div>
 
 					{/* Preview */}
 					<div className="mt-16 max-w-4xl mx-auto">
-						<AnimatedSection variants={scaleIn}>
+						<div className="reveal-t" style={{ animationDelay: "240ms" }}>
 							<CompactCard className="border-muted/50">
 								<div className="flex items-center gap-2 px-4 py-3 border-b bg-muted/30 rounded-t-xl">
 									<div className="flex gap-1.5">
@@ -372,12 +251,10 @@ export function LandingPage() {
 										{ name: "Cooking", channels: 8 },
 										{ name: "Gaming", channels: 15 },
 									].map((g, idx) => (
-										<motion.div
+										<div
 											key={g.name}
-											initial={{ opacity: 0, x: -16 }}
-											animate={{ opacity: 1, x: 0 }}
-											transition={{ delay: 0.4 + idx * 0.12, duration: 0.5 }}
-											className="flex items-center gap-3 p-2.5 rounded-lg bg-muted/40 hover:bg-muted/60 transition-colors"
+											className="reveal-t flex items-center gap-3 p-2.5 rounded-lg bg-muted/40 hover:bg-muted/60 transition-colors"
+											style={{ animationDelay: `${240 + idx * 90}ms` }}
 										>
 											<div className="w-8 h-8 rounded-md bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
 												<YoutubeIcon className="h-4 w-4 text-white" />
@@ -388,20 +265,19 @@ export function LandingPage() {
 													{g.channels} channels
 												</div>
 											</div>
-										</motion.div>
+										</div>
 									))}
 								</div>
 							</CompactCard>
-						</AnimatedSection>
+						</div>
 					</div>
 				</div>
 			</section>
 
 			{/* Features */}
-			{/** biome-ignore lint/correctness/useUniqueElementIds: <need to use explict id> */}
 			<section id="features" className="py-16 lg:py-20">
 				<div className="container mx-auto px-4">
-					<AnimatedSection variants={fadeInUp}>
+					<RevealSection>
 						<div className="text-center mb-12 space-y-3">
 							<Badge variant="outline" className="bg-muted/50">
 								{t("features.badge")}
@@ -413,19 +289,15 @@ export function LandingPage() {
 								{t("landing.features.subtitle")}
 							</p>
 						</div>
-					</AnimatedSection>
-					<AnimatedGrid className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-						{features.map((f, i) => (
-							<motion.div key={i} variants={fadeInUp}>
+					</RevealSection>
+					<RevealSection className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+						{features.map((f) => (
+							<div key={f.title}>
 								<CompactCard className="p-4 hover:border-primary/30 transition-colors">
 									<div className="flex items-start justify-between mb-3">
-										<motion.span
-											className="text-2xl"
-											whileHover={{ scale: 1.3, rotate: 12 }}
-											transition={{ type: "spring", stiffness: 300 }}
-										>
+										<span className="text-2xl inline-block transition-transform duration-200 hover:scale-125 hover:rotate-12">
 											{f.icon}
-										</motion.span>
+										</span>
 										{f.tag && (
 											<Badge
 												variant="secondary"
@@ -440,9 +312,9 @@ export function LandingPage() {
 										{f.desc}
 									</p>
 								</CompactCard>
-							</motion.div>
+							</div>
 						))}
-					</AnimatedGrid>
+					</RevealSection>
 				</div>
 			</section>
 
@@ -450,7 +322,7 @@ export function LandingPage() {
 			<section id="integrations" className="py-16 bg-muted/20">
 				<div className="container mx-auto px-4">
 					<div className="grid md:grid-cols-2 gap-8 items-center max-w-5xl mx-auto">
-						<AnimatedSection variants={slideInLeft}>
+						<RevealSection>
 							<div className="space-y-4">
 								<Badge
 									variant="secondary"
@@ -469,48 +341,47 @@ export function LandingPage() {
 									{[
 										{
 											href: "https://chromewebstore.google.com/detail/groupify-youtube-organize/dmdgaegnpjnnkcbdngfgkhlehlccbija",
-											icon: "logos:chrome",
+											Icon: ChromeIcon,
 											title: "Available on Chrome Web Store",
 										},
 										{
 											href: "https://addons.mozilla.org/en-US/firefox/addon/groupify-yt-organize",
-											icon: "logos:firefox",
+											Icon: FirefoxIcon,
 											title: "Available on Firefox Add-ons",
 										},
 										{
 											href: "https://play.google.com/store/apps/details?id=com.groupifyapp",
-											icon: "logos:google-play-icon",
+											Icon: GooglePlayIcon,
 											title: "Get it on Google Play",
 										},
 										{
 											href: "https://apps.apple.com/br/app/groupify-yt-subscriptions/id6714452813",
-											icon: "logos:apple-app-store",
+											Icon: AppStoreIcon,
 											title: "Available on the App Store",
 										},
 									].map((browser, idx) => (
-										<motion.div
+										<div
 											key={browser.title}
-											initial={{ opacity: 0, y: 12 }}
-											animate={{ opacity: 1, y: 0 }}
-											transition={{ delay: 0.3 + idx * 0.1 }}
+											className="reveal-t"
+											style={{ animationDelay: `${idx * 90}ms` }}
+											title={browser.title}
 										>
 											<Button
 												variant="outline"
 												size="icon"
 												asChild
 												className="h-12 w-12 rounded-xl border-muted-foreground/20 hover:border-primary/50 hover:bg-primary/5 transition-all duration-300"
-												title={browser.title}
 											>
-												<a href={browser.href}>
-													<IconViewer icon={browser.icon} className="h-6 w-6" />
+												<a href={browser.href} title={browser.title}>
+													<browser.Icon className="h-6 w-6" />
 												</a>
 											</Button>
-										</motion.div>
+										</div>
 									))}
 								</div>
 							</div>
-						</AnimatedSection>
-						<AnimatedSection variants={slideInRight}>
+						</RevealSection>
+						<RevealSection>
 							<CompactCard className="p-4">
 								<div className="flex items-center gap-3 mb-4">
 									<div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
@@ -523,19 +394,14 @@ export function LandingPage() {
 										</div>
 									</div>
 								</div>
-								<motion.div
-									initial={{ opacity: 0, scale: 0.9 }}
-									animate={{ opacity: 1, scale: 1 }}
-									transition={{ delay: 0.5, type: "spring", stiffness: 300 }}
-									className="flex items-center gap-2 p-2 rounded-lg bg-primary/10 border border-primary/20"
-								>
+								<div className="flex items-center gap-2 p-2 rounded-lg bg-primary/10 border border-primary/20">
 									<Check className="h-4 w-4 text-green-600 flex-shrink-0" />
 									<span className="text-sm font-medium">
 										Added to Tech Reviews
 									</span>
-								</motion.div>
+								</div>
 							</CompactCard>
-						</AnimatedSection>
+						</RevealSection>
 					</div>
 				</div>
 			</section>
@@ -543,7 +409,7 @@ export function LandingPage() {
 			{/* GitHub Repos */}
 			<section className="py-16 bg-muted/20">
 				<div className="container mx-auto px-4">
-					<AnimatedSection variants={fadeInUp}>
+					<RevealSection>
 						<div className="text-center mb-8 space-y-3">
 							<Badge variant="outline" className="bg-muted/50">
 								<GithubIcon className="h-3 w-3 mr-1" /> Open Source
@@ -555,8 +421,8 @@ export function LandingPage() {
 								Help us grow by starring our repositories!
 							</p>
 						</div>
-					</AnimatedSection>
-					<AnimatedGrid className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+					</RevealSection>
+					<RevealSection className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
 						{[
 							{
 								name: "Browser Extension",
@@ -579,15 +445,12 @@ export function LandingPage() {
 								href: "https://github.com/ArthurBugan/nestfeed.application",
 							},
 						].map((repo) => (
-							<motion.div key={repo.name} variants={fadeInUp}>
+							<div key={repo.name}>
 								<CompactCard className="p-4 hover:border-primary/30 transition-colors">
 									<div className="flex items-center gap-3 mb-3">
-										<motion.div
-											whileHover={{ rotate: 12, scale: 1.1 }}
-											className="w-10 h-10 rounded-lg bg-red-primary/10 flex items-center justify-center"
-										>
+										<div className="w-10 h-10 rounded-lg bg-red-primary/10 flex items-center justify-center transition-transform duration-200 hover:rotate-12 hover:scale-110">
 											<GithubIcon className="h-5 w-5 text-primary" />
-										</motion.div>
+										</div>
 										<div className="font-medium">{repo.name}</div>
 									</div>
 									<p className="text-sm text-muted-foreground mb-3">
@@ -604,52 +467,42 @@ export function LandingPage() {
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<motion.span
-												className="flex items-center gap-2"
-												whileHover={{ scale: 1.05 }}
-											>
+											<span className="flex items-center gap-2">
 												<Star className="h-4 w-4" /> Star Repository
-											</motion.span>
+											</span>
 										</a>
 									</Button>
 								</CompactCard>
-							</motion.div>
+							</div>
 						))}
-					</AnimatedGrid>
+					</RevealSection>
 				</div>
 			</section>
 
 			{/* Testimonials */}
 			<section id="testimonials" className="py-16 lg:py-20">
 				<div className="container mx-auto px-4">
-					<AnimatedSection variants={fadeInUp}>
+					<RevealSection>
 						<div className="text-center mb-12 space-y-3">
 							<Badge variant="outline">{t("testimonials.badge")}</Badge>
 							<h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
 								{t("landing.testimonials.title")}
 							</h2>
 						</div>
-					</AnimatedSection>
-					<AnimatedGrid className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-						{testimonials.map((tm, i) => (
-							<motion.div key={i} variants={fadeInUp}>
+					</RevealSection>
+					<RevealSection className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+						{testimonials.map((tm) => (
+							<div key={tm.name}>
 								<CompactCard className="p-4 space-y-3">
 									<div className="flex items-center gap-1 text-yellow-500">
-										{[...Array(5)].map((_, j) => (
-											<motion.div
-												key={j}
-												initial={{ scale: 0 }}
-												animate={{ scale: 1 }}
-												transition={{ delay: 0.2 + j * 0.08, type: "spring" }}
-											>
-												<Star className="h-3.5 w-3.5 fill-current" />
-											</motion.div>
+										{[1, 2, 3, 4, 5].map((n) => (
+											<Star key={n} className="h-3.5 w-3.5 fill-current" />
 										))}
 									</div>
 									<p className="text-sm leading-relaxed">"{tm.content}"</p>
 									<div className="flex items-center gap-2 pt-2 border-t">
 										<Avatar className="h-6 w-6">
-											<AvatarImage src="/placeholder.svg" />
+											<AvatarImage src="/placeholder.svg" alt="" />
 											<AvatarFallback className="text-xs bg-muted text-muted-foreground">
 												{tm.name.charAt(0)}
 											</AvatarFallback>
@@ -662,30 +515,31 @@ export function LandingPage() {
 										</div>
 									</div>
 								</CompactCard>
-							</motion.div>
+							</div>
 						))}
-					</AnimatedGrid>
+					</RevealSection>
 				</div>
 			</section>
 
 			{/* Pricing */}
 			<section id="pricing" className="py-16 lg:py-20 bg-muted/20">
 				<div className="container mx-auto px-4">
-					<AnimatedSection variants={fadeInUp}>
+					<RevealSection>
 						<div className="text-center mb-12 space-y-3">
 							<Badge variant="outline">{t("pricing.badge")}</Badge>
 							<h2 className="text-3xl lg:text-4xl font-bold tracking-tight">
 								{t("landing.pricing.title")}
 							</h2>
 						</div>
-					</AnimatedSection>
-					<AnimatedGrid className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
+					</RevealSection>
+					<RevealSection className="grid md:grid-cols-3 gap-4 max-w-5xl mx-auto">
 						{pricing.map((p) => (
-							<motion.div
+							<div
 								key={p.name}
-								variants={fadeInUp}
-								whileHover={p.popular ? { scale: 1.02 } : {}}
-								transition={{ type: "spring", stiffness: 300 }}
+								className={cn(
+									p.popular &&
+										"transition-transform duration-200 hover:scale-[1.02]",
+								)}
 							>
 								<CompactCard
 									className={cn(
@@ -714,37 +568,38 @@ export function LandingPage() {
 										</p>
 									</div>
 									<ul className="space-y-2 mb-4 flex-1">
-										{p.features.map((f, i) => (
-											<li key={i} className="flex items-center gap-2 text-sm">
+										{p.features.map((f) => (
+											<li key={f} className="flex items-center gap-2 text-sm">
 												<Check className="h-3.5 w-3.5 text-green-600 flex-shrink-0" />{" "}
 												{f}
 											</li>
 										))}
 									</ul>
-									<motion.div
-										whileHover={{ scale: 1.03 }}
-										whileTap={{ scale: 0.97 }}
-									>
+									<div className={ctaMotion}>
 										<Button
 											size="sm"
 											variant={p.popular ? "default" : "outline"}
-											className="w-full bg-primary hover:bg-primary/90"
+											className={cn(
+												"w-full",
+												p.popular &&
+													"bg-emerald-800! text-white! hover:bg-emerald-700!",
+											)}
 											asChild
 										>
 											<Link to="/register">{p.cta}</Link>
 										</Button>
-									</motion.div>
+									</div>
 								</CompactCard>
-							</motion.div>
+							</div>
 						))}
-					</AnimatedGrid>
+					</RevealSection>
 				</div>
 			</section>
 
 			{/* CTA */}
 			<section className="py-16">
 				<div className="container mx-auto px-4">
-					<AnimatedSection variants={scaleIn}>
+					<RevealSection>
 						<CompactCard className="p-8 lg:p-12 bg-gradient-to-r from-primary via-secondary to-primary text-white border-0">
 							<div className="text-center max-w-2xl mx-auto space-y-4">
 								<h2 className="text-2xl lg:text-3xl font-bold tracking-tight">
@@ -752,45 +607,37 @@ export function LandingPage() {
 								</h2>
 								<p className="text-white/90">{t("landing.cta.subtitle")}</p>
 								<div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-									<motion.div
-										whileHover={{ scale: 1.03 }}
-										whileTap={{ scale: 0.97 }}
-									>
-										<Button size="lg" variant="secondary" asChild>
+									<div className={ctaMotion}>
+										<Button
+											size="lg"
+											variant="secondary"
+											className="bg-white! text-slate-900! hover:bg-white/90!"
+											asChild
+										>
 											<Link to="/register">
 												{t("landing.cta.primary")}{" "}
-												<motion.span
-													animate={{ x: [0, 4, 0] }}
-													transition={{
-														duration: 1.5,
-														repeat: Infinity,
-														ease: "easeInOut",
-													}}
-												>
+												<span className="anim-nudge inline-block">
 													<ArrowRight className="ml-2 h-4 w-4" />
-												</motion.span>
+												</span>
 											</Link>
 										</Button>
-									</motion.div>
-									<motion.div
-										whileHover={{ scale: 1.03 }}
-										whileTap={{ scale: 0.97 }}
-									>
+									</div>
+									<div className={ctaMotion}>
 										<Button
 											size="lg"
 											variant="outline"
-											className="border-white/30 text-white hover:bg-white/10"
+											className="bg-white! text-slate-900! hover:bg-white/90!"
 											asChild
 										>
 											<a href="https://discord.gg/Hp4MvPanwr">
 												{t("landing.cta.secondary")}
 											</a>
 										</Button>
-									</motion.div>
+									</div>
 								</div>
 							</div>
 						</CompactCard>
-					</AnimatedSection>
+					</RevealSection>
 				</div>
 			</section>
 

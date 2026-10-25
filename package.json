@@ -7,7 +7,7 @@
 		"dev": "vite dev --port 3000",
 		"start": "bun run server.ts",
 		"sitemap": "node scripts/generate-sitemap.js",
-		"build": "node scripts/generate-sitemap.js && vite build",
+		"build": "bun scripts/prebuild-clean.mjs && bun scripts/generate-sitemap.js && vite build && bun scripts/gen-static-landing.mjs",
 		"preview": "vite preview",
 		"test": "vitest run",
 		"test:watch": "vitest",

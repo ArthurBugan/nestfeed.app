@@ -1,0 +1,22 @@
+# VCS / editor noise
+.git
+.gitignore
+.vscode
+.idea
+
+# Dependencies — installed in-image via bun install
+node_modules
+
+# Build artifacts — rebuilt in-image
+.output
+dist
+.tanstack
+.content collections
+
+# Logs & caches
+*.log
+.cache
+coverage
+
+# macOS noise
+.DS_Store
