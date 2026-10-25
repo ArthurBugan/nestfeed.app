@@ -63,8 +63,26 @@ function getStaticRoutes(dir, base = "") {
 	return [...new Set(routes)];
 }
 
-// 2. Get published blog posts from the content server
-async function getBlogPosts() {
+// 2. Original guides shipped with the build (content/posts)
+function getLocalGuideSlugs() {
+	const dir = path.join(rootDir, "content", "posts");
+	if (!fs.existsSync(dir)) return [];
+	const slugs = [];
+	for (const file of fs.readdirSync(dir)) {
+		if (!file.endsWith(".md")) continue;
+		const source = fs.readFileSync(path.join(dir, file), "utf8");
+		const frontmatter = source.match(/^---\n([\s\S]*?)\n---/)?.[1] ?? "";
+		const slugMatch = frontmatter.match(/^slug:\s*(?:"([^"]+)"|(\S+))/m);
+		const slug = slugMatch?.[1] ?? slugMatch?.[2];
+		if (slug) slugs.push(`/blog/${slug}`);
+	}
+	return slugs;
+}
+
+// The machine-generated archive stays out of the sitemap (and the blog)
+// during the AdSense review period. Set INCLUDE_LEGACY_POSTS=1 to restore.
+async function getLegacyBlogPosts() {
+	if (process.env.INCLUDE_LEGACY_POSTS !== "1") return [];
 	try {
 		const response = await fetch(CONTENT_API);
 
@@ -102,7 +120,7 @@ async function generate() {
 
 	const routesDir = path.join(rootDir, "src/routes");
 	const staticRoutes = getStaticRoutes(routesDir);
-	const blogPosts = await getBlogPosts();
+	const blogPosts = [...getLocalGuideSlugs(), ...(await getLegacyBlogPosts())];
 
 	const filteredStaticRoutes = staticRoutes.filter(
 		(route) =>
