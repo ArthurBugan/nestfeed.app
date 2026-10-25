@@ -9,6 +9,7 @@ node_modules
 
 # Build artifacts — rebuilt in-image
 .output
+output
 dist
 .tanstack
 .content collections

@@ -38,3 +38,4 @@ next-env.d.ts
 
 # Lighthouse run logs
 lh-server.log
+.vscode
