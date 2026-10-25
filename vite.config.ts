@@ -29,7 +29,30 @@ export default defineConfig({
 		assetsDir: "assets",
 	},
 	plugins: [
-		nitroV2Plugin({ preset: "bun" }) as any,
+		nitroV2Plugin({
+			preset: "bun",
+			// Pre-compress public assets (.gz/.br) and serve them when the client
+			// accepts the encoding — needed because the bun preset has no
+			// reverse proxy doing compression in front of it.
+			compressPublicAssets: true,
+			// Serves the pre-built, JS-free static landing page at "/" (falling
+			// back to the SSR renderer when the generated document is absent).
+			handlers: [
+				{
+					route: "/",
+					middleware: true,
+					handler: "./server/landing-middleware.ts",
+				},
+			],
+			routeRules: {
+				// Hashed build assets can be cached forever.
+				"/assets/**": {
+					headers: {
+						"cache-control": "public, max-age=31536000, immutable",
+					},
+				},
+			},
+		}) as any,
 		tsconfigPaths({
 			projects: ["./tsconfig.json"],
 		}),

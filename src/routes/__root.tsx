@@ -1,8 +1,6 @@
 // src/routes/__root.tsx
 /// <reference types="vite/client" />
 
-import Clarity from "@microsoft/clarity";
-import rybbit from "@rybbit/js";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
@@ -12,6 +10,7 @@ import {
 	retainSearchParams,
 	Scripts,
 } from "@tanstack/react-router";
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import { AppearanceProvider } from "@/components/appearance-provider";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -19,23 +18,10 @@ import { LanguageProvider } from "@/components/language-provider";
 import { NotFound } from "@/components/not-found";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
+import { initAnalytics } from "@/lib/analytics";
 import { AnalyticsListener } from "@/hooks/analytics-listener";
 import { queryClient } from "@/hooks/utils/queryClient";
 import appCss from "@/styles/app.css?url";
-
-const VITE_CLARITY_PROJECT_ID = import.meta.env.VITE_CLARITY_PROJECT_ID;
-
-if (typeof window !== "undefined") {
-	await rybbit.init({
-		analyticsHost: "https://rybbit.nestfeed.app/api",
-		siteId: "5bd1e2c51d8f",
-		replayPrivacyConfig: {
-			slimDOMOptions: true,
-		},
-	});
-
-	Clarity.init(VITE_CLARITY_PROJECT_ID ?? "");
-}
 
 export const Route = createRootRoute({
 	notFoundComponent: () => <NotFound />,
@@ -74,34 +60,31 @@ function RootComponent() {
 				<RootDocument>
 					<Outlet />
 					<AnalyticsListener />
-					<ReactQueryDevtools initialIsOpen={true} />
+					{import.meta.env.DEV ? (
+						<ReactQueryDevtools initialIsOpen={true} />
+					) : null}
 					<Toaster richColors />
 				</RootDocument>
 			</QueryClientProvider>
 		</LanguageProvider>
 	);
 }
+
+/** Fires the consent-gated analytics loader once the app is idle. */
+function AnalyticsInit() {
+	useEffect(() => {
+		const timer = window.setTimeout(initAnalytics, 0);
+		return () => window.clearTimeout(timer);
+	}, []);
+	return null;
+}
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 	return (
 		<html lang="en" suppressHydrationWarning={true}>
 			<head>
 				<HeadContent />
-				<script
-					async
-					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4077364511521347"
-					crossOrigin="anonymous"
-				></script>
 			</head>
 			<body>
-				<noscript>
-					<iframe
-						src="https://www.googletagmanager.com/ns.html?id=GTM-TZ924QCW"
-						title="Google Tag Manager"
-						height="0"
-						width="0"
-						style={{ display: "none", visibility: "hidden" }}
-					></iframe>
-				</noscript>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
@@ -111,28 +94,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
 					<AppearanceProvider>{children}</AppearanceProvider>
 				</ThemeProvider>
 				<CookieConsent />
-				{/** biome-ignore lint/correctness/useUniqueElementIds: <implement gtm> */}
-				<script id="gtm">
-					{`
-					(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-					new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-					j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-					'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-					})(window,document,'script','dataLayer','GTM-TZ924QCW');
-				`}
-				</script>
-				<script
-					async
-					src="https://www.googletagmanager.com/gtag/js?id=G-D7BS3V6VJF"
-				></script>
-				<script>
-					{`
-					window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-						gtag('config', 'G-D7BS3V6VJF');
-					`}
-				</script>
+				<AnalyticsInit />
 				<Scripts />
 			</body>
 		</html>
