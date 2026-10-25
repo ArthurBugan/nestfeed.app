@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675" role="img" aria-label="Groupify guides cover — organized channel groups">
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d3b25"/>
+      <stop offset="1" stop-color="#1b744a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg1)"/>
+  <g opacity=".16" stroke="#ffffff" stroke-width="2" fill="none">
+    <path d="M60 96c180-60 360 60 540 0s360 60 540 0"/>
+    <path d="M60 588c180-60 360 60 540 0s360 60 540 0"/>
+  </g>
+
+  <!-- folder groups stack -->
+  <g transform="translate(96 218)">
+    <rect x="0" y="0" width="170" height="52" rx="12" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.28)"/>
+    <text x="20" y="34" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7ce3b1">Docs &amp; Science</text>
+    <rect x="18" y="66" width="170" height="52" rx="12" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.28)"/>
+    <text x="38" y="100" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7ce3b1">Comedy</text>
+    <rect x="36" y="132" width="170" height="52" rx="12" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.28)"/>
+    <text x="56" y="166" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7ce3b1">Sci-Fi Lore</text>
+    <rect x="54" y="198" width="170" height="52" rx="12" fill="rgba(255,255,255,.10)" stroke="rgba(255,255,255,.28)"/>
+    <text x="74" y="232" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#7ce3b1">Music &amp; Mixes</text>
+  </g>
+
+  <!-- channel rows -->
+  <g transform="translate(372 232)">
+    <g transform="translate(0 0)">
+      <circle cx="26" cy="26" r="24" fill="rgba(255,255,255,.16)"/>
+      <rect x="66" y="14" width="200" height="11" rx="5" fill="rgba(255,255,255,.42)"/>
+      <rect x="66" y="33" width="140" height="8" rx="4" fill="rgba(255,255,255,.20)"/>
+    </g>
+    <g transform="translate(0 74)">
+      <circle cx="26" cy="26" r="24" fill="rgba(255,255,255,.16)"/>
+      <rect x="66" y="14" width="200" height="11" rx="5" fill="rgba(255,255,255,.42)"/>
+      <rect x="66" y="33" width="140" height="8" rx="4" fill="rgba(255,255,255,.20)"/>
+    </g>
+    <g transform="translate(0 148)">
+      <circle cx="26" cy="26" r="24" fill="rgba(255,255,255,.16)"/>
+      <rect x="66" y="14" width="200" height="11" rx="5" fill="rgba(255,255,255,.42)"/>
+      <rect x="66" y="33" width="140" height="8" rx="4" fill="rgba(255,255,255,.20)"/>
+    </g>
+    <g transform="translate(0 222)">
+      <circle cx="26" cy="26" r="24" fill="rgba(255,255,255,.16)"/>
+      <rect x="66" y="14" width="200" height="11" rx="5" fill="rgba(255,255,255,.42)"/>
+      <rect x="66" y="33" width="140" height="8" rx="4" fill="rgba(255,255,255,.20)"/>
+    </g>
+  </g>
+
+  <text x="840" y="312" font-family="Arial, sans-serif" font-size="78" font-weight="bold" fill="#ffffff" text-anchor="middle">Groupify</text>
+  <text x="840" y="368" font-family="Arial, sans-serif" font-size="27" fill="#cfeee0" text-anchor="middle">Guides for organized YouTube subscriptions</text>
+  <text x="840" y="416" font-family="Arial, sans-serif" font-size="19" fill="#7ce3b1" text-anchor="middle">groupify.dev</text>
+</svg>

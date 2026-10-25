@@ -683,3 +683,46 @@ select {
 			opacity: 1;
 		}
 	}
+
+	/* Cookie consent banner entrance/exit (also honors reduce motion) */
+	@keyframes cookie-consent-in {
+		from {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes cookie-consent-out {
+		from {
+			opacity: 1;
+			transform: translateY(0);
+		}
+		to {
+			opacity: 0;
+			transform: translateY(16px);
+		}
+	}
+
+	.banner-enter {
+		animation: cookie-consent-in 0.3s ease-out both;
+	}
+
+	.banner-leave {
+		animation: cookie-consent-out 0.2s ease-in both;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.reveal-t,
+		.reveal-view,
+		.anim-orb,
+		.anim-nudge,
+		.banner-enter,
+		.banner-leave {
+			animation: none;
+			opacity: 1;
+		}
+	}

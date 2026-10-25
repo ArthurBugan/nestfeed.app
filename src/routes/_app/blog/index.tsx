@@ -15,10 +15,24 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { type BlogQueryParams, useBlogPosts } from "@/hooks/useQuery/useBlog";
+import {
+	type BlogListPost,
+	formatPostDate,
+	localGuides,
+	postDate,
+	SHOW_LEGACY_POSTS,
+} from "@/lib/blog-guides";
 
 export const Route = createFileRoute("/_app/blog/")({
 	component: BlogIndex,
-	head: () => ({
+	loader: () => {
+		// Featured guide image is known at SSR time so it can be preloaded
+		// from the head (image requests otherwise queue behind app JS).
+		const featuredImage =
+			localGuides.find((post) => post.featured)?.image ?? localGuides[0]?.image;
+		return { featuredImage };
+	},
+	head: ({ loaderData }) => ({
 		meta: [
 			{ title: "Blog – Groupify" },
 			{
@@ -28,7 +42,19 @@ export const Route = createFileRoute("/_app/blog/")({
 			},
 			{ property: "og:type", content: "website" },
 		],
-		links: [{ rel: "canonical", href: "https://groupify.dev/blog" }],
+		links: [
+			{ rel: "canonical", href: "https://groupify.dev/blog" },
+			...(loaderData?.featuredImage
+				? [
+						{
+							rel: "preload",
+							as: "image",
+							href: loaderData.featuredImage,
+							fetchPriority: "high",
+						},
+					]
+				: []),
+		],
 	}),
 });
 
@@ -68,18 +94,52 @@ function BlogIndex() {
 		[activeCategory, debouncedSearch, currentPage, itemsPerPage],
 	);
 
-	const { data: blogData, isLoading } = useBlogPosts(queryParams);
-	const allPosts = blogData?.data || [];
-	const totalPosts = blogData?.total || 0;
-	const totalPages = Math.ceil(totalPosts / itemsPerPage);
+	const { data: blogData, isLoading } = useBlogPosts(queryParams, {
+		enabled: SHOW_LEGACY_POSTS,
+	});
+
+	const allPosts = useMemo<BlogListPost[]>(() => {
+		const legacy = SHOW_LEGACY_POSTS ? (blogData?.data ?? []) : [];
+		const merged: BlogListPost[] = [...localGuides, ...legacy];
+		return [...merged].sort((a, b) => postDate(b).localeCompare(postDate(a)));
+	}, [blogData]);
+
+	// Hidden-legacy mode: filtering, search and pagination run client-side over
+	// the curated guides. Legacy mode keeps the server-driven (query params)
+	// flow, where `allPosts` is already the requested page slice.
+	const filtered = useMemo(
+		() =>
+			allPosts.filter(
+				(post) =>
+					(activeCategory === "All" || post.category === activeCategory) &&
+					(!debouncedSearch ||
+						`${post.title} ${post.description}`
+							.toLowerCase()
+							.includes(debouncedSearch.toLowerCase())),
+			),
+		[allPosts, activeCategory, debouncedSearch],
+	);
+
+	const totalPosts = SHOW_LEGACY_POSTS
+		? (blogData?.total ?? 0)
+		: filtered.length;
+	const pagePosts = SHOW_LEGACY_POSTS
+		? allPosts
+		: filtered.slice(
+				(currentPage - 1) * itemsPerPage,
+				currentPage * itemsPerPage,
+			);
+	const totalPages = SHOW_LEGACY_POSTS
+		? Math.max(1, Math.ceil(totalPosts / itemsPerPage))
+		: Math.max(1, Math.ceil(filtered.length / itemsPerPage));
 
 	const featuredPost = useMemo(
 		() => allPosts.find((p) => p.featured),
 		[allPosts],
 	);
 	const regularPosts = useMemo(
-		() => allPosts.filter((p) => !p.featured),
-		[allPosts],
+		() => pagePosts.filter((p) => !p.featured),
+		[pagePosts],
 	);
 	const trendingPosts = useMemo(() => allPosts.slice(0, 3), [allPosts]);
 
@@ -163,8 +223,9 @@ function BlogIndex() {
 													src={featuredPost.image}
 													alt={featuredPost.title}
 													className="w-full h-full object-cover"
+													fetchPriority="high"
 												/>
-												<Badge className="absolute top-3 left-3 bg-gradient-to-r from-primary to-secondary text-white border-0 gap-1">
+												<Badge className="absolute top-3 left-3 bg-primary text-primary-foreground border-0 gap-1">
 													{t("blog.featured")}
 												</Badge>
 											</div>
@@ -175,9 +236,7 @@ function BlogIndex() {
 													</Badge>
 													<span className="text-xs text-muted-foreground flex items-center gap-1">
 														<Calendar className="h-3 w-3" />{" "}
-														{new Date(
-															featuredPost.date_created,
-														).toLocaleDateString()}
+														{formatPostDate(featuredPost.date_created)}
 													</span>
 												</div>
 												<h2 className="text-xl font-semibold mb-2 line-clamp-2">
@@ -188,7 +247,7 @@ function BlogIndex() {
 												</p>
 												<div className="flex items-center justify-between">
 													<div className="flex items-center gap-2">
-														<div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-secondary flex items-center justify-center text-white text-xs font-bold">
+														<div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-xs font-bold">
 															{featuredPost.author?.[0] || "G"}
 														</div>
 														<span className="text-sm font-medium">
@@ -197,7 +256,7 @@ function BlogIndex() {
 													</div>
 													<Button
 														size="sm"
-														className="bg-primary hover:bg-primary/90 text-white"
+														className="bg-primary hover:bg-primary/90 text-primary-foreground"
 													>
 														{t("blog.read")}
 													</Button>
@@ -236,7 +295,7 @@ function BlogIndex() {
 															className="w-full h-full object-cover"
 														/>
 														<Badge
-															className={`absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs ${i === 0 ? "bg-yellow-500" : i === 1 ? "bg-gray-400" : "bg-amber-600"}`}
+															className={`absolute top-2 left-2 w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs ${i === 0 ? "bg-yellow-700" : i === 1 ? "bg-gray-600" : "bg-amber-700"}`}
 														>
 															#{i + 1}
 														</Badge>
@@ -352,7 +411,7 @@ function BlogIndex() {
 						)}
 
 						{/* Empty State */}
-						{allPosts.length === 0 && (
+						{filtered.length === 0 && (
 							<div className="text-center py-20">
 								<Search className="h-10 w-10 mx-auto mb-4 text-muted-foreground" />
 								<h3 className="font-semibold mb-2">{t("blog.none.title")}</h3>

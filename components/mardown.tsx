@@ -86,6 +86,16 @@ export function Markdown({
 		);
 	}
 
+	const options = buildParserOptions();
+
+	return (
+		<div className={cn("markdown-content", className)}>
+			{parse(result.markup, options)}
+		</div>
+	);
+}
+
+function buildParserOptions(): HTMLReactParserOptions {
 	const options: HTMLReactParserOptions = {
 		replace: (domNode) => {
 			if (domNode instanceof Element) {
@@ -347,10 +357,23 @@ export function Markdown({
 			}
 		},
 	};
+	return options;
+}
 
+// Synchronized variant for pre-rendered HTML (e.g. computed in a route
+// loader on both server and client). Renders identical markup everywhere,
+// with no async skeleton and therefore no layout shift on content load.
+export function MarkdownHtml({
+	markup,
+	className,
+}: {
+	markup: string;
+	className?: string;
+}) {
+	const options = buildParserOptions();
 	return (
 		<div className={cn("markdown-content", className)}>
-			{parse(result.markup, options)}
+			{parse(markup, options)}
 		</div>
 	);
 }

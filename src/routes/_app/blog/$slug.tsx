@@ -3,16 +3,37 @@ import { ArrowLeft, Clock, Share2 } from "lucide-react";
 import { LinkedinIcon, TwitterIcon } from "@/components/brand-icons";
 import { CompactHeader } from "@/components/compact-header";
 import { useLanguage } from "@/components/language-provider";
-import { Markdown } from "@/components/mardown";
+import { MarkdownHtml } from "@/components/mardown";
 import { SiteFooter } from "@/components/site-footer";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import {
+	findLocalGuide,
+	formatPostDate,
+	SHOW_LEGACY_POSTS,
+} from "@/lib/blog-guides";
+import { renderMarkdown } from "@/lib/markdown";
 import { absoluteUrl, articleJsonLd } from "@/lib/seo";
 
 export const Route = createFileRoute("/_app/blog/$slug")({
 	component: BlogPostComponent,
 	loader: async ({ params }) => {
+		// Originally-curated guides ship with the build and resolve first.
+		const local = findLocalGuide(params.slug);
+		if (local) {
+			return {
+				post: local,
+				// Rendered in the loader so server and client produce identical
+				// markup: no async skeleton, no layout shift on content load.
+				markup: (await renderMarkdown(local.content)).markup,
+			};
+		}
+
+		// The machine-generated archive is hidden during the AdSense review
+		// period; direct URLs to it answer 404 until it is re-enabled.
+		if (!SHOW_LEGACY_POSTS) throw notFound();
+
 		const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 		const response = await fetch(`${VITE_BASE_URL}/api/v3/blog/${params.slug}`);
 		if (!response.ok) throw notFound();
@@ -28,7 +49,7 @@ export const Route = createFileRoute("/_app/blog/$slug")({
 				? candidate
 				: null;
 		if (!post?.slug) throw notFound();
-		return { post };
+		return { post, markup: (await renderMarkdown(post.content)).markup };
 	},
 	head: ({ loaderData }) => {
 		const post = loaderData?.post;
@@ -49,14 +70,26 @@ export const Route = createFileRoute("/_app/blog/$slug")({
 				{ name: "twitter:description", content: description },
 				{ name: "twitter:image", content: image },
 			],
-			links: [{ rel: "canonical", href: url }],
+			links: [
+				{ rel: "canonical", href: url },
+				...(image
+					? [
+							{
+								rel: "preload",
+								as: "image",
+								href: image,
+								fetchPriority: "high",
+							},
+						]
+					: []),
+			],
 		};
 	},
 });
 
 function BlogPostComponent() {
 	const { t } = useLanguage();
-	const { post } = Route.useLoaderData();
+	const { post, markup } = Route.useLoaderData();
 
 	const jsonLd = articleJsonLd({
 		title: post.title,
@@ -69,7 +102,13 @@ function BlogPostComponent() {
 
 	return (
 		<div className="min-h-screen bg-background">
-			<script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+			<script
+				type="application/ld+json"
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: static JSON-LD built locally from trusted post metadata
+				// SSR + hydration need identical serialization for script tags;
+				// text-children scripts mismatch and force a full client re-render.
+				dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+			/>
 			<CompactHeader />
 
 			<article className="container mx-auto px-4 py-8 max-w-3xl">
@@ -86,7 +125,7 @@ function BlogPostComponent() {
 					<div className="flex items-center gap-2 flex-wrap">
 						<Badge
 							variant="outline"
-							className="text-red-600 border-red-500/30 bg-red-500/5 text-xs uppercase tracking-wider"
+							className="text-red-700 dark:text-red-400 border-red-700/30 dark:border-red-400/30 bg-red-500/5 text-xs uppercase tracking-wider"
 						>
 							{post.category}
 						</Badge>
@@ -101,13 +140,13 @@ function BlogPostComponent() {
 
 					<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
 						<div className="flex items-center gap-3">
-							<div className="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-white font-bold uppercase">
+							<div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold uppercase">
 								{post.author?.[0] || "A"}
 							</div>
 							<div>
 								<p className="font-medium text-sm">{post.author}</p>
 								<p className="text-xs text-muted-foreground">
-									{new Date(post.date_created).toLocaleDateString()}
+									{formatPostDate(post.date_created)}
 								</p>
 							</div>
 						</div>
@@ -117,6 +156,7 @@ function BlogPostComponent() {
 								variant="outline"
 								size="icon"
 								className="h-8 w-8 rounded-full"
+								aria-label="Share on X (Twitter)"
 							>
 								<TwitterIcon className="h-3.5 w-3.5" />
 							</Button>
@@ -124,6 +164,7 @@ function BlogPostComponent() {
 								variant="outline"
 								size="icon"
 								className="h-8 w-8 rounded-full"
+								aria-label="Share on LinkedIn"
 							>
 								<LinkedinIcon className="h-3.5 w-3.5" />
 							</Button>
@@ -131,6 +172,7 @@ function BlogPostComponent() {
 								variant="outline"
 								size="icon"
 								className="h-8 w-8 rounded-full"
+								aria-label="Copy article link"
 							>
 								<Share2 className="h-3.5 w-3.5" />
 							</Button>
@@ -144,12 +186,13 @@ function BlogPostComponent() {
 						src={post.image}
 						alt={post.title}
 						className="w-full aspect-[21/9] object-cover"
+						fetchPriority="high"
 					/>
 				</div>
 
 				{/* Content */}
 				<div className="prose prose-slate dark:prose-invert max-w-none mb-10">
-					<Markdown content={post.content} className="prose" />
+					<MarkdownHtml markup={markup} className="prose" />
 				</div>
 
 				<Separator className="my-8" />

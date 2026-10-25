@@ -32,12 +32,14 @@ export function getConsent(): ConsentChoice | null {
 
 export function CookieConsent() {
 	const { t } = useLanguage();
-	const [visible, setVisible] = useState(false);
+	// "shown" mid-render state lets the banner animate in/out instead of
+	// popping abruptly after hydration (first visit only, no consent stored).
+	const [state, setState] = useState<"hidden" | "shown" | "leaving">("hidden");
 
 	useEffect(() => {
 		const stored = getConsent();
 		applyAdPreference(stored);
-		if (!stored) setVisible(true);
+		if (!stored) setState("shown");
 		else initAnalytics(); // choice previously stored — load trackers
 	}, []);
 
@@ -45,17 +47,21 @@ export function CookieConsent() {
 		window.localStorage.setItem(STORAGE_KEY, choice);
 		applyAdPreference(choice);
 		initAnalytics();
-		setVisible(false);
+		setState("leaving");
+		window.setTimeout(() => setState("hidden"), 220);
 	}
 
-	if (!visible) return null;
+	if (state === "hidden") return null;
 
 	return (
 		<div
 			role="dialog"
 			aria-live="polite"
 			aria-label={t("consent.title")}
-			className="fixed bottom-4 left-4 right-4 z-[100] mx-auto max-w-2xl rounded-xl border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 p-4 shadow-lg"
+			className={
+				"fixed bottom-4 left-4 right-4 z-[100] mx-auto max-w-2xl rounded-xl border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85 p-4 shadow-lg " +
+				(state === "shown" ? "banner-enter" : "banner-leave")
+			}
 		>
 			<div className="flex flex-col sm:flex-row items-start sm:items-center gap-3">
 				<div className="flex-1">
