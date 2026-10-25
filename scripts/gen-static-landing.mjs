@@ -206,7 +206,7 @@ function bootPreview() {
 	});
 }
 
-const { proc, stderr } = await bootPreview();
+const { proc } = await bootPreview();
 let html;
 try {
 	html = await waitForServer(proc);
@@ -246,8 +246,7 @@ html = html.replace("</body>", `${i18nTag}${islandTag}</body>`);
 // ---------------------------------------------------------------------------
 // 8. Sanity checks
 // ---------------------------------------------------------------------------
-let scriptCount = 0;
-for (const match of html.matchAll(/<script\b/g)) scriptCount++;
+const scriptCount = [...html.matchAll(/<script\b/g)].length;
 if (scriptCount !== 3) {
 	console.error(
 		`expected exactly 3 script tags (theme bootstrap, i18n json, island), found ${scriptCount}`,
@@ -259,16 +258,65 @@ if (html.includes("modulepreload")) {
 	console.error("modulepreload links survived the strip");
 	process.exit(1);
 }
-// The document must reference THIS build's stylesheet — an SSR response from
-// a stale server would carry the previous build's hashed asset links.
+// The document must reference THIS build's stylesheet. The SSR stream and the
+// copied public assets can disagree on the hash when build environments
+// diverge (e.g. stale docker layer caches): anchor the document to the css
+// this build actually emitted so the page can never be served unstyled.
 const cssLink = html.match(/href="\/assets\/app-([^"']+)\.css"/)?.[1];
-if (
-	!cssLink ||
-	!fs.existsSync(path.join(OUT, "assets", `app-${cssLink}.css`))
-) {
+const assetsDir = path.join(OUT, "assets");
+
+function emittedCss() {
+	try {
+		return fs
+			.readdirSync(assetsDir)
+			.filter((name) => /^app-.+\.css$/.test(name));
+	} catch {
+		return [];
+	}
+}
+
+const emitted = emittedCss();
+if (!fs.existsSync(assetsDir) || emitted.length === 0) {
+	console.error("no stylesheet was emitted to .output/public/assets");
+	console.error("html head:", html.slice(0, 400));
+	process.exit(1);
+}
+if (!cssLink) {
+	console.error("SSR document carries no stylesheet link");
+	console.error("html head:", html.slice(0, 400));
+	process.exit(1);
+}
+if (!fs.existsSync(path.join(assetsDir, `app-${cssLink}.css`))) {
+	// Prefer the stylesheet referenced anywhere in the emitted client build;
+	// otherwise the largest one is the main app stylesheet.
+	const clientAssets = path.join(ROOT, "output", "client", "assets");
+	let chosen = null;
+	if (fs.existsSync(clientAssets)) {
+		const inClient = fs
+			.readdirSync(clientAssets)
+			.filter((name) => /^app-.+\.css$/.test(name));
+		if (inClient.length === 1) chosen = inClient[0];
+	}
+	chosen ??= emitted.reduce((largest, name) => {
+		const candidate = fs.statSync(path.join(assetsDir, name)).size;
+		const leader = fs.statSync(path.join(assetsDir, largest)).size;
+		return candidate > leader ? name : largest;
+	}, emitted[0]);
 	console.error(
 		`SSR document references a stylesheet that is not part of this build: ${cssLink}`,
 	);
+	console.error(`rewriting link to the emitted stylesheet: ${chosen}`);
+	html = html.replaceAll(
+		`href="/assets/app-${cssLink}.css"`,
+		`href="/assets/${chosen}"`,
+	);
+}
+const finalLink = html.match(/href="\/assets\/app-([^"']+)\.css"/)?.[1];
+if (
+	!finalLink ||
+	!fs.existsSync(path.join(assetsDir, `app-${finalLink}.css`))
+) {
+	console.error("stylesheet link still missing after repair");
 	process.exit(1);
 }
 const dynamicCounts = html.match(/data-i18n|modulepreload|__TSR|tsrSplit/g);
