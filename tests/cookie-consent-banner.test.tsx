@@ -1,4 +1,9 @@
-import { cleanup, render, screen } from "@testing-library/react";
+import {
+	cleanup,
+	render,
+	screen,
+	waitFor,
+} from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { CookieConsent, getConsent } from "@/components/cookie-consent";
@@ -80,8 +85,10 @@ describe("CookieConsent", () => {
 		await user.click(screen.getByText("Accept all"));
 
 		expect(getConsent()).toBe("all");
-		expect(screen.queryByRole("dialog")).toBeNull();
-	});
+		// Banner plays its 200ms exit animation before unmounting.
+		expect(screen.queryByRole("dialog")).toBeTruthy();
+		await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+	}, 3000);
 
 	it("stores 'npa' and keeps non-personalized ads when rejected", async () => {
 		const user = userEvent.setup();
@@ -94,9 +101,10 @@ describe("CookieConsent", () => {
 		await user.click(screen.getByText("Non-personalized only"));
 
 		expect(getConsent()).toBe("npa");
-		expect(screen.queryByRole("dialog")).toBeNull();
+		expect(screen.queryByRole("dialog")).toBeTruthy();
+		await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
 		expect(adsbygoogle().requestNonPersonalizedAds).toBe(1);
-	});
+	}, 3000);
 
 	it("links to the privacy policy", () => {
 		const { container } = render(
