@@ -2,7 +2,12 @@ import { openobserveLogs } from "@openobserve/browser-logs";
 import { openobserveRum } from "@openobserve/browser-rum";
 
 const options = {
-	clientToken: import.meta.env.VITE_OPENOBSERVE_CLIENT_TOKEN ?? "",
+	// OpenObserve's browser RUM client token is public by construction — it is
+	// sent to the ingest endpoint from every visitor's session. A fallback is
+	// baked in so production builds from a plain checkout (without the
+	// gitignored .env) still instrument correctly; the env var lets you
+	// rotate the token or point at another deployment without a commit.
+	clientToken: import.meta.env.VITE_OPENOBSERVE_CLIENT_TOKEN ?? "rumk3vzZdEtIik86Tz8",
 	applicationId: import.meta.env.VITE_OPENOBSERVE_APPLICATION_ID ?? "groupify-web",
 	site: import.meta.env.VITE_OPENOBSERVE_SITE ?? "signoz.nestfeed.app",
 	organizationIdentifier:
