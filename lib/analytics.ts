@@ -11,8 +11,6 @@ const GTM_ID = "GTM-TZ924QCW";
 const GA_ID = "G-D7BS3V6VJF";
 const ADSENSE_CLIENT = "ca-pub-4077364511521347";
 const CLARITY_ID = import.meta.env.VITE_CLARITY_PROJECT_ID ?? "";
-const RYBBIT_SITE_ID = "5bd1e2c51d8f";
-const RYBBIT_HOST = "https://rybbit.nestfeed.app/api";
 
 const LOCAL_HOSTS = new Set(["localhost", "127.0.0.1", "0.0.0.0", "::1"]);
 
@@ -39,20 +37,25 @@ function injectInline(code: string) {
 let initialized = false;
 
 /**
- * Consent-gated analytics loader (GTM, GA4, AdSense, Clarity, Rybbit).
+ * Consent-gated analytics loader (GTM, GA4, AdSense, Clarity, OpenObserve).
  *
- * Third-party scripts are only injected after the visitor has made a cookie
- * choice; on "npa" non-personalized ads are requested. On localhost the
- * trackers are skipped entirely (CORS-blocked hosts only add console noise).
+ * Third-party trackers are only injected after the visitor has made a cookie
+ * choice; on "npa" non-personalized ads are requested. On localhost only
+ * OpenObserve runs (the Google/Clarity hosts would just add console noise).
  */
 export function initAnalytics(): void {
 	if (initialized || typeof window === "undefined") return;
 	initialized = true;
 
-	if (isLocalHost()) return;
-
 	const consent = getConsent();
 	if (!consent) return; // no choice yet — wait for CookieConsent
+
+	// OpenObserve RUM + logs: runs everywhere (incl. localhost) so devs can
+	// debug locally, but still only after the visitor has made a cookie choice.
+	// Dynamic import keeps the session-replay recorder off the critical path.
+	void import("@/lib/openobserve").then((m) => m.initOpenObserve());
+
+	if (isLocalHost()) return;
 
 	const nonPersonalized = consent === "npa";
 
@@ -92,19 +95,10 @@ export function initAnalytics(): void {
 		true,
 	);
 
-	// Clarity + Rybbit (dynamic import keeps them off the critical path)
+	// Clarity (dynamic import keeps it off the critical path)
 	if (CLARITY_ID) {
 		import("@microsoft/clarity")
 			.then((Clarity) => Clarity.default.init(CLARITY_ID))
 			.catch(() => {});
 	}
-	import("@rybbit/js")
-		.then((rybbit) =>
-			rybbit.default.init({
-				analyticsHost: RYBBIT_HOST,
-				siteId: RYBBIT_SITE_ID,
-				replayPrivacyConfig: { slimDOMOptions: true },
-			}),
-		)
-		.catch(() => {});
 }

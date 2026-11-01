@@ -102,6 +102,8 @@ export const useLoginMutation = () => {
 				localStorage.setItem("authToken", data.token);
 			}
 
+			void import("@/lib/openobserve").then((m) => m.setOpenObserveUser());
+
 			navigate({ to: "/dashboard" });
 		},
 		onError: (error) => {

@@ -154,7 +154,12 @@ function DashboardPage() {
 	const youtubeChannels = dashboardData?.youtubeChannels ?? 0;
 
 	useEffect(() => {
-		if (user) localStorage.setItem("user", JSON.stringify(user));
+		if (user) {
+			localStorage.setItem("user", JSON.stringify(user));
+			void import("@/lib/openobserve").then((m) =>
+				m.setOpenObserveUser(),
+			);
+		}
 	}, [user]);
 
 	useEffect(() => {
