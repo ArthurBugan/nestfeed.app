@@ -35,15 +35,6 @@ export default defineConfig({
 			// accepts the encoding — needed because the bun preset has no
 			// reverse proxy doing compression in front of it.
 			compressPublicAssets: true,
-			// Serves the pre-built, JS-free static landing page at "/" (falling
-			// back to the SSR renderer when the generated document is absent).
-			handlers: [
-				{
-					route: "/",
-					middleware: true,
-					handler: "./server/landing-middleware.ts",
-				},
-			],
 			routeRules: {
 				// Hashed build assets can be cached forever.
 				"/assets/**": {
