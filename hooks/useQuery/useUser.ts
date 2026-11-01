@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { type ApiResponse, apiClient } from "@/hooks/api/api-client";
 import { queryKeys } from "@/hooks/utils/queryKeys";
-import rybbit from "@rybbit/js";
 import Clarity from "@microsoft/clarity";
 
 // Types for the User
@@ -28,14 +27,6 @@ export interface User {
 // Query function to fetch the current user
 const getUser = async (): Promise<User> => {
 	const response = await apiClient.get<ApiResponse<User>>("api/v3/me");
-	const identifyOptions = {
-		profileId: response.data.id,
-		email: response.data.email,
-		properties: {
-			tier: response.data.planName,
-		},
-	};
-	await rybbit.identify(response.data.id, identifyOptions);
 	await Clarity.identify(response.data.id, "", "", response.data.username);
 	return response.data;
 };
