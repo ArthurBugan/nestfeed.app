@@ -2,8 +2,8 @@
 // Inlined into the prerendered landing page by gen-static-landing.mjs.
 // Replaces the React hydration pipeline on "/" with tiny vanilla behaviors:
 //   1. consent banner (mirror of components/cookie-consent.tsx)
-//   2. consent-gated analytics (mirror of lib/analytics.ts; @rybbit/js is
-//      loaded from a vendored copy so behavior is identical)
+//   2. consent-gated analytics (mirror of lib/analytics.ts; OpenObserve RUM +
+//      logs come from a vendored ESM bundle so behavior is identical)
 //   3. pt/es language swap (mirror of components/language-provider.tsx keys)
 //   4. header language menu + mobile menu (mirror of compact-header.tsx)
 // NOTE: keep in sync with lib/analytics.ts — this file must not import the
@@ -18,8 +18,10 @@
 	var GA_ID = "__GA_ID__";
 	var ADSENSE_CLIENT = "__ADSENSE_CLIENT__";
 	var CLARITY_ID = "__CLARITY_ID__";
-	var RYBBIT_HOST = "__RYBBIT_HOST__";
-	var RYBBIT_SITE_ID = "__RYBBIT_SITE_ID__";
+	var OPENOBSERVE_CLIENT_TOKEN = "__OPENOBSERVE_CLIENT_TOKEN__";
+	var OPENOBSERVE_SITE = "__OPENOBSERVE_SITE__";
+	var OPENOBSERVE_ORG = "__OPENOBSERVE_ORG__";
+	var OPENOBSERVE_APP_ID = "__OPENOBSERVE_APP_ID__";
 
 	function readLS(key) {
 		try {
@@ -71,10 +73,74 @@
 	function initAnalytics() {
 		if (_analyticsLoaded) return;
 		_analyticsLoaded = true;
-		if (isLocalHost()) return;
 		var consent = readLS(CONSENT_KEY);
 		if (consent !== "all" && consent !== "npa") return;
 		var nonPersonalized = consent === "npa";
+
+		// OpenObserve RUM + logs: runs everywhere (incl. localhost) but still
+		// only after consent; vendored ESM keeps replay off the critical path.
+		// (mirror of lib/openobserve.ts)
+		if (OPENOBSERVE_CLIENT_TOKEN) {
+			import("/lib/openobserve.mjs")
+				.then((openobserve) => {
+					var rum = openobserve.openobserveRum;
+					rum.init({
+						applicationId: OPENOBSERVE_APP_ID,
+						clientToken: OPENOBSERVE_CLIENT_TOKEN,
+						site: OPENOBSERVE_SITE,
+						organizationIdentifier: OPENOBSERVE_ORG,
+						service: "groupify.dev",
+						env: "production",
+						version: "0.1.0",
+						trackResources: true,
+						trackLongTasks: true,
+						trackUserInteractions: true,
+						apiVersion: "v1",
+						insecureHTTP: false,
+						defaultPrivacyLevel: "allow",
+						allowedTracingUrls: [
+							{
+								match: function (url) {
+									return (
+										url.indexOf(
+											window.location.origin + "/api",
+										) === 0
+									);
+								},
+								propagatorTypes: [
+									"openobserve",
+									"tracecontext",
+								],
+							},
+						],
+						sessionSampleRate: 100,
+						sessionReplaySampleRate: 50,
+					});
+					openobserve.openobserveLogs.init({
+						clientToken: OPENOBSERVE_CLIENT_TOKEN,
+						site: OPENOBSERVE_SITE,
+						organizationIdentifier: OPENOBSERVE_ORG,
+						service: "groupify.dev",
+						env: "production",
+						version: "0.1.0",
+						forwardErrorsToLogs: true,
+						insecureHTTP: false,
+						apiVersion: "v1",
+					});
+					// Identify a signed-in visitor for session search.
+					var raw = JSON.parse(readLS("user") || "null");
+					if (raw && raw.id) {
+						var user = { id: String(raw.id) };
+						if (raw.name) user.name = String(raw.name);
+						if (raw.email) user.email = String(raw.email);
+						rum.setUser(user);
+					}
+					rum.startSessionReplayRecording();
+				})
+				.catch(function () {});
+		}
+
+		if (isLocalHost()) return;
 
 		// GTM
 		injectInline(
@@ -128,17 +194,6 @@
 			k.src = "https://www.clarity.ms/tag/" + CLARITY_ID;
 			document.head.appendChild(k);
 		}
-
-		// Rybbit — vendored ESM build, imported off the critical path.
-		import("/lib/rybbit.mjs")
-			.then((rybbit) =>
-				rybbit.default.init({
-					analyticsHost: RYBBIT_HOST,
-					siteId: RYBBIT_SITE_ID,
-					replayPrivacyConfig: { slimDOMOptions: true },
-				}),
-			)
-			.catch(() => {});
 	}
 
 	// ---------------------------------------------------------------------------

@@ -16,7 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 import { brotliCompressSync, constants, gzipSync } from "node:zlib";
-import { transform } from "esbuild";
+import { transform, build } from "esbuild";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, ".output", "public");
@@ -53,8 +53,13 @@ const TOKENS = {
 	GA_ID: grab(/GA_ID = "([^"]+)"/),
 	ADSENSE_CLIENT: grab(/ADSENSE_CLIENT = "([^"]+)"/),
 	CLARITY_ID: process.env.VITE_CLARITY_PROJECT_ID ?? "",
-	RYBBIT_HOST: grab(/RYBBIT_HOST = "([^"]+)"/),
-	RYBBIT_SITE_ID: grab(/RYBBIT_SITE_ID = "([^"]+)"/),
+	OPENOBSERVE_CLIENT_TOKEN:
+		process.env.VITE_OPENOBSERVE_CLIENT_TOKEN ?? "",
+	OPENOBSERVE_SITE:
+		process.env.VITE_OPENOBSERVE_SITE ?? "signoz.nestfeed.app",
+	OPENOBSERVE_ORG: process.env.VITE_OPENOBSERVE_ORG ?? "default",
+	OPENOBSERVE_APP_ID:
+		process.env.VITE_OPENOBSERVE_APPLICATION_ID ?? "groupify-web",
 };
 
 // ---------------------------------------------------------------------------
@@ -127,7 +132,7 @@ let islandCode = fs.readFileSync(
 for (const [key, value] of Object.entries(TOKENS)) {
 	islandCode = islandCode.replaceAll(`__${key}__`, value);
 }
-if (islandCode.includes("__GTM") || islandCode.includes("__GA_")) {
+if (/__[A-Z0-9_]+__/.test(islandCode)) {
 	throw new Error("island still contains unsubstituted token placeholders");
 }
 if (islandCode.includes("</scr")) {
@@ -141,29 +146,68 @@ const minified = await transform(islandCode, {
 const island = minified.code;
 
 // ---------------------------------------------------------------------------
-// 4. Vendor @rybbit/js (+ rrweb) for the consent-gated analytics import
+// 4. Vendor OpenObserve RUM + logs for the consent-gated analytics import
 // ---------------------------------------------------------------------------
 fs.mkdirSync(path.join(ROOT, "public", "lib"), { recursive: true });
-const rybbitSrc = path.join(
+// Stale leftovers from the dropped Rybbit integration (repo copy and the
+// nitro-copied output, which gen-static-landing runs after).
+for (const name of ["rybbit.mjs", "rrweb.js"]) {
+	fs.rmSync(path.join(ROOT, "public", "lib", name), { force: true });
+	fs.rmSync(path.join(OUT, "lib", name), { force: true });
+}
+const openobserveSrc = path.join(
 	ROOT,
 	"node_modules",
-	"@rybbit",
-	"js",
-	"dist",
-	"index.mjs",
+	"@openobserve",
+	"browser-rum",
+	"esm",
+	"entries",
+	"main.mjs",
 );
-if (fs.existsSync(rybbitSrc)) {
-	let rybbit = fs.readFileSync(rybbitSrc, "utf8");
-	rybbit = rybbit.replaceAll('import("rrweb")', 'import("/lib/rrweb.js")');
-	fs.writeFileSync(path.join(ROOT, "public", "lib", "rybbit.mjs"), rybbit);
+if (fs.existsSync(openobserveSrc)) {
+	// The @openobserve packages ship unbundled ESM trees with bare internal
+	// imports, so pack the RUM + logs entries (recorder included) into one
+	// vendored file the static island can import without a bundler.
+	const openobserveRepo = path.join(
+		ROOT,
+		"public",
+		"lib",
+		"openobserve.mjs",
+	);
+	await build({
+		stdin: {
+			contents:
+				'export { openobserveRum } from "@openobserve/browser-rum";\n' +
+				'export { openobserveLogs } from "@openobserve/browser-logs";',
+			resolveDir: ROOT,
+			loader: "js",
+		},
+		bundle: true,
+		format: "esm",
+		minify: true,
+		target: "es2020",
+		outfile: openobserveRepo,
+	});
+	// Nitro already copied public/ into .output/public earlier in the build,
+	// so mirror the bundle there — the preview/deployed server resolves
+	// /lib/openobserve.mjs from .output/public. Pre-compressed variants let
+	// nitro serve the bundle without re-compressing on every request.
+	fs.mkdirSync(path.join(OUT, "lib"), { recursive: true });
+	const openobserveOut = path.join(OUT, "lib", "openobserve.mjs");
+	fs.copyFileSync(openobserveRepo, openobserveOut);
+	const bundle = fs.readFileSync(openobserveRepo);
+	fs.writeFileSync(
+		`${openobserveOut}.br`,
+		brotliCompressSync(bundle, {
+			params: { [constants.BROTLI_PARAM_QUALITY]: 11 },
+		}),
+	);
+	fs.writeFileSync(
+		`${openobserveOut}.gz`,
+		gzipSync(bundle, { level: 9 }),
+	);
 } else {
-	log("warning: @rybbit/js not installed — /lib/rybbit.mjs left untouched");
-}
-const rrwebSrc = path.join(ROOT, "node_modules", "rrweb", "dist", "rrweb.js");
-if (fs.existsSync(rrwebSrc)) {
-	fs.copyFileSync(rrwebSrc, path.join(ROOT, "public", "lib", "rrweb.js"));
-} else {
-	log("warning: rrweb not installed — /lib/rrweb.js left untouched");
+	log("warning: @openobserve not installed — /lib/openobserve.mjs left untouched");
 }
 
 // ---------------------------------------------------------------------------
