@@ -59,4 +59,4 @@ This question is the real dividing line in serious use. A curated collection is 
 
 Read this as a decision aid — not as a ranking. If your channel life is compact and audit-shaped with small numbers, do not feel pushed into adopting dedicated tools. The honest answer is: match the tool's *shape* to your *purpose*.
 
-And if your use case sits in the last row — with channels that matter for teams or communities, or shares that are worth keeping accurate — [Groupify's free plan](https://groupify.dev) is the natural next step, and this blog's tutorials have you covered from there.
+And if your use case sits in the last row — with channels that matter for teams or communities, or shares that are worth keeping accurate — [Groupify's free plan](https://nestfeed.app) is the natural next step, and this blog's tutorials have you covered from there.

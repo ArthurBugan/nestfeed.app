@@ -50,7 +50,7 @@ If you spot a rough edge while browsing a new YouTube layout (YouTube redesigns 
 
 ## Where to get it
 
-Once you're logged in at groupify.dev, the links to install the extension for your browser exist directly from the dashboard — and the source lives on GitHub. Install it, sign in on the panel, and you're finished; your existing groups and structure are instantly available with no re-setup.
+Once you're logged in at nestfeed.app, the links to install the extension for your browser exist directly from the dashboard — and the source lives on GitHub. Install it, sign in on the panel, and you're finished; your existing groups and structure are instantly available with no re-setup.
 
 If you want to see how saving channels fits into a bigger system — the family watchlists, team collections, and nested categories — go through the guide "Organizing Your YouTube Subscriptions Into Groups", the conceptual companion to how-to breakdowns of capture-process.
 

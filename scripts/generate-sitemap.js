@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 
 // Production domain (override with SITE_URL when generating for another host)
-const HOSTNAME = (process.env.SITE_URL || "https://groupify.dev").replace(
+const HOSTNAME = (process.env.SITE_URL || "https://nestfeed.app").replace(
 	/\/$/,
 	"",
 );
