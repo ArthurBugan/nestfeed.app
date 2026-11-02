@@ -20,25 +20,10 @@ WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 RUN bun run build
-# Guard rail: every asset crossorigin-referenced by the SSR entry must exist.
-# Fails the build when any hashed chunk is missing from the public manifest.
-RUN set -eu; \
-	css="$(grep -oE 'app[.-]?[A-Za-z0-9_-]*\.css' .output/server/index.mjs | head -1)"; \
-	js="$(grep -oE 'index[.-]?[A-Za-z0-9_-]*\.js' .output/server/index.mjs | head -1)"; \
-	if [ -z "$css" ] || [ -z "$js" ]; then \
-		echo "asset-check: no css/js references found in SSR entry:"; \
-		grep -o 'assets/[A-Za-z0-9_.-]*' .output/server/index.mjs | sort -u | head -20 || true; \
-		exit 1; \
-	fi; \
-	if [ ! -f ".output/public/assets/$css" ] || [ ! -f ".output/public/assets/$js" ]; then \
-		echo "asset-check: SSR entry references '$css' and '$js' but:"; \
-		echo "--- referenced by index.mjs:"; \
-		grep -o 'assets/[A-Za-z0-9_.-]*' .output/server/index.mjs | sort -u || true; \
-		echo "--- present in .output/public/assets:"; \
-		ls .output/public/assets | head -40 || true; \
-		exit 1; \
-	fi; \
-	echo "asset check ok: $css + $js"
+# Guard rail: the SSR entry must never reference an asset whose file is not
+# in the public manifest. Failing the image build here keeps a known
+# unstyled deployment (giant unstyled icons on first paint) from shipping.
+RUN bun scripts/asset-check.mjs
 
 FROM oven/bun:1.3.14 AS runtime
 WORKDIR /app
