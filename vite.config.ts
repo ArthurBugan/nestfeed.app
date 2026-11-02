@@ -27,6 +27,24 @@ export default defineConfig({
 	build: {
 		outDir: "./output",
 		assetsDir: "assets",
+		rollupOptions: {
+			output: {
+				// CSS must keep a stable filename across the client and SSR builds.
+				// Hashed names split the two builds (client emits app-<hashA>.css,
+				// SSR references app-<hashB>.css) and the SSR reference 404s at
+				// runtime — unstyled first paint. Only one css asset is ever built
+				// (src/styles/app.css is the sole css import), so the unhashed name
+				// is collision-free.
+				assetFileNames(buildInfo) {
+					const names = (buildInfo.names ?? [buildInfo.name])
+						.filter((n) => typeof n === "string");
+					if (names.some((n) => n.endsWith(".css"))) {
+						return "assets/[name][extname]";
+					}
+					return "assets/[name]-[hash][extname]";
+				},
+			},
+		},
 	},
 	plugins: [
 		nitroV2Plugin({

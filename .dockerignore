@@ -12,7 +12,7 @@ node_modules
 output
 dist
 .tanstack
-.content collections
+.content-collections
 
 # Logs & caches
 *.log
