@@ -19,7 +19,7 @@ Here is how to go from a fresh account to a working system in about ten minutes.
 
 ## 1. Create your account and workspace
 
-Go to [groupify.dev](https://groupify.dev) and tap on "Register" to create your account. Every account comes with its own workspace, which is the home of all of your channels and groups. From the moment you log into your dashboard, you are the administrator of your own space: nothing here is public until you decide to share it; nothing about your account or workspace is needed for other users to browse your groups with you — you have full power over all of it.
+Go to [nestfeed.app](https://nestfeed.app) and tap on "Register" to create your account. Every account comes with its own workspace, which is the home of all of your channels and groups. From the moment you log into your dashboard, you are the administrator of your own space: nothing here is public until you decide to share it; nothing about your account or workspace is needed for other users to browse your groups with you — you have full power over all of it.
 
 The dashboard is where you will spend most of your time. Think of it as a control room rather than a social feed. There are no autoplaying video previews here, no recommendation engine running in the background, just the tools for watching your watchlist.
 

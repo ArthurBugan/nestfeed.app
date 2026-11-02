@@ -3,11 +3,11 @@ import { absoluteUrl, articleJsonLd } from "@/lib/seo";
 
 describe("absoluteUrl", () => {
 	it("prefixes the site url", () => {
-		expect(absoluteUrl("/blog/x")).toBe("https://groupify.dev/blog/x");
+		expect(absoluteUrl("/blog/x")).toBe("https://nestfeed.app/blog/x");
 	});
 
 	it("adds the leading slash when missing", () => {
-		expect(absoluteUrl("about")).toBe("https://groupify.dev/about");
+		expect(absoluteUrl("about")).toBe("https://nestfeed.app/about");
 	});
 });
 
@@ -25,9 +25,9 @@ describe("articleJsonLd", () => {
 		const ld = articleJsonLd(post);
 		expect(ld["@type"]).toBe("Article");
 		expect(ld.headline).toBe("T");
-		expect(ld.url).toBe("https://groupify.dev/blog/t");
+		expect(ld.url).toBe("https://nestfeed.app/blog/t");
 		expect(ld.author.name).toBe("Arthur");
-		expect(ld.publisher.url).toBe("https://groupify.dev");
+		expect(ld.publisher.url).toBe("https://nestfeed.app");
 	});
 
 	it("falls back to Groupify as author", () => {

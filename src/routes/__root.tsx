@@ -10,17 +10,17 @@ import {
 	retainSearchParams,
 	Scripts,
 } from "@tanstack/react-router";
-import { useEffect } from "react";
 import type { ReactNode } from "react";
+import { useEffect } from "react";
 import { AppearanceProvider } from "@/components/appearance-provider";
 import { CookieConsent } from "@/components/cookie-consent";
 import { LanguageProvider } from "@/components/language-provider";
 import { NotFound } from "@/components/not-found";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
-import { initAnalytics } from "@/lib/analytics";
 import { AnalyticsListener } from "@/hooks/analytics-listener";
 import { queryClient } from "@/hooks/utils/queryClient";
+import { initAnalytics } from "@/lib/analytics";
 import appCss from "@/styles/app.css?url";
 
 export const Route = createRootRoute({
@@ -44,6 +44,13 @@ export const Route = createRootRoute({
 			},
 			{ property: "og:type", content: "website" },
 			{ property: "og:site_name", content: "Groupify" },
+			// AdSense account-level ownership verification, independent of the
+			// consent-gated adsbygoogle.js bootstrap (which never loads during a
+			// cold review crawl).
+			{
+				name: "google-adsense-account",
+				content: "ca-pub-4077364511521347",
+			},
 		],
 		links: [{ rel: "stylesheet", href: appCss }],
 	}),

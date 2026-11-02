@@ -100,6 +100,18 @@ function BlogPostComponent() {
 		author: post.author,
 	});
 
+	// Same-category guides rank first, then the most recent others; the current
+	// post itself is never listed.
+	const related = localGuides
+		.filter((g) => g.slug !== post.slug)
+		.sort((a, b) => {
+			const aMatch = a.category === post.category ? 1 : 0;
+			const bMatch = b.category === post.category ? 1 : 0;
+			if (aMatch !== bMatch) return bMatch - aMatch;
+			return b.date_created.localeCompare(a.date_created);
+		})
+		.slice(0, 3);
+
 	return (
 		<div className="min-h-screen bg-background">
 			<script
@@ -206,6 +218,32 @@ function BlogPostComponent() {
 						{t("blog.post.author.desc")}
 					</p>
 				</div>
+
+				{/* Related guides — same category first, fill with newest */}
+				<section className="mt-8 space-y-3">
+					<h3 className="font-semibold">{t("blog.post.related")}</h3>
+					<ul className="grid sm:grid-cols-3 gap-3">
+						{related.map((rel) => (
+							<li key={rel.slug}>
+								<Link
+									to="/blog/$slug"
+									params={{ slug: rel.slug }}
+									className="block h-full p-4 rounded-xl border bg-card/50 hover:bg-card transition-colors"
+								>
+									<Badge
+										variant="outline"
+										className="text-xs uppercase tracking-wider mb-2"
+									>
+										{rel.category}
+									</Badge>
+									<p className="text-sm font-medium leading-snug">
+										{rel.title}
+									</p>
+								</Link>
+							</li>
+						))}
+					</ul>
+				</section>
 			</article>
 
 			<SiteFooter />

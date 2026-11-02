@@ -1,4 +1,4 @@
-export const SITE_URL = "https://groupify.dev";
+export const SITE_URL = "https://nestfeed.app";
 export const SITE_NAME = "Groupify";
 
 export function absoluteUrl(path: string): string {
